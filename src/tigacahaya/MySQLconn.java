@@ -8,6 +8,8 @@ package tigacahaya;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class MySQLconn {
 
@@ -42,11 +44,73 @@ public class MySQLconn {
         }
 
     }
-    
-    
-    
-    
-    
-    
+
+    public static void post(String jenis, String merk, String ragam, String seri, String qty, String harga_beli, String supplier, String garansi) throws Exception {
+        try {
+            Connection conn = connect();
+            PreparedStatement posted = conn.prepareStatement("INSERT INTO `barang`(`id_barang`,`jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `garansi`) VALUES ('no','" + jenis + "', '" + merk + "', '" + ragam + "', '" + seri + "', '" + qty + "', '" + harga_beli + "', '" + supplier + "', '" + garansi + "')");
+            posted.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            System.out.println("insert complete");
+        }
+
+    }
+public static ArrayList<String> get() throws Exception{
+    try{
+        Connection conn = connect();
+        PreparedStatement statement = conn.prepareStatement("SELECT `id_barang`,`jenis`,`merk`,`ragam`,`seri`,`qty`,`harga_beli`,`supplier`,`tgl_masuk` ,`garansi`FROM `barang`");
+        ResultSet rs = statement.executeQuery();
+        
+    ArrayList<String> array = new ArrayList<String>();
+    while(rs.next()){
+        System.out.print(rs.getString("id_barang"));System.out.print("\t\t");
+        System.out.print(rs.getString("jenis"));System.out.print("\t\t");
+        System.out.print(rs.getString("merk"));System.out.print("\t\t");
+        System.out.print(rs.getString("ragam"));System.out.print("\t\t");
+        System.out.print(rs.getString("seri"));System.out.print("\t\t");
+        System.out.print(rs.getString("qty"));System.out.print("\t\t");
+        System.out.print(rs.getString("harga_beli"));System.out.print("\t\t");
+        System.out.print(rs.getString("supplier"));System.out.print("\t\t");
+        System.out.print(rs.getString("tgl_masuk"));System.out.print("\t\t");
+        System.out.println(rs.getString("garansi"));
+
+        array.add(rs.getString("id_barang"));
+        array.add(rs.getString("jenis"));
+        array.add(rs.getString("merk"));
+        array.add(rs.getString("ragam"));
+        array.add(rs.getString("seri"));
+        array.add(rs.getString("qty"));
+        array.add(rs.getString("harga_beli"));
+        array.add(rs.getString("supplier"));
+        array.add(rs.getString("tgl_masuk"));
+        array.add(rs.getString("garansi"));
+        
+    }
+        System.out.println("All records loaded");
+        return array;
+    }catch (Exception e){System.out.println("e");
+}
+    return null;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

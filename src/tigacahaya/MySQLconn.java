@@ -7,8 +7,7 @@ package tigacahaya;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-
+import java.sql.PreparedStatement;
 
 public class MySQLconn {
 
@@ -16,20 +15,38 @@ public class MySQLconn {
     public static String password = "ijasabb35";
     public static String server = "192.168.0.11";
     public static String db = "3cahaya";
-    public static String connString = "jdbc:mysql://" + server + ":3306/"+db+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    
-    public static Connection connect() {
+    public static String connString = "jdbc:mysql://" + server + ":3306/" + db + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+
+    public static Connection connect() throws Exception {
         try {
-            Connection conn = null;
+            Connection conn = DriverManager.getConnection(connString, userName, password);
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection(connString, userName, password);
             System.out.println("MySQL Connected to: " + server);
             return conn;
-        } catch (ClassNotFoundException | SQLException e) {
+
+        } catch (Exception e) {
+            System.out.println(e);
         }
+
         return null;
+
     }
 
+    public static void executeQuery(String queries) throws Exception {
+        try {
+            Connection conn = connect();
+            PreparedStatement queryStatement = conn.prepareStatement(queries);
+            queryStatement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Query\"" + queries + "\" Executed");
+        }
 
+    }
+    
+    
+    
+    
+    
+    
 }
 

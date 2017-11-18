@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tigacahaya;
+package tigacahaya.gui;
+
+import tigacahaya.TableRowContent;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -17,11 +19,23 @@ import static tigacahaya.TableRowContent.getTableContent;
  */
 public class GUI extends javax.swing.JFrame {
 
-    
+    private static GUI singleGui;
+
+
+    public static GUI getInstance() {
+        if (singleGui != null) {
+            return singleGui;
+        } else {
+            singleGui = new GUI();
+            return singleGui;
+        }
+
+    }
+
     /**
      * Creates new form GUI
      */
-    public GUI() {
+    private GUI() {
         initComponents();
         displayTable();
     }
@@ -30,7 +44,7 @@ public class GUI extends javax.swing.JFrame {
     {
 
         try {
-            
+
             ArrayList<TableRowContent> list = getTableContent();
             try {
                 list = getTableContent();
@@ -51,16 +65,16 @@ public class GUI extends javax.swing.JFrame {
                 row[8] = list.get(i).getTgl_masuk();
                 row[9] = list.get(i).getGaransi() ;
                 model.addRow(row);
-                
+
             }
-            
+
         } catch (Exception ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    
-    
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -192,7 +206,7 @@ public class GUI extends javax.swing.JFrame {
 
         PanelAtas.setBackground(new java.awt.Color(0, 204, 153));
 
-        SearchField.setText("jTextField1");
+//        SearchField.setText("jTextField1");
 
         ComboBoxKolom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Coloumn", "ID Barang", "Jenis", "Merk", "Ragam", "Seri", "Qty", "Harga Beli", "Supplier", "Tanggal Masuk", "Garansi" }));
 
@@ -368,7 +382,10 @@ public class GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI().setVisible(true);
+                GUI gui = getInstance();
+                SearchAdapter searchAdapter = new SearchAdapter(gui);
+                gui.setVisible(true);
+//                new GUI().setVisible(true);
             }
         });
     }
@@ -382,7 +399,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel PanelKiri;
     private javax.swing.JScrollPane PanelScrollTabel;
     private javax.swing.JPanel PanelTengah;
-    private javax.swing.JTextField SearchField;
+    public javax.swing.JTextField SearchField;
     private javax.swing.JPanel TabRetur;
     private javax.swing.JPanel TabStok;
     private javax.swing.JPanel TabSupplier;

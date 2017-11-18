@@ -5,6 +5,8 @@
  */
 package tigacahaya;
 
+import tigacahaya.gui.GUI;
+
 /**
  *
  * @author ijash

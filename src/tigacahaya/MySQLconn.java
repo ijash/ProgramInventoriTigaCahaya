@@ -65,16 +65,16 @@ public static ArrayList<String> get() throws Exception{
         
     ArrayList<String> array = new ArrayList<String>();
     while(rs.next()){
-        System.out.print(rs.getString("id_barang"));System.out.print("\t\t");
-        System.out.print(rs.getString("jenis"));System.out.print("\t\t");
-        System.out.print(rs.getString("merk"));System.out.print("\t\t");
-        System.out.print(rs.getString("ragam"));System.out.print("\t\t");
-        System.out.print(rs.getString("seri"));System.out.print("\t\t");
-        System.out.print(rs.getString("qty"));System.out.print("\t\t");
-        System.out.print(rs.getString("harga_beli"));System.out.print("\t\t");
-        System.out.print(rs.getString("supplier"));System.out.print("\t\t");
-        System.out.print(rs.getString("tgl_masuk"));System.out.print("\t\t");
-        System.out.println(rs.getString("garansi"));
+//        System.out.print(rs.getString("id_barang"));System.out.print("\t\t");
+//        System.out.print(rs.getString("jenis"));System.out.print("\t\t");
+//        System.out.print(rs.getString("merk"));System.out.print("\t\t");
+//        System.out.print(rs.getString("ragam"));System.out.print("\t\t");
+//        System.out.print(rs.getString("seri"));System.out.print("\t\t");
+//        System.out.print(rs.getString("qty"));System.out.print("\t\t");
+//        System.out.print(rs.getString("harga_beli"));System.out.print("\t\t");
+//        System.out.print(rs.getString("supplier"));System.out.print("\t\t");
+//        System.out.print(rs.getString("tgl_masuk"));System.out.print("\t\t");
+//        System.out.println(rs.getString("garansi"));
 
         array.add(rs.getString("id_barang"));
         array.add(rs.getString("jenis"));

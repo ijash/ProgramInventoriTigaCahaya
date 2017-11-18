@@ -5,11 +5,17 @@
  */
 package tigacahaya;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import static tigacahaya.MySQLconn.connect;
+
 /**
  *
  * @author ijash
  */
-public class TableLogic {
+public class TableRowContent {
 
     private String idBarang;
     private String jenis;
@@ -22,7 +28,7 @@ public class TableLogic {
     private String tgl_masuk;
     private String garansi;
 
-    public TableLogic(String id_barang, String jenis, String merk, String ragam, String seri, int qty, double harga_beli, String supplier, String tgl_masuk, String garansi) {
+    public TableRowContent(String id_barang, String jenis, String merk, String ragam, String seri, int qty, double harga_beli, String supplier, String tgl_masuk, String garansi) {
         this.idBarang = id_barang;
         this.jenis = jenis;
         this.merk = merk;
@@ -114,5 +120,34 @@ public class TableLogic {
     public void setGaransi(String garansi) {
         this.garansi = garansi;
     }
-    
+    public static ArrayList<TableRowContent> getTableContent() throws Exception {
+        try {
+            Connection conn = connect();
+            PreparedStatement statement = conn.prepareStatement("SELECT `id_barang`,`jenis`,`merk`,`ragam`,`seri`,`qty`,`harga_beli`,`supplier`,`tgl_masuk` ,`garansi`FROM `barang`");
+            ResultSet rs = statement.executeQuery();
+
+            ArrayList<TableRowContent> accumulatedContent = new ArrayList<TableRowContent>();
+            while (rs.next()) {
+                // parameter lined down for easy read
+                TableRowContent rowContent = new TableRowContent(
+                        rs.getString("id_barang"),
+                        rs.getString("jenis"),
+                        rs.getString("merk"),
+                        rs.getString("ragam"),
+                        rs.getString("seri"),
+                        rs.getInt("qty"),
+                        rs.getDouble("harga_beli"),
+                        rs.getString("supplier"),
+                        rs.getString("tgl_masuk"),
+                        rs.getString("garansi"));
+                accumulatedContent.add(rowContent);
+
+            }
+            System.out.println("All records loaded");
+            return accumulatedContent;
+        } catch (Exception e) {
+            System.out.println("e");
+        }
+        return null;
+    }
 }

@@ -5,6 +5,12 @@
  */
 package tigacahaya;
 
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import static tigacahaya.TableRowContent.getTableContent;
+
 /**
  *
  * @author ijash
@@ -17,8 +23,42 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+        displayTable();
     }
 
+    public void displayTable()
+    {
+
+        try {
+            
+            ArrayList<TableRowContent> list = getTableContent();
+            try {
+                list = getTableContent();
+            } catch (Exception ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            DefaultTableModel model = (DefaultTableModel)Tabel.getModel();
+            Object[] row = new Object[10];
+            for (int i = 0; i < list.size(); i++) {
+                row[0] = list.get(i).getIdBarang();
+                row[1] = list.get(i).getJenis() ;
+                row[2] = list.get(i).getMerk();
+                row[3] = list.get(i).getRagam() ;
+                row[4] = list.get(i).getSeri() ;
+                row[5] = list.get(i).getQty() ;
+                row[6] = list.get(i).getHarga_beli() ;
+                row[7] = list.get(i).getSupplier() ;
+                row[8] = list.get(i).getTgl_masuk();
+                row[9] = list.get(i).getGaransi() ;
+                model.addRow(row);
+                
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     
     
     /**

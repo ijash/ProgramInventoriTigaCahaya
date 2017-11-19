@@ -117,7 +117,7 @@ public class TableRowContent {
         return garansi;
     }
 
-    public void setGaransi(String garansi) {
+    public void setGaransi(String garansi) { 
         this.garansi = garansi;
     }
     public static ArrayList<TableRowContent> getTableContent() throws Exception {
@@ -150,4 +150,9 @@ public class TableRowContent {
         }
         return null;
     }
+    
+       
+        
+    
+    
 }

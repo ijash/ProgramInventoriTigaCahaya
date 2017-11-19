@@ -5,10 +5,14 @@
  */
 package tigacahaya;
 
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import static tigacahaya.TableRowContent.getTableContent;
 
 /**
@@ -19,7 +23,7 @@ public class GUI extends javax.swing.JFrame {
 
     
     /**
-     * Creates new form GUI
+     * Creates new form GUI & GUI execution
      */
     public GUI() {
         initComponents();
@@ -32,11 +36,6 @@ public class GUI extends javax.swing.JFrame {
         try {
             
             ArrayList<TableRowContent> list = getTableContent();
-            try {
-                list = getTableContent();
-            } catch (Exception ex) {
-                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
             DefaultTableModel model = (DefaultTableModel)Tabel.getModel();
             Object[] row = new Object[10];
             for (int i = 0; i < list.size(); i++) {
@@ -59,8 +58,23 @@ public class GUI extends javax.swing.JFrame {
         }
         
     }
-    
-    
+    // execute SQL query
+public void execSQLQuery(String query, String message) throws Exception
+{
+    Connection conn = MySQLconn.connect();
+    Statement st;
+    try{
+      st = conn.createStatement();
+      if ((st.executeUpdate(query)) == 1){
+          JOptionPane.showMessageDialog(null,"Data "+message+" Successfully");
+      }
+      else{
+          JOptionPane.showMessageDialog(null, "Data not "+message);
+      }
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,7 +88,8 @@ public class GUI extends javax.swing.JFrame {
         jTabbedPane3 = new javax.swing.JTabbedPane();
         TabStok = new javax.swing.JPanel();
         PanelKiri = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        labelInfo = new javax.swing.JLabel();
+        buttonRefreshDB = new javax.swing.JToggleButton();
         PanelBawah = new javax.swing.JPanel();
         fieldInputId_barang = new javax.swing.JTextField();
         fieldInputJenis = new javax.swing.JTextField();
@@ -82,10 +97,10 @@ public class GUI extends javax.swing.JFrame {
         fieldInputRagam = new javax.swing.JTextField();
         fieldInputSeri = new javax.swing.JTextField();
         fieldInputQty = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        fieldInputHarga_beli = new javax.swing.JTextField();
+        fieldInputSupplier = new javax.swing.JTextField();
+        fieldInputTanggal_masuk = new javax.swing.JTextField();
+        comboBoxDistributor = new javax.swing.JComboBox<>();
         PanelAtas = new javax.swing.JPanel();
         SearchField = new javax.swing.JTextField();
         ComboBoxKolom = new javax.swing.JComboBox<>();
@@ -104,28 +119,34 @@ public class GUI extends javax.swing.JFrame {
 
         PanelKiri.setBackground(new java.awt.Color(255, 204, 102));
 
-        jLabel1.setText("Info");
+        labelInfo.setText("Info");
+
+        buttonRefreshDB.setText("Refresh DB");
 
         javax.swing.GroupLayout PanelKiriLayout = new javax.swing.GroupLayout(PanelKiri);
         PanelKiri.setLayout(PanelKiriLayout);
         PanelKiriLayout.setHorizontalGroup(
             PanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelKiriLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(PanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonRefreshDB)
+                    .addComponent(labelInfo))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelKiriLayout.setVerticalGroup(
             PanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelKiriLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1)
+                .addContainerGap()
+                .addComponent(buttonRefreshDB)
+                .addGap(167, 167, 167)
+                .addComponent(labelInfo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         PanelBawah.setBackground(new java.awt.Color(0, 153, 153));
 
-        fieldInputId_barang.setText("ID Barang");
+        fieldInputId_barang.setText("ID");
 
         fieldInputJenis.setText("Jenis");
 
@@ -137,45 +158,45 @@ public class GUI extends javax.swing.JFrame {
 
         fieldInputQty.setText("Qty");
 
-        jTextField1.setText("Harga Beli");
+        fieldInputHarga_beli.setText("Hrg Beli");
 
-        jTextField2.setText("Supplier");
+        fieldInputSupplier.setText("Supplier");
 
-        jTextField3.setText("Tanggal Masuk");
+        fieldInputTanggal_masuk.setText("Tanggal Masuk");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Distributor", "Toko", "Tidak Ada" }));
+        comboBoxDistributor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Distributor", "Toko", "Tidak Ada" }));
 
         javax.swing.GroupLayout PanelBawahLayout = new javax.swing.GroupLayout(PanelBawah);
         PanelBawah.setLayout(PanelBawahLayout);
         PanelBawahLayout.setHorizontalGroup(
             PanelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBawahLayout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(fieldInputId_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(fieldInputId_barang, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldInputJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldInputJenis, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldInputMerk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldInputMerk, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldInputRagam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldInputRagam, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldInputSeri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldInputSeri, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldInputQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldInputQty, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldInputHarga_beli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldInputSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldInputTanggal_masuk, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboBoxDistributor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelBawahLayout.setVerticalGroup(
             PanelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBawahLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addGroup(PanelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fieldInputId_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldInputJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,10 +204,10 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(fieldInputRagam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldInputSeri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldInputQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldInputHarga_beli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldInputSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldInputTanggal_masuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxDistributor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -247,13 +268,18 @@ public class GUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        Tabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabelMouseClicked(evt);
+            }
+        });
         PanelScrollTabel.setViewportView(Tabel);
 
         javax.swing.GroupLayout PanelTengahLayout = new javax.swing.GroupLayout(PanelTengah);
         PanelTengah.setLayout(PanelTengahLayout);
         PanelTengahLayout.setHorizontalGroup(
             PanelTengahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelScrollTabel, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+            .addComponent(PanelScrollTabel, javax.swing.GroupLayout.DEFAULT_SIZE, 896, Short.MAX_VALUE)
         );
         PanelTengahLayout.setVerticalGroup(
             PanelTengahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,7 +305,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(TabStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PanelTengah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PanelKiri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelBawah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -289,7 +315,7 @@ public class GUI extends javax.swing.JFrame {
         TabRetur.setLayout(TabReturLayout);
         TabReturLayout.setHorizontalGroup(
             TabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 861, Short.MAX_VALUE)
+            .addGap(0, 1022, Short.MAX_VALUE)
         );
         TabReturLayout.setVerticalGroup(
             TabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +328,7 @@ public class GUI extends javax.swing.JFrame {
         TabTrans.setLayout(TabTransLayout);
         TabTransLayout.setHorizontalGroup(
             TabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 861, Short.MAX_VALUE)
+            .addGap(0, 1022, Short.MAX_VALUE)
         );
         TabTransLayout.setVerticalGroup(
             TabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,7 +341,7 @@ public class GUI extends javax.swing.JFrame {
         TabSupplier.setLayout(TabSupplierLayout);
         TabSupplierLayout.setHorizontalGroup(
             TabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 861, Short.MAX_VALUE)
+            .addGap(0, 1022, Short.MAX_VALUE)
         );
         TabSupplierLayout.setVerticalGroup(
             TabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,6 +363,29 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelMouseClicked
+        // Display selected row in tex fields
+        int i = Tabel.getSelectedRow();
+        TableModel model = Tabel.getModel();
+        fieldInputId_barang.setText(model.getValueAt(i,0).toString());
+        fieldInputJenis.setText(model.getValueAt(i,1).toString());
+        fieldInputMerk.setText(model.getValueAt(i,2).toString());
+        fieldInputRagam.setText(model.getValueAt(i,3).toString());
+        fieldInputRagam.setCaretPosition(0);
+        fieldInputSeri.setText(model.getValueAt(i,4).toString());
+        fieldInputSeri.setCaretPosition(0);
+        fieldInputQty.setText(model.getValueAt(i,5).toString());
+        fieldInputHarga_beli.setText(model.getValueAt(i,6).toString());
+        fieldInputSupplier.setText(model.getValueAt(i,7).toString());
+        fieldInputTanggal_masuk.setText(model.getValueAt(i,8).toString());
+        fieldInputTanggal_masuk.setCaretPosition(0);
+       // comboBoxDistributor.getItemAt(i);
+        
+       System.out.println(model.getValueAt(i,9));
+        
+                
+    }//GEN-LAST:event_TabelMouseClicked
 
     /**
      * by ijash
@@ -370,7 +419,7 @@ public class GUI extends javax.swing.JFrame {
             public void run() {
                 new GUI().setVisible(true);
             }
-        });
+        }) ;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -388,18 +437,19 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel TabSupplier;
     private javax.swing.JPanel TabTrans;
     private javax.swing.JTable Tabel;
+    private javax.swing.JToggleButton buttonRefreshDB;
+    private javax.swing.JComboBox<String> comboBoxDistributor;
+    private javax.swing.JTextField fieldInputHarga_beli;
     private javax.swing.JTextField fieldInputId_barang;
     private javax.swing.JTextField fieldInputJenis;
     private javax.swing.JTextField fieldInputMerk;
     private javax.swing.JTextField fieldInputQty;
     private javax.swing.JTextField fieldInputRagam;
     private javax.swing.JTextField fieldInputSeri;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField fieldInputSupplier;
+    private javax.swing.JTextField fieldInputTanggal_masuk;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel labelInfo;
     // End of variables declaration//GEN-END:variables
 }

@@ -123,7 +123,7 @@ public class TableRowContent {
     public static ArrayList<TableRowContent> getTableContent() throws Exception {
         try {
             Connection conn = connect();
-            PreparedStatement statement = conn.prepareStatement("SELECT `id_barang`,`jenis`,`merk`,`ragam`,`seri`,`qty`,`harga_beli`,`supplier`,`tgl_masuk` ,`garansi`FROM `barang`");
+            PreparedStatement statement = conn.prepareStatement("SELECT `id_barang`,`jenis`,`merk`,`ragam`,`seri`,`qty`,`harga_beli`,`nama` AS `supplier`,`tgl_masuk` ,`garansi`FROM `barang`INNER JOIN`supplier` ON barang.supplier=supplier.id_supplier;");
             ResultSet rs = statement.executeQuery();
 
             ArrayList<TableRowContent> accumulatedContent = new ArrayList<TableRowContent>();

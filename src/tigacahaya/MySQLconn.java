@@ -34,15 +34,19 @@ public class MySQLconn {
 
     }
 
-    public static void executeQuery(String queries) throws Exception {
+    public static String executeSingleQueryResult(String queries,String coloumn) throws Exception {
         try {
             Connection conn = connect();
             PreparedStatement queryStatement = conn.prepareStatement(queries);
-            queryStatement.executeUpdate();
+            ResultSet rs = queryStatement.executeQuery();
+            rs.next();
+            System.out.print(rs.getString(coloumn));
+            return rs.getString(coloumn);
+                    
         } catch (Exception e) {
-            System.out.println("Query\"" + queries + "\" Executed");
+            System.out.println(e);
+            return "NULL";
         }
-
     }
 
     public static void post(String jenis, String merk, String ragam, String seri, String qty, String harga_beli, String supplier, String garansi) throws Exception {
@@ -50,6 +54,7 @@ public class MySQLconn {
             Connection conn = connect();
             PreparedStatement posted = conn.prepareStatement("INSERT INTO `barang`(`id_barang`,`jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `garansi`) VALUES ('no','" + jenis + "', '" + merk + "', '" + ragam + "', '" + seri + "', '" + qty + "', '" + harga_beli + "', '" + supplier + "', '" + garansi + "')");
             posted.executeUpdate();
+            
         } catch (Exception e) {
             System.out.println(e);
         } finally {

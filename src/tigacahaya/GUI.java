@@ -21,7 +21,6 @@ import static tigacahaya.TableRowContent.getTableContent;
  */
 public class GUI extends javax.swing.JFrame {
 
-    
     /**
      * Creates new form GUI & GUI execution
      */
@@ -30,51 +29,50 @@ public class GUI extends javax.swing.JFrame {
         displayTable();
     }
 
-    public void displayTable()
-    {
+    public void displayTable() {
 
         try {
-            
+
             ArrayList<TableRowContent> list = getTableContent();
-            DefaultTableModel model = (DefaultTableModel)Tabel.getModel();
+            DefaultTableModel model = (DefaultTableModel) Tabel.getModel();
             Object[] row = new Object[10];
             for (int i = 0; i < list.size(); i++) {
                 row[0] = list.get(i).getIdBarang();
-                row[1] = list.get(i).getJenis() ;
+                row[1] = list.get(i).getJenis();
                 row[2] = list.get(i).getMerk();
-                row[3] = list.get(i).getRagam() ;
-                row[4] = list.get(i).getSeri() ;
-                row[5] = list.get(i).getQty() ;
-                row[6] = list.get(i).getHarga_beli() ;
-                row[7] = list.get(i).getSupplier() ;
+                row[3] = list.get(i).getRagam();
+                row[4] = list.get(i).getSeri();
+                row[5] = list.get(i).getQty();
+                row[6] = list.get(i).getHarga_beli();
+                row[7] = list.get(i).getSupplier();
                 row[8] = list.get(i).getTgl_masuk();
-                row[9] = list.get(i).getGaransi() ;
+                row[9] = list.get(i).getGaransi();
                 model.addRow(row);
-                
+
             }
-            
+
         } catch (Exception ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
     // execute SQL query
-public void execSQLQuery(String query, String message) throws Exception
-{
-    Connection conn = MySQLconn.connect();
-    Statement st;
-    try{
-      st = conn.createStatement();
-      if ((st.executeUpdate(query)) == 1){
-          JOptionPane.showMessageDialog(null,"Data "+message+" Successfully");
-      }
-      else{
-          JOptionPane.showMessageDialog(null, "Data not "+message);
-      }
-    }catch (Exception e){
-        e.printStackTrace();
+
+    public void execSQLQuery(String query, String message) throws Exception {
+        Connection conn = MySQLconn.connect();
+        Statement st;
+        try {
+            st = conn.createStatement();
+            if ((st.executeUpdate(query)) == 1) {
+                JOptionPane.showMessageDialog(null, "Data " + message + " Successfully");
+            } else {
+                JOptionPane.showMessageDialog(null, "Data not " + message);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-}
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -90,6 +88,7 @@ public void execSQLQuery(String query, String message) throws Exception
         PanelKiri = new javax.swing.JPanel();
         labelInfo = new javax.swing.JLabel();
         buttonRefreshDB = new javax.swing.JToggleButton();
+        textAreaKiri = new javax.swing.JTextArea();
         PanelBawah = new javax.swing.JPanel();
         fieldInputId_barang = new javax.swing.JTextField();
         fieldInputJenis = new javax.swing.JTextField();
@@ -100,7 +99,10 @@ public void execSQLQuery(String query, String message) throws Exception
         fieldInputHarga_beli = new javax.swing.JTextField();
         fieldInputSupplier = new javax.swing.JTextField();
         fieldInputTanggal_masuk = new javax.swing.JTextField();
-        comboBoxDistributor = new javax.swing.JComboBox<>();
+        comboBoxGaransi = new javax.swing.JComboBox<>();
+        tombolUbah = new javax.swing.JButton();
+        tombolTambah = new javax.swing.JButton();
+        tombolHapus = new javax.swing.JButton();
         PanelAtas = new javax.swing.JPanel();
         SearchField = new javax.swing.JTextField();
         ComboBoxKolom = new javax.swing.JComboBox<>();
@@ -123,6 +125,11 @@ public void execSQLQuery(String query, String message) throws Exception
 
         buttonRefreshDB.setText("Refresh DB");
 
+        textAreaKiri.setColumns(20);
+        textAreaKiri.setLineWrap(true);
+        textAreaKiri.setRows(5);
+        textAreaKiri.setWrapStyleWord(true);
+
         javax.swing.GroupLayout PanelKiriLayout = new javax.swing.GroupLayout(PanelKiri);
         PanelKiri.setLayout(PanelKiriLayout);
         PanelKiriLayout.setHorizontalGroup(
@@ -130,18 +137,25 @@ public void execSQLQuery(String query, String message) throws Exception
             .addGroup(PanelKiriLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonRefreshDB)
-                    .addComponent(labelInfo))
+                    .addComponent(textAreaKiri, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelKiriLayout.createSequentialGroup()
+                        .addComponent(buttonRefreshDB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelInfo)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelKiriLayout.setVerticalGroup(
             PanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelKiriLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(buttonRefreshDB)
-                .addGap(167, 167, 167)
-                .addComponent(labelInfo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(PanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelKiriLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(labelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonRefreshDB))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textAreaKiri, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         PanelBawah.setBackground(new java.awt.Color(0, 153, 153));
@@ -164,39 +178,58 @@ public void execSQLQuery(String query, String message) throws Exception
 
         fieldInputTanggal_masuk.setText("Tanggal Masuk");
 
-        comboBoxDistributor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Distributor", "Toko", "Tidak Ada" }));
+        comboBoxGaransi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Distributor", "Toko", "Tidak Ada" }));
+
+        tombolUbah.setText("Ubah");
+
+        tombolTambah.setText("Tambah");
+        tombolTambah.setPreferredSize(new java.awt.Dimension(80, 30));
+        tombolTambah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tombolTambahMouseClicked(evt);
+            }
+        });
+
+        tombolHapus.setText("Hapus");
 
         javax.swing.GroupLayout PanelBawahLayout = new javax.swing.GroupLayout(PanelBawah);
         PanelBawah.setLayout(PanelBawahLayout);
         PanelBawahLayout.setHorizontalGroup(
             PanelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBawahLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(fieldInputId_barang, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldInputJenis, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldInputMerk, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldInputRagam, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldInputSeri, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldInputQty, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldInputHarga_beli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldInputSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldInputTanggal_masuk, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboBoxDistributor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE)
+                .addGroup(PanelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBawahLayout.createSequentialGroup()
+                        .addComponent(fieldInputId_barang, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldInputJenis, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldInputMerk, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldInputRagam, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldInputSeri, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldInputQty, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldInputHarga_beli, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldInputSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldInputTanggal_masuk, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboBoxGaransi, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tombolUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(tombolTambah, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                        .addComponent(tombolHapus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         PanelBawahLayout.setVerticalGroup(
             PanelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBawahLayout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(PanelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fieldInputId_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldInputJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,8 +240,13 @@ public void execSQLQuery(String query, String message) throws Exception
                     .addComponent(fieldInputHarga_beli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldInputSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldInputTanggal_masuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxDistributor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(comboBoxGaransi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tombolTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         PanelAtas.setBackground(new java.awt.Color(0, 204, 153));
@@ -279,11 +317,11 @@ public void execSQLQuery(String query, String message) throws Exception
         PanelTengah.setLayout(PanelTengahLayout);
         PanelTengahLayout.setHorizontalGroup(
             PanelTengahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelScrollTabel, javax.swing.GroupLayout.DEFAULT_SIZE, 896, Short.MAX_VALUE)
+            .addComponent(PanelScrollTabel, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         PanelTengahLayout.setVerticalGroup(
             PanelTengahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelScrollTabel, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+            .addComponent(PanelScrollTabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout TabStokLayout = new javax.swing.GroupLayout(TabStok);
@@ -305,7 +343,7 @@ public void execSQLQuery(String query, String message) throws Exception
                 .addGroup(TabStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PanelTengah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PanelKiri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(19, 19, 19)
                 .addComponent(PanelBawah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -315,11 +353,11 @@ public void execSQLQuery(String query, String message) throws Exception
         TabRetur.setLayout(TabReturLayout);
         TabReturLayout.setHorizontalGroup(
             TabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1022, Short.MAX_VALUE)
+            .addGap(0, 1099, Short.MAX_VALUE)
         );
         TabReturLayout.setVerticalGroup(
             TabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 541, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
         jTabbedPane3.addTab("Retur", TabRetur);
@@ -328,11 +366,11 @@ public void execSQLQuery(String query, String message) throws Exception
         TabTrans.setLayout(TabTransLayout);
         TabTransLayout.setHorizontalGroup(
             TabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1022, Short.MAX_VALUE)
+            .addGap(0, 1099, Short.MAX_VALUE)
         );
         TabTransLayout.setVerticalGroup(
             TabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 541, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
         jTabbedPane3.addTab("Transaksi", TabTrans);
@@ -341,11 +379,11 @@ public void execSQLQuery(String query, String message) throws Exception
         TabSupplier.setLayout(TabSupplierLayout);
         TabSupplierLayout.setHorizontalGroup(
             TabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1022, Short.MAX_VALUE)
+            .addGap(0, 1099, Short.MAX_VALUE)
         );
         TabSupplierLayout.setVerticalGroup(
             TabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 541, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
         jTabbedPane3.addTab("Supplier", TabSupplier);
@@ -366,26 +404,52 @@ public void execSQLQuery(String query, String message) throws Exception
 
     private void TabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelMouseClicked
         // Display selected row in tex fields
+        String comb = "Tidak";
         int i = Tabel.getSelectedRow();
         TableModel model = Tabel.getModel();
-        fieldInputId_barang.setText(model.getValueAt(i,0).toString());
-        fieldInputJenis.setText(model.getValueAt(i,1).toString());
-        fieldInputMerk.setText(model.getValueAt(i,2).toString());
-        fieldInputRagam.setText(model.getValueAt(i,3).toString());
+        fieldInputId_barang.setText(model.getValueAt(i, 0).toString());
+        fieldInputJenis.setText(model.getValueAt(i, 1).toString());
+        fieldInputMerk.setText(model.getValueAt(i, 2).toString());
+        fieldInputRagam.setText(model.getValueAt(i, 3).toString());
         fieldInputRagam.setCaretPosition(0);
-        fieldInputSeri.setText(model.getValueAt(i,4).toString());
+        fieldInputSeri.setText(model.getValueAt(i, 4).toString());
         fieldInputSeri.setCaretPosition(0);
-        fieldInputQty.setText(model.getValueAt(i,5).toString());
-        fieldInputHarga_beli.setText(model.getValueAt(i,6).toString());
-        fieldInputSupplier.setText(model.getValueAt(i,7).toString());
-        fieldInputTanggal_masuk.setText(model.getValueAt(i,8).toString());
+        fieldInputQty.setText(model.getValueAt(i, 5).toString());
+        fieldInputHarga_beli.setText(model.getValueAt(i, 6).toString());
+
+        fieldInputTanggal_masuk.setText(model.getValueAt(i, 8).toString());
         fieldInputTanggal_masuk.setCaretPosition(0);
-       // comboBoxDistributor.getItemAt(i);
-        
-       System.out.println(model.getValueAt(i,9));
-        
-                
+        comb = (String) model.getValueAt(i, 9);
+        switch (comb) {
+            case "Distributor":
+                comboBoxGaransi.setSelectedIndex(0);
+                break;
+            case "Tidak":
+                comboBoxGaransi.setSelectedIndex(2);
+                break;
+            case "Toko":
+                comboBoxGaransi.setSelectedIndex(1);
+                break;
+        }
+        textAreaKiri.setText(model.getValueAt(i, 1).toString() + "\n" + model.getValueAt(i, 2).toString() + "\n" + model.getValueAt(i, 3).toString() + " " + model.getValueAt(i, 4).toString());
+
+        try {
+            fieldInputSupplier.setText(MySQLconn.executeSingleQueryResult("SELECT supplier FROM `barang` WHERE barang.id_barang='" + (model.getValueAt(i, 0).toString()) + "'", "supplier"));
+        } catch (Exception ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_TabelMouseClicked
+
+    private void tombolTambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahMouseClicked
+
+        String query = "INSERT INTO `barang`(`code`, `no`, `id_barang`, `jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `tgl_masuk`, `garansi`) VALUES('P',NULL,NULL,'" + fieldInputJenis.getText() + "','" + fieldInputMerk.getText() + "','" + fieldInputRagam.getText() + "','" + fieldInputSeri.getText() + "','" + fieldInputQty.getText() + "','" + fieldInputHarga_beli.getText() + "','" + fieldInputSupplier.getText() + "',CURRENT_TIMESTAMP,'" + comboBoxGaransi.getSelectedIndex() + "')";
+        try {
+            execSQLQuery(query, "Telah ditambahkan");
+        } catch (Exception ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(query);
+    }//GEN-LAST:event_tombolTambahMouseClicked
 
     /**
      * by ijash
@@ -419,7 +483,7 @@ public void execSQLQuery(String query, String message) throws Exception
             public void run() {
                 new GUI().setVisible(true);
             }
-        }) ;
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -438,7 +502,7 @@ public void execSQLQuery(String query, String message) throws Exception
     private javax.swing.JPanel TabTrans;
     private javax.swing.JTable Tabel;
     private javax.swing.JToggleButton buttonRefreshDB;
-    private javax.swing.JComboBox<String> comboBoxDistributor;
+    private javax.swing.JComboBox<String> comboBoxGaransi;
     private javax.swing.JTextField fieldInputHarga_beli;
     private javax.swing.JTextField fieldInputId_barang;
     private javax.swing.JTextField fieldInputJenis;
@@ -451,5 +515,9 @@ public void execSQLQuery(String query, String message) throws Exception
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JLabel labelInfo;
+    private javax.swing.JTextArea textAreaKiri;
+    private javax.swing.JButton tombolHapus;
+    private javax.swing.JButton tombolTambah;
+    private javax.swing.JButton tombolUbah;
     // End of variables declaration//GEN-END:variables
 }

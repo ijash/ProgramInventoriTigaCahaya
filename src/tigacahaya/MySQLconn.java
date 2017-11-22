@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MySQLconn {
 
@@ -23,7 +25,7 @@ public class MySQLconn {
         try {
             Connection conn = DriverManager.getConnection(connString, userName, password);
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("MySQL Connected to: " + server);
+          //  System.out.println("MySQL Connected to: " + server);
             return conn;
 
         } catch (Exception e) {
@@ -40,7 +42,8 @@ public class MySQLconn {
             PreparedStatement queryStatement = conn.prepareStatement(queries);
             ResultSet rs = queryStatement.executeQuery();
             rs.next();
-            System.out.print(rs.getString(coloumn));
+           //buat print nomer index supplier
+           //System.out.print(rs.getString(coloumn));
             return rs.getString(coloumn);
                     
         } catch (Exception e) {
@@ -48,7 +51,16 @@ public class MySQLconn {
             return "NULL";
         }
     }
-
+public static void executeVoidQuery(String query){
+        try {
+            Connection conn = connect();
+            PreparedStatement st = conn.prepareStatement(query);
+            int executeUpdate = st.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(MySQLconn.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+}
     public static void post(String jenis, String merk, String ragam, String seri, String qty, String harga_beli, String supplier, String garansi) throws Exception {
         try {
             Connection conn = connect();
@@ -70,16 +82,16 @@ public static ArrayList<String> get() throws Exception{
         
     ArrayList<String> array = new ArrayList<String>();
     while(rs.next()){
-        System.out.print(rs.getString("id_barang"));System.out.print("\t\t");
-        System.out.print(rs.getString("jenis"));System.out.print("\t\t");
-        System.out.print(rs.getString("merk"));System.out.print("\t\t");
-        System.out.print(rs.getString("ragam"));System.out.print("\t\t");
-        System.out.print(rs.getString("seri"));System.out.print("\t\t");
-        System.out.print(rs.getString("qty"));System.out.print("\t\t");
-        System.out.print(rs.getString("harga_beli"));System.out.print("\t\t");
-        System.out.print(rs.getString("supplier"));System.out.print("\t\t");
-        System.out.print(rs.getString("tgl_masuk"));System.out.print("\t\t");
-        System.out.println(rs.getString("garansi"));
+//        System.out.print(rs.getString("id_barang"));System.out.print("\t\t");
+//        System.out.print(rs.getString("jenis"));System.out.print("\t\t");
+//        System.out.print(rs.getString("merk"));System.out.print("\t\t");
+//        System.out.print(rs.getString("ragam"));System.out.print("\t\t");
+//        System.out.print(rs.getString("seri"));System.out.print("\t\t");
+//        System.out.print(rs.getString("qty"));System.out.print("\t\t");
+//        System.out.print(rs.getString("harga_beli"));System.out.print("\t\t");
+//        System.out.print(rs.getString("supplier"));System.out.print("\t\t");
+//        System.out.print(rs.getString("tgl_masuk"));System.out.print("\t\t");
+//        System.out.println(rs.getString("garansi"));
 
         array.add(rs.getString("id_barang"));
         array.add(rs.getString("jenis"));

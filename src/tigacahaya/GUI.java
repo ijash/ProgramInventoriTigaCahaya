@@ -56,6 +56,12 @@ public class GUI extends javax.swing.JFrame {
         }
 
     }
+
+    public void refreshTable() {
+        DefaultTableModel model = (DefaultTableModel) Tabel.getModel();
+        model.setRowCount(0);
+        displayTable();
+    }
     // execute SQL query
 
     public void execSQLQuery(String query, String message) throws Exception {
@@ -64,9 +70,9 @@ public class GUI extends javax.swing.JFrame {
         try {
             st = conn.createStatement();
             if ((st.executeUpdate(query)) == 1) {
-                JOptionPane.showMessageDialog(null, "Data " + message + " Successfully");
+                JOptionPane.showMessageDialog(null, "Data berhasil " + message);
             } else {
-                JOptionPane.showMessageDialog(null, "Data not " + message);
+                JOptionPane.showMessageDialog(null, "Data gagal " + message);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -113,6 +119,11 @@ public class GUI extends javax.swing.JFrame {
         Tabel = new javax.swing.JTable();
         TabRetur = new javax.swing.JPanel();
         TabTrans = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         TabSupplier = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -155,7 +166,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(buttonRefreshDB))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textAreaKiri, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         PanelBawah.setBackground(new java.awt.Color(0, 153, 153));
@@ -178,9 +189,14 @@ public class GUI extends javax.swing.JFrame {
 
         fieldInputTanggal_masuk.setText("Tanggal Masuk");
 
-        comboBoxGaransi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Distributor", "Toko", "Tidak Ada" }));
+        comboBoxGaransi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "distributor", "toko", "tidak" }));
 
         tombolUbah.setText("Ubah");
+        tombolUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolUbahActionPerformed(evt);
+            }
+        });
 
         tombolTambah.setText("Tambah");
         tombolTambah.setPreferredSize(new java.awt.Dimension(80, 30));
@@ -191,6 +207,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         tombolHapus.setText("Hapus");
+        tombolHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolHapusActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelBawahLayout = new javax.swing.GroupLayout(PanelBawah);
         PanelBawah.setLayout(PanelBawahLayout);
@@ -357,20 +378,63 @@ public class GUI extends javax.swing.JFrame {
         );
         TabReturLayout.setVerticalGroup(
             TabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 404, Short.MAX_VALUE)
+            .addGap(0, 430, Short.MAX_VALUE)
         );
 
         jTabbedPane3.addTab("Retur", TabRetur);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jTextField1.setText("jTextField1");
+
+        jTextField2.setText("jTextField2");
+
+        jButton1.setText("jButton1");
 
         javax.swing.GroupLayout TabTransLayout = new javax.swing.GroupLayout(TabTrans);
         TabTrans.setLayout(TabTransLayout);
         TabTransLayout.setHorizontalGroup(
             TabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1099, Short.MAX_VALUE)
+            .addGroup(TabTransLayout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TabTransLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(TabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TabTransLayout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(324, 324, 324))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TabTransLayout.createSequentialGroup()
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(337, 337, 337))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TabTransLayout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(105, 105, 105))))
         );
         TabTransLayout.setVerticalGroup(
             TabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 404, Short.MAX_VALUE)
+            .addGroup(TabTransLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(32, 32, 32))
         );
 
         jTabbedPane3.addTab("Transaksi", TabTrans);
@@ -383,7 +447,7 @@ public class GUI extends javax.swing.JFrame {
         );
         TabSupplierLayout.setVerticalGroup(
             TabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 404, Short.MAX_VALUE)
+            .addGap(0, 430, Short.MAX_VALUE)
         );
 
         jTabbedPane3.addTab("Supplier", TabSupplier);
@@ -430,7 +494,9 @@ public class GUI extends javax.swing.JFrame {
             case "Toko":
                 comboBoxGaransi.setSelectedIndex(1);
                 break;
+
         }
+        System.out.println(comboBoxGaransi.getSelectedIndex());
         textAreaKiri.setText(model.getValueAt(i, 1).toString() + "\n" + model.getValueAt(i, 2).toString() + "\n" + model.getValueAt(i, 3).toString() + " " + model.getValueAt(i, 4).toString());
 
         try {
@@ -442,14 +508,45 @@ public class GUI extends javax.swing.JFrame {
 
     private void tombolTambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahMouseClicked
 
-        String query = "INSERT INTO `barang`(`code`, `no`, `id_barang`, `jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `tgl_masuk`, `garansi`) VALUES('P',NULL,NULL,'" + fieldInputJenis.getText() + "','" + fieldInputMerk.getText() + "','" + fieldInputRagam.getText() + "','" + fieldInputSeri.getText() + "','" + fieldInputQty.getText() + "','" + fieldInputHarga_beli.getText() + "','" + fieldInputSupplier.getText() + "',CURRENT_TIMESTAMP,'" + comboBoxGaransi.getSelectedIndex() + "')";
+        String query = "INSERT INTO `barang`(`code`, `no`, `id_barang`, `jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `tgl_masuk`, `garansi`) VALUES('P',NULL,NULL,'" + fieldInputJenis.getText() + "','" + fieldInputMerk.getText() + "','" + fieldInputRagam.getText() + "','" + fieldInputSeri.getText() + "','" + fieldInputQty.getText() + "','" + fieldInputHarga_beli.getText() + "','" + fieldInputSupplier.getText() + "',CURRENT_TIMESTAMP,'" + comboBoxGaransi.getSelectedItem() + "')";
+
         try {
-            execSQLQuery(query, "Telah ditambahkan");
+            
+            execSQLQuery(query, "ditambahkan");
+            MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code, no ) ;");
+
+        } catch (Exception ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        System.out.println(query);
+        refreshTable();
+    }//GEN-LAST:event_tombolTambahMouseClicked
+
+    private void tombolUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahActionPerformed
+
+        String query = "UPDATE `barang` SET `jenis`= '" + fieldInputJenis.getText() + "',`merk`='" + fieldInputMerk.getText() + "',`ragam`='" + fieldInputRagam.getText() + "',`seri`='" + fieldInputSeri.getText() + "',`qty`='" + fieldInputQty.getText() + "',`harga_beli`='" + fieldInputHarga_beli.getText() + "',`supplier`='" + fieldInputSupplier.getText() + "',`garansi`='" + (String)comboBoxGaransi.getSelectedItem() + "' WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
+        try {
+            execSQLQuery(query, "diubah");
+            MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code, no ) ;");
         } catch (Exception ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println(query);
-    }//GEN-LAST:event_tombolTambahMouseClicked
+        refreshTable();
+    }//GEN-LAST:event_tombolUbahActionPerformed
+
+    private void tombolHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusActionPerformed
+
+        String query = "DELETE from `barang` WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
+        try {
+            execSQLQuery(query, "" + "dihapus");
+        } catch (Exception ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(query);
+        refreshTable();
+    }//GEN-LAST:event_tombolHapusActionPerformed
 
     /**
      * by ijash
@@ -512,8 +609,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField fieldInputSeri;
     private javax.swing.JTextField fieldInputSupplier;
     private javax.swing.JTextField fieldInputTanggal_masuk;
+    private javax.swing.JButton jButton1;
     private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel labelInfo;
     private javax.swing.JTextArea textAreaKiri;
     private javax.swing.JButton tombolHapus;

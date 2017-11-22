@@ -21,7 +21,7 @@ public class MySQLconn {
     public static String db = "3cahaya";
     public static String connString = "jdbc:mysql://" + server + ":3306/" + db + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
-    public static Connection connect() throws Exception {
+    public static Connection connect() {
         try {
             Connection conn = DriverManager.getConnection(connString, userName, password);
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -31,12 +31,10 @@ public class MySQLconn {
         } catch (Exception e) {
             System.out.println(e);
         }
-
         return null;
 
     }
-
-    public static String executeSingleQueryResult(String queries,String coloumn) throws Exception {
+    public static String executeSingleQueryResult(String queries,String coloumn) {
         try {
             Connection conn = connect();
             PreparedStatement queryStatement = conn.prepareStatement(queries);
@@ -51,7 +49,7 @@ public class MySQLconn {
             return "NULL";
         }
     }
-public static void executeVoidQuery(String query){
+    public static void executeVoidQuery(String query){
         try {
             Connection conn = connect();
             PreparedStatement st = conn.prepareStatement(query);
@@ -61,7 +59,7 @@ public static void executeVoidQuery(String query){
         }
     
 }
-    public static void post(String jenis, String merk, String ragam, String seri, String qty, String harga_beli, String supplier, String garansi) throws Exception {
+    public static void post(String jenis, String merk, String ragam, String seri, String qty, String harga_beli, String supplier, String garansi) {
         try {
             Connection conn = connect();
             PreparedStatement posted = conn.prepareStatement("INSERT INTO `barang`(`id_barang`,`jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `garansi`) VALUES ('no','" + jenis + "', '" + merk + "', '" + ragam + "', '" + seri + "', '" + qty + "', '" + harga_beli + "', '" + supplier + "', '" + garansi + "')");
@@ -74,7 +72,7 @@ public static void executeVoidQuery(String query){
         }
 
     }
-public static ArrayList<String> get() throws Exception{
+    public static ArrayList<String> get() {
     try{
         Connection conn = connect();
         PreparedStatement statement = conn.prepareStatement("SELECT `id_barang`,`jenis`,`merk`,`ragam`,`seri`,`qty`,`harga_beli`,`supplier`,`tgl_masuk` ,`garansi`FROM `barang`");

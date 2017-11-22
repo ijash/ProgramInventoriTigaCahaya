@@ -30,31 +30,22 @@ public class GUI extends javax.swing.JFrame {
     }
 
     public void displayTable() {
-
-        try {
-
-            ArrayList<TableRowContent> list = getTableContent();
-            DefaultTableModel model = (DefaultTableModel) Tabel.getModel();
-            Object[] row = new Object[10];
-            for (int i = 0; i < list.size(); i++) {
-                row[0] = list.get(i).getIdBarang();
-                row[1] = list.get(i).getJenis();
-                row[2] = list.get(i).getMerk();
-                row[3] = list.get(i).getRagam();
-                row[4] = list.get(i).getSeri();
-                row[5] = list.get(i).getQty();
-                row[6] = list.get(i).getHarga_beli();
-                row[7] = list.get(i).getSupplier();
-                row[8] = list.get(i).getTgl_masuk();
-                row[9] = list.get(i).getGaransi();
-                model.addRow(row);
-
-            }
-
-        } catch (Exception ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        ArrayList<TableRowContent> list = getTableContent();
+        DefaultTableModel model = (DefaultTableModel) Tabel.getModel();
+        Object[] row = new Object[10];
+        for (int i = 0; i < list.size(); i++) {
+            row[0] = list.get(i).getIdBarang();
+            row[1] = list.get(i).getJenis();
+            row[2] = list.get(i).getMerk();
+            row[3] = list.get(i).getRagam();
+            row[4] = list.get(i).getSeri();
+            row[5] = list.get(i).getQty();
+            row[6] = list.get(i).getHarga_beli();
+            row[7] = list.get(i).getSupplier();
+            row[8] = list.get(i).getTgl_masuk();
+            row[9] = list.get(i).getGaransi();
+            model.addRow(row);
         }
-
     }
 
     public void refreshTable() {
@@ -62,9 +53,9 @@ public class GUI extends javax.swing.JFrame {
         model.setRowCount(0);
         displayTable();
     }
-    // execute SQL query
 
-    public void execSQLQuery(String query, String message) throws Exception {
+    // execute SQL query
+    public void execSQLQuery(String query, String message) {
         Connection conn = MySQLconn.connect();
         Statement st;
         try {
@@ -480,7 +471,6 @@ public class GUI extends javax.swing.JFrame {
         fieldInputSeri.setCaretPosition(0);
         fieldInputQty.setText(model.getValueAt(i, 5).toString());
         fieldInputHarga_beli.setText(model.getValueAt(i, 6).toString());
-
         fieldInputTanggal_masuk.setText(model.getValueAt(i, 8).toString());
         fieldInputTanggal_masuk.setCaretPosition(0);
         comb = (String) model.getValueAt(i, 9);
@@ -494,44 +484,27 @@ public class GUI extends javax.swing.JFrame {
             case "Toko":
                 comboBoxGaransi.setSelectedIndex(1);
                 break;
-
         }
         System.out.println(comboBoxGaransi.getSelectedIndex());
         textAreaKiri.setText(model.getValueAt(i, 1).toString() + "\n" + model.getValueAt(i, 2).toString() + "\n" + model.getValueAt(i, 3).toString() + " " + model.getValueAt(i, 4).toString());
-
-        try {
-            fieldInputSupplier.setText(MySQLconn.executeSingleQueryResult("SELECT supplier FROM `barang` WHERE barang.id_barang='" + (model.getValueAt(i, 0).toString()) + "'", "supplier"));
-        } catch (Exception ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        fieldInputSupplier.setText(MySQLconn.executeSingleQueryResult("SELECT supplier FROM `barang` WHERE barang.id_barang='" + (model.getValueAt(i, 0).toString()) + "'", "supplier"));
     }//GEN-LAST:event_TabelMouseClicked
 
     private void tombolTambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahMouseClicked
-
         String query = "INSERT INTO `barang`(`code`, `no`, `id_barang`, `jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `tgl_masuk`, `garansi`) VALUES('P',NULL,NULL,'" + fieldInputJenis.getText() + "','" + fieldInputMerk.getText() + "','" + fieldInputRagam.getText() + "','" + fieldInputSeri.getText() + "','" + fieldInputQty.getText() + "','" + fieldInputHarga_beli.getText() + "','" + fieldInputSupplier.getText() + "',CURRENT_TIMESTAMP,'" + comboBoxGaransi.getSelectedItem() + "')";
-
-        try {
-            
-            execSQLQuery(query, "ditambahkan");
-            MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code, no ) ;");
-
-        } catch (Exception ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-
-        }
+        execSQLQuery(query, "ditambahkan");
+        MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code, no ) ;");
         System.out.println(query);
         refreshTable();
     }//GEN-LAST:event_tombolTambahMouseClicked
 
     private void tombolUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahActionPerformed
 
-        String query = "UPDATE `barang` SET `jenis`= '" + fieldInputJenis.getText() + "',`merk`='" + fieldInputMerk.getText() + "',`ragam`='" + fieldInputRagam.getText() + "',`seri`='" + fieldInputSeri.getText() + "',`qty`='" + fieldInputQty.getText() + "',`harga_beli`='" + fieldInputHarga_beli.getText() + "',`supplier`='" + fieldInputSupplier.getText() + "',`garansi`='" + (String)comboBoxGaransi.getSelectedItem() + "' WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
-        try {
-            execSQLQuery(query, "diubah");
-            MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code, no ) ;");
-        } catch (Exception ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        String query = "UPDATE `barang` SET `jenis`= '" + fieldInputJenis.getText() + "',`merk`='" + fieldInputMerk.getText() + "',`ragam`='" + fieldInputRagam.getText() + "',`seri`='" + fieldInputSeri.getText() + "',`qty`='" + fieldInputQty.getText() + "',`harga_beli`='" + fieldInputHarga_beli.getText() + "',`supplier`='" + fieldInputSupplier.getText() + "',`garansi`='" + (String) comboBoxGaransi.getSelectedItem() + "' WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
+
+        execSQLQuery(query, "diubah");
+        MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code, no ) ;");
+
         System.out.println(query);
         refreshTable();
     }//GEN-LAST:event_tombolUbahActionPerformed
@@ -539,11 +512,7 @@ public class GUI extends javax.swing.JFrame {
     private void tombolHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusActionPerformed
 
         String query = "DELETE from `barang` WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
-        try {
-            execSQLQuery(query, "" + "dihapus");
-        } catch (Exception ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        execSQLQuery(query, "" + "dihapus");
         System.out.println(query);
         refreshTable();
     }//GEN-LAST:event_tombolHapusActionPerformed

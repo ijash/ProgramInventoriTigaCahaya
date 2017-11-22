@@ -8,8 +8,7 @@ package tigacahaya;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.table.TableRowSorter;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -27,6 +26,8 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
         displayTable();
+        sortTable();
+        
     }
 
     public void displayTable() {
@@ -46,6 +47,13 @@ public class GUI extends javax.swing.JFrame {
             row[9] = list.get(i).getGaransi();
             model.addRow(row);
         }
+    }
+
+    public void sortTable() {
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>((DefaultTableModel) Tabel.getModel());
+        Tabel.setRowSorter(sorter);
+
+
     }
 
     public void refreshTable() {
@@ -126,6 +134,11 @@ public class GUI extends javax.swing.JFrame {
         labelInfo.setText("Info");
 
         buttonRefreshDB.setText("Refresh DB");
+        buttonRefreshDB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRefreshDBActionPerformed(evt);
+            }
+        });
 
         textAreaKiri.setColumns(20);
         textAreaKiri.setLineWrap(true);
@@ -209,10 +222,10 @@ public class GUI extends javax.swing.JFrame {
         PanelBawahLayout.setHorizontalGroup(
             PanelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBawahLayout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(PanelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBawahLayout.createSequentialGroup()
-                        .addComponent(fieldInputId_barang, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fieldInputId_barang, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(fieldInputJenis, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -458,7 +471,7 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelMouseClicked
-        // Display selected row in tex fields
+        // Display selected row in text fields
         String comb = "Tidak";
         int i = Tabel.getSelectedRow();
         TableModel model = Tabel.getModel();
@@ -493,7 +506,7 @@ public class GUI extends javax.swing.JFrame {
     private void tombolTambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahMouseClicked
         String query = "INSERT INTO `barang`(`code`, `no`, `id_barang`, `jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `tgl_masuk`, `garansi`) VALUES('P',NULL,NULL,'" + fieldInputJenis.getText() + "','" + fieldInputMerk.getText() + "','" + fieldInputRagam.getText() + "','" + fieldInputSeri.getText() + "','" + fieldInputQty.getText() + "','" + fieldInputHarga_beli.getText() + "','" + fieldInputSupplier.getText() + "',CURRENT_TIMESTAMP,'" + comboBoxGaransi.getSelectedItem() + "')";
         execSQLQuery(query, "ditambahkan");
-        MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code, no ) ;");
+        MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\") );");
         System.out.println(query);
         refreshTable();
     }//GEN-LAST:event_tombolTambahMouseClicked
@@ -503,7 +516,7 @@ public class GUI extends javax.swing.JFrame {
         String query = "UPDATE `barang` SET `jenis`= '" + fieldInputJenis.getText() + "',`merk`='" + fieldInputMerk.getText() + "',`ragam`='" + fieldInputRagam.getText() + "',`seri`='" + fieldInputSeri.getText() + "',`qty`='" + fieldInputQty.getText() + "',`harga_beli`='" + fieldInputHarga_beli.getText() + "',`supplier`='" + fieldInputSupplier.getText() + "',`garansi`='" + (String) comboBoxGaransi.getSelectedItem() + "' WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
 
         execSQLQuery(query, "diubah");
-        MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code, no ) ;");
+        MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\") );");
 
         System.out.println(query);
         refreshTable();
@@ -516,6 +529,11 @@ public class GUI extends javax.swing.JFrame {
         System.out.println(query);
         refreshTable();
     }//GEN-LAST:event_tombolHapusActionPerformed
+
+    private void buttonRefreshDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBActionPerformed
+        refreshTable();
+        execSQLQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\"))", "refresh");
+    }//GEN-LAST:event_buttonRefreshDBActionPerformed
 
     /**
      * by ijash

@@ -27,7 +27,70 @@ public class TableRowContent {
     private String supplier;
     private String tgl_masuk;
     private String garansi;
-
+    
+    //getter&setter
+    public String getIdBarang() {
+        return idBarang;
+    }
+    public void setIdBarang(String idBarang) {
+        this.idBarang = idBarang;
+    }
+    public String getJenis() {
+        return jenis;
+    }
+    public void setJenis(String jenis) {
+        this.jenis = jenis;
+    }
+    public String getMerk() {
+        return merk;
+    }
+    public void setMerk(String merk) {
+        this.merk = merk;
+    }
+    public String getRagam() {
+        return ragam;
+    }
+    public void setRagam(String ragam) {
+        this.ragam = ragam;
+    }
+    public String getSeri() {
+        return seri;
+    }
+    public void setSeri(String seri) {
+        this.seri = seri;
+    }
+    public int getQty() {
+        return qty;
+    }
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+    public double getHarga_beli() {
+        return harga_beli;
+    }
+    public void setHarga_beli(double harga_beli) {
+        this.harga_beli = harga_beli;
+    }
+    public String getSupplier() {
+        return supplier;
+    }
+    public void setSupplier(String supplier) {
+        this.supplier = supplier;
+    }
+    public String getTgl_masuk() {
+        return tgl_masuk;
+    }
+    public void setTgl_masuk(String tgl_masuk) {
+        this.tgl_masuk = tgl_masuk;
+    }
+    public String getGaransi() {
+        return garansi;
+    }
+    public void setGaransi(String garansi) { 
+        this.garansi = garansi;
+    }
+    
+    //table row methods
     public TableRowContent(String id_barang, String jenis, String merk, String ragam, String seri, int qty, double harga_beli, String supplier, String tgl_masuk, String garansi) {
         this.idBarang = id_barang;
         this.jenis = jenis;
@@ -38,86 +101,6 @@ public class TableRowContent {
         this.harga_beli = harga_beli;
         this.supplier = supplier;
         this.tgl_masuk = tgl_masuk;
-        this.garansi = garansi;
-    }
-
-    public String getIdBarang() {
-        return idBarang;
-    }
-
-    public void setIdBarang(String idBarang) {
-        this.idBarang = idBarang;
-    }
-
-    public String getJenis() {
-        return jenis;
-    }
-
-    public void setJenis(String jenis) {
-        this.jenis = jenis;
-    }
-
-    public String getMerk() {
-        return merk;
-    }
-
-    public void setMerk(String merk) {
-        this.merk = merk;
-    }
-
-    public String getRagam() {
-        return ragam;
-    }
-
-    public void setRagam(String ragam) {
-        this.ragam = ragam;
-    }
-
-    public String getSeri() {
-        return seri;
-    }
-
-    public void setSeri(String seri) {
-        this.seri = seri;
-    }
-
-    public int getQty() {
-        return qty;
-    }
-
-    public void setQty(int qty) {
-        this.qty = qty;
-    }
-
-    public double getHarga_beli() {
-        return harga_beli;
-    }
-
-    public void setHarga_beli(double harga_beli) {
-        this.harga_beli = harga_beli;
-    }
-
-    public String getSupplier() {
-        return supplier;
-    }
-
-    public void setSupplier(String supplier) {
-        this.supplier = supplier;
-    }
-
-    public String getTgl_masuk() {
-        return tgl_masuk;
-    }
-
-    public void setTgl_masuk(String tgl_masuk) {
-        this.tgl_masuk = tgl_masuk;
-    }
-
-    public String getGaransi() {
-        return garansi;
-    }
-
-    public void setGaransi(String garansi) { 
         this.garansi = garansi;
     }
     public static ArrayList<TableRowContent> getTableContent() {
@@ -150,6 +133,10 @@ public class TableRowContent {
         }
         return null;
     }
+    
+
+    
+   
     
        
         

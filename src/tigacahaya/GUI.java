@@ -530,6 +530,8 @@ public class GUI extends javax.swing.JFrame {
         String comb = "Tidak";
         int i = Tabel.getSelectedRow();
         TableModel model = Tabel.getModel();
+                //Get index from sorted table  
+        i = Tabel.convertRowIndexToModel(i); 
         fieldInputId_barang.setText(model.getValueAt(i, 0).toString());
         fieldInputJenis.setText(model.getValueAt(i, 1).toString());
         fieldInputMerk.setText(model.getValueAt(i, 2).toString());

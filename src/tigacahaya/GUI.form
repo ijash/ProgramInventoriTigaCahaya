@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.6" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.JProgressBar" name="jProgressBar1">
     </Component>
@@ -224,46 +224,79 @@
                 <Component class="javax.swing.JTextField" name="fieldInputId_barang">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="ID"/>
+                    <Property name="toolTipText" type="java.lang.String" value="ID Barang"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputId_barangKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputJenis">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Jenis"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Jenis atau tipe barang"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputJenisKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputMerk">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Merk"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Merk barang"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputMerkKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputRagam">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ragam"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Ragam atau sub-kategori barang"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputRagamKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputSeri">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Seri"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Keterangan lengkap dari ragam yang ada"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputSeriKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputQty">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Qty"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Banyaknya barang"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputQtyKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputHarga_beli">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Hrg Beli"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Harga modal awal"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputHarga_beliKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputSupplier">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Supplier"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Pemasok, distributor atau sumber barang, kode bisa dilihat di tab supplier"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputSupplierKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputTanggal_masuk">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Tanggal Masuk"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Otomatis sesuai penginputan barang (tidak perlu diatur/ubah)"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="comboBoxGaransi">
@@ -275,6 +308,7 @@
                         <StringItem index="2" value="tidak"/>
                       </StringArray>
                     </Property>
+                    <Property name="toolTipText" type="java.lang.String" value="ketentuan garansi"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -283,6 +317,7 @@
                 <Component class="javax.swing.JButton" name="tombolUbah">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ubah"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Edit atau ubah barang sesuai dengan masukan yang ada."/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolUbahActionPerformed"/>
@@ -291,6 +326,7 @@
                 <Component class="javax.swing.JButton" name="tombolTambah">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Tambah"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Tambah barang sesuai dengan masukan yang ada."/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[80, 30]"/>
                     </Property>
@@ -302,6 +338,7 @@
                 <Component class="javax.swing.JButton" name="tombolHapus">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Hapus"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Hapus barang sesuai dengan baris yang terpilih."/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolHapusActionPerformed"/>
@@ -489,6 +526,10 @@
                             </Column>
                           </TableColumnModel>
                         </Property>
+                        <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
+                          <JTableSelectionModel selectionMode="0"/>
+                        </Property>
+                        <Property name="showHorizontalLines" type="boolean" value="false"/>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>

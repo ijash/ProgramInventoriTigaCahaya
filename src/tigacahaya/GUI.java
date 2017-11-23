@@ -176,26 +176,77 @@ public class GUI extends javax.swing.JFrame {
         PanelBawah.setBackground(new java.awt.Color(0, 153, 153));
 
         fieldInputId_barang.setText("ID");
+        fieldInputId_barang.setToolTipText("ID Barang");
+        fieldInputId_barang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldInputId_barangKeyTyped(evt);
+            }
+        });
 
         fieldInputJenis.setText("Jenis");
+        fieldInputJenis.setToolTipText("Jenis atau tipe barang");
+        fieldInputJenis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldInputJenisKeyTyped(evt);
+            }
+        });
 
         fieldInputMerk.setText("Merk");
+        fieldInputMerk.setToolTipText("Merk barang");
+        fieldInputMerk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldInputMerkKeyTyped(evt);
+            }
+        });
 
         fieldInputRagam.setText("Ragam");
+        fieldInputRagam.setToolTipText("Ragam atau sub-kategori barang");
+        fieldInputRagam.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldInputRagamKeyTyped(evt);
+            }
+        });
 
         fieldInputSeri.setText("Seri");
+        fieldInputSeri.setToolTipText("Keterangan lengkap dari ragam yang ada");
+        fieldInputSeri.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldInputSeriKeyTyped(evt);
+            }
+        });
 
         fieldInputQty.setText("Qty");
+        fieldInputQty.setToolTipText("Banyaknya barang");
+        fieldInputQty.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldInputQtyKeyTyped(evt);
+            }
+        });
 
         fieldInputHarga_beli.setText("Hrg Beli");
+        fieldInputHarga_beli.setToolTipText("Harga modal awal");
+        fieldInputHarga_beli.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldInputHarga_beliKeyTyped(evt);
+            }
+        });
 
         fieldInputSupplier.setText("Supplier");
+        fieldInputSupplier.setToolTipText("Pemasok, distributor atau sumber barang, kode bisa dilihat di tab supplier");
+        fieldInputSupplier.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldInputSupplierKeyTyped(evt);
+            }
+        });
 
         fieldInputTanggal_masuk.setText("Tanggal Masuk");
+        fieldInputTanggal_masuk.setToolTipText("Otomatis sesuai penginputan barang (tidak perlu diatur/ubah)");
 
         comboBoxGaransi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "distributor", "toko", "tidak" }));
+        comboBoxGaransi.setToolTipText("ketentuan garansi");
 
         tombolUbah.setText("Ubah");
+        tombolUbah.setToolTipText("Edit atau ubah barang sesuai dengan masukan yang ada.");
         tombolUbah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tombolUbahActionPerformed(evt);
@@ -203,6 +254,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         tombolTambah.setText("Tambah");
+        tombolTambah.setToolTipText("Tambah barang sesuai dengan masukan yang ada.");
         tombolTambah.setPreferredSize(new java.awt.Dimension(80, 30));
         tombolTambah.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -211,6 +263,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         tombolHapus.setText("Hapus");
+        tombolHapus.setToolTipText("Hapus barang sesuai dengan baris yang terpilih.");
         tombolHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tombolHapusActionPerformed(evt);
@@ -331,6 +384,8 @@ public class GUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        Tabel.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        Tabel.setShowHorizontalLines(false);
         Tabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TabelMouseClicked(evt);
@@ -534,6 +589,54 @@ public class GUI extends javax.swing.JFrame {
         refreshTable();
         execSQLQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\"))", "refresh");
     }//GEN-LAST:event_buttonRefreshDBActionPerformed
+
+    private void fieldInputId_barangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputId_barangKeyTyped
+      if(fieldInputId_barang.getText().length()>10){
+          evt.consume();
+      }
+    }//GEN-LAST:event_fieldInputId_barangKeyTyped
+
+    private void fieldInputJenisKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputJenisKeyTyped
+     if(fieldInputJenis.getText().length()>16){
+          evt.consume();
+      }  
+    }//GEN-LAST:event_fieldInputJenisKeyTyped
+
+    private void fieldInputMerkKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputMerkKeyTyped
+            if(fieldInputMerk.getText().length()>20){
+          evt.consume();
+      }
+    }//GEN-LAST:event_fieldInputMerkKeyTyped
+
+    private void fieldInputRagamKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputRagamKeyTyped
+           if(fieldInputRagam.getText().length()>30){
+          evt.consume();
+      }
+    }//GEN-LAST:event_fieldInputRagamKeyTyped
+
+    private void fieldInputSeriKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputSeriKeyTyped
+             if(fieldInputSeri.getText().length()>300){
+          evt.consume();
+      }
+    }//GEN-LAST:event_fieldInputSeriKeyTyped
+
+    private void fieldInputQtyKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputQtyKeyTyped
+            if(fieldInputQty.getText().length()>11){
+          evt.consume();
+      }
+    }//GEN-LAST:event_fieldInputQtyKeyTyped
+
+    private void fieldInputHarga_beliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputHarga_beliKeyTyped
+                  if(fieldInputHarga_beli.getText().length()>15){
+          evt.consume();
+      }
+    }//GEN-LAST:event_fieldInputHarga_beliKeyTyped
+
+    private void fieldInputSupplierKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputSupplierKeyTyped
+            if(fieldInputSupplier.getText().length()>3){
+          evt.consume();
+      }
+    }//GEN-LAST:event_fieldInputSupplierKeyTyped
 
     /**
      * by ijash

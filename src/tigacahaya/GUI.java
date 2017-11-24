@@ -33,7 +33,7 @@ public class GUI extends javax.swing.JFrame {
 
     public void displayTable() {
         ArrayList<TableRowContent> list = tableContent();
-        DefaultTableModel model = (DefaultTableModel) Tabel.getModel();
+        DefaultTableModel model = (DefaultTableModel) tabel.getModel();
         Object[] row = new Object[10];
         for (int i = 0; i < list.size(); i++) {
             row[0] = list.get(i).getIdBarang();
@@ -51,15 +51,19 @@ public class GUI extends javax.swing.JFrame {
     }
 
     public void sortTable() {
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>((DefaultTableModel) Tabel.getModel());
-        Tabel.setRowSorter(sorter);
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>((DefaultTableModel) tabel.getModel());
+        tabel.setRowSorter(sorter);
 
     }
 
     public void refreshTable() {
-        DefaultTableModel model = (DefaultTableModel) Tabel.getModel();
+        DefaultTableModel model = (DefaultTableModel) tabel.getModel();
         model.setRowCount(0);
         displayTable();
+    }
+    
+    public void cartTable(){
+    
     }
 
     // execute SQL query
@@ -79,8 +83,8 @@ public class GUI extends javax.swing.JFrame {
     }
 
     public void filterTable(String query, int column) {
-        TableRowSorter<DefaultTableModel> tf = new TableRowSorter<>((DefaultTableModel) Tabel.getModel());
-        Tabel.setRowSorter(tf);
+        TableRowSorter<DefaultTableModel> tf = new TableRowSorter<>((DefaultTableModel) tabel.getModel());
+        tabel.setRowSorter(tf);
         if (0 == column){
         tf.setRowFilter(RowFilter.regexFilter("(?i)" + query));
         }
@@ -99,13 +103,13 @@ public class GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jProgressBar1 = new javax.swing.JProgressBar();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
-        TabStok = new javax.swing.JPanel();
-        PanelKiri = new javax.swing.JPanel();
+        panelUtama = new javax.swing.JTabbedPane();
+        tabStok = new javax.swing.JPanel();
+        panelKiri = new javax.swing.JPanel();
         labelInfo = new javax.swing.JLabel();
         buttonRefreshDB = new javax.swing.JToggleButton();
         textAreaKiri = new javax.swing.JTextArea();
-        PanelBawah = new javax.swing.JPanel();
+        panelBawah = new javax.swing.JPanel();
         fieldInputId_barang = new javax.swing.JTextField();
         fieldInputJenis = new javax.swing.JTextField();
         fieldInputMerk = new javax.swing.JTextField();
@@ -119,28 +123,39 @@ public class GUI extends javax.swing.JFrame {
         tombolUbah = new javax.swing.JButton();
         tombolTambah = new javax.swing.JButton();
         tombolHapus = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        PanelAtas = new javax.swing.JPanel();
-        SearchField = new javax.swing.JTextField();
-        ComboBoxKolom = new javax.swing.JComboBox<>();
-        LabelFilter = new javax.swing.JLabel();
-        LabelKolom = new javax.swing.JLabel();
-        PanelTengah = new javax.swing.JPanel();
-        PanelScrollTabel = new javax.swing.JScrollPane();
-        Tabel = new javax.swing.JTable();
-        TabTrans = new javax.swing.JPanel();
-        TabSupplier = new javax.swing.JPanel();
-        TabRetur = new javax.swing.JPanel();
+        tombolAtc = new javax.swing.JButton();
+        panelAtas = new javax.swing.JPanel();
+        searchField = new javax.swing.JTextField();
+        comboBoxKolom = new javax.swing.JComboBox<>();
+        labelFilter = new javax.swing.JLabel();
+        labelKolom = new javax.swing.JLabel();
+        panelTengah = new javax.swing.JPanel();
+        panelScrollTabel = new javax.swing.JScrollPane();
+        tabel = new javax.swing.JTable();
+        tabTrans = new javax.swing.JPanel();
+        panelKiri1 = new javax.swing.JPanel();
+        labelInfo1 = new javax.swing.JLabel();
+        buttonRefreshDB1 = new javax.swing.JToggleButton();
+        textAreaKiri1 = new javax.swing.JTextArea();
+        panelBawah1 = new javax.swing.JPanel();
+        panelAtas1 = new javax.swing.JPanel();
+        panelTengah1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        tabSupplier = new javax.swing.JPanel();
+        tabRetur = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        TabStok.setBackground(new java.awt.Color(0, 204, 255));
+        panelUtama.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        PanelKiri.setBackground(new java.awt.Color(255, 204, 102));
+        tabStok.setBackground(new java.awt.Color(0, 204, 255));
+
+        panelKiri.setBackground(new java.awt.Color(255, 204, 102));
 
         labelInfo.setText("Info");
 
-        buttonRefreshDB.setText("Refresh DB");
+        buttonRefreshDB.setText("Refresh Data");
         buttonRefreshDB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRefreshDBActionPerformed(evt);
@@ -152,35 +167,31 @@ public class GUI extends javax.swing.JFrame {
         textAreaKiri.setRows(5);
         textAreaKiri.setWrapStyleWord(true);
 
-        javax.swing.GroupLayout PanelKiriLayout = new javax.swing.GroupLayout(PanelKiri);
-        PanelKiri.setLayout(PanelKiriLayout);
-        PanelKiriLayout.setHorizontalGroup(
-            PanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelKiriLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelKiriLayout = new javax.swing.GroupLayout(panelKiri);
+        panelKiri.setLayout(panelKiriLayout);
+        panelKiriLayout.setHorizontalGroup(
+            panelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelKiriLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textAreaKiri, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PanelKiriLayout.createSequentialGroup()
-                        .addComponent(buttonRefreshDB)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelInfo)))
+                .addGroup(panelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(textAreaKiri, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                    .addComponent(labelInfo)
+                    .addComponent(buttonRefreshDB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        PanelKiriLayout.setVerticalGroup(
-            PanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelKiriLayout.createSequentialGroup()
+        panelKiriLayout.setVerticalGroup(
+            panelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelKiriLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelKiriLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(labelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(buttonRefreshDB))
+                .addComponent(labelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textAreaKiri, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addComponent(textAreaKiri, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonRefreshDB)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        PanelBawah.setBackground(new java.awt.Color(0, 153, 153));
+        panelBawah.setBackground(new java.awt.Color(0, 153, 153));
 
         fieldInputId_barang.setText("ID");
         fieldInputId_barang.setToolTipText("ID Barang");
@@ -277,16 +288,16 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("add to cart");
+        tombolAtc.setText("add to cart");
 
-        javax.swing.GroupLayout PanelBawahLayout = new javax.swing.GroupLayout(PanelBawah);
-        PanelBawah.setLayout(PanelBawahLayout);
-        PanelBawahLayout.setHorizontalGroup(
-            PanelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelBawahLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelBawahLayout = new javax.swing.GroupLayout(panelBawah);
+        panelBawah.setLayout(panelBawahLayout);
+        panelBawahLayout.setHorizontalGroup(
+            panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBawahLayout.createSequentialGroup()
                 .addContainerGap(21, Short.MAX_VALUE)
-                .addGroup(PanelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBawahLayout.createSequentialGroup()
+                .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahLayout.createSequentialGroup()
                         .addComponent(fieldInputId_barang, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(fieldInputJenis, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -308,19 +319,19 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(comboBoxGaransi, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tombolUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBawahLayout.createSequentialGroup()
-                        .addComponent(jButton1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahLayout.createSequentialGroup()
+                        .addComponent(tombolAtc)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PanelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tombolTambah, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                             .addComponent(tombolHapus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
-        PanelBawahLayout.setVerticalGroup(
-            PanelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBawahLayout.createSequentialGroup()
+        panelBawahLayout.setVerticalGroup(
+            panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fieldInputId_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldInputJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldInputMerk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -335,69 +346,69 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tombolTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tombolAtc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        PanelAtas.setBackground(new java.awt.Color(0, 204, 153));
+        panelAtas.setBackground(new java.awt.Color(0, 204, 153));
 
-        SearchField.setText("search...");
-        SearchField.addFocusListener(new java.awt.event.FocusAdapter() {
+        searchField.setText("search...");
+        searchField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                SearchFieldFocusLost(evt);
+                searchFieldFocusLost(evt);
             }
         });
-        SearchField.addMouseListener(new java.awt.event.MouseAdapter() {
+        searchField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SearchFieldMouseClicked(evt);
+                searchFieldMouseClicked(evt);
             }
         });
-        SearchField.addKeyListener(new java.awt.event.KeyAdapter() {
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                SearchFieldKeyReleased(evt);
+                searchFieldKeyReleased(evt);
             }
         });
 
-        ComboBoxKolom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Coloumn", "ID Barang", "Jenis", "Merk", "Ragam", "Seri", "Qty", "Harga Beli", "Supplier", "Tanggal Masuk", "Garansi" }));
+        comboBoxKolom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Coloumn", "ID Barang", "Jenis", "Merk", "Ragam", "Seri", "Qty", "Harga Beli", "Supplier", "Tanggal Masuk", "Garansi" }));
 
-        LabelFilter.setText("Filter");
+        labelFilter.setText("Filter");
 
-        LabelKolom.setText("Kolom");
+        labelKolom.setText("Kolom");
 
-        javax.swing.GroupLayout PanelAtasLayout = new javax.swing.GroupLayout(PanelAtas);
-        PanelAtas.setLayout(PanelAtasLayout);
-        PanelAtasLayout.setHorizontalGroup(
-            PanelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAtasLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelAtasLayout = new javax.swing.GroupLayout(panelAtas);
+        panelAtas.setLayout(panelAtasLayout);
+        panelAtasLayout.setHorizontalGroup(
+            panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(PanelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelFilter)
-                    .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelFilter)
+                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ComboBoxKolom, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelKolom))
+                .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboBoxKolom, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelKolom))
                 .addContainerGap())
         );
-        PanelAtasLayout.setVerticalGroup(
-            PanelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAtasLayout.createSequentialGroup()
+        panelAtasLayout.setVerticalGroup(
+            panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabelFilter)
-                    .addComponent(LabelKolom))
+                .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelFilter)
+                    .addComponent(labelKolom))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(PanelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ComboBoxKolom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxKolom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        PanelTengah.setBackground(new java.awt.Color(102, 0, 102));
+        panelTengah.setBackground(new java.awt.Color(102, 0, 102));
 
-        Tabel.setModel(new javax.swing.table.DefaultTableModel(
+        tabel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -413,111 +424,215 @@ public class GUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        Tabel.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        Tabel.setShowHorizontalLines(false);
-        Tabel.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabel.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tabel.setShowHorizontalLines(false);
+        tabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabelMouseClicked(evt);
+                tabelMouseClicked(evt);
             }
         });
-        PanelScrollTabel.setViewportView(Tabel);
+        panelScrollTabel.setViewportView(tabel);
 
-        javax.swing.GroupLayout PanelTengahLayout = new javax.swing.GroupLayout(PanelTengah);
-        PanelTengah.setLayout(PanelTengahLayout);
-        PanelTengahLayout.setHorizontalGroup(
-            PanelTengahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelScrollTabel, javax.swing.GroupLayout.Alignment.TRAILING)
+        javax.swing.GroupLayout panelTengahLayout = new javax.swing.GroupLayout(panelTengah);
+        panelTengah.setLayout(panelTengahLayout);
+        panelTengahLayout.setHorizontalGroup(
+            panelTengahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelScrollTabel, javax.swing.GroupLayout.Alignment.TRAILING)
         );
-        PanelTengahLayout.setVerticalGroup(
-            PanelTengahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelScrollTabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        panelTengahLayout.setVerticalGroup(
+            panelTengahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelScrollTabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout TabStokLayout = new javax.swing.GroupLayout(TabStok);
-        TabStok.setLayout(TabStokLayout);
-        TabStokLayout.setHorizontalGroup(
-            TabStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelBawah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(TabStokLayout.createSequentialGroup()
-                .addComponent(PanelKiri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout tabStokLayout = new javax.swing.GroupLayout(tabStok);
+        tabStok.setLayout(tabStokLayout);
+        tabStokLayout.setHorizontalGroup(
+            tabStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelBawah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(tabStokLayout.createSequentialGroup()
+                .addComponent(panelKiri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelTengah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(PanelAtas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelTengah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelAtas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        TabStokLayout.setVerticalGroup(
-            TabStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TabStokLayout.createSequentialGroup()
-                .addComponent(PanelAtas, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+        tabStokLayout.setVerticalGroup(
+            tabStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabStokLayout.createSequentialGroup()
+                .addComponent(panelAtas, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(TabStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelTengah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PanelKiri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(tabStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelTengah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelKiri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(19, 19, 19)
-                .addComponent(PanelBawah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelBawah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTabbedPane3.addTab("Stok", TabStok);
+        panelUtama.addTab("Stok", tabStok);
 
-        javax.swing.GroupLayout TabTransLayout = new javax.swing.GroupLayout(TabTrans);
-        TabTrans.setLayout(TabTransLayout);
-        TabTransLayout.setHorizontalGroup(
-            TabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelKiri1.setBackground(new java.awt.Color(255, 204, 102));
+
+        labelInfo1.setText("Info");
+
+        buttonRefreshDB1.setText("Refresh Data");
+        buttonRefreshDB1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRefreshDB1ActionPerformed(evt);
+            }
+        });
+
+        textAreaKiri1.setColumns(20);
+        textAreaKiri1.setLineWrap(true);
+        textAreaKiri1.setRows(5);
+        textAreaKiri1.setWrapStyleWord(true);
+
+        javax.swing.GroupLayout panelKiri1Layout = new javax.swing.GroupLayout(panelKiri1);
+        panelKiri1.setLayout(panelKiri1Layout);
+        panelKiri1Layout.setHorizontalGroup(
+            panelKiri1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelKiri1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelKiri1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(textAreaKiri1, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                    .addComponent(labelInfo1)
+                    .addComponent(buttonRefreshDB1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelKiri1Layout.setVerticalGroup(
+            panelKiri1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelKiri1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelInfo1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textAreaKiri1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonRefreshDB1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelBawah1.setBackground(new java.awt.Color(0, 153, 153));
+
+        javax.swing.GroupLayout panelBawah1Layout = new javax.swing.GroupLayout(panelBawah1);
+        panelBawah1.setLayout(panelBawah1Layout);
+        panelBawah1Layout.setHorizontalGroup(
+            panelBawah1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1099, Short.MAX_VALUE)
         );
-        TabTransLayout.setVerticalGroup(
-            TabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+        panelBawah1Layout.setVerticalGroup(
+            panelBawah1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 105, Short.MAX_VALUE)
         );
 
-        jTabbedPane3.addTab("Transaksi", TabTrans);
+        panelAtas1.setBackground(new java.awt.Color(0, 204, 153));
 
-        javax.swing.GroupLayout TabSupplierLayout = new javax.swing.GroupLayout(TabSupplier);
-        TabSupplier.setLayout(TabSupplierLayout);
-        TabSupplierLayout.setHorizontalGroup(
-            TabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelAtas1Layout = new javax.swing.GroupLayout(panelAtas1);
+        panelAtas1.setLayout(panelAtas1Layout);
+        panelAtas1Layout.setHorizontalGroup(
+            panelAtas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1099, Short.MAX_VALUE)
         );
-        TabSupplierLayout.setVerticalGroup(
-            TabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+        panelAtas1Layout.setVerticalGroup(
+            panelAtas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 55, Short.MAX_VALUE)
         );
 
-        jTabbedPane3.addTab("Supplier", TabSupplier);
+        panelTengah1.setBackground(new java.awt.Color(102, 0, 102));
 
-        javax.swing.GroupLayout TabReturLayout = new javax.swing.GroupLayout(TabRetur);
-        TabRetur.setLayout(TabReturLayout);
-        TabReturLayout.setHorizontalGroup(
-            TabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        javax.swing.GroupLayout panelTengah1Layout = new javax.swing.GroupLayout(panelTengah1);
+        panelTengah1.setLayout(panelTengah1Layout);
+        panelTengah1Layout.setHorizontalGroup(
+            panelTengah1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1)
+        );
+        panelTengah1Layout.setVerticalGroup(
+            panelTengah1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout tabTransLayout = new javax.swing.GroupLayout(tabTrans);
+        tabTrans.setLayout(tabTransLayout);
+        tabTransLayout.setHorizontalGroup(
+            tabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelBawah1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(tabTransLayout.createSequentialGroup()
+                .addComponent(panelKiri1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelTengah1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelAtas1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        tabTransLayout.setVerticalGroup(
+            tabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabTransLayout.createSequentialGroup()
+                .addComponent(panelAtas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelTengah1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelKiri1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(panelBawah1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        panelUtama.addTab("Transaksi", tabTrans);
+
+        javax.swing.GroupLayout tabSupplierLayout = new javax.swing.GroupLayout(tabSupplier);
+        tabSupplier.setLayout(tabSupplierLayout);
+        tabSupplierLayout.setHorizontalGroup(
+            tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1099, Short.MAX_VALUE)
         );
-        TabReturLayout.setVerticalGroup(
-            TabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+        tabSupplierLayout.setVerticalGroup(
+            tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 437, Short.MAX_VALUE)
         );
 
-        jTabbedPane3.addTab("Retur", TabRetur);
+        panelUtama.addTab("Supplier", tabSupplier);
+
+        javax.swing.GroupLayout tabReturLayout = new javax.swing.GroupLayout(tabRetur);
+        tabRetur.setLayout(tabReturLayout);
+        tabReturLayout.setHorizontalGroup(
+            tabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1099, Short.MAX_VALUE)
+        );
+        tabReturLayout.setVerticalGroup(
+            tabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 437, Short.MAX_VALUE)
+        );
+
+        panelUtama.addTab("Retur", tabRetur);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane3)
+            .addComponent(panelUtama)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane3)
+            .addComponent(panelUtama)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelMouseClicked
+    private void tabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMouseClicked
         // Display selected row in text fields
         String comb = "Tidak";
-        int i = Tabel.getSelectedRow();
-        TableModel model = Tabel.getModel();
+        int i = tabel.getSelectedRow();
+        TableModel model = tabel.getModel();
         //Get index from sorted table  
-        i = Tabel.convertRowIndexToModel(i);
+        i = tabel.convertRowIndexToModel(i);
         //get values of the cells
         fieldInputId_barang.setText(model.getValueAt(i, 0).toString());
         fieldInputJenis.setText(model.getValueAt(i, 1).toString());
@@ -547,7 +662,7 @@ public class GUI extends javax.swing.JFrame {
         System.out.println(comboBoxGaransi.getSelectedIndex());
         textAreaKiri.setText(model.getValueAt(i, 1).toString() + "\n" + model.getValueAt(i, 2).toString() + "\n" + model.getValueAt(i, 3).toString() + " " + model.getValueAt(i, 4).toString());
         fieldInputSupplier.setText(MySQLconn.executeSingleQueryResult("SELECT supplier FROM `barang` WHERE barang.id_barang='" + (model.getValueAt(i, 0).toString()) + "'", "supplier"));
-    }//GEN-LAST:event_TabelMouseClicked
+    }//GEN-LAST:event_tabelMouseClicked
 
     private void tombolTambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahMouseClicked
         String query = "INSERT INTO `barang`(`code`, `no`, `id_barang`, `jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `tgl_masuk`, `garansi`) VALUES('P',NULL,NULL,'" + fieldInputJenis.getText() + "','" + fieldInputMerk.getText() + "','" + fieldInputRagam.getText() + "','" + fieldInputSeri.getText() + "','" + fieldInputQty.getText() + "','" + fieldInputHarga_beli.getText() + "','" + fieldInputSupplier.getText() + "',CURRENT_TIMESTAMP,'" + comboBoxGaransi.getSelectedItem() + "')";
@@ -577,8 +692,10 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tombolHapusActionPerformed
 
     private void buttonRefreshDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBActionPerformed
+       
+        MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\"))");
         refreshTable();
-        execSQLQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\"))", "refresh");
+        JOptionPane.showMessageDialog(null, "Data telah direfresh");
     }//GEN-LAST:event_buttonRefreshDBActionPerformed
 
     private void fieldInputId_barangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputId_barangKeyTyped
@@ -629,24 +746,26 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_fieldInputSupplierKeyTyped
 
-    private void SearchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SearchFieldKeyReleased
-        String query = SearchField.getText();
-        filterTable(query, ComboBoxKolom.getSelectedIndex());
-        System.out.println(ComboBoxKolom.getSelectedIndex()+"<><><>"+ComboBoxKolom.getSelectedItem());
-                
-    }//GEN-LAST:event_SearchFieldKeyReleased
+    private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
+        String query = searchField.getText();
+        filterTable(query, comboBoxKolom.getSelectedIndex());                
+    }//GEN-LAST:event_searchFieldKeyReleased
 
-    private void SearchFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SearchFieldMouseClicked
-           if ("search...".equals(SearchField.getText())){
-            SearchField.setText("");
+    private void searchFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldMouseClicked
+           if ("search...".equals(searchField.getText())){
+            searchField.setText("");
         }
-    }//GEN-LAST:event_SearchFieldMouseClicked
+    }//GEN-LAST:event_searchFieldMouseClicked
 
-    private void SearchFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchFieldFocusLost
-         if ((SearchField.getText()).equals("")){
-            SearchField.setText("search...");
+    private void searchFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusLost
+         if ((searchField.getText()).equals("")){
+            searchField.setText("search...");
         }
-    }//GEN-LAST:event_SearchFieldFocusLost
+    }//GEN-LAST:event_searchFieldFocusLost
+
+    private void buttonRefreshDB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDB1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonRefreshDB1ActionPerformed
 
     /**
      * by ijash
@@ -684,22 +803,10 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboBoxKolom;
-    private javax.swing.JLabel LabelFilter;
-    private javax.swing.JLabel LabelKolom;
-    private javax.swing.JPanel PanelAtas;
-    private javax.swing.JPanel PanelBawah;
-    private javax.swing.JPanel PanelKiri;
-    private javax.swing.JScrollPane PanelScrollTabel;
-    private javax.swing.JPanel PanelTengah;
-    private javax.swing.JTextField SearchField;
-    private javax.swing.JPanel TabRetur;
-    private javax.swing.JPanel TabStok;
-    private javax.swing.JPanel TabSupplier;
-    private javax.swing.JPanel TabTrans;
-    private javax.swing.JTable Tabel;
     private javax.swing.JToggleButton buttonRefreshDB;
+    private javax.swing.JToggleButton buttonRefreshDB1;
     private javax.swing.JComboBox<String> comboBoxGaransi;
+    private javax.swing.JComboBox<String> comboBoxKolom;
     private javax.swing.JTextField fieldInputHarga_beli;
     private javax.swing.JTextField fieldInputId_barang;
     private javax.swing.JTextField fieldInputJenis;
@@ -709,11 +816,32 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField fieldInputSeri;
     private javax.swing.JTextField fieldInputSupplier;
     private javax.swing.JTextField fieldInputTanggal_masuk;
-    private javax.swing.JButton jButton1;
     private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel labelFilter;
     private javax.swing.JLabel labelInfo;
+    private javax.swing.JLabel labelInfo1;
+    private javax.swing.JLabel labelKolom;
+    private javax.swing.JPanel panelAtas;
+    private javax.swing.JPanel panelAtas1;
+    private javax.swing.JPanel panelBawah;
+    private javax.swing.JPanel panelBawah1;
+    private javax.swing.JPanel panelKiri;
+    private javax.swing.JPanel panelKiri1;
+    private javax.swing.JScrollPane panelScrollTabel;
+    private javax.swing.JPanel panelTengah;
+    private javax.swing.JPanel panelTengah1;
+    private javax.swing.JTabbedPane panelUtama;
+    private javax.swing.JTextField searchField;
+    private javax.swing.JPanel tabRetur;
+    private javax.swing.JPanel tabStok;
+    private javax.swing.JPanel tabSupplier;
+    private javax.swing.JPanel tabTrans;
+    private javax.swing.JTable tabel;
     private javax.swing.JTextArea textAreaKiri;
+    private javax.swing.JTextArea textAreaKiri1;
+    private javax.swing.JButton tombolAtc;
     private javax.swing.JButton tombolHapus;
     private javax.swing.JButton tombolTambah;
     private javax.swing.JButton tombolUbah;

@@ -27,7 +27,19 @@ public class TableRowContent {
     private String supplier;
     private String tgl_masuk;
     private String garansi;
-    
+    //constructor & row list
+   public TableRowContent(String id_barang, String jenis, String merk, String ragam, String seri, int qty, double harga_beli, String supplier, String tgl_masuk, String garansi) {
+        this.idBarang = id_barang;
+        this.jenis = jenis;
+        this.merk = merk;
+        this.ragam = ragam;
+        this.seri = seri;
+        this.qty = qty;
+        this.harga_beli = harga_beli;
+        this.supplier = supplier;
+        this.tgl_masuk = tgl_masuk;
+        this.garansi = garansi;
+    }  
     //getter&setter
     public String getIdBarang() {
         return idBarang;
@@ -89,27 +101,17 @@ public class TableRowContent {
     public void setGaransi(String garansi) { 
         this.garansi = garansi;
     }
-    
     //table row methods
-    public TableRowContent(String id_barang, String jenis, String merk, String ragam, String seri, int qty, double harga_beli, String supplier, String tgl_masuk, String garansi) {
-        this.idBarang = id_barang;
-        this.jenis = jenis;
-        this.merk = merk;
-        this.ragam = ragam;
-        this.seri = seri;
-        this.qty = qty;
-        this.harga_beli = harga_beli;
-        this.supplier = supplier;
-        this.tgl_masuk = tgl_masuk;
-        this.garansi = garansi;
-    }
-    public static ArrayList<TableRowContent> getTableContent() {
+    
+    // All table content
+    public static ArrayList<TableRowContent> tableContent() {
         try {
+            ArrayList<TableRowContent> accumulatedContent = new ArrayList<TableRowContent>();
             Connection conn = connect();
             PreparedStatement statement = conn.prepareStatement("SELECT `id_barang`,`jenis`,`merk`,`ragam`,`seri`,`qty`,`harga_beli`,`nama` AS `supplier`,`tgl_masuk` ,`garansi`FROM `barang`INNER JOIN`supplier` ON barang.supplier=supplier.id_supplier;");
             ResultSet rs = statement.executeQuery();
 
-            ArrayList<TableRowContent> accumulatedContent = new ArrayList<TableRowContent>();
+            
             while (rs.next()) {
                 // parameter lined down for easy read
                 TableRowContent rowContent = new TableRowContent(
@@ -134,6 +136,7 @@ public class TableRowContent {
         return null;
     }
     
+
 
     
    

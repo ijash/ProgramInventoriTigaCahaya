@@ -32,6 +32,8 @@ public class GUI extends javax.swing.JFrame {
         sortTable();
         displayTableSupplier();
         sortTableSupplier();
+        displayTableRetur();
+        sortTableRetur();
 
     }
 
@@ -63,11 +65,12 @@ public class GUI extends javax.swing.JFrame {
      public void displayTableRetur() {
         ArrayList<TableRowContentRetur> list = tableContentRetur();
         DefaultTableModel model = (DefaultTableModel) tabelRetur.getModel();
-        Object[] row = new Object[3];
+        Object[] row = new Object[4];
         for (int i = 0; i < list.size(); i++) {
             row[0] = list.get(i).getIdRetur();
-            row[1] = list.get(i).getNama();
-            row[2] = list.get(i).getJumlah();
+            row[1] = list.get(i).getIdBarang();
+            row[2] = list.get(i).getNama();
+            row[3] = list.get(i).getQty();
             model.addRow(row);
         }
     }
@@ -85,7 +88,7 @@ public class GUI extends javax.swing.JFrame {
             row[0] = list.get(i).getIdSupplier();
             row[1] = list.get(i).getNama();
             row[2] = list.get(i).getAlamat();
-            row[3] = list.get(i).getTelpon();
+            row[3] = list.get(i).getTelp();
             row[4] = list.get(i).getEmail();
             row[5] = list.get(i).getCatatan();
             model.addRow(row);
@@ -1215,7 +1218,7 @@ public class GUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID Retur", "Nama", "Jumlah"
+                "ID Retur", "ID Barang", "Nama", "Jumlah"
             }
         ));
         scrollPaneRetur.setViewportView(tabelRetur);

@@ -16,64 +16,52 @@ import static tigacahaya.MySQLconn.connect;
  * @author jose
  */
 public class TableRowContentSupplier {
-    private String idSupplier;
+    private int idSupplier;
     private String nama;
     private String alamat;
-    private int telpon;
+    private String telp;
     private String email;
     private String catatan;
     //constructor & row list
-   public TableRowContentSupplier(String IdSupplier,String Nama,String Alamat,int Telpon,String Email,String Catatan) {
+   public TableRowContentSupplier(int IdSupplier,String Nama,String Alamat,String Telp,String Email,String Catatan) {
         this.idSupplier = IdSupplier;
         this.nama = Nama;
         this.alamat = Alamat;
-        this.telpon = Telpon;
+        this.telp = Telp;
         this.email = Email;
         this.catatan = Catatan;
     }  
     //getter&setter
-    public String getIdSupplier() {
+   public int getIdSupplier()
+    {
         return idSupplier;
     }
-    public void setIdSupplier(String idSupplier) {
-        this.idSupplier = idSupplier;
-    }
-    public String getNama() {
+    public String getNama()
+    {
         return nama;
     }
-    public void setNama(String nama) {
-        this.nama = nama;
-    }
-    public String getAlamat() {
+    public String getAlamat()
+    {
         return alamat;
     }
-    public void setAlamat(String alamat) {
-        this.alamat = alamat;
+    public String getTelp()
+    {
+        return telp;
     }
-    public int getTelpon() {
-        return telpon;
-    }
-    public void setTelpon(int telpon) {
-        this.telpon = telpon;
-    }
-    public String getEmail() {
+    public String getEmail()
+    {
         return email;
     }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getCatatan() {
+    public String getCatatan()
+    {
         return catatan;
-    }
-    public void setCatatan(String catatan) {
-        this.catatan = catatan;
     }
     //table row methods
     
     // All table content
     public static ArrayList<TableRowContentSupplier> tableContentSupplier() {
         try {
-            ArrayList<TableRowContentSupplier> accumulatedContent = new ArrayList<TableRowContentSupplier>();
+            ArrayList<TableRowContentSupplier> accumulatedContentSupplier = new ArrayList<TableRowContentSupplier>();
             Connection conn = connect();
             PreparedStatement statement = conn.prepareStatement("SELECT `id_supplier`, `nama`, `alamat`, `telp`, `email`, `catatan` FROM `supplier`;");
             ResultSet rs = statement.executeQuery();
@@ -81,20 +69,20 @@ public class TableRowContentSupplier {
             
             while (rs.next()) {
                 // parameter lined down for easy read
-                TableRowContentSupplier rowContent = new TableRowContentSupplier(
-                        rs.getString("id_supplier"),
+                TableRowContentSupplier rowContentSupplier = new TableRowContentSupplier(
+                        rs.getInt("id_supplier"),
                         rs.getString("nama"),
                         rs.getString("alamat"),
-                        rs.getInt("telpon"),
+                        rs.getString("telp"),
                         rs.getString("email"),                      
                         rs.getString("catatan"));                      
-                accumulatedContent.add(rowContent);
+                accumulatedContentSupplier.add(rowContentSupplier);
 
             }
             System.out.println("All records loaded");
-            return accumulatedContent;
+            return accumulatedContentSupplier;
         } catch (Exception e) {
-            System.out.println("e");
+            System.out.println("a");
         }
         return null;
     }

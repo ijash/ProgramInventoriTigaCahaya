@@ -182,11 +182,9 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="tombolAtc" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="tombolTambah" alignment="1" pref="86" max="32767" attributes="0"/>
-                                      <Component id="tombolHapus" alignment="1" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="tombolHapus" min="-2" pref="86" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="tombolTambah" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -209,14 +207,14 @@
                               <Component id="comboBoxGaransi" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tombolUbah" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="tombolTambah" min="-2" pref="25" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="tombolHapus" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="tombolAtc" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="tombolAtc" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="tombolHapus" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="12" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -567,26 +565,26 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="panelBawah1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="panelBawahTransaksi" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="panelKiri1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="panelTengah1" max="32767" attributes="0"/>
+                      <Component id="panelTengahTransaksi" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="panelAtas1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="panelAtasTransaksi" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="panelAtas1" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelAtasTransaksi" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="panelTengah1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="panelTengahTransaksi" alignment="0" max="32767" attributes="0"/>
                           <Component id="panelKiri1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Component id="panelBawah1" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelBawahTransaksi" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -605,9 +603,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="textAreaKiri1" alignment="0" pref="142" max="32767" attributes="0"/>
-                              <Component id="labelInfo1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="buttonRefreshDB1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textAreaKiriTransaksi" alignment="0" pref="142" max="32767" attributes="0"/>
+                              <Component id="labelInfoTransaksi" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="buttonRefreshDBTransaksi" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -617,31 +615,31 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelInfo1" min="-2" pref="21" max="-2" attributes="0"/>
+                          <Component id="labelInfoTransaksi" min="-2" pref="21" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="textAreaKiri1" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="textAreaKiriTransaksi" min="-2" pref="170" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="buttonRefreshDB1" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonRefreshDBTransaksi" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="labelInfo1">
+                <Component class="javax.swing.JLabel" name="labelInfoTransaksi">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Info"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JToggleButton" name="buttonRefreshDB1">
+                <Component class="javax.swing.JToggleButton" name="buttonRefreshDBTransaksi">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Refresh Data"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRefreshDB1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRefreshDBTransaksiActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextArea" name="textAreaKiri1">
+                <Component class="javax.swing.JTextArea" name="textAreaKiriTransaksi">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="lineWrap" type="boolean" value="true"/>
@@ -651,7 +649,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="panelBawah1">
+            <Container class="javax.swing.JPanel" name="panelBawahTransaksi">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="0" type="rgb"/>
@@ -671,7 +669,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="javax.swing.JPanel" name="panelAtas1">
+            <Container class="javax.swing.JPanel" name="panelAtasTransaksi">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="cc" red="0" type="rgb"/>
@@ -691,7 +689,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="javax.swing.JPanel" name="panelTengah1">
+            <Container class="javax.swing.JPanel" name="panelTengahTransaksi">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="0" red="66" type="rgb"/>
@@ -701,17 +699,17 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="scrollPaneTransaksi" alignment="0" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" alignment="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="scrollPaneTransaksi" alignment="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+                <Container class="javax.swing.JScrollPane" name="scrollPaneTransaksi">
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>
@@ -775,32 +773,32 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="panelBawah2" alignment="0" max="32767" attributes="0"/>
+                  <Component id="panelBawahSupplier" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="panelKiri2" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelKiriSupplier" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="panelTengah2" max="32767" attributes="0"/>
+                      <Component id="panelTengahSupplier" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="panelAtas2" alignment="0" max="32767" attributes="0"/>
+                  <Component id="panelAtasSupplier" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="panelAtas2" min="-2" pref="55" max="-2" attributes="0"/>
+                      <Component id="panelAtasSupplier" min="-2" pref="55" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="panelTengah2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="panelKiri2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="panelTengahSupplier" alignment="0" max="32767" attributes="0"/>
+                          <Component id="panelKiriSupplier" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Component id="panelBawah2" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelBawahSupplier" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="panelKiri2">
+            <Container class="javax.swing.JPanel" name="panelKiriSupplier">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="cc" red="ff" type="rgb"/>
@@ -813,9 +811,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="textAreaKiri2" alignment="0" pref="142" max="32767" attributes="0"/>
-                              <Component id="labelInfo2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="buttonRefreshDB2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textAreaKiriSupplier" alignment="0" pref="142" max="32767" attributes="0"/>
+                              <Component id="labelInfoSupplier" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="buttonRefreshDBSupplier" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -825,31 +823,31 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelInfo2" min="-2" pref="21" max="-2" attributes="0"/>
+                          <Component id="labelInfoSupplier" min="-2" pref="21" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="textAreaKiri2" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="textAreaKiriSupplier" min="-2" pref="170" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="buttonRefreshDB2" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonRefreshDBSupplier" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="labelInfo2">
+                <Component class="javax.swing.JLabel" name="labelInfoSupplier">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Info"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JToggleButton" name="buttonRefreshDB2">
+                <Component class="javax.swing.JToggleButton" name="buttonRefreshDBSupplier">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Refresh Data"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRefreshDB2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRefreshDBSupplierActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextArea" name="textAreaKiri2">
+                <Component class="javax.swing.JTextArea" name="textAreaKiriSupplier">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="lineWrap" type="boolean" value="true"/>
@@ -859,7 +857,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="panelBawah2">
+            <Container class="javax.swing.JPanel" name="panelBawahSupplier">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="0" type="rgb"/>
@@ -871,23 +869,23 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                          <Component id="fieldInputIDSupplier" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="fieldInputNama" min="-2" pref="107" max="-2" attributes="0"/>
+                          <Component id="fieldInputNamaSupplier" min="-2" pref="107" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="fieldInputAlamat" min="-2" pref="107" max="-2" attributes="0"/>
+                          <Component id="fieldInputAlamatSupplier" min="-2" pref="107" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="fieldInputTelpon" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="fieldInputTelponSupplier" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="fieldInputEmail" min="-2" pref="119" max="-2" attributes="0"/>
+                          <Component id="fieldInputEmailSupplier" min="-2" pref="119" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPaneSupplier" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tombolUbah1" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
+                              <Component id="tombolUbahSupplier" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
                               <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="tombolTambah1" alignment="1" pref="86" max="32767" attributes="0"/>
-                                  <Component id="tombolHapus1" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="tombolTambahSupplier" alignment="1" pref="86" max="32767" attributes="0"/>
+                                  <Component id="tombolHapusSupplier" alignment="1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -900,37 +898,37 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="fieldInputEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="fieldInputTelpon" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="fieldInputAlamat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="fieldInputNama" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fieldInputEmailSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fieldInputTelponSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fieldInputAlamatSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fieldInputNamaSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fieldInputIDSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jScrollPaneSupplier" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="tombolUbah1" min="-2" pref="25" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="tombolTambah1" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="tombolUbahSupplier" min="-2" pref="25" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="tombolHapus1" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="tombolTambahSupplier" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="tombolHapusSupplier" min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="12" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="tombolUbah1">
+                <Component class="javax.swing.JButton" name="tombolUbahSupplier">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ubah"/>
                     <Property name="toolTipText" type="java.lang.String" value="Edit atau ubah barang sesuai dengan masukan yang ada."/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolUbah1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolUbahSupplierActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="tombolTambah1">
+                <Component class="javax.swing.JButton" name="tombolTambahSupplier">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Tambah"/>
                     <Property name="toolTipText" type="java.lang.String" value="Tambah barang sesuai dengan masukan yang ada."/>
@@ -939,19 +937,19 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tombolTambah1MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tombolTambahSupplierMouseClicked"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="tombolHapus1">
+                <Component class="javax.swing.JButton" name="tombolHapusSupplier">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Hapus"/>
                     <Property name="toolTipText" type="java.lang.String" value="Hapus barang sesuai dengan baris yang terpilih."/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolHapus1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolHapusSupplierActionPerformed"/>
                   </Events>
                 </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                <Container class="javax.swing.JScrollPane" name="jScrollPaneSupplier">
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>
@@ -966,34 +964,34 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JTextField" name="fieldInputEmail">
+                <Component class="javax.swing.JTextField" name="fieldInputEmailSupplier">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Email"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="fieldInputTelpon">
+                <Component class="javax.swing.JTextField" name="fieldInputTelponSupplier">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Telpon"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="fieldInputAlamat">
+                <Component class="javax.swing.JTextField" name="fieldInputAlamatSupplier">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Alamat"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="fieldInputNama">
+                <Component class="javax.swing.JTextField" name="fieldInputNamaSupplier">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Nama"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
+                <Component class="javax.swing.JTextField" name="fieldInputIDSupplier">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="ID"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="panelAtas2">
+            <Container class="javax.swing.JPanel" name="panelAtasSupplier">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="cc" red="0" type="rgb"/>
@@ -1006,13 +1004,13 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="labelFilter1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="searchField1" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
+                              <Component id="labelFilterSupplier" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="searchFieldSupplier" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="comboBoxKolom1" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
-                              <Component id="labelKolom1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboBoxKolomSupplier" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
+                              <Component id="labelKolomSupplier" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1023,13 +1021,13 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="labelFilter1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelKolom1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelFilterSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelKolomSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="searchField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="comboBoxKolom1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="searchFieldSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboBoxKolomSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1037,17 +1035,17 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="searchField1">
+                <Component class="javax.swing.JTextField" name="searchFieldSupplier">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="search..."/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="searchField1FocusLost"/>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="searchField1MouseClicked"/>
-                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="searchField1KeyReleased"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="searchFieldSupplierFocusLost"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="searchFieldSupplierMouseClicked"/>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="searchFieldSupplierKeyReleased"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="comboBoxKolom1">
+                <Component class="javax.swing.JComboBox" name="comboBoxKolomSupplier">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="11">
@@ -1069,19 +1067,19 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="labelFilter1">
+                <Component class="javax.swing.JLabel" name="labelFilterSupplier">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Filter"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="labelKolom1">
+                <Component class="javax.swing.JLabel" name="labelKolomSupplier">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Kolom"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="panelTengah2">
+            <Container class="javax.swing.JPanel" name="panelTengahSupplier">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="0" red="66" type="rgb"/>
@@ -1115,15 +1113,255 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1099" max="32767" attributes="0"/>
+                  <Component id="panelBawahRetur" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="panelKiriRetur" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="panelTengahRetur" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="panelAtasRetur" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="437" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="panelAtasRetur" min="-2" pref="55" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="panelTengahRetur" alignment="0" max="32767" attributes="0"/>
+                          <Component id="panelKiriRetur" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <Component id="panelBawahRetur" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="panelKiriRetur">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="cc" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="textAreaKiriRetur" alignment="0" pref="142" max="32767" attributes="0"/>
+                              <Component id="labelInfoRetur" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="buttonRefreshDBRetur" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelInfoRetur" min="-2" pref="21" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="textAreaKiriRetur" min="-2" pref="170" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="buttonRefreshDBRetur" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="labelInfoRetur">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Info"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JToggleButton" name="buttonRefreshDBRetur">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Refresh Data"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRefreshDBReturActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JTextArea" name="textAreaKiriRetur">
+                  <Properties>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="lineWrap" type="boolean" value="true"/>
+                    <Property name="rows" type="int" value="5"/>
+                    <Property name="wrapStyleWord" type="boolean" value="true"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="panelBawahRetur">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="99" green="99" red="0" type="rgb"/>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace pref="1007" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="tombolHapusRetur" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
+                              <Component id="tombolTambahRetur" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="tombolTambahRetur" min="-2" pref="25" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="tombolHapusRetur" min="-2" pref="25" max="-2" attributes="0"/>
+                          <EmptySpace pref="43" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JButton" name="tombolTambahRetur">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Tambah"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Tambah barang sesuai dengan masukan yang ada."/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[80, 30]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tombolTambahReturMouseClicked"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="tombolHapusRetur">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Hapus"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Hapus barang sesuai dengan baris yang terpilih."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolHapusReturActionPerformed"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="panelAtasRetur">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="99" green="cc" red="0" type="rgb"/>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="labelFilterRetur" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="searchFieldRetur" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="comboBoxKolomRetur" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
+                              <Component id="labelKolomRetur" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelFilterRetur" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelKolomRetur" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="searchFieldRetur" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboBoxKolomRetur" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JTextField" name="searchFieldRetur">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="search..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="searchFieldReturFocusLost"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="searchFieldReturMouseClicked"/>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="searchFieldReturKeyReleased"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="comboBoxKolomRetur">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="11">
+                        <StringItem index="0" value="All Coloumn"/>
+                        <StringItem index="1" value="ID Barang"/>
+                        <StringItem index="2" value="Jenis"/>
+                        <StringItem index="3" value="Merk"/>
+                        <StringItem index="4" value="Ragam"/>
+                        <StringItem index="5" value="Seri"/>
+                        <StringItem index="6" value="Qty"/>
+                        <StringItem index="7" value="Harga Beli"/>
+                        <StringItem index="8" value="Supplier"/>
+                        <StringItem index="9" value="Tanggal Masuk"/>
+                        <StringItem index="10" value="Garansi"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelFilterRetur">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Filter"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelKolomRetur">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Kolom"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="panelTengahRetur">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="0" red="66" type="rgb"/>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="939" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+            </Container>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>

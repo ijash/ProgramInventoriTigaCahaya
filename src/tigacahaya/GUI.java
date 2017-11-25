@@ -69,6 +69,7 @@ public class GUI extends javax.swing.JFrame {
     
     }
 
+
     // execute SQL query
     public void execSQLQuery(String query, String message) {
         Connection conn = MySQLconn.connect();
@@ -136,37 +137,50 @@ public class GUI extends javax.swing.JFrame {
         tabel = new javax.swing.JTable();
         tabTrans = new javax.swing.JPanel();
         panelKiri1 = new javax.swing.JPanel();
-        labelInfo1 = new javax.swing.JLabel();
-        buttonRefreshDB1 = new javax.swing.JToggleButton();
-        textAreaKiri1 = new javax.swing.JTextArea();
-        panelBawah1 = new javax.swing.JPanel();
-        panelAtas1 = new javax.swing.JPanel();
-        panelTengah1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        labelInfoTransaksi = new javax.swing.JLabel();
+        buttonRefreshDBTransaksi = new javax.swing.JToggleButton();
+        textAreaKiriTransaksi = new javax.swing.JTextArea();
+        panelBawahTransaksi = new javax.swing.JPanel();
+        panelAtasTransaksi = new javax.swing.JPanel();
+        panelTengahTransaksi = new javax.swing.JPanel();
+        scrollPaneTransaksi = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         tabSupplier = new javax.swing.JPanel();
-        panelKiri2 = new javax.swing.JPanel();
-        labelInfo2 = new javax.swing.JLabel();
-        buttonRefreshDB2 = new javax.swing.JToggleButton();
-        textAreaKiri2 = new javax.swing.JTextArea();
-        panelBawah2 = new javax.swing.JPanel();
-        tombolUbah1 = new javax.swing.JButton();
-        tombolTambah1 = new javax.swing.JButton();
-        tombolHapus1 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        panelKiriSupplier = new javax.swing.JPanel();
+        labelInfoSupplier = new javax.swing.JLabel();
+        buttonRefreshDBSupplier = new javax.swing.JToggleButton();
+        textAreaKiriSupplier = new javax.swing.JTextArea();
+        panelBawahSupplier = new javax.swing.JPanel();
+        tombolUbahSupplier = new javax.swing.JButton();
+        tombolTambahSupplier = new javax.swing.JButton();
+        tombolHapusSupplier = new javax.swing.JButton();
+        jScrollPaneSupplier = new javax.swing.JScrollPane();
         textAreaCatatan = new javax.swing.JTextArea();
-        fieldInputEmail = new javax.swing.JTextField();
-        fieldInputTelpon = new javax.swing.JTextField();
-        fieldInputAlamat = new javax.swing.JTextField();
-        fieldInputNama = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        panelAtas2 = new javax.swing.JPanel();
-        searchField1 = new javax.swing.JTextField();
-        comboBoxKolom1 = new javax.swing.JComboBox<>();
-        labelFilter1 = new javax.swing.JLabel();
-        labelKolom1 = new javax.swing.JLabel();
-        panelTengah2 = new javax.swing.JPanel();
+        fieldInputEmailSupplier = new javax.swing.JTextField();
+        fieldInputTelponSupplier = new javax.swing.JTextField();
+        fieldInputAlamatSupplier = new javax.swing.JTextField();
+        fieldInputNamaSupplier = new javax.swing.JTextField();
+        fieldInputIDSupplier = new javax.swing.JTextField();
+        panelAtasSupplier = new javax.swing.JPanel();
+        searchFieldSupplier = new javax.swing.JTextField();
+        comboBoxKolomSupplier = new javax.swing.JComboBox<>();
+        labelFilterSupplier = new javax.swing.JLabel();
+        labelKolomSupplier = new javax.swing.JLabel();
+        panelTengahSupplier = new javax.swing.JPanel();
         tabRetur = new javax.swing.JPanel();
+        panelKiriRetur = new javax.swing.JPanel();
+        labelInfoRetur = new javax.swing.JLabel();
+        buttonRefreshDBRetur = new javax.swing.JToggleButton();
+        textAreaKiriRetur = new javax.swing.JTextArea();
+        panelBawahRetur = new javax.swing.JPanel();
+        tombolTambahRetur = new javax.swing.JButton();
+        tombolHapusRetur = new javax.swing.JButton();
+        panelAtasRetur = new javax.swing.JPanel();
+        searchFieldRetur = new javax.swing.JTextField();
+        comboBoxKolomRetur = new javax.swing.JComboBox<>();
+        labelFilterRetur = new javax.swing.JLabel();
+        labelKolomRetur = new javax.swing.JLabel();
+        panelTengahRetur = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -345,9 +359,8 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahLayout.createSequentialGroup()
                         .addComponent(tombolAtc)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tombolTambah, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                            .addComponent(tombolHapus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tombolTambah, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         panelBawahLayout.setVerticalGroup(
@@ -366,13 +379,13 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(fieldInputTanggal_masuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboBoxGaransi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tombolUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tombolTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tombolAtc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tombolAtc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         panelAtas.setBackground(new java.awt.Color(0, 204, 153));
@@ -497,19 +510,19 @@ public class GUI extends javax.swing.JFrame {
 
         panelKiri1.setBackground(new java.awt.Color(255, 204, 102));
 
-        labelInfo1.setText("Info");
+        labelInfoTransaksi.setText("Info");
 
-        buttonRefreshDB1.setText("Refresh Data");
-        buttonRefreshDB1.addActionListener(new java.awt.event.ActionListener() {
+        buttonRefreshDBTransaksi.setText("Refresh Data");
+        buttonRefreshDBTransaksi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRefreshDB1ActionPerformed(evt);
+                buttonRefreshDBTransaksiActionPerformed(evt);
             }
         });
 
-        textAreaKiri1.setColumns(20);
-        textAreaKiri1.setLineWrap(true);
-        textAreaKiri1.setRows(5);
-        textAreaKiri1.setWrapStyleWord(true);
+        textAreaKiriTransaksi.setColumns(20);
+        textAreaKiriTransaksi.setLineWrap(true);
+        textAreaKiriTransaksi.setRows(5);
+        textAreaKiriTransaksi.setWrapStyleWord(true);
 
         javax.swing.GroupLayout panelKiri1Layout = new javax.swing.GroupLayout(panelKiri1);
         panelKiri1.setLayout(panelKiri1Layout);
@@ -518,50 +531,50 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(panelKiri1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelKiri1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textAreaKiri1, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                    .addComponent(labelInfo1)
-                    .addComponent(buttonRefreshDB1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(textAreaKiriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                    .addComponent(labelInfoTransaksi)
+                    .addComponent(buttonRefreshDBTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelKiri1Layout.setVerticalGroup(
             panelKiri1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelKiri1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelInfo1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelInfoTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textAreaKiri1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textAreaKiriTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonRefreshDB1)
+                .addComponent(buttonRefreshDBTransaksi)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelBawah1.setBackground(new java.awt.Color(0, 153, 153));
+        panelBawahTransaksi.setBackground(new java.awt.Color(0, 153, 153));
 
-        javax.swing.GroupLayout panelBawah1Layout = new javax.swing.GroupLayout(panelBawah1);
-        panelBawah1.setLayout(panelBawah1Layout);
-        panelBawah1Layout.setHorizontalGroup(
-            panelBawah1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelBawahTransaksiLayout = new javax.swing.GroupLayout(panelBawahTransaksi);
+        panelBawahTransaksi.setLayout(panelBawahTransaksiLayout);
+        panelBawahTransaksiLayout.setHorizontalGroup(
+            panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1099, Short.MAX_VALUE)
         );
-        panelBawah1Layout.setVerticalGroup(
-            panelBawah1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelBawahTransaksiLayout.setVerticalGroup(
+            panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 105, Short.MAX_VALUE)
         );
 
-        panelAtas1.setBackground(new java.awt.Color(0, 204, 153));
+        panelAtasTransaksi.setBackground(new java.awt.Color(0, 204, 153));
 
-        javax.swing.GroupLayout panelAtas1Layout = new javax.swing.GroupLayout(panelAtas1);
-        panelAtas1.setLayout(panelAtas1Layout);
-        panelAtas1Layout.setHorizontalGroup(
-            panelAtas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelAtasTransaksiLayout = new javax.swing.GroupLayout(panelAtasTransaksi);
+        panelAtasTransaksi.setLayout(panelAtasTransaksiLayout);
+        panelAtasTransaksiLayout.setHorizontalGroup(
+            panelAtasTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1099, Short.MAX_VALUE)
         );
-        panelAtas1Layout.setVerticalGroup(
-            panelAtas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelAtasTransaksiLayout.setVerticalGroup(
+            panelAtasTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 55, Short.MAX_VALUE)
         );
 
-        panelTengah1.setBackground(new java.awt.Color(102, 0, 102));
+        panelTengahTransaksi.setBackground(new java.awt.Color(102, 0, 102));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -571,235 +584,235 @@ public class GUI extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        scrollPaneTransaksi.setViewportView(jTable1);
 
-        javax.swing.GroupLayout panelTengah1Layout = new javax.swing.GroupLayout(panelTengah1);
-        panelTengah1.setLayout(panelTengah1Layout);
-        panelTengah1Layout.setHorizontalGroup(
-            panelTengah1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+        javax.swing.GroupLayout panelTengahTransaksiLayout = new javax.swing.GroupLayout(panelTengahTransaksi);
+        panelTengahTransaksi.setLayout(panelTengahTransaksiLayout);
+        panelTengahTransaksiLayout.setHorizontalGroup(
+            panelTengahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(scrollPaneTransaksi)
         );
-        panelTengah1Layout.setVerticalGroup(
-            panelTengah1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        panelTengahTransaksiLayout.setVerticalGroup(
+            panelTengahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(scrollPaneTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout tabTransLayout = new javax.swing.GroupLayout(tabTrans);
         tabTrans.setLayout(tabTransLayout);
         tabTransLayout.setHorizontalGroup(
             tabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBawah1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelBawahTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(tabTransLayout.createSequentialGroup()
                 .addComponent(panelKiri1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelTengah1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(panelAtas1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelTengahTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelAtasTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         tabTransLayout.setVerticalGroup(
             tabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabTransLayout.createSequentialGroup()
-                .addComponent(panelAtas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelAtasTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelTengah1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelTengahTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelKiri1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(19, 19, 19)
-                .addComponent(panelBawah1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelBawahTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         panelUtama.addTab("Transaksi", tabTrans);
 
-        panelKiri2.setBackground(new java.awt.Color(255, 204, 102));
+        panelKiriSupplier.setBackground(new java.awt.Color(255, 204, 102));
 
-        labelInfo2.setText("Info");
+        labelInfoSupplier.setText("Info");
 
-        buttonRefreshDB2.setText("Refresh Data");
-        buttonRefreshDB2.addActionListener(new java.awt.event.ActionListener() {
+        buttonRefreshDBSupplier.setText("Refresh Data");
+        buttonRefreshDBSupplier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRefreshDB2ActionPerformed(evt);
+                buttonRefreshDBSupplierActionPerformed(evt);
             }
         });
 
-        textAreaKiri2.setColumns(20);
-        textAreaKiri2.setLineWrap(true);
-        textAreaKiri2.setRows(5);
-        textAreaKiri2.setWrapStyleWord(true);
+        textAreaKiriSupplier.setColumns(20);
+        textAreaKiriSupplier.setLineWrap(true);
+        textAreaKiriSupplier.setRows(5);
+        textAreaKiriSupplier.setWrapStyleWord(true);
 
-        javax.swing.GroupLayout panelKiri2Layout = new javax.swing.GroupLayout(panelKiri2);
-        panelKiri2.setLayout(panelKiri2Layout);
-        panelKiri2Layout.setHorizontalGroup(
-            panelKiri2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelKiri2Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelKiriSupplierLayout = new javax.swing.GroupLayout(panelKiriSupplier);
+        panelKiriSupplier.setLayout(panelKiriSupplierLayout);
+        panelKiriSupplierLayout.setHorizontalGroup(
+            panelKiriSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelKiriSupplierLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelKiri2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textAreaKiri2, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                    .addComponent(labelInfo2)
-                    .addComponent(buttonRefreshDB2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelKiriSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(textAreaKiriSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                    .addComponent(labelInfoSupplier)
+                    .addComponent(buttonRefreshDBSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        panelKiri2Layout.setVerticalGroup(
-            panelKiri2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelKiri2Layout.createSequentialGroup()
+        panelKiriSupplierLayout.setVerticalGroup(
+            panelKiriSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelKiriSupplierLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelInfo2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelInfoSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textAreaKiri2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textAreaKiriSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonRefreshDB2)
+                .addComponent(buttonRefreshDBSupplier)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelBawah2.setBackground(new java.awt.Color(0, 153, 153));
+        panelBawahSupplier.setBackground(new java.awt.Color(0, 153, 153));
 
-        tombolUbah1.setText("Ubah");
-        tombolUbah1.setToolTipText("Edit atau ubah barang sesuai dengan masukan yang ada.");
-        tombolUbah1.addActionListener(new java.awt.event.ActionListener() {
+        tombolUbahSupplier.setText("Ubah");
+        tombolUbahSupplier.setToolTipText("Edit atau ubah barang sesuai dengan masukan yang ada.");
+        tombolUbahSupplier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolUbah1ActionPerformed(evt);
+                tombolUbahSupplierActionPerformed(evt);
             }
         });
 
-        tombolTambah1.setText("Tambah");
-        tombolTambah1.setToolTipText("Tambah barang sesuai dengan masukan yang ada.");
-        tombolTambah1.setPreferredSize(new java.awt.Dimension(80, 30));
-        tombolTambah1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tombolTambahSupplier.setText("Tambah");
+        tombolTambahSupplier.setToolTipText("Tambah barang sesuai dengan masukan yang ada.");
+        tombolTambahSupplier.setPreferredSize(new java.awt.Dimension(80, 30));
+        tombolTambahSupplier.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tombolTambah1MouseClicked(evt);
+                tombolTambahSupplierMouseClicked(evt);
             }
         });
 
-        tombolHapus1.setText("Hapus");
-        tombolHapus1.setToolTipText("Hapus barang sesuai dengan baris yang terpilih.");
-        tombolHapus1.addActionListener(new java.awt.event.ActionListener() {
+        tombolHapusSupplier.setText("Hapus");
+        tombolHapusSupplier.setToolTipText("Hapus barang sesuai dengan baris yang terpilih.");
+        tombolHapusSupplier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolHapus1ActionPerformed(evt);
+                tombolHapusSupplierActionPerformed(evt);
             }
         });
 
         textAreaCatatan.setColumns(20);
         textAreaCatatan.setRows(5);
-        jScrollPane2.setViewportView(textAreaCatatan);
+        jScrollPaneSupplier.setViewportView(textAreaCatatan);
 
-        fieldInputEmail.setText("Email");
+        fieldInputEmailSupplier.setText("Email");
 
-        fieldInputTelpon.setText("Telpon");
+        fieldInputTelponSupplier.setText("Telpon");
 
-        fieldInputAlamat.setText("Alamat");
+        fieldInputAlamatSupplier.setText("Alamat");
 
-        fieldInputNama.setText("Nama");
+        fieldInputNamaSupplier.setText("Nama");
 
-        jTextField1.setText("ID");
+        fieldInputIDSupplier.setText("ID");
 
-        javax.swing.GroupLayout panelBawah2Layout = new javax.swing.GroupLayout(panelBawah2);
-        panelBawah2.setLayout(panelBawah2Layout);
-        panelBawah2Layout.setHorizontalGroup(
-            panelBawah2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBawah2Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelBawahSupplierLayout = new javax.swing.GroupLayout(panelBawahSupplier);
+        panelBawahSupplier.setLayout(panelBawahSupplierLayout);
+        panelBawahSupplierLayout.setHorizontalGroup(
+            panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBawahSupplierLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldInputIDSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(fieldInputNama, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldInputNamaSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(fieldInputAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldInputAlamatSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(fieldInputTelpon, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldInputTelponSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(fieldInputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldInputEmailSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPaneSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(panelBawah2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tombolUbah1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawah2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(tombolTambah1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                        .addComponent(tombolHapus1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tombolUbahSupplier, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(tombolTambahSupplier, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                        .addComponent(tombolHapusSupplier, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        panelBawah2Layout.setVerticalGroup(
-            panelBawah2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBawah2Layout.createSequentialGroup()
+        panelBawahSupplierLayout.setVerticalGroup(
+            panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBawahSupplierLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelBawah2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelBawah2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(fieldInputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(fieldInputTelpon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(fieldInputAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(fieldInputNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelBawah2Layout.createSequentialGroup()
-                        .addComponent(tombolUbah1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tombolTambah1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(fieldInputEmailSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fieldInputTelponSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fieldInputAlamatSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fieldInputNamaSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fieldInputIDSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPaneSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelBawahSupplierLayout.createSequentialGroup()
+                        .addComponent(tombolUbahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tombolHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(tombolTambahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tombolHapusSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        panelAtas2.setBackground(new java.awt.Color(0, 204, 153));
+        panelAtasSupplier.setBackground(new java.awt.Color(0, 204, 153));
 
-        searchField1.setText("search...");
-        searchField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        searchFieldSupplier.setText("search...");
+        searchFieldSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                searchField1FocusLost(evt);
+                searchFieldSupplierFocusLost(evt);
             }
         });
-        searchField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        searchFieldSupplier.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                searchField1MouseClicked(evt);
+                searchFieldSupplierMouseClicked(evt);
             }
         });
-        searchField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        searchFieldSupplier.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                searchField1KeyReleased(evt);
+                searchFieldSupplierKeyReleased(evt);
             }
         });
 
-        comboBoxKolom1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Coloumn", "ID Barang", "Jenis", "Merk", "Ragam", "Seri", "Qty", "Harga Beli", "Supplier", "Tanggal Masuk", "Garansi" }));
+        comboBoxKolomSupplier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Coloumn", "ID Barang", "Jenis", "Merk", "Ragam", "Seri", "Qty", "Harga Beli", "Supplier", "Tanggal Masuk", "Garansi" }));
 
-        labelFilter1.setText("Filter");
+        labelFilterSupplier.setText("Filter");
 
-        labelKolom1.setText("Kolom");
+        labelKolomSupplier.setText("Kolom");
 
-        javax.swing.GroupLayout panelAtas2Layout = new javax.swing.GroupLayout(panelAtas2);
-        panelAtas2.setLayout(panelAtas2Layout);
-        panelAtas2Layout.setHorizontalGroup(
-            panelAtas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtas2Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelAtasSupplierLayout = new javax.swing.GroupLayout(panelAtasSupplier);
+        panelAtasSupplier.setLayout(panelAtasSupplierLayout);
+        panelAtasSupplierLayout.setHorizontalGroup(
+            panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasSupplierLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelAtas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelFilter1)
-                    .addComponent(searchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelFilterSupplier)
+                    .addComponent(searchFieldSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelAtas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboBoxKolom1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelKolom1))
+                .addGroup(panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboBoxKolomSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelKolomSupplier))
                 .addContainerGap())
         );
-        panelAtas2Layout.setVerticalGroup(
-            panelAtas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtas2Layout.createSequentialGroup()
+        panelAtasSupplierLayout.setVerticalGroup(
+            panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasSupplierLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelAtas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelFilter1)
-                    .addComponent(labelKolom1))
+                .addGroup(panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelFilterSupplier)
+                    .addComponent(labelKolomSupplier))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelAtas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxKolom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchFieldSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxKolomSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        panelTengah2.setBackground(new java.awt.Color(102, 0, 102));
+        panelTengahSupplier.setBackground(new java.awt.Color(102, 0, 102));
 
-        javax.swing.GroupLayout panelTengah2Layout = new javax.swing.GroupLayout(panelTengah2);
-        panelTengah2.setLayout(panelTengah2Layout);
-        panelTengah2Layout.setHorizontalGroup(
-            panelTengah2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelTengahSupplierLayout = new javax.swing.GroupLayout(panelTengahSupplier);
+        panelTengahSupplier.setLayout(panelTengahSupplierLayout);
+        panelTengahSupplierLayout.setHorizontalGroup(
+            panelTengahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 939, Short.MAX_VALUE)
         );
-        panelTengah2Layout.setVerticalGroup(
-            panelTengah2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelTengahSupplierLayout.setVerticalGroup(
+            panelTengahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -807,36 +820,195 @@ public class GUI extends javax.swing.JFrame {
         tabSupplier.setLayout(tabSupplierLayout);
         tabSupplierLayout.setHorizontalGroup(
             tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBawah2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelBawahSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(tabSupplierLayout.createSequentialGroup()
-                .addComponent(panelKiri2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelKiriSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelTengah2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(panelAtas2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelTengahSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelAtasSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         tabSupplierLayout.setVerticalGroup(
             tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabSupplierLayout.createSequentialGroup()
-                .addComponent(panelAtas2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelAtasSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelTengah2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelKiri2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelTengahSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelKiriSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(19, 19, 19)
-                .addComponent(panelBawah2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelBawahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         panelUtama.addTab("Supplier", tabSupplier);
+
+        panelKiriRetur.setBackground(new java.awt.Color(255, 204, 102));
+
+        labelInfoRetur.setText("Info");
+
+        buttonRefreshDBRetur.setText("Refresh Data");
+        buttonRefreshDBRetur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRefreshDBReturActionPerformed(evt);
+            }
+        });
+
+        textAreaKiriRetur.setColumns(20);
+        textAreaKiriRetur.setLineWrap(true);
+        textAreaKiriRetur.setRows(5);
+        textAreaKiriRetur.setWrapStyleWord(true);
+
+        javax.swing.GroupLayout panelKiriReturLayout = new javax.swing.GroupLayout(panelKiriRetur);
+        panelKiriRetur.setLayout(panelKiriReturLayout);
+        panelKiriReturLayout.setHorizontalGroup(
+            panelKiriReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelKiriReturLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelKiriReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(textAreaKiriRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                    .addComponent(labelInfoRetur)
+                    .addComponent(buttonRefreshDBRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelKiriReturLayout.setVerticalGroup(
+            panelKiriReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelKiriReturLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelInfoRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textAreaKiriRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonRefreshDBRetur)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelBawahRetur.setBackground(new java.awt.Color(0, 153, 153));
+
+        tombolTambahRetur.setText("Tambah");
+        tombolTambahRetur.setToolTipText("Tambah barang sesuai dengan masukan yang ada.");
+        tombolTambahRetur.setPreferredSize(new java.awt.Dimension(80, 30));
+        tombolTambahRetur.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tombolTambahReturMouseClicked(evt);
+            }
+        });
+
+        tombolHapusRetur.setText("Hapus");
+        tombolHapusRetur.setToolTipText("Hapus barang sesuai dengan baris yang terpilih.");
+        tombolHapusRetur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolHapusReturActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelBawahReturLayout = new javax.swing.GroupLayout(panelBawahRetur);
+        panelBawahRetur.setLayout(panelBawahReturLayout);
+        panelBawahReturLayout.setHorizontalGroup(
+            panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBawahReturLayout.createSequentialGroup()
+                .addContainerGap(1007, Short.MAX_VALUE)
+                .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tombolHapusRetur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolTambahRetur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        panelBawahReturLayout.setVerticalGroup(
+            panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBawahReturLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tombolTambahRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tombolHapusRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+
+        panelAtasRetur.setBackground(new java.awt.Color(0, 204, 153));
+
+        searchFieldRetur.setText("search...");
+        searchFieldRetur.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                searchFieldReturFocusLost(evt);
+            }
+        });
+        searchFieldRetur.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchFieldReturMouseClicked(evt);
+            }
+        });
+        searchFieldRetur.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFieldReturKeyReleased(evt);
+            }
+        });
+
+        comboBoxKolomRetur.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Coloumn", "ID Barang", "Jenis", "Merk", "Ragam", "Seri", "Qty", "Harga Beli", "Supplier", "Tanggal Masuk", "Garansi" }));
+
+        labelFilterRetur.setText("Filter");
+
+        labelKolomRetur.setText("Kolom");
+
+        javax.swing.GroupLayout panelAtasReturLayout = new javax.swing.GroupLayout(panelAtasRetur);
+        panelAtasRetur.setLayout(panelAtasReturLayout);
+        panelAtasReturLayout.setHorizontalGroup(
+            panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasReturLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelFilterRetur)
+                    .addComponent(searchFieldRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboBoxKolomRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelKolomRetur))
+                .addContainerGap())
+        );
+        panelAtasReturLayout.setVerticalGroup(
+            panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasReturLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelFilterRetur)
+                    .addComponent(labelKolomRetur))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchFieldRetur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxKolomRetur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        panelTengahRetur.setBackground(new java.awt.Color(102, 0, 102));
+
+        javax.swing.GroupLayout panelTengahReturLayout = new javax.swing.GroupLayout(panelTengahRetur);
+        panelTengahRetur.setLayout(panelTengahReturLayout);
+        panelTengahReturLayout.setHorizontalGroup(
+            panelTengahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 939, Short.MAX_VALUE)
+        );
+        panelTengahReturLayout.setVerticalGroup(
+            panelTengahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout tabReturLayout = new javax.swing.GroupLayout(tabRetur);
         tabRetur.setLayout(tabReturLayout);
         tabReturLayout.setHorizontalGroup(
             tabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1099, Short.MAX_VALUE)
+            .addComponent(panelBawahRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(tabReturLayout.createSequentialGroup()
+                .addComponent(panelKiriRetur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelTengahRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelAtasRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         tabReturLayout.setVerticalGroup(
             tabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 437, Short.MAX_VALUE)
+            .addGroup(tabReturLayout.createSequentialGroup()
+                .addComponent(panelAtasRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelTengahRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelKiriRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(panelBawahRetur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         panelUtama.addTab("Retur", tabRetur);
@@ -992,37 +1164,61 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchFieldFocusLost
 
-    private void buttonRefreshDB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDB1ActionPerformed
+    private void buttonRefreshDBTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBTransaksiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonRefreshDB1ActionPerformed
+    }//GEN-LAST:event_buttonRefreshDBTransaksiActionPerformed
 
-    private void buttonRefreshDB2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDB2ActionPerformed
+    private void buttonRefreshDBSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBSupplierActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonRefreshDB2ActionPerformed
+    }//GEN-LAST:event_buttonRefreshDBSupplierActionPerformed
 
-    private void tombolTambah1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambah1MouseClicked
+    private void tombolTambahSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahSupplierMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tombolTambah1MouseClicked
+    }//GEN-LAST:event_tombolTambahSupplierMouseClicked
 
-    private void tombolHapus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapus1ActionPerformed
+    private void tombolHapusSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusSupplierActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tombolHapus1ActionPerformed
+    }//GEN-LAST:event_tombolHapusSupplierActionPerformed
 
-    private void searchField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchField1FocusLost
+    private void searchFieldSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldSupplierFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchField1FocusLost
+    }//GEN-LAST:event_searchFieldSupplierFocusLost
 
-    private void searchField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchField1MouseClicked
+    private void searchFieldSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldSupplierMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchField1MouseClicked
+    }//GEN-LAST:event_searchFieldSupplierMouseClicked
 
-    private void searchField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchField1KeyReleased
+    private void searchFieldSupplierKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldSupplierKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchField1KeyReleased
+    }//GEN-LAST:event_searchFieldSupplierKeyReleased
 
-    private void tombolUbah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbah1ActionPerformed
+    private void tombolUbahSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahSupplierActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tombolUbah1ActionPerformed
+    }//GEN-LAST:event_tombolUbahSupplierActionPerformed
+
+    private void buttonRefreshDBReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBReturActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonRefreshDBReturActionPerformed
+
+    private void tombolTambahReturMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahReturMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tombolTambahReturMouseClicked
+
+    private void tombolHapusReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusReturActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tombolHapusReturActionPerformed
+
+    private void searchFieldReturFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldReturFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchFieldReturFocusLost
+
+    private void searchFieldReturMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldReturMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchFieldReturMouseClicked
+
+    private void searchFieldReturKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldReturKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchFieldReturKeyReleased
 
     /**
      * by ijash
@@ -1061,51 +1257,61 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton buttonRefreshDB;
-    private javax.swing.JToggleButton buttonRefreshDB1;
-    private javax.swing.JToggleButton buttonRefreshDB2;
+    private javax.swing.JToggleButton buttonRefreshDBRetur;
+    private javax.swing.JToggleButton buttonRefreshDBSupplier;
+    private javax.swing.JToggleButton buttonRefreshDBTransaksi;
     private javax.swing.JComboBox<String> comboBoxGaransi;
     private javax.swing.JComboBox<String> comboBoxKolom;
-    private javax.swing.JComboBox<String> comboBoxKolom1;
-    private javax.swing.JTextField fieldInputAlamat;
-    private javax.swing.JTextField fieldInputEmail;
+    private javax.swing.JComboBox<String> comboBoxKolomRetur;
+    private javax.swing.JComboBox<String> comboBoxKolomSupplier;
+    private javax.swing.JTextField fieldInputAlamatSupplier;
+    private javax.swing.JTextField fieldInputEmailSupplier;
     private javax.swing.JTextField fieldInputHarga_beli;
+    private javax.swing.JTextField fieldInputIDSupplier;
     private javax.swing.JTextField fieldInputId_barang;
     private javax.swing.JTextField fieldInputJenis;
     private javax.swing.JTextField fieldInputMerk;
-    private javax.swing.JTextField fieldInputNama;
+    private javax.swing.JTextField fieldInputNamaSupplier;
     private javax.swing.JTextField fieldInputQty;
     private javax.swing.JTextField fieldInputRagam;
     private javax.swing.JTextField fieldInputSeri;
     private javax.swing.JTextField fieldInputSupplier;
     private javax.swing.JTextField fieldInputTanggal_masuk;
-    private javax.swing.JTextField fieldInputTelpon;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField fieldInputTelponSupplier;
+    private javax.swing.JScrollPane jScrollPaneSupplier;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labelFilter;
-    private javax.swing.JLabel labelFilter1;
+    private javax.swing.JLabel labelFilterRetur;
+    private javax.swing.JLabel labelFilterSupplier;
     private javax.swing.JLabel labelInfo;
-    private javax.swing.JLabel labelInfo1;
-    private javax.swing.JLabel labelInfo2;
+    private javax.swing.JLabel labelInfoRetur;
+    private javax.swing.JLabel labelInfoSupplier;
+    private javax.swing.JLabel labelInfoTransaksi;
     private javax.swing.JLabel labelKolom;
-    private javax.swing.JLabel labelKolom1;
+    private javax.swing.JLabel labelKolomRetur;
+    private javax.swing.JLabel labelKolomSupplier;
     private javax.swing.JPanel panelAtas;
-    private javax.swing.JPanel panelAtas1;
-    private javax.swing.JPanel panelAtas2;
+    private javax.swing.JPanel panelAtasRetur;
+    private javax.swing.JPanel panelAtasSupplier;
+    private javax.swing.JPanel panelAtasTransaksi;
     private javax.swing.JPanel panelBawah;
-    private javax.swing.JPanel panelBawah1;
-    private javax.swing.JPanel panelBawah2;
+    private javax.swing.JPanel panelBawahRetur;
+    private javax.swing.JPanel panelBawahSupplier;
+    private javax.swing.JPanel panelBawahTransaksi;
     private javax.swing.JPanel panelKiri;
     private javax.swing.JPanel panelKiri1;
-    private javax.swing.JPanel panelKiri2;
+    private javax.swing.JPanel panelKiriRetur;
+    private javax.swing.JPanel panelKiriSupplier;
     private javax.swing.JScrollPane panelScrollTabel;
     private javax.swing.JPanel panelTengah;
-    private javax.swing.JPanel panelTengah1;
-    private javax.swing.JPanel panelTengah2;
+    private javax.swing.JPanel panelTengahRetur;
+    private javax.swing.JPanel panelTengahSupplier;
+    private javax.swing.JPanel panelTengahTransaksi;
     private javax.swing.JTabbedPane panelUtama;
+    private javax.swing.JScrollPane scrollPaneTransaksi;
     private javax.swing.JTextField searchField;
-    private javax.swing.JTextField searchField1;
+    private javax.swing.JTextField searchFieldRetur;
+    private javax.swing.JTextField searchFieldSupplier;
     private javax.swing.JPanel tabRetur;
     private javax.swing.JPanel tabStok;
     private javax.swing.JPanel tabSupplier;
@@ -1113,14 +1319,17 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTable tabel;
     private javax.swing.JTextArea textAreaCatatan;
     private javax.swing.JTextArea textAreaKiri;
-    private javax.swing.JTextArea textAreaKiri1;
-    private javax.swing.JTextArea textAreaKiri2;
+    private javax.swing.JTextArea textAreaKiriRetur;
+    private javax.swing.JTextArea textAreaKiriSupplier;
+    private javax.swing.JTextArea textAreaKiriTransaksi;
     private javax.swing.JButton tombolAtc;
     private javax.swing.JButton tombolHapus;
-    private javax.swing.JButton tombolHapus1;
+    private javax.swing.JButton tombolHapusRetur;
+    private javax.swing.JButton tombolHapusSupplier;
     private javax.swing.JButton tombolTambah;
-    private javax.swing.JButton tombolTambah1;
+    private javax.swing.JButton tombolTambahRetur;
+    private javax.swing.JButton tombolTambahSupplier;
     private javax.swing.JButton tombolUbah;
-    private javax.swing.JButton tombolUbah1;
+    private javax.swing.JButton tombolUbahSupplier;
     // End of variables declaration//GEN-END:variables
 }

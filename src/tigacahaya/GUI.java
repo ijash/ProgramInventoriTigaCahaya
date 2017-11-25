@@ -14,6 +14,8 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import static tigacahaya.TableRowContent.tableContent;
+import static tigacahaya.TableRowContentRetur.tableContentRetur;
+import static tigacahaya.TableRowContentSupplier.tableContentSupplier;
 
 /**
  *
@@ -28,12 +30,12 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
         displayTable();
         sortTable();
+        displayTableSupplier();
+        sortTableSupplier();
 
     }
 
-    
     // back-end methods......................................
-    
     public void displayTable() {
         ArrayList<TableRowContent> list = tableContent();
         DefaultTableModel model = (DefaultTableModel) tabel.getModel();
@@ -56,7 +58,43 @@ public class GUI extends javax.swing.JFrame {
     public void sortTable() {
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>((DefaultTableModel) tabel.getModel());
         tabel.setRowSorter(sorter);
+    }
+    
+     public void displayTableRetur() {
+        ArrayList<TableRowContentRetur> list = tableContentRetur();
+        DefaultTableModel model = (DefaultTableModel) tabelRetur.getModel();
+        Object[] row = new Object[3];
+        for (int i = 0; i < list.size(); i++) {
+            row[0] = list.get(i).getIdRetur();
+            row[1] = list.get(i).getNama();
+            row[2] = list.get(i).getJumlah();
+            model.addRow(row);
+        }
+    }
 
+    public void sortTableRetur() {
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>((DefaultTableModel) tabelRetur.getModel());
+        tabelRetur.setRowSorter(sorter);
+    }
+    
+     public void displayTableSupplier() {
+        ArrayList<TableRowContentSupplier> list = tableContentSupplier();
+        DefaultTableModel model = (DefaultTableModel) tabelSupplier.getModel();
+        Object[] row = new Object[6];
+        for (int i = 0; i < list.size(); i++) {
+            row[0] = list.get(i).getIdSupplier();
+            row[1] = list.get(i).getNama();
+            row[2] = list.get(i).getAlamat();
+            row[3] = list.get(i).getTelpon();
+            row[4] = list.get(i).getEmail();
+            row[5] = list.get(i).getCatatan();
+            model.addRow(row);
+        }
+    }
+
+    public void sortTableSupplier() {
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>((DefaultTableModel) tabelSupplier.getModel());
+        tabelSupplier.setRowSorter(sorter);
     }
 
     public void refreshTable() {
@@ -65,10 +103,21 @@ public class GUI extends javax.swing.JFrame {
         displayTable();
     }
     
-    public void cartTable(){
+    public void refreshTableRetur() {
+        DefaultTableModel model = (DefaultTableModel) tabelRetur.getModel();
+        model.setRowCount(0);
+        displayTable();
+    }
     
+    public void refreshTableSupplier() {
+        DefaultTableModel model = (DefaultTableModel) tabelSupplier.getModel();
+        model.setRowCount(0);
+        displayTable();
     }
 
+    public void cartTable() {
+
+    }
 
     // execute SQL query
     public void execSQLQuery(String query, String message) {
@@ -89,11 +138,10 @@ public class GUI extends javax.swing.JFrame {
     public void filterTable(String query, int column) {
         TableRowSorter<DefaultTableModel> tf = new TableRowSorter<>((DefaultTableModel) tabel.getModel());
         tabel.setRowSorter(tf);
-        if (0 == column){
-        tf.setRowFilter(RowFilter.regexFilter("(?i)" + query));
-        }
-        else {
-        tf.setRowFilter(RowFilter.regexFilter("(?i)" + query,column-1));
+        if (0 == column) {
+            tf.setRowFilter(RowFilter.regexFilter("(?i)" + query));
+        } else {
+            tf.setRowFilter(RowFilter.regexFilter("(?i)" + query, column - 1));
         }
     }
 
@@ -144,7 +192,7 @@ public class GUI extends javax.swing.JFrame {
         panelAtasTransaksi = new javax.swing.JPanel();
         panelTengahTransaksi = new javax.swing.JPanel();
         scrollPaneTransaksi = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelTransaksi = new javax.swing.JTable();
         tabSupplier = new javax.swing.JPanel();
         panelKiriSupplier = new javax.swing.JPanel();
         labelInfoSupplier = new javax.swing.JLabel();
@@ -167,6 +215,8 @@ public class GUI extends javax.swing.JFrame {
         labelFilterSupplier = new javax.swing.JLabel();
         labelKolomSupplier = new javax.swing.JLabel();
         panelTengahSupplier = new javax.swing.JPanel();
+        scrollPaneSupplier = new javax.swing.JScrollPane();
+        tabelSupplier = new javax.swing.JTable();
         tabRetur = new javax.swing.JPanel();
         panelKiriRetur = new javax.swing.JPanel();
         labelInfoRetur = new javax.swing.JLabel();
@@ -175,12 +225,17 @@ public class GUI extends javax.swing.JFrame {
         panelBawahRetur = new javax.swing.JPanel();
         tombolTambahRetur = new javax.swing.JButton();
         tombolHapusRetur = new javax.swing.JButton();
+        fieldInputJumlahBarangRetur = new javax.swing.JTextField();
+        fieldInputNamaBarangRetur = new javax.swing.JTextField();
+        fieldInputIdBarangRetur = new javax.swing.JTextField();
         panelAtasRetur = new javax.swing.JPanel();
         searchFieldRetur = new javax.swing.JTextField();
         comboBoxKolomRetur = new javax.swing.JComboBox<>();
         labelFilterRetur = new javax.swing.JLabel();
         labelKolomRetur = new javax.swing.JLabel();
         panelTengahRetur = new javax.swing.JPanel();
+        scrollPaneRetur = new javax.swing.JScrollPane();
+        tabelRetur = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -232,6 +287,14 @@ public class GUI extends javax.swing.JFrame {
 
         fieldInputId_barang.setText("ID");
         fieldInputId_barang.setToolTipText("ID Barang");
+        fieldInputId_barang.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputId_barangFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputId_barangFocusGained(evt);
+            }
+        });
         fieldInputId_barang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fieldInputId_barangKeyTyped(evt);
@@ -240,6 +303,14 @@ public class GUI extends javax.swing.JFrame {
 
         fieldInputJenis.setText("Jenis");
         fieldInputJenis.setToolTipText("Jenis atau tipe barang");
+        fieldInputJenis.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputJenisFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputJenisFocusGained(evt);
+            }
+        });
         fieldInputJenis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fieldInputJenisKeyTyped(evt);
@@ -248,6 +319,14 @@ public class GUI extends javax.swing.JFrame {
 
         fieldInputMerk.setText("Merk");
         fieldInputMerk.setToolTipText("Merk barang");
+        fieldInputMerk.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputMerkFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputMerkFocusGained(evt);
+            }
+        });
         fieldInputMerk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fieldInputMerkKeyTyped(evt);
@@ -256,6 +335,14 @@ public class GUI extends javax.swing.JFrame {
 
         fieldInputRagam.setText("Ragam");
         fieldInputRagam.setToolTipText("Ragam atau sub-kategori barang");
+        fieldInputRagam.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputRagamFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputRagamFocusGained(evt);
+            }
+        });
         fieldInputRagam.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fieldInputRagamKeyTyped(evt);
@@ -264,6 +351,14 @@ public class GUI extends javax.swing.JFrame {
 
         fieldInputSeri.setText("Seri");
         fieldInputSeri.setToolTipText("Keterangan lengkap dari ragam yang ada");
+        fieldInputSeri.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputSeriFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputSeriFocusGained(evt);
+            }
+        });
         fieldInputSeri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fieldInputSeriKeyTyped(evt);
@@ -272,6 +367,14 @@ public class GUI extends javax.swing.JFrame {
 
         fieldInputQty.setText("Qty");
         fieldInputQty.setToolTipText("Banyaknya barang");
+        fieldInputQty.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputQtyFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputQtyFocusGained(evt);
+            }
+        });
         fieldInputQty.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fieldInputQtyKeyTyped(evt);
@@ -280,6 +383,14 @@ public class GUI extends javax.swing.JFrame {
 
         fieldInputHarga_beli.setText("Hrg Beli");
         fieldInputHarga_beli.setToolTipText("Harga modal awal");
+        fieldInputHarga_beli.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputHarga_beliFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputHarga_beliFocusGained(evt);
+            }
+        });
         fieldInputHarga_beli.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fieldInputHarga_beliKeyTyped(evt);
@@ -288,6 +399,14 @@ public class GUI extends javax.swing.JFrame {
 
         fieldInputSupplier.setText("Supplier");
         fieldInputSupplier.setToolTipText("Pemasok, distributor atau sumber barang, kode bisa dilihat di tab supplier");
+        fieldInputSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputSupplierFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputSupplierFocusGained(evt);
+            }
+        });
         fieldInputSupplier.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fieldInputSupplierKeyTyped(evt);
@@ -296,6 +415,14 @@ public class GUI extends javax.swing.JFrame {
 
         fieldInputTanggal_masuk.setText("Tanggal Masuk");
         fieldInputTanggal_masuk.setToolTipText("Otomatis sesuai penginputan barang (tidak perlu diatur/ubah)");
+        fieldInputTanggal_masuk.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputTanggal_masukFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputTanggal_masukFocusGained(evt);
+            }
+        });
 
         comboBoxGaransi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "distributor", "toko", "tidak" }));
         comboBoxGaransi.setToolTipText("ketentuan garansi");
@@ -576,7 +703,7 @@ public class GUI extends javax.swing.JFrame {
 
         panelTengahTransaksi.setBackground(new java.awt.Color(102, 0, 102));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelTransaksi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -584,7 +711,7 @@ public class GUI extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        scrollPaneTransaksi.setViewportView(jTable1);
+        scrollPaneTransaksi.setViewportView(tabelTransaksi);
 
         javax.swing.GroupLayout panelTengahTransaksiLayout = new javax.swing.GroupLayout(panelTengahTransaksi);
         panelTengahTransaksi.setLayout(panelTengahTransaksiLayout);
@@ -621,6 +748,12 @@ public class GUI extends javax.swing.JFrame {
         );
 
         panelUtama.addTab("Transaksi", tabTrans);
+
+        tabSupplier.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabSupplierMouseClicked(evt);
+            }
+        });
 
         panelKiriSupplier.setBackground(new java.awt.Color(255, 204, 102));
 
@@ -691,17 +824,66 @@ public class GUI extends javax.swing.JFrame {
 
         textAreaCatatan.setColumns(20);
         textAreaCatatan.setRows(5);
+        textAreaCatatan.setText("Catatan...");
+        textAreaCatatan.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                textAreaCatatanFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textAreaCatatanFocusGained(evt);
+            }
+        });
         jScrollPaneSupplier.setViewportView(textAreaCatatan);
 
         fieldInputEmailSupplier.setText("Email");
+        fieldInputEmailSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputEmailSupplierFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputEmailSupplierFocusGained(evt);
+            }
+        });
 
         fieldInputTelponSupplier.setText("Telpon");
+        fieldInputTelponSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputTelponSupplierFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputTelponSupplierFocusGained(evt);
+            }
+        });
 
         fieldInputAlamatSupplier.setText("Alamat");
+        fieldInputAlamatSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputAlamatSupplierFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputAlamatSupplierFocusGained(evt);
+            }
+        });
 
         fieldInputNamaSupplier.setText("Nama");
+        fieldInputNamaSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputNamaSupplierFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputNamaSupplierFocusGained(evt);
+            }
+        });
 
         fieldInputIDSupplier.setText("ID");
+        fieldInputIDSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputIDSupplierFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputIDSupplierFocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelBawahSupplierLayout = new javax.swing.GroupLayout(panelBawahSupplier);
         panelBawahSupplier.setLayout(panelBawahSupplierLayout);
@@ -805,15 +987,25 @@ public class GUI extends javax.swing.JFrame {
 
         panelTengahSupplier.setBackground(new java.awt.Color(102, 0, 102));
 
+        tabelSupplier.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID Supplier", "Nama", "Alamat", "Telpon", "Email", "Catatan"
+            }
+        ));
+        scrollPaneSupplier.setViewportView(tabelSupplier);
+
         javax.swing.GroupLayout panelTengahSupplierLayout = new javax.swing.GroupLayout(panelTengahSupplier);
         panelTengahSupplier.setLayout(panelTengahSupplierLayout);
         panelTengahSupplierLayout.setHorizontalGroup(
             panelTengahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 939, Short.MAX_VALUE)
+            .addComponent(scrollPaneSupplier)
         );
         panelTengahSupplierLayout.setVerticalGroup(
             panelTengahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(scrollPaneSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout tabSupplierLayout = new javax.swing.GroupLayout(tabSupplier);
@@ -900,22 +1092,63 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        fieldInputJumlahBarangRetur.setText("Jumlah");
+        fieldInputJumlahBarangRetur.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputJumlahBarangReturFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputJumlahBarangReturFocusGained(evt);
+            }
+        });
+
+        fieldInputNamaBarangRetur.setText("Nama");
+        fieldInputNamaBarangRetur.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputNamaBarangReturFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputNamaBarangReturFocusGained(evt);
+            }
+        });
+
+        fieldInputIdBarangRetur.setText("ID");
+        fieldInputIdBarangRetur.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputIdBarangReturFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputIdBarangReturFocusGained(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelBawahReturLayout = new javax.swing.GroupLayout(panelBawahRetur);
         panelBawahRetur.setLayout(panelBawahReturLayout);
         panelBawahReturLayout.setHorizontalGroup(
             panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBawahReturLayout.createSequentialGroup()
-                .addContainerGap(1007, Short.MAX_VALUE)
+                .addContainerGap(822, Short.MAX_VALUE)
                 .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tombolHapusRetur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tombolTambahRetur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahReturLayout.createSequentialGroup()
+                        .addComponent(fieldInputIdBarangRetur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(fieldInputNamaBarangRetur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(fieldInputJumlahBarangRetur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(tombolTambahRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         panelBawahReturLayout.setVerticalGroup(
             panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBawahReturLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tombolTambahRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tombolTambahRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldInputJumlahBarangRetur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldInputNamaBarangRetur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldInputIdBarangRetur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tombolHapusRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(43, Short.MAX_VALUE))
@@ -977,15 +1210,25 @@ public class GUI extends javax.swing.JFrame {
 
         panelTengahRetur.setBackground(new java.awt.Color(102, 0, 102));
 
+        tabelRetur.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID Retur", "Nama", "Jumlah"
+            }
+        ));
+        scrollPaneRetur.setViewportView(tabelRetur);
+
         javax.swing.GroupLayout panelTengahReturLayout = new javax.swing.GroupLayout(panelTengahRetur);
         panelTengahRetur.setLayout(panelTengahReturLayout);
         panelTengahReturLayout.setHorizontalGroup(
             panelTengahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 939, Short.MAX_VALUE)
+            .addComponent(scrollPaneRetur)
         );
         panelTengahReturLayout.setVerticalGroup(
             panelTengahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(scrollPaneRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout tabReturLayout = new javax.swing.GroupLayout(tabRetur);
@@ -1093,7 +1336,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tombolHapusActionPerformed
 
     private void buttonRefreshDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBActionPerformed
-       
+
         MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\"))");
         refreshTable();
         JOptionPane.showMessageDialog(null, "Data telah direfresh");
@@ -1149,76 +1392,338 @@ public class GUI extends javax.swing.JFrame {
 
     private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
         String query = searchField.getText();
-        filterTable(query, comboBoxKolom.getSelectedIndex());                
+        filterTable(query, comboBoxKolom.getSelectedIndex());
     }//GEN-LAST:event_searchFieldKeyReleased
 
     private void searchFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldMouseClicked
-           if ("search...".equals(searchField.getText())){
+        if ("search...".equals(searchField.getText())) {
             searchField.setText("");
         }
     }//GEN-LAST:event_searchFieldMouseClicked
 
     private void searchFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusLost
-         if ((searchField.getText()).equals("")){
+        if ((searchField.getText()).equals("")) {
             searchField.setText("search...");
         }
     }//GEN-LAST:event_searchFieldFocusLost
 
     private void buttonRefreshDBTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBTransaksiActionPerformed
-        // TODO add your handling code here:
+ 
+        refreshTable();
+        JOptionPane.showMessageDialog(null, "Data telah direfresh");
     }//GEN-LAST:event_buttonRefreshDBTransaksiActionPerformed
 
     private void buttonRefreshDBSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBSupplierActionPerformed
-        // TODO add your handling code here:
+        
+        refreshTable();
+        JOptionPane.showMessageDialog(null, "Data telah direfresh");
     }//GEN-LAST:event_buttonRefreshDBSupplierActionPerformed
 
     private void tombolTambahSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahSupplierMouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_tombolTambahSupplierMouseClicked
 
     private void tombolHapusSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusSupplierActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_tombolHapusSupplierActionPerformed
 
     private void searchFieldSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldSupplierFocusLost
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_searchFieldSupplierFocusLost
 
     private void searchFieldSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldSupplierMouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_searchFieldSupplierMouseClicked
 
     private void searchFieldSupplierKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldSupplierKeyReleased
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_searchFieldSupplierKeyReleased
 
     private void tombolUbahSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahSupplierActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_tombolUbahSupplierActionPerformed
 
     private void buttonRefreshDBReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBReturActionPerformed
-        // TODO add your handling code here:
+
+        refreshTable();
+        JOptionPane.showMessageDialog(null, "Data telah direfresh");
     }//GEN-LAST:event_buttonRefreshDBReturActionPerformed
 
     private void tombolTambahReturMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahReturMouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_tombolTambahReturMouseClicked
 
     private void tombolHapusReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusReturActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_tombolHapusReturActionPerformed
 
     private void searchFieldReturFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldReturFocusLost
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_searchFieldReturFocusLost
 
     private void searchFieldReturMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldReturMouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_searchFieldReturMouseClicked
 
     private void searchFieldReturKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldReturKeyReleased
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_searchFieldReturKeyReleased
+
+    private void fieldInputId_barangFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputId_barangFocusGained
+      if(fieldInputId_barang.getText().equals("ID")){
+      fieldInputId_barang.setText("");
+      }
+    }//GEN-LAST:event_fieldInputId_barangFocusGained
+
+    private void fieldInputId_barangFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputId_barangFocusLost
+
+        if (fieldInputId_barang.getText().equals("")){
+       fieldInputId_barang.setText("ID");
+     }
+    }//GEN-LAST:event_fieldInputId_barangFocusLost
+
+    private void fieldInputJenisFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputJenisFocusGained
+
+        if(fieldInputJenis.getText().equals("Jenis")){
+      fieldInputJenis.setText("");
+      }
+    }//GEN-LAST:event_fieldInputJenisFocusGained
+
+    private void fieldInputJenisFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputJenisFocusLost
+
+        if (fieldInputJenis.getText().equals("")){
+       fieldInputJenis.setText("Jenis");
+     }
+    }//GEN-LAST:event_fieldInputJenisFocusLost
+
+    private void fieldInputMerkFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputMerkFocusGained
+
+         if(fieldInputMerk.getText().equals("Merk")){
+      fieldInputMerk.setText("");
+      }
+    }//GEN-LAST:event_fieldInputMerkFocusGained
+
+    private void fieldInputMerkFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputMerkFocusLost
+
+         if (fieldInputMerk.getText().equals("")){
+       fieldInputMerk.setText("Merk");
+     }
+    }//GEN-LAST:event_fieldInputMerkFocusLost
+
+    private void fieldInputRagamFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputRagamFocusGained
+
+        if(fieldInputRagam.getText().equals("Ragam")){
+      fieldInputRagam.setText("");
+      }
+    }//GEN-LAST:event_fieldInputRagamFocusGained
+
+    private void fieldInputRagamFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputRagamFocusLost
+
+        if (fieldInputRagam.getText().equals("")){
+       fieldInputRagam.setText("Ragam");
+     }
+    }//GEN-LAST:event_fieldInputRagamFocusLost
+
+    private void fieldInputSeriFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputSeriFocusGained
+
+        if(fieldInputSeri.getText().equals("Seri")){
+      fieldInputSeri.setText("");
+      }
+    }//GEN-LAST:event_fieldInputSeriFocusGained
+
+    private void fieldInputSeriFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputSeriFocusLost
+
+        if (fieldInputSeri.getText().equals("")){
+       fieldInputSeri.setText("Seri");
+     }
+    }//GEN-LAST:event_fieldInputSeriFocusLost
+
+    private void fieldInputQtyFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputQtyFocusGained
+
+         if(fieldInputQty.getText().equals("Qty")){
+      fieldInputQty.setText("");
+      }
+    }//GEN-LAST:event_fieldInputQtyFocusGained
+
+    private void fieldInputQtyFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputQtyFocusLost
+
+        if (fieldInputQty.getText().equals("")){
+       fieldInputQty.setText("Qty");
+     }
+    }//GEN-LAST:event_fieldInputQtyFocusLost
+
+    private void fieldInputHarga_beliFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputHarga_beliFocusGained
+
+        if(fieldInputHarga_beli.getText().equals("Hrg Beli")){
+      fieldInputHarga_beli.setText("");
+      }
+    }//GEN-LAST:event_fieldInputHarga_beliFocusGained
+
+    private void fieldInputHarga_beliFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputHarga_beliFocusLost
+
+        if (fieldInputHarga_beli.getText().equals("")){
+       fieldInputHarga_beli.setText("Hrg Beli");
+     }
+    }//GEN-LAST:event_fieldInputHarga_beliFocusLost
+
+    private void fieldInputSupplierFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputSupplierFocusGained
+
+         if(fieldInputSupplier.getText().equals("Supplier")){
+      fieldInputSupplier.setText("");
+      }
+    }//GEN-LAST:event_fieldInputSupplierFocusGained
+
+    private void fieldInputSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputSupplierFocusLost
+
+         if (fieldInputSupplier.getText().equals("")){
+       fieldInputSupplier.setText("Supplier");
+     }
+    }//GEN-LAST:event_fieldInputSupplierFocusLost
+
+    private void fieldInputTanggal_masukFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputTanggal_masukFocusGained
+
+         if(fieldInputTanggal_masuk.getText().equals("Tanggal Masuk")){
+      fieldInputTanggal_masuk.setText("");
+      }
+    }//GEN-LAST:event_fieldInputTanggal_masukFocusGained
+
+    private void fieldInputTanggal_masukFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputTanggal_masukFocusLost
+
+        if (fieldInputTanggal_masuk.getText().equals("")){
+       fieldInputTanggal_masuk.setText("Tanggal Masuk");
+     }
+    }//GEN-LAST:event_fieldInputTanggal_masukFocusLost
+
+    private void fieldInputIDSupplierFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputIDSupplierFocusGained
+
+        if(fieldInputIDSupplier.getText().equals("ID")){
+      fieldInputIDSupplier.setText("");
+      }
+    }//GEN-LAST:event_fieldInputIDSupplierFocusGained
+
+    private void fieldInputIDSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputIDSupplierFocusLost
+
+        if (fieldInputIDSupplier.getText().equals("")){
+       fieldInputIDSupplier.setText("ID");
+     }
+    }//GEN-LAST:event_fieldInputIDSupplierFocusLost
+
+    private void fieldInputNamaSupplierFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputNamaSupplierFocusGained
+
+         if(fieldInputNamaSupplier.getText().equals("Nama")){
+      fieldInputNamaSupplier.setText("");
+      }
+    }//GEN-LAST:event_fieldInputNamaSupplierFocusGained
+
+    private void fieldInputNamaSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputNamaSupplierFocusLost
+
+        if (fieldInputNamaSupplier.getText().equals("")){
+       fieldInputNamaSupplier.setText("Nama");
+     }
+    }//GEN-LAST:event_fieldInputNamaSupplierFocusLost
+
+    private void fieldInputAlamatSupplierFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputAlamatSupplierFocusGained
+
+        if(fieldInputAlamatSupplier.getText().equals("Alamat")){
+      fieldInputAlamatSupplier.setText("");
+      }
+    }//GEN-LAST:event_fieldInputAlamatSupplierFocusGained
+
+    private void fieldInputAlamatSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputAlamatSupplierFocusLost
+
+         if (fieldInputAlamatSupplier.getText().equals("")){
+       fieldInputAlamatSupplier.setText("Alamat");
+     }
+    }//GEN-LAST:event_fieldInputAlamatSupplierFocusLost
+
+    private void fieldInputTelponSupplierFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputTelponSupplierFocusGained
+
+        if(fieldInputTelponSupplier.getText().equals("Telpon")){
+      fieldInputTelponSupplier.setText("");
+      }
+    }//GEN-LAST:event_fieldInputTelponSupplierFocusGained
+
+    private void fieldInputTelponSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputTelponSupplierFocusLost
+
+         if (fieldInputTelponSupplier.getText().equals("")){
+       fieldInputTelponSupplier.setText("Telpon");
+     }
+    }//GEN-LAST:event_fieldInputTelponSupplierFocusLost
+
+    private void fieldInputEmailSupplierFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputEmailSupplierFocusGained
+
+        if(fieldInputEmailSupplier.getText().equals("Email")){
+      fieldInputEmailSupplier.setText("");
+      }
+    }//GEN-LAST:event_fieldInputEmailSupplierFocusGained
+
+    private void fieldInputEmailSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputEmailSupplierFocusLost
+
+         if (fieldInputEmailSupplier.getText().equals("")){
+       fieldInputEmailSupplier.setText("Email");
+     }
+    }//GEN-LAST:event_fieldInputEmailSupplierFocusLost
+
+    private void textAreaCatatanFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textAreaCatatanFocusGained
+
+        if(textAreaCatatan.getText().equals("Catatan...")){
+      textAreaCatatan.setText("");
+      }
+    }//GEN-LAST:event_textAreaCatatanFocusGained
+
+    private void textAreaCatatanFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textAreaCatatanFocusLost
+
+         if (textAreaCatatan.getText().equals("")){
+       textAreaCatatan.setText("Catatan...");
+     }
+    }//GEN-LAST:event_textAreaCatatanFocusLost
+
+    private void fieldInputIdBarangReturFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputIdBarangReturFocusGained
+
+         if(fieldInputIdBarangRetur.getText().equals("ID")){
+      fieldInputIdBarangRetur.setText("");
+      }
+    }//GEN-LAST:event_fieldInputIdBarangReturFocusGained
+
+    private void fieldInputIdBarangReturFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputIdBarangReturFocusLost
+
+        if (fieldInputIdBarangRetur.getText().equals("")){
+       fieldInputIdBarangRetur.setText("ID");
+     }
+    }//GEN-LAST:event_fieldInputIdBarangReturFocusLost
+
+    private void fieldInputNamaBarangReturFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputNamaBarangReturFocusGained
+
+         if(fieldInputNamaBarangRetur.getText().equals("Nama")){
+      fieldInputNamaBarangRetur.setText("");
+      }
+    }//GEN-LAST:event_fieldInputNamaBarangReturFocusGained
+
+    private void fieldInputNamaBarangReturFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputNamaBarangReturFocusLost
+
+        if (fieldInputNamaBarangRetur.getText().equals("")){
+       fieldInputNamaBarangRetur.setText("Nama");
+     }
+    }//GEN-LAST:event_fieldInputNamaBarangReturFocusLost
+
+    private void fieldInputJumlahBarangReturFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputJumlahBarangReturFocusGained
+
+         if(fieldInputJumlahBarangRetur.getText().equals("Jumlah")){
+      fieldInputJumlahBarangRetur.setText("");
+      }
+    }//GEN-LAST:event_fieldInputJumlahBarangReturFocusGained
+
+    private void fieldInputJumlahBarangReturFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputJumlahBarangReturFocusLost
+
+        if (fieldInputJumlahBarangRetur.getText().equals("")){
+       fieldInputJumlahBarangRetur.setText("Jumlah");
+     }
+    }//GEN-LAST:event_fieldInputJumlahBarangReturFocusLost
+
+    private void tabSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabSupplierMouseClicked
+        // TODO add your handling code here:
+        System.out.println("qwdqwd");
+    }//GEN-LAST:event_tabSupplierMouseClicked
 
     /**
      * by ijash
@@ -1268,9 +1773,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField fieldInputEmailSupplier;
     private javax.swing.JTextField fieldInputHarga_beli;
     private javax.swing.JTextField fieldInputIDSupplier;
+    private javax.swing.JTextField fieldInputIdBarangRetur;
     private javax.swing.JTextField fieldInputId_barang;
     private javax.swing.JTextField fieldInputJenis;
+    private javax.swing.JTextField fieldInputJumlahBarangRetur;
     private javax.swing.JTextField fieldInputMerk;
+    private javax.swing.JTextField fieldInputNamaBarangRetur;
     private javax.swing.JTextField fieldInputNamaSupplier;
     private javax.swing.JTextField fieldInputQty;
     private javax.swing.JTextField fieldInputRagam;
@@ -1279,7 +1787,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField fieldInputTanggal_masuk;
     private javax.swing.JTextField fieldInputTelponSupplier;
     private javax.swing.JScrollPane jScrollPaneSupplier;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelFilter;
     private javax.swing.JLabel labelFilterRetur;
     private javax.swing.JLabel labelFilterSupplier;
@@ -1308,6 +1815,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel panelTengahSupplier;
     private javax.swing.JPanel panelTengahTransaksi;
     private javax.swing.JTabbedPane panelUtama;
+    private javax.swing.JScrollPane scrollPaneRetur;
+    private javax.swing.JScrollPane scrollPaneSupplier;
     private javax.swing.JScrollPane scrollPaneTransaksi;
     private javax.swing.JTextField searchField;
     private javax.swing.JTextField searchFieldRetur;
@@ -1317,6 +1826,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel tabSupplier;
     private javax.swing.JPanel tabTrans;
     private javax.swing.JTable tabel;
+    private javax.swing.JTable tabelRetur;
+    private javax.swing.JTable tabelSupplier;
+    private javax.swing.JTable tabelTransaksi;
     private javax.swing.JTextArea textAreaCatatan;
     private javax.swing.JTextArea textAreaKiri;
     private javax.swing.JTextArea textAreaKiriRetur;

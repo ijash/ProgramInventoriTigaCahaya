@@ -16,7 +16,7 @@ import static tigacahaya.MySQLconn.connect;
  * @author ijash
  */
 public class TableRowContent {
-
+    
     private String idBarang;
     private String jenis;
     private String merk;
@@ -135,14 +135,5 @@ public class TableRowContent {
         }
         return null;
     }
-    
-
-
-    
-   
-    
-       
-        
-    
-    
+     
 }

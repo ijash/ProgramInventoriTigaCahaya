@@ -31,6 +31,9 @@ public class GUI extends javax.swing.JFrame {
 
     }
 
+    
+    // back-end methods......................................
+    
     public void displayTable() {
         ArrayList<TableRowContent> list = tableContent();
         DefaultTableModel model = (DefaultTableModel) tabel.getModel();
@@ -102,7 +105,6 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jProgressBar1 = new javax.swing.JProgressBar();
         panelUtama = new javax.swing.JTabbedPane();
         tabStok = new javax.swing.JPanel();
         panelKiri = new javax.swing.JPanel();
@@ -625,7 +627,7 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    // action event methods.
     private void tabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMouseClicked
         // Display selected row in text fields
         String comb = "Tidak";
@@ -816,7 +818,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField fieldInputSeri;
     private javax.swing.JTextField fieldInputSupplier;
     private javax.swing.JTextField fieldInputTanggal_masuk;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelFilter;

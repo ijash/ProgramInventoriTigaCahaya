@@ -145,6 +145,27 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         tabSupplier = new javax.swing.JPanel();
+        panelKiri2 = new javax.swing.JPanel();
+        labelInfo2 = new javax.swing.JLabel();
+        buttonRefreshDB2 = new javax.swing.JToggleButton();
+        textAreaKiri2 = new javax.swing.JTextArea();
+        panelBawah2 = new javax.swing.JPanel();
+        tombolUbah1 = new javax.swing.JButton();
+        tombolTambah1 = new javax.swing.JButton();
+        tombolHapus1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        textAreaCatatan = new javax.swing.JTextArea();
+        fieldInputEmail = new javax.swing.JTextField();
+        fieldInputTelpon = new javax.swing.JTextField();
+        fieldInputAlamat = new javax.swing.JTextField();
+        fieldInputNama = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        panelAtas2 = new javax.swing.JPanel();
+        searchField1 = new javax.swing.JTextField();
+        comboBoxKolom1 = new javax.swing.JComboBox<>();
+        labelFilter1 = new javax.swing.JLabel();
+        labelKolom1 = new javax.swing.JLabel();
+        panelTengah2 = new javax.swing.JPanel();
         tabRetur = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -434,6 +455,9 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         panelScrollTabel.setViewportView(tabel);
+        if (tabel.getColumnModel().getColumnCount() > 0) {
+            tabel.getColumnModel().getColumn(5).setMaxWidth(40);
+        }
 
         javax.swing.GroupLayout panelTengahLayout = new javax.swing.GroupLayout(panelTengah);
         panelTengah.setLayout(panelTengahLayout);
@@ -541,10 +565,7 @@ public class GUI extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
@@ -588,15 +609,221 @@ public class GUI extends javax.swing.JFrame {
 
         panelUtama.addTab("Transaksi", tabTrans);
 
+        panelKiri2.setBackground(new java.awt.Color(255, 204, 102));
+
+        labelInfo2.setText("Info");
+
+        buttonRefreshDB2.setText("Refresh Data");
+        buttonRefreshDB2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRefreshDB2ActionPerformed(evt);
+            }
+        });
+
+        textAreaKiri2.setColumns(20);
+        textAreaKiri2.setLineWrap(true);
+        textAreaKiri2.setRows(5);
+        textAreaKiri2.setWrapStyleWord(true);
+
+        javax.swing.GroupLayout panelKiri2Layout = new javax.swing.GroupLayout(panelKiri2);
+        panelKiri2.setLayout(panelKiri2Layout);
+        panelKiri2Layout.setHorizontalGroup(
+            panelKiri2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelKiri2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelKiri2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(textAreaKiri2, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                    .addComponent(labelInfo2)
+                    .addComponent(buttonRefreshDB2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelKiri2Layout.setVerticalGroup(
+            panelKiri2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelKiri2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelInfo2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textAreaKiri2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonRefreshDB2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelBawah2.setBackground(new java.awt.Color(0, 153, 153));
+
+        tombolUbah1.setText("Ubah");
+        tombolUbah1.setToolTipText("Edit atau ubah barang sesuai dengan masukan yang ada.");
+        tombolUbah1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolUbah1ActionPerformed(evt);
+            }
+        });
+
+        tombolTambah1.setText("Tambah");
+        tombolTambah1.setToolTipText("Tambah barang sesuai dengan masukan yang ada.");
+        tombolTambah1.setPreferredSize(new java.awt.Dimension(80, 30));
+        tombolTambah1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tombolTambah1MouseClicked(evt);
+            }
+        });
+
+        tombolHapus1.setText("Hapus");
+        tombolHapus1.setToolTipText("Hapus barang sesuai dengan baris yang terpilih.");
+        tombolHapus1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolHapus1ActionPerformed(evt);
+            }
+        });
+
+        textAreaCatatan.setColumns(20);
+        textAreaCatatan.setRows(5);
+        jScrollPane2.setViewportView(textAreaCatatan);
+
+        fieldInputEmail.setText("Email");
+
+        fieldInputTelpon.setText("Telpon");
+
+        fieldInputAlamat.setText("Alamat");
+
+        fieldInputNama.setText("Nama");
+
+        jTextField1.setText("ID");
+
+        javax.swing.GroupLayout panelBawah2Layout = new javax.swing.GroupLayout(panelBawah2);
+        panelBawah2.setLayout(panelBawah2Layout);
+        panelBawah2Layout.setHorizontalGroup(
+            panelBawah2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBawah2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(fieldInputNama, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(fieldInputAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(fieldInputTelpon, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(fieldInputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelBawah2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tombolUbah1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawah2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(tombolTambah1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                        .addComponent(tombolHapus1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        panelBawah2Layout.setVerticalGroup(
+            panelBawah2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBawah2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelBawah2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBawah2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(fieldInputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fieldInputTelpon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fieldInputAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fieldInputNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelBawah2Layout.createSequentialGroup()
+                        .addComponent(tombolUbah1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tombolTambah1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tombolHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelAtas2.setBackground(new java.awt.Color(0, 204, 153));
+
+        searchField1.setText("search...");
+        searchField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                searchField1FocusLost(evt);
+            }
+        });
+        searchField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchField1MouseClicked(evt);
+            }
+        });
+        searchField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchField1KeyReleased(evt);
+            }
+        });
+
+        comboBoxKolom1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Coloumn", "ID Barang", "Jenis", "Merk", "Ragam", "Seri", "Qty", "Harga Beli", "Supplier", "Tanggal Masuk", "Garansi" }));
+
+        labelFilter1.setText("Filter");
+
+        labelKolom1.setText("Kolom");
+
+        javax.swing.GroupLayout panelAtas2Layout = new javax.swing.GroupLayout(panelAtas2);
+        panelAtas2.setLayout(panelAtas2Layout);
+        panelAtas2Layout.setHorizontalGroup(
+            panelAtas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtas2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelAtas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelFilter1)
+                    .addComponent(searchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelAtas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboBoxKolom1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelKolom1))
+                .addContainerGap())
+        );
+        panelAtas2Layout.setVerticalGroup(
+            panelAtas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtas2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelAtas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelFilter1)
+                    .addComponent(labelKolom1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelAtas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxKolom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        panelTengah2.setBackground(new java.awt.Color(102, 0, 102));
+
+        javax.swing.GroupLayout panelTengah2Layout = new javax.swing.GroupLayout(panelTengah2);
+        panelTengah2.setLayout(panelTengah2Layout);
+        panelTengah2Layout.setHorizontalGroup(
+            panelTengah2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 939, Short.MAX_VALUE)
+        );
+        panelTengah2Layout.setVerticalGroup(
+            panelTengah2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout tabSupplierLayout = new javax.swing.GroupLayout(tabSupplier);
         tabSupplier.setLayout(tabSupplierLayout);
         tabSupplierLayout.setHorizontalGroup(
             tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1099, Short.MAX_VALUE)
+            .addComponent(panelBawah2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(tabSupplierLayout.createSequentialGroup()
+                .addComponent(panelKiri2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelTengah2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelAtas2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         tabSupplierLayout.setVerticalGroup(
             tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 437, Short.MAX_VALUE)
+            .addGroup(tabSupplierLayout.createSequentialGroup()
+                .addComponent(panelAtas2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelTengah2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelKiri2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(panelBawah2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         panelUtama.addTab("Supplier", tabSupplier);
@@ -769,6 +996,34 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonRefreshDB1ActionPerformed
 
+    private void buttonRefreshDB2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDB2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonRefreshDB2ActionPerformed
+
+    private void tombolTambah1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambah1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tombolTambah1MouseClicked
+
+    private void tombolHapus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapus1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tombolHapus1ActionPerformed
+
+    private void searchField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchField1FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchField1FocusLost
+
+    private void searchField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchField1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchField1MouseClicked
+
+    private void searchField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchField1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchField1KeyReleased
+
+    private void tombolUbah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbah1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tombolUbah1ActionPerformed
+
     /**
      * by ijash
      */
@@ -807,44 +1062,65 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton buttonRefreshDB;
     private javax.swing.JToggleButton buttonRefreshDB1;
+    private javax.swing.JToggleButton buttonRefreshDB2;
     private javax.swing.JComboBox<String> comboBoxGaransi;
     private javax.swing.JComboBox<String> comboBoxKolom;
+    private javax.swing.JComboBox<String> comboBoxKolom1;
+    private javax.swing.JTextField fieldInputAlamat;
+    private javax.swing.JTextField fieldInputEmail;
     private javax.swing.JTextField fieldInputHarga_beli;
     private javax.swing.JTextField fieldInputId_barang;
     private javax.swing.JTextField fieldInputJenis;
     private javax.swing.JTextField fieldInputMerk;
+    private javax.swing.JTextField fieldInputNama;
     private javax.swing.JTextField fieldInputQty;
     private javax.swing.JTextField fieldInputRagam;
     private javax.swing.JTextField fieldInputSeri;
     private javax.swing.JTextField fieldInputSupplier;
     private javax.swing.JTextField fieldInputTanggal_masuk;
+    private javax.swing.JTextField fieldInputTelpon;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labelFilter;
+    private javax.swing.JLabel labelFilter1;
     private javax.swing.JLabel labelInfo;
     private javax.swing.JLabel labelInfo1;
+    private javax.swing.JLabel labelInfo2;
     private javax.swing.JLabel labelKolom;
+    private javax.swing.JLabel labelKolom1;
     private javax.swing.JPanel panelAtas;
     private javax.swing.JPanel panelAtas1;
+    private javax.swing.JPanel panelAtas2;
     private javax.swing.JPanel panelBawah;
     private javax.swing.JPanel panelBawah1;
+    private javax.swing.JPanel panelBawah2;
     private javax.swing.JPanel panelKiri;
     private javax.swing.JPanel panelKiri1;
+    private javax.swing.JPanel panelKiri2;
     private javax.swing.JScrollPane panelScrollTabel;
     private javax.swing.JPanel panelTengah;
     private javax.swing.JPanel panelTengah1;
+    private javax.swing.JPanel panelTengah2;
     private javax.swing.JTabbedPane panelUtama;
     private javax.swing.JTextField searchField;
+    private javax.swing.JTextField searchField1;
     private javax.swing.JPanel tabRetur;
     private javax.swing.JPanel tabStok;
     private javax.swing.JPanel tabSupplier;
     private javax.swing.JPanel tabTrans;
     private javax.swing.JTable tabel;
+    private javax.swing.JTextArea textAreaCatatan;
     private javax.swing.JTextArea textAreaKiri;
     private javax.swing.JTextArea textAreaKiri1;
+    private javax.swing.JTextArea textAreaKiri2;
     private javax.swing.JButton tombolAtc;
     private javax.swing.JButton tombolHapus;
+    private javax.swing.JButton tombolHapus1;
     private javax.swing.JButton tombolTambah;
+    private javax.swing.JButton tombolTambah1;
     private javax.swing.JButton tombolUbah;
+    private javax.swing.JButton tombolUbah1;
     // End of variables declaration//GEN-END:variables
 }

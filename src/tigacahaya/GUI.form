@@ -697,12 +697,12 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="tombolCheckoutTransaksi" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                   <Component id="fieldIdBarangTransaksi" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="fieldInputQtyTransaksi" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="tombolCheckoutTransaksi" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="68" max="32767" attributes="0"/>
                       </Group>
@@ -727,6 +727,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Checkout"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolCheckoutTransaksiActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

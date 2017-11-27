@@ -75,7 +75,7 @@ public class GUI extends javax.swing.JFrame {
             row[2] = list.get(i).getQty();
             model.addRow(row);
             labelTransaksiAtas.setText("Invoice :" + TableRowContentTransaksi.statusInvoiceAkhir());
-            ;
+         //   System.out.println("klasOOOOOOOOOOOOOOOOOkaskaljskjas");
         }
     }
     public void sortTableTransaksi() {
@@ -86,6 +86,7 @@ public class GUI extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tabelTransaksi.getModel();
         model.setRowCount(0);
         displayTableTransaksi();
+        
     }
     public void displayTableRetur() {
         ArrayList<TableRowContentRetur> list = tableContentRetur();
@@ -715,6 +716,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         tombolCheckoutTransaksi.setText("Checkout");
+        tombolCheckoutTransaksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolCheckoutTransaksiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelBawahTransaksiLayout = new javax.swing.GroupLayout(panelBawahTransaksi);
         panelBawahTransaksi.setLayout(panelBawahTransaksiLayout);
@@ -733,11 +739,11 @@ public class GUI extends javax.swing.JFrame {
             panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBawahTransaksiLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tombolCheckoutTransaksi)
+                .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(fieldIdBarangTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(fieldInputQtyTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(fieldInputQtyTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tombolCheckoutTransaksi))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
@@ -1740,8 +1746,8 @@ public class GUI extends javax.swing.JFrame {
 
     private void tombolAtcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolAtcActionPerformed
         ArrayList<TableRowContentTransaksi> list = tableContentTransaksi();
-        String query= "null";
-        if ((statusInvoiceAkhir() == "empty") || (statusInvoiceAkhir() == "lunas")) {
+        String query = "null";
+        if (("empty".equals(statusInvoiceAkhir())) || ("paid".equals(statusInvoiceAkhir()))) {
             TableRowContentTransaksi.tambahInvoice();
             query = "INSERT INTO `3cahaya`.`transaksi_cart` (`id_inv`, `id_barang`, `qty`, `harga`, `keterangan`) VALUES ('" + statusInvoiceAkhir() + "', '" + fieldInputId_barang.getText() + "', '1', '" + fieldInputHarga_beli.getText() + "', '');";
         } else {
@@ -1754,28 +1760,54 @@ public class GUI extends javax.swing.JFrame {
             }
             if (!Duplicate) {
                 query = "INSERT INTO `3cahaya`.`transaksi_cart` (`id_inv`, `id_barang`, `qty`, `harga`, `keterangan`) VALUES ('" + statusInvoiceAkhir() + "', '" + fieldInputId_barang.getText() + "', '1', '" + fieldInputHarga_beli.getText() + "', '');";
-                Duplicate=false;
+                Duplicate = false;
             }
         }
         System.out.println(query);
         MySQLconn.executeVoidQuery(query);
         refreshTableTransaksi();
-        refreshTable();
+        
+
     }//GEN-LAST:event_tombolAtcActionPerformed
 
     private void tabelTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelTransaksiMouseClicked
-       int i = tabelTransaksi.getSelectedRow();
-       TableModel model = tabelTransaksi.getModel();
-       i = tabelTransaksi.convertRowIndexToModel(i);
-       fieldIdBarangTransaksi.setText(model.getValueAt(i, 0).toString());
-       fieldIdBarangTransaksi.setCaretPosition(0);
-       fieldInputQtyTransaksi.setText(model.getValueAt(i, 2).toString());
-       
+        int i = tabelTransaksi.getSelectedRow();
+        TableModel model = tabelTransaksi.getModel();
+        i = tabelTransaksi.convertRowIndexToModel(i);
+        fieldIdBarangTransaksi.setText(model.getValueAt(i, 0).toString());
+        fieldIdBarangTransaksi.setCaretPosition(0);
+        fieldInputQtyTransaksi.setText(model.getValueAt(i, 2).toString());
     }//GEN-LAST:event_tabelTransaksiMouseClicked
 
     private void fieldInputQtyTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldInputQtyTransaksiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldInputQtyTransaksiActionPerformed
+
+    private void tombolCheckoutTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCheckoutTransaksiActionPerformed
+        TableModel model = tabelTransaksi.getModel();
+        if(model.getRowCount()==0){
+        JOptionPane.showMessageDialog(null, "Cart tidak boleh kosong");
+        }
+        else{
+        String qtyCol;
+        String idBarangCol;
+        model = (DefaultTableModel) tabelTransaksi.getModel();
+        Object[] row = new Object[3];
+        
+        for (int i = 0; i < model.getRowCount(); i++) {
+           qtyCol = model.getValueAt(i, 2).toString();
+           idBarangCol = model.getValueAt(i, 0).toString();
+           MySQLconn.executeVoidQuery("UPDATE `barang` SET `barang`.`qty` = `barang`.`qty`-'"+qtyCol+"' WHERE  `barang`.`id_barang`= '"+idBarangCol+"'");
+        }
+  String query = "UPDATE `3cahaya`.`transaksi_invoice` SET `lunas` = b'1' WHERE `transaksi_invoice`.`id_inv` = '" + statusInvoiceAkhir() + "';";
+       MySQLconn.executeVoidQuery(query);
+TableRowContentTransaksi.tambahInvoice();
+        
+        refreshTableTransaksi();
+        refreshTable();
+         labelTransaksiAtas.setText("Invoice :" + TableRowContentTransaksi.statusInvoiceAkhir());
+        }
+    }//GEN-LAST:event_tombolCheckoutTransaksiActionPerformed
 // </editor-fold>
     /**
      * by ijash

@@ -16,6 +16,8 @@ import javax.swing.table.TableModel;
 import static tigacahaya.TableRowContent.tableContent;
 import static tigacahaya.TableRowContentRetur.tableContentRetur;
 import static tigacahaya.TableRowContentSupplier.tableContentSupplier;
+import static tigacahaya.TableRowContentTransaksi.statusInvoiceAkhir;
+import static tigacahaya.TableRowContentTransaksi.tableContentTransaksi;
 
 /**
  *
@@ -30,13 +32,14 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
         displayTable();
         sortTable();
+        displayTableTransaksi();
+        sortTableTransaksi();
         displayTableSupplier();
         sortTableSupplier();
         displayTableRetur();
         sortTableRetur();
 
     }
-
     // back-end methods......................................
     public void displayTable() {
         ArrayList<TableRowContent> list = tableContent();
@@ -54,15 +57,37 @@ public class GUI extends javax.swing.JFrame {
             row[8] = list.get(i).getTgl_masuk();
             row[9] = list.get(i).getGaransi();
             model.addRow(row);
-        }
-    }
 
+        }
+
+    }
     public void sortTable() {
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>((DefaultTableModel) tabel.getModel());
         tabel.setRowSorter(sorter);
     }
-    
-     public void displayTableRetur() {
+    public void displayTableTransaksi() {
+        ArrayList<TableRowContentTransaksi> list = tableContentTransaksi();
+        DefaultTableModel model = (DefaultTableModel) tabelTransaksi.getModel();
+        Object[] row = new Object[3];
+        for (int i = 0; i < list.size(); i++) {
+            row[0] = list.get(i).getIdBarang();
+            row[1] = list.get(i).getNamaBarang();
+            row[2] = list.get(i).getQty();
+            model.addRow(row);
+            labelTransaksiAtas.setText("Invoice :" + TableRowContentTransaksi.statusInvoiceAkhir());
+            ;
+        }
+    }
+    public void sortTableTransaksi() {
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>((DefaultTableModel) tabelTransaksi.getModel());
+        tabelTransaksi.setRowSorter(sorter);
+    }
+    public void refreshTableTransaksi() {
+        DefaultTableModel model = (DefaultTableModel) tabelTransaksi.getModel();
+        model.setRowCount(0);
+        displayTableTransaksi();
+    }
+    public void displayTableRetur() {
         ArrayList<TableRowContentRetur> list = tableContentRetur();
         DefaultTableModel model = (DefaultTableModel) tabelRetur.getModel();
         Object[] row = new Object[4];
@@ -74,13 +99,11 @@ public class GUI extends javax.swing.JFrame {
             model.addRow(row);
         }
     }
-
     public void sortTableRetur() {
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>((DefaultTableModel) tabelRetur.getModel());
         tabelRetur.setRowSorter(sorter);
     }
-    
-     public void displayTableSupplier() {
+    public void displayTableSupplier() {
         ArrayList<TableRowContentSupplier> list = tableContentSupplier();
         DefaultTableModel model = (DefaultTableModel) tabelSupplier.getModel();
         Object[] row = new Object[6];
@@ -94,34 +117,27 @@ public class GUI extends javax.swing.JFrame {
             model.addRow(row);
         }
     }
-
     public void sortTableSupplier() {
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>((DefaultTableModel) tabelSupplier.getModel());
         tabelSupplier.setRowSorter(sorter);
     }
-
     public void refreshTable() {
         DefaultTableModel model = (DefaultTableModel) tabel.getModel();
         model.setRowCount(0);
         displayTable();
     }
-    
     public void refreshTableRetur() {
         DefaultTableModel model = (DefaultTableModel) tabelRetur.getModel();
         model.setRowCount(0);
         displayTable();
     }
-    
     public void refreshTableSupplier() {
         DefaultTableModel model = (DefaultTableModel) tabelSupplier.getModel();
         model.setRowCount(0);
         displayTable();
     }
-
-    public void cartTable() {
-
+    public void atcButton() { 
     }
-
     // execute SQL query
     public void execSQLQuery(String query, String message) {
         Connection conn = MySQLconn.connect();
@@ -137,7 +153,6 @@ public class GUI extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-
     public void filterTable(String query, int column) {
         TableRowSorter<DefaultTableModel> tf = new TableRowSorter<>((DefaultTableModel) tabel.getModel());
         tabel.setRowSorter(tf);
@@ -147,6 +162,7 @@ public class GUI extends javax.swing.JFrame {
             tf.setRowFilter(RowFilter.regexFilter("(?i)" + query, column - 1));
         }
     }
+    // <editor-fold defaultstate="collapsed" desc=" IDE Generated Code ">
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -192,7 +208,11 @@ public class GUI extends javax.swing.JFrame {
         buttonRefreshDBTransaksi = new javax.swing.JToggleButton();
         textAreaKiriTransaksi = new javax.swing.JTextArea();
         panelBawahTransaksi = new javax.swing.JPanel();
+        fieldIdBarangTransaksi = new javax.swing.JTextField();
+        fieldInputQtyTransaksi = new javax.swing.JTextField();
+        tombolCheckoutTransaksi = new javax.swing.JButton();
         panelAtasTransaksi = new javax.swing.JPanel();
+        labelTransaksiAtas = new javax.swing.JLabel();
         panelTengahTransaksi = new javax.swing.JPanel();
         scrollPaneTransaksi = new javax.swing.JScrollPane();
         tabelTransaksi = new javax.swing.JTable();
@@ -456,6 +476,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         tombolAtc.setText("add to cart");
+        tombolAtc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolAtcActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelBawahLayout = new javax.swing.GroupLayout(panelBawah);
         panelBawah.setLayout(panelBawahLayout);
@@ -680,28 +705,61 @@ public class GUI extends javax.swing.JFrame {
 
         panelBawahTransaksi.setBackground(new java.awt.Color(0, 153, 153));
 
+        fieldIdBarangTransaksi.setText("ID Barang");
+
+        fieldInputQtyTransaksi.setText("qty");
+        fieldInputQtyTransaksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldInputQtyTransaksiActionPerformed(evt);
+            }
+        });
+
+        tombolCheckoutTransaksi.setText("Checkout");
+
         javax.swing.GroupLayout panelBawahTransaksiLayout = new javax.swing.GroupLayout(panelBawahTransaksi);
         panelBawahTransaksi.setLayout(panelBawahTransaksiLayout);
         panelBawahTransaksiLayout.setHorizontalGroup(
             panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1099, Short.MAX_VALUE)
+            .addGroup(panelBawahTransaksiLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(fieldIdBarangTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldInputQtyTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tombolCheckoutTransaksi)
+                .addContainerGap())
         );
         panelBawahTransaksiLayout.setVerticalGroup(
             panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 105, Short.MAX_VALUE)
+            .addGroup(panelBawahTransaksiLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tombolCheckoutTransaksi)
+                    .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(fieldIdBarangTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fieldInputQtyTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         panelAtasTransaksi.setBackground(new java.awt.Color(0, 204, 153));
+
+        labelTransaksiAtas.setText("Invoice:");
 
         javax.swing.GroupLayout panelAtasTransaksiLayout = new javax.swing.GroupLayout(panelAtasTransaksi);
         panelAtasTransaksi.setLayout(panelAtasTransaksiLayout);
         panelAtasTransaksiLayout.setHorizontalGroup(
             panelAtasTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1099, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasTransaksiLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelTransaksiAtas)
+                .addContainerGap())
         );
         panelAtasTransaksiLayout.setVerticalGroup(
             panelAtasTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 55, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasTransaksiLayout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(labelTransaksiAtas)
+                .addContainerGap())
         );
 
         panelTengahTransaksi.setBackground(new java.awt.Color(102, 0, 102));
@@ -711,16 +769,29 @@ public class GUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID Barang", "Nama Barang", "Quantity"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabelTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelTransaksiMouseClicked(evt);
+            }
+        });
         scrollPaneTransaksi.setViewportView(tabelTransaksi);
 
         javax.swing.GroupLayout panelTengahTransaksiLayout = new javax.swing.GroupLayout(panelTengahTransaksi);
         panelTengahTransaksi.setLayout(panelTengahTransaksiLayout);
         panelTengahTransaksiLayout.setHorizontalGroup(
             panelTengahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPaneTransaksi)
+            .addComponent(scrollPaneTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 939, Short.MAX_VALUE)
         );
         panelTengahTransaksiLayout.setVerticalGroup(
             panelTengahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -893,8 +964,8 @@ public class GUI extends javax.swing.JFrame {
         panelBawahSupplierLayout.setHorizontalGroup(
             panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBawahSupplierLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(fieldInputIDSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(197, Short.MAX_VALUE)
+                .addComponent(fieldInputIDSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(fieldInputNamaSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -1272,7 +1343,10 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+// </editor-fold> 
+// <editor-fold defaultstate="collapsed" desc=" Action Event ">
     // action event methods.
+
     private void tabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMouseClicked
         // Display selected row in text fields
         String comb = "Tidak";
@@ -1310,7 +1384,6 @@ public class GUI extends javax.swing.JFrame {
         textAreaKiri.setText(model.getValueAt(i, 1).toString() + "\n" + model.getValueAt(i, 2).toString() + "\n" + model.getValueAt(i, 3).toString() + " " + model.getValueAt(i, 4).toString());
         fieldInputSupplier.setText(MySQLconn.executeSingleQueryResult("SELECT supplier FROM `barang` WHERE barang.id_barang='" + (model.getValueAt(i, 0).toString()) + "'", "supplier"));
     }//GEN-LAST:event_tabelMouseClicked
-
     private void tombolTambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahMouseClicked
         String query = "INSERT INTO `barang`(`code`, `no`, `id_barang`, `jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `tgl_masuk`, `garansi`) VALUES('P',NULL,NULL,'" + fieldInputJenis.getText() + "','" + fieldInputMerk.getText() + "','" + fieldInputRagam.getText() + "','" + fieldInputSeri.getText() + "','" + fieldInputQty.getText() + "','" + fieldInputHarga_beli.getText() + "','" + fieldInputSupplier.getText() + "',CURRENT_TIMESTAMP,'" + comboBoxGaransi.getSelectedItem() + "')";
         execSQLQuery(query, "ditambahkan");
@@ -1318,7 +1391,6 @@ public class GUI extends javax.swing.JFrame {
         System.out.println(query);
         refreshTable();
     }//GEN-LAST:event_tombolTambahMouseClicked
-
     private void tombolUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahActionPerformed
 
         String query = "UPDATE `barang` SET `jenis`= '" + fieldInputJenis.getText() + "',`merk`='" + fieldInputMerk.getText() + "',`ragam`='" + fieldInputRagam.getText() + "',`seri`='" + fieldInputSeri.getText() + "',`qty`='" + fieldInputQty.getText() + "',`harga_beli`='" + fieldInputHarga_beli.getText() + "',`supplier`='" + fieldInputSupplier.getText() + "',`garansi`='" + (String) comboBoxGaransi.getSelectedItem() + "' WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
@@ -1329,7 +1401,6 @@ public class GUI extends javax.swing.JFrame {
         System.out.println(query);
         refreshTable();
     }//GEN-LAST:event_tombolUbahActionPerformed
-
     private void tombolHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusActionPerformed
 
         String query = "DELETE from `barang` WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
@@ -1337,397 +1408,375 @@ public class GUI extends javax.swing.JFrame {
         System.out.println(query);
         refreshTable();
     }//GEN-LAST:event_tombolHapusActionPerformed
-
     private void buttonRefreshDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBActionPerformed
 
         MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\"))");
         refreshTable();
         JOptionPane.showMessageDialog(null, "Data telah direfresh");
+        TableRowContentTransaksi.statusInvoiceAkhir();
+       // System.out.println(TableRowContentTransaksi.statusInvoiceAkhir());
     }//GEN-LAST:event_buttonRefreshDBActionPerformed
-
     private void fieldInputId_barangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputId_barangKeyTyped
         if (fieldInputId_barang.getText().length() > 10) {
             evt.consume();
         }
     }//GEN-LAST:event_fieldInputId_barangKeyTyped
-
     private void fieldInputJenisKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputJenisKeyTyped
         if (fieldInputJenis.getText().length() > 16) {
             evt.consume();
         }
     }//GEN-LAST:event_fieldInputJenisKeyTyped
-
     private void fieldInputMerkKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputMerkKeyTyped
         if (fieldInputMerk.getText().length() > 20) {
             evt.consume();
         }
     }//GEN-LAST:event_fieldInputMerkKeyTyped
-
     private void fieldInputRagamKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputRagamKeyTyped
         if (fieldInputRagam.getText().length() > 30) {
             evt.consume();
         }
     }//GEN-LAST:event_fieldInputRagamKeyTyped
-
     private void fieldInputSeriKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputSeriKeyTyped
         if (fieldInputSeri.getText().length() > 300) {
             evt.consume();
         }
     }//GEN-LAST:event_fieldInputSeriKeyTyped
-
     private void fieldInputQtyKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputQtyKeyTyped
         if (fieldInputQty.getText().length() > 11) {
             evt.consume();
         }
     }//GEN-LAST:event_fieldInputQtyKeyTyped
-
     private void fieldInputHarga_beliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputHarga_beliKeyTyped
         if (fieldInputHarga_beli.getText().length() > 15) {
             evt.consume();
         }
     }//GEN-LAST:event_fieldInputHarga_beliKeyTyped
-
     private void fieldInputSupplierKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputSupplierKeyTyped
         if (fieldInputSupplier.getText().length() > 3) {
             evt.consume();
         }
     }//GEN-LAST:event_fieldInputSupplierKeyTyped
-
     private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
         String query = searchField.getText();
         filterTable(query, comboBoxKolom.getSelectedIndex());
     }//GEN-LAST:event_searchFieldKeyReleased
-
     private void searchFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldMouseClicked
         if ("search...".equals(searchField.getText())) {
             searchField.setText("");
         }
     }//GEN-LAST:event_searchFieldMouseClicked
-
     private void searchFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusLost
         if ((searchField.getText()).equals("")) {
             searchField.setText("search...");
         }
     }//GEN-LAST:event_searchFieldFocusLost
-
     private void buttonRefreshDBTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBTransaksiActionPerformed
  
-        refreshTable();
+        refreshTableTransaksi();
         JOptionPane.showMessageDialog(null, "Data telah direfresh");
     }//GEN-LAST:event_buttonRefreshDBTransaksiActionPerformed
-
     private void buttonRefreshDBSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBSupplierActionPerformed
         
-        refreshTable();
+        refreshTableSupplier();
         JOptionPane.showMessageDialog(null, "Data telah direfresh");
     }//GEN-LAST:event_buttonRefreshDBSupplierActionPerformed
-
     private void tombolTambahSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahSupplierMouseClicked
 
     }//GEN-LAST:event_tombolTambahSupplierMouseClicked
-
     private void tombolHapusSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusSupplierActionPerformed
 
     }//GEN-LAST:event_tombolHapusSupplierActionPerformed
-
     private void searchFieldSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldSupplierFocusLost
 
     }//GEN-LAST:event_searchFieldSupplierFocusLost
-
     private void searchFieldSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldSupplierMouseClicked
 
     }//GEN-LAST:event_searchFieldSupplierMouseClicked
-
     private void searchFieldSupplierKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldSupplierKeyReleased
 
     }//GEN-LAST:event_searchFieldSupplierKeyReleased
-
     private void tombolUbahSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahSupplierActionPerformed
 
     }//GEN-LAST:event_tombolUbahSupplierActionPerformed
-
     private void buttonRefreshDBReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBReturActionPerformed
 
         refreshTable();
         JOptionPane.showMessageDialog(null, "Data telah direfresh");
     }//GEN-LAST:event_buttonRefreshDBReturActionPerformed
-
     private void tombolTambahReturMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahReturMouseClicked
 
     }//GEN-LAST:event_tombolTambahReturMouseClicked
-
     private void tombolHapusReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusReturActionPerformed
 
     }//GEN-LAST:event_tombolHapusReturActionPerformed
-
     private void searchFieldReturFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldReturFocusLost
 
     }//GEN-LAST:event_searchFieldReturFocusLost
-
     private void searchFieldReturMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldReturMouseClicked
 
     }//GEN-LAST:event_searchFieldReturMouseClicked
-
     private void searchFieldReturKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldReturKeyReleased
 
     }//GEN-LAST:event_searchFieldReturKeyReleased
-
     private void fieldInputId_barangFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputId_barangFocusGained
       if(fieldInputId_barang.getText().equals("ID")){
       fieldInputId_barang.setText("");
       }
     }//GEN-LAST:event_fieldInputId_barangFocusGained
-
     private void fieldInputId_barangFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputId_barangFocusLost
 
         if (fieldInputId_barang.getText().equals("")){
        fieldInputId_barang.setText("ID");
      }
     }//GEN-LAST:event_fieldInputId_barangFocusLost
-
     private void fieldInputJenisFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputJenisFocusGained
 
         if(fieldInputJenis.getText().equals("Jenis")){
       fieldInputJenis.setText("");
       }
     }//GEN-LAST:event_fieldInputJenisFocusGained
-
     private void fieldInputJenisFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputJenisFocusLost
 
         if (fieldInputJenis.getText().equals("")){
        fieldInputJenis.setText("Jenis");
      }
     }//GEN-LAST:event_fieldInputJenisFocusLost
-
     private void fieldInputMerkFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputMerkFocusGained
 
          if(fieldInputMerk.getText().equals("Merk")){
       fieldInputMerk.setText("");
       }
     }//GEN-LAST:event_fieldInputMerkFocusGained
-
     private void fieldInputMerkFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputMerkFocusLost
 
          if (fieldInputMerk.getText().equals("")){
        fieldInputMerk.setText("Merk");
      }
     }//GEN-LAST:event_fieldInputMerkFocusLost
-
     private void fieldInputRagamFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputRagamFocusGained
 
         if(fieldInputRagam.getText().equals("Ragam")){
       fieldInputRagam.setText("");
       }
     }//GEN-LAST:event_fieldInputRagamFocusGained
-
     private void fieldInputRagamFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputRagamFocusLost
 
         if (fieldInputRagam.getText().equals("")){
        fieldInputRagam.setText("Ragam");
      }
     }//GEN-LAST:event_fieldInputRagamFocusLost
-
     private void fieldInputSeriFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputSeriFocusGained
 
         if(fieldInputSeri.getText().equals("Seri")){
       fieldInputSeri.setText("");
       }
     }//GEN-LAST:event_fieldInputSeriFocusGained
-
     private void fieldInputSeriFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputSeriFocusLost
 
         if (fieldInputSeri.getText().equals("")){
        fieldInputSeri.setText("Seri");
      }
     }//GEN-LAST:event_fieldInputSeriFocusLost
-
     private void fieldInputQtyFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputQtyFocusGained
 
          if(fieldInputQty.getText().equals("Qty")){
       fieldInputQty.setText("");
       }
     }//GEN-LAST:event_fieldInputQtyFocusGained
-
     private void fieldInputQtyFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputQtyFocusLost
 
         if (fieldInputQty.getText().equals("")){
        fieldInputQty.setText("Qty");
      }
     }//GEN-LAST:event_fieldInputQtyFocusLost
-
     private void fieldInputHarga_beliFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputHarga_beliFocusGained
 
         if(fieldInputHarga_beli.getText().equals("Hrg Beli")){
       fieldInputHarga_beli.setText("");
       }
     }//GEN-LAST:event_fieldInputHarga_beliFocusGained
-
     private void fieldInputHarga_beliFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputHarga_beliFocusLost
 
         if (fieldInputHarga_beli.getText().equals("")){
        fieldInputHarga_beli.setText("Hrg Beli");
      }
     }//GEN-LAST:event_fieldInputHarga_beliFocusLost
-
     private void fieldInputSupplierFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputSupplierFocusGained
 
          if(fieldInputSupplier.getText().equals("Supplier")){
       fieldInputSupplier.setText("");
       }
     }//GEN-LAST:event_fieldInputSupplierFocusGained
-
     private void fieldInputSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputSupplierFocusLost
 
          if (fieldInputSupplier.getText().equals("")){
        fieldInputSupplier.setText("Supplier");
      }
     }//GEN-LAST:event_fieldInputSupplierFocusLost
-
     private void fieldInputTanggal_masukFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputTanggal_masukFocusGained
 
          if(fieldInputTanggal_masuk.getText().equals("Tanggal Masuk")){
       fieldInputTanggal_masuk.setText("");
       }
     }//GEN-LAST:event_fieldInputTanggal_masukFocusGained
-
     private void fieldInputTanggal_masukFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputTanggal_masukFocusLost
 
         if (fieldInputTanggal_masuk.getText().equals("")){
        fieldInputTanggal_masuk.setText("Tanggal Masuk");
      }
     }//GEN-LAST:event_fieldInputTanggal_masukFocusLost
-
     private void fieldInputIDSupplierFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputIDSupplierFocusGained
 
         if(fieldInputIDSupplier.getText().equals("ID")){
       fieldInputIDSupplier.setText("");
       }
     }//GEN-LAST:event_fieldInputIDSupplierFocusGained
-
     private void fieldInputIDSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputIDSupplierFocusLost
 
         if (fieldInputIDSupplier.getText().equals("")){
        fieldInputIDSupplier.setText("ID");
      }
     }//GEN-LAST:event_fieldInputIDSupplierFocusLost
-
     private void fieldInputNamaSupplierFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputNamaSupplierFocusGained
 
          if(fieldInputNamaSupplier.getText().equals("Nama")){
       fieldInputNamaSupplier.setText("");
       }
     }//GEN-LAST:event_fieldInputNamaSupplierFocusGained
-
     private void fieldInputNamaSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputNamaSupplierFocusLost
 
         if (fieldInputNamaSupplier.getText().equals("")){
        fieldInputNamaSupplier.setText("Nama");
      }
     }//GEN-LAST:event_fieldInputNamaSupplierFocusLost
-
     private void fieldInputAlamatSupplierFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputAlamatSupplierFocusGained
 
         if(fieldInputAlamatSupplier.getText().equals("Alamat")){
       fieldInputAlamatSupplier.setText("");
       }
     }//GEN-LAST:event_fieldInputAlamatSupplierFocusGained
-
     private void fieldInputAlamatSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputAlamatSupplierFocusLost
 
          if (fieldInputAlamatSupplier.getText().equals("")){
        fieldInputAlamatSupplier.setText("Alamat");
      }
     }//GEN-LAST:event_fieldInputAlamatSupplierFocusLost
-
     private void fieldInputTelponSupplierFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputTelponSupplierFocusGained
 
         if(fieldInputTelponSupplier.getText().equals("Telpon")){
       fieldInputTelponSupplier.setText("");
       }
     }//GEN-LAST:event_fieldInputTelponSupplierFocusGained
-
     private void fieldInputTelponSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputTelponSupplierFocusLost
 
          if (fieldInputTelponSupplier.getText().equals("")){
        fieldInputTelponSupplier.setText("Telpon");
      }
     }//GEN-LAST:event_fieldInputTelponSupplierFocusLost
-
     private void fieldInputEmailSupplierFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputEmailSupplierFocusGained
 
         if(fieldInputEmailSupplier.getText().equals("Email")){
       fieldInputEmailSupplier.setText("");
       }
     }//GEN-LAST:event_fieldInputEmailSupplierFocusGained
-
     private void fieldInputEmailSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputEmailSupplierFocusLost
 
          if (fieldInputEmailSupplier.getText().equals("")){
        fieldInputEmailSupplier.setText("Email");
      }
     }//GEN-LAST:event_fieldInputEmailSupplierFocusLost
-
     private void textAreaCatatanFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textAreaCatatanFocusGained
 
         if(textAreaCatatan.getText().equals("Catatan...")){
       textAreaCatatan.setText("");
       }
     }//GEN-LAST:event_textAreaCatatanFocusGained
-
     private void textAreaCatatanFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textAreaCatatanFocusLost
 
          if (textAreaCatatan.getText().equals("")){
        textAreaCatatan.setText("Catatan...");
      }
     }//GEN-LAST:event_textAreaCatatanFocusLost
-
     private void fieldInputIdBarangReturFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputIdBarangReturFocusGained
 
          if(fieldInputIdBarangRetur.getText().equals("ID")){
       fieldInputIdBarangRetur.setText("");
       }
     }//GEN-LAST:event_fieldInputIdBarangReturFocusGained
-
     private void fieldInputIdBarangReturFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputIdBarangReturFocusLost
 
         if (fieldInputIdBarangRetur.getText().equals("")){
        fieldInputIdBarangRetur.setText("ID");
      }
     }//GEN-LAST:event_fieldInputIdBarangReturFocusLost
-
     private void fieldInputNamaBarangReturFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputNamaBarangReturFocusGained
 
          if(fieldInputNamaBarangRetur.getText().equals("Nama")){
       fieldInputNamaBarangRetur.setText("");
       }
     }//GEN-LAST:event_fieldInputNamaBarangReturFocusGained
-
     private void fieldInputNamaBarangReturFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputNamaBarangReturFocusLost
 
         if (fieldInputNamaBarangRetur.getText().equals("")){
        fieldInputNamaBarangRetur.setText("Nama");
      }
     }//GEN-LAST:event_fieldInputNamaBarangReturFocusLost
-
     private void fieldInputJumlahBarangReturFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputJumlahBarangReturFocusGained
 
          if(fieldInputJumlahBarangRetur.getText().equals("Jumlah")){
       fieldInputJumlahBarangRetur.setText("");
       }
     }//GEN-LAST:event_fieldInputJumlahBarangReturFocusGained
-
     private void fieldInputJumlahBarangReturFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputJumlahBarangReturFocusLost
 
         if (fieldInputJumlahBarangRetur.getText().equals("")){
        fieldInputJumlahBarangRetur.setText("Jumlah");
      }
     }//GEN-LAST:event_fieldInputJumlahBarangReturFocusLost
-
     private void tabSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabSupplierMouseClicked
         // TODO add your handling code here:
         System.out.println("qwdqwd");
     }//GEN-LAST:event_tabSupplierMouseClicked
 
+    private void tombolAtcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolAtcActionPerformed
+        ArrayList<TableRowContentTransaksi> list = tableContentTransaksi();
+        String query= "null";
+        if ((statusInvoiceAkhir() == "empty") || (statusInvoiceAkhir() == "lunas")) {
+            TableRowContentTransaksi.tambahInvoice();
+            query = "INSERT INTO `3cahaya`.`transaksi_cart` (`id_inv`, `id_barang`, `qty`, `harga`, `keterangan`) VALUES ('" + statusInvoiceAkhir() + "', '" + fieldInputId_barang.getText() + "', '1', '" + fieldInputHarga_beli.getText() + "', '');";
+        } else {
+            boolean Duplicate = false;
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i).getIdBarang().equals(fieldInputId_barang.getText())) {
+                    query = "UPDATE `3cahaya`.`transaksi_cart` SET `qty` = `qty`+1 WHERE `transaksi_cart`.`id_barang` = '" + fieldInputId_barang.getText() + "' AND `transaksi_cart`.`id_inv` ='" + statusInvoiceAkhir() + "';";
+                    Duplicate = true;
+                }
+            }
+            if (!Duplicate) {
+                query = "INSERT INTO `3cahaya`.`transaksi_cart` (`id_inv`, `id_barang`, `qty`, `harga`, `keterangan`) VALUES ('" + statusInvoiceAkhir() + "', '" + fieldInputId_barang.getText() + "', '1', '" + fieldInputHarga_beli.getText() + "', '');";
+                Duplicate=false;
+            }
+        }
+        System.out.println(query);
+        MySQLconn.executeVoidQuery(query);
+        refreshTableTransaksi();
+        refreshTable();
+    }//GEN-LAST:event_tombolAtcActionPerformed
+
+    private void tabelTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelTransaksiMouseClicked
+       int i = tabelTransaksi.getSelectedRow();
+       TableModel model = tabelTransaksi.getModel();
+       i = tabelTransaksi.convertRowIndexToModel(i);
+       fieldIdBarangTransaksi.setText(model.getValueAt(i, 0).toString());
+       fieldIdBarangTransaksi.setCaretPosition(0);
+       fieldInputQtyTransaksi.setText(model.getValueAt(i, 2).toString());
+       
+    }//GEN-LAST:event_tabelTransaksiMouseClicked
+
+    private void fieldInputQtyTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldInputQtyTransaksiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldInputQtyTransaksiActionPerformed
+// </editor-fold>
     /**
      * by ijash
      */
@@ -1762,7 +1811,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
     }
-
+// <editor-fold defaultstate="collapsed" desc=" Variable Declaration ">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton buttonRefreshDB;
     private javax.swing.JToggleButton buttonRefreshDBRetur;
@@ -1772,6 +1821,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBoxKolom;
     private javax.swing.JComboBox<String> comboBoxKolomRetur;
     private javax.swing.JComboBox<String> comboBoxKolomSupplier;
+    private javax.swing.JTextField fieldIdBarangTransaksi;
     private javax.swing.JTextField fieldInputAlamatSupplier;
     private javax.swing.JTextField fieldInputEmailSupplier;
     private javax.swing.JTextField fieldInputHarga_beli;
@@ -1784,6 +1834,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField fieldInputNamaBarangRetur;
     private javax.swing.JTextField fieldInputNamaSupplier;
     private javax.swing.JTextField fieldInputQty;
+    private javax.swing.JTextField fieldInputQtyTransaksi;
     private javax.swing.JTextField fieldInputRagam;
     private javax.swing.JTextField fieldInputSeri;
     private javax.swing.JTextField fieldInputSupplier;
@@ -1800,6 +1851,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelKolom;
     private javax.swing.JLabel labelKolomRetur;
     private javax.swing.JLabel labelKolomSupplier;
+    private javax.swing.JLabel labelTransaksiAtas;
     private javax.swing.JPanel panelAtas;
     private javax.swing.JPanel panelAtasRetur;
     private javax.swing.JPanel panelAtasSupplier;
@@ -1838,6 +1890,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea textAreaKiriSupplier;
     private javax.swing.JTextArea textAreaKiriTransaksi;
     private javax.swing.JButton tombolAtc;
+    private javax.swing.JButton tombolCheckoutTransaksi;
     private javax.swing.JButton tombolHapus;
     private javax.swing.JButton tombolHapusRetur;
     private javax.swing.JButton tombolHapusSupplier;
@@ -1847,4 +1900,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton tombolUbah;
     private javax.swing.JButton tombolUbahSupplier;
     // End of variables declaration//GEN-END:variables
+// </editor-fold>
+
 }

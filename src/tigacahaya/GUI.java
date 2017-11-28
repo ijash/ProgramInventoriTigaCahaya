@@ -1749,17 +1749,17 @@ public class GUI extends javax.swing.JFrame {
         String query = "null";
         if (("empty".equals(statusInvoiceAkhir())) || ("paid".equals(statusInvoiceAkhir()))) {
             TableRowContentTransaksi.tambahInvoice();
-            query = "INSERT INTO `3cahaya`.`transaksi_cart` (`id_inv`, `id_barang`, `qty`, `harga`, `keterangan`) VALUES ('" + statusInvoiceAkhir() + "', '" + fieldInputId_barang.getText() + "', '1', '" + fieldInputHarga_beli.getText() + "', '');";
+            query = "INSERT INTO `transaksi_cart` (`id_inv`, `id_barang`, `qty`, `harga`, `keterangan`) VALUES ('" + statusInvoiceAkhir() + "', '" + fieldInputId_barang.getText() + "', '1', '" + fieldInputHarga_beli.getText() + "', '');";
         } else {
             boolean Duplicate = false;
             for (int i = 0; i < list.size(); i++) {
                 if (list.get(i).getIdBarang().equals(fieldInputId_barang.getText())) {
-                    query = "UPDATE `3cahaya`.`transaksi_cart` SET `qty` = `qty`+1 WHERE `transaksi_cart`.`id_barang` = '" + fieldInputId_barang.getText() + "' AND `transaksi_cart`.`id_inv` ='" + statusInvoiceAkhir() + "';";
+                    query = "UPDATE `transaksi_cart` SET `qty` = `qty`+1 WHERE `transaksi_cart`.`id_barang` = '" + fieldInputId_barang.getText() + "' AND `transaksi_cart`.`id_inv` ='" + statusInvoiceAkhir() + "';";
                     Duplicate = true;
                 }
             }
             if (!Duplicate) {
-                query = "INSERT INTO `3cahaya`.`transaksi_cart` (`id_inv`, `id_barang`, `qty`, `harga`, `keterangan`) VALUES ('" + statusInvoiceAkhir() + "', '" + fieldInputId_barang.getText() + "', '1', '" + fieldInputHarga_beli.getText() + "', '');";
+                query = "INSERT INTO `transaksi_cart` (`id_inv`, `id_barang`, `qty`, `harga`, `keterangan`) VALUES ('" + statusInvoiceAkhir() + "', '" + fieldInputId_barang.getText() + "', '1', '" + fieldInputHarga_beli.getText() + "', '');";
                 Duplicate = false;
             }
         }
@@ -1799,7 +1799,7 @@ public class GUI extends javax.swing.JFrame {
            idBarangCol = model.getValueAt(i, 0).toString();
            MySQLconn.executeVoidQuery("UPDATE `barang` SET `barang`.`qty` = `barang`.`qty`-'"+qtyCol+"' WHERE  `barang`.`id_barang`= '"+idBarangCol+"'");
         }
-  String query = "UPDATE `3cahaya`.`transaksi_invoice` SET `lunas` = b'1' WHERE `transaksi_invoice`.`id_inv` = '" + statusInvoiceAkhir() + "';";
+  String query = "UPDATE `transaksi_invoice` SET `lunas` = b'1' WHERE `transaksi_invoice`.`id_inv` = '" + statusInvoiceAkhir() + "';";
        MySQLconn.executeVoidQuery(query);
 TableRowContentTransaksi.tambahInvoice();
         
@@ -1820,7 +1820,10 @@ TableRowContentTransaksi.tambahInvoice();
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                System.out.println(info.getName());
                 if ("Nimbus".equals(info.getName())) {
+                    
+                   // javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

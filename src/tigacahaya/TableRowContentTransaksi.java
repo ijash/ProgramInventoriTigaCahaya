@@ -107,7 +107,7 @@ public class TableRowContentTransaksi {
     }
     public static void tambahInvoice(){
         if ((statusInvoiceAkhir()=="empty")||(statusInvoiceAkhir()=="paid")){
-        MySQLconn.executeVoidQuery("INSERT INTO `3cahaya`.`transaksi_invoice` (`prefix_inv`) VALUES ('TC')");
+        MySQLconn.executeVoidQuery("INSERT INTO `transaksi_invoice` (`prefix_inv`) VALUES ('TC')");
         MySQLconn.executeVoidQuery("UPDATE transaksi_invoice SET `id_inv` = concat( `prefix_inv`,LPAD(transaksi_invoice.no_inv, 8,\"0\") );");
     }}
 

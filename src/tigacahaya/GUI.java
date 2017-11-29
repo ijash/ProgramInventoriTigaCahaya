@@ -278,14 +278,14 @@ public class GUI extends javax.swing.JFrame {
         fieldInputEmailSupplier = new javax.swing.JTextField();
         fieldInputTelponSupplier = new javax.swing.JTextField();
         fieldInputAlamatSupplier = new javax.swing.JTextField();
-        fieldInputNamaSupplier = new javax.swing.JTextField();
         fieldInputIDSupplier = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        fieldInputNamaSupplier = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         panelAtasSupplier = new javax.swing.JPanel();
         searchFieldSupplier = new javax.swing.JTextField();
         comboBoxKolomSupplier = new javax.swing.JComboBox<>();
@@ -358,14 +358,14 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(labelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textAreaKiri, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textAreaKiri, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonRefreshDB)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         panelBawah.setBackground(new java.awt.Color(0, 153, 153));
-        panelBawah.setPreferredSize(new java.awt.Dimension(285, 136));
+        panelBawah.setPreferredSize(new java.awt.Dimension(285, 126));
 
         fieldInputId_barang.setText("ID");
         fieldInputId_barang.setToolTipText("ID Barang");
@@ -660,7 +660,7 @@ public class GUI extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(tombolAtc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         panelAtas.setBackground(new java.awt.Color(0, 204, 153));
@@ -767,7 +767,7 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelTengah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(panelAtas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelBawah, javax.swing.GroupLayout.DEFAULT_SIZE, 943, Short.MAX_VALUE)
+            .addComponent(panelBawah, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
         );
         tabStokLayout.setVerticalGroup(
             tabStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -775,10 +775,10 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(panelAtas, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tabStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelTengah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelKiri, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE))
+                    .addComponent(panelKiri, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                    .addComponent(panelTengah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelBawah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelBawah, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         panelUtama.addTab("Stok", tabStok);
@@ -820,13 +820,14 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(labelInfoTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textAreaKiriTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textAreaKiriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonRefreshDBTransaksi)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         panelBawahTransaksi.setBackground(new java.awt.Color(0, 153, 153));
+        panelBawahTransaksi.setPreferredSize(new java.awt.Dimension(285, 126));
 
         fieldIdBarangTransaksi.setText("ID Barang");
 
@@ -864,11 +865,11 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahTransaksiLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelTransaksiQty, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelTransaksiIdBarang, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelBawahTransaksiLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahTransaksiLayout.createSequentialGroup()
+                        .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelTransaksiQty, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelTransaksiIdBarang, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(fieldInputQtyTransaksi)
                             .addComponent(fieldIdBarangTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -893,7 +894,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabelTransaksiQty)
                     .addComponent(buttonUbahQtyTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tombolCheckoutTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                .addComponent(tombolCheckoutTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -917,6 +918,8 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(labelTransaksiAtas)
                 .addContainerGap())
         );
+
+        panelTengahTransaksi.setBackground(new java.awt.Color(102, 0, 102));
 
         tabelTransaksi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -945,7 +948,7 @@ public class GUI extends javax.swing.JFrame {
         panelTengahTransaksi.setLayout(panelTengahTransaksiLayout);
         panelTengahTransaksiLayout.setHorizontalGroup(
             panelTengahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPaneTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 783, Short.MAX_VALUE)
+            .addComponent(scrollPaneTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
         );
         panelTengahTransaksiLayout.setVerticalGroup(
             panelTengahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -961,7 +964,7 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelTengahTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(panelAtasTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelBawahTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelBawahTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
         );
         tabTransLayout.setVerticalGroup(
             tabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -969,10 +972,10 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(panelAtasTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelKiriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                    .addComponent(panelKiriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
                     .addComponent(panelTengahTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelBawahTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelBawahTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         panelUtama.addTab("Transaksi", tabTrans);
@@ -1019,14 +1022,14 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(labelInfoSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textAreaKiriSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textAreaKiriSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonRefreshDBSupplier)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         panelBawahSupplier.setBackground(new java.awt.Color(0, 153, 153));
-        panelBawahSupplier.setPreferredSize(new java.awt.Dimension(285, 136));
+        panelBawahSupplier.setPreferredSize(new java.awt.Dimension(285, 126));
 
         tombolUbahSupplier.setText("Ubah");
         tombolUbahSupplier.setToolTipText("Edit atau ubah barang sesuai dengan masukan yang ada.");
@@ -1098,16 +1101,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        fieldInputNamaSupplier.setText("Nama");
-        fieldInputNamaSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputNamaSupplierFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldInputNamaSupplierFocusLost(evt);
-            }
-        });
-
         fieldInputIDSupplier.setText("ID");
         fieldInputIDSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -1117,8 +1110,6 @@ public class GUI extends javax.swing.JFrame {
                 fieldInputIDSupplierFocusLost(evt);
             }
         });
-
-        jLabel4.setText("Nama");
 
         jLabel5.setText("Alamat");
 
@@ -1130,49 +1121,67 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel9.setText("Catatan");
 
+        fieldInputNamaSupplier.setText("Nama");
+        fieldInputNamaSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputNamaSupplierFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputNamaSupplierFocusLost(evt);
+            }
+        });
+
+        jLabel4.setText("Nama");
+
         javax.swing.GroupLayout panelBawahSupplierLayout = new javax.swing.GroupLayout(panelBawahSupplier);
         panelBawahSupplier.setLayout(panelBawahSupplierLayout);
         panelBawahSupplierLayout.setHorizontalGroup(
             panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBawahSupplierLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(174, Short.MAX_VALUE)
                 .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(fieldInputIDSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                    .addComponent(fieldInputAlamatSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                    .addComponent(fieldInputTelponSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                    .addComponent(fieldInputNamaSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(panelBawahSupplierLayout.createSequentialGroup()
-                        .addComponent(fieldInputEmailSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahSupplierLayout.createSequentialGroup()
+                        .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahSupplierLayout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fieldInputNamaSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tombolUbahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelBawahSupplierLayout.createSequentialGroup()
-                        .addComponent(jScrollPaneSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(fieldInputAlamatSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                            .addComponent(fieldInputTelponSupplier)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahSupplierLayout.createSequentialGroup()
+                        .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tombolTambahSupplier, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                            .addComponent(tombolHapusSupplier, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(fieldInputIDSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldInputEmailSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPaneSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tombolUbahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolTambahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolHapusSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         panelBawahSupplierLayout.setVerticalGroup(
             panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBawahSupplierLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelBawahSupplierLayout.createSequentialGroup()
+                .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPaneSupplier, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelBawahSupplierLayout.createSequentialGroup()
                         .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tombolUbahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9)
                             .addComponent(fieldInputEmailSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
                             .addComponent(fieldInputIDSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1185,21 +1194,15 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(tombolHapusSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelBawahSupplierLayout.createSequentialGroup()
                                 .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(fieldInputNamaSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(fieldInputAlamatSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5))
+                                    .addComponent(jLabel5)
+                                    .addComponent(fieldInputNamaSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(fieldInputTelponSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6)))))
-                    .addGroup(panelBawahSupplierLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jScrollPaneSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                                    .addComponent(jLabel6))))))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         panelAtasSupplier.setBackground(new java.awt.Color(0, 204, 153));
@@ -1276,13 +1279,18 @@ public class GUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabelSupplier.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelSupplierMouseClicked(evt);
+            }
+        });
         scrollPaneSupplier.setViewportView(tabelSupplier);
 
         javax.swing.GroupLayout panelTengahSupplierLayout = new javax.swing.GroupLayout(panelTengahSupplier);
         panelTengahSupplier.setLayout(panelTengahSupplierLayout);
         panelTengahSupplierLayout.setHorizontalGroup(
             panelTengahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPaneSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 783, Short.MAX_VALUE)
+            .addComponent(scrollPaneSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelTengahSupplierLayout.setVerticalGroup(
             panelTengahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1298,7 +1306,7 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelTengahSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(panelAtasSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelBawahSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 943, Short.MAX_VALUE)
+            .addComponent(panelBawahSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
         );
         tabSupplierLayout.setVerticalGroup(
             tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1306,10 +1314,10 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(panelAtasSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelTengahSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelKiriSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE))
+                    .addComponent(panelKiriSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                    .addComponent(panelTengahSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelBawahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelBawahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         panelUtama.addTab("Supplier", tabSupplier);
@@ -1351,13 +1359,14 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(labelInfoRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textAreaKiriRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textAreaKiriRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonRefreshDBRetur)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         panelBawahRetur.setBackground(new java.awt.Color(0, 153, 153));
+        panelBawahRetur.setPreferredSize(new java.awt.Dimension(285, 126));
 
         tombolTambahRetur.setText("Tambah");
         tombolTambahRetur.setToolTipText("Tambah barang sesuai dengan masukan yang ada.");
@@ -1417,21 +1426,16 @@ public class GUI extends javax.swing.JFrame {
         panelBawahReturLayout.setHorizontalGroup(
             panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahReturLayout.createSequentialGroup()
-                .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelBawahReturLayout.createSequentialGroup()
-                        .addGap(580, 580, 580)
-                        .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(37, 37, 37))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahReturLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(fieldInputIdRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                    .addComponent(fieldInputJumlahBarangRetur, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fieldInputIdBarangRetur))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(fieldInputIdRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldInputJumlahBarangRetur, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldInputIdBarangRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tombolTambahRetur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1459,7 +1463,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(tombolTambahRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tombolHapusRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         panelAtasRetur.setBackground(new java.awt.Color(0, 204, 153));
@@ -1551,7 +1555,7 @@ public class GUI extends javax.swing.JFrame {
         panelTengahRetur.setLayout(panelTengahReturLayout);
         panelTengahReturLayout.setHorizontalGroup(
             panelTengahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPaneRetur)
+            .addComponent(scrollPaneRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
         );
         panelTengahReturLayout.setVerticalGroup(
             panelTengahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1567,7 +1571,7 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelTengahRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(panelAtasRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelBawahRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelBawahRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
         );
         tabReturLayout.setVerticalGroup(
             tabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1575,10 +1579,10 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(panelAtasRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelTengahRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelKiriRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
+                    .addComponent(panelKiriRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                    .addComponent(panelTengahRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelBawahRetur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelBawahRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         panelUtama.addTab("Retur", tabRetur);
@@ -1742,8 +1746,8 @@ if (regexIdBarang(fieldInputId_barang.getText())){
         JOptionPane.showMessageDialog(null, "Data telah direfresh");
     }//GEN-LAST:event_buttonRefreshDBSupplierActionPerformed
     private void tombolTambahSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahSupplierMouseClicked
-        if (fieldInputEmailSupplier.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
-            if (fieldInputTelponSupplier.getText().matches("\\d+")) {
+        if (fieldInputEmailSupplier.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")|| fieldInputEmailSupplier.getText().equals("")) {
+            if (fieldInputTelponSupplier.getText().matches("\\d+")|| fieldInputTelponSupplier.getText().equals("")) {
 
                 String query = "INSERT INTO `supplier`(`nama`, `alamat`, `telp`, `email`, `catatan`) VALUES ('" + fieldInputNamaSupplier.getText() + "','" + fieldInputAlamatSupplier.getText() + "','" + fieldInputTelponSupplier.getText() + "','" + fieldInputEmailSupplier.getText() + "','" + textAreaCatatan.getText() + "')";
                 execSQLQuery(query, "ditambahkan");
@@ -1778,8 +1782,8 @@ if (regexIdBarang(fieldInputId_barang.getText())){
     }//GEN-LAST:event_searchFieldSupplierKeyReleased
     private void tombolUbahSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahSupplierActionPerformed
         if (fieldInputIDSupplier.getText().matches("\\d+")) {
-            if (fieldInputEmailSupplier.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
-                if (fieldInputTelponSupplier.getText().matches("\\d+")) {
+            if (fieldInputEmailSupplier.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")|| fieldInputEmailSupplier.getText().equals("")) {
+                if (fieldInputTelponSupplier.getText().matches("\\d+")|| fieldInputTelponSupplier.getText().equals("")) {
                     String query = "UPDATE `supplier` SET `nama`= '" + fieldInputNamaSupplier.getText() + "',`alamat`='" + fieldInputAlamatSupplier.getText() + "',`telp`='" + fieldInputTelponSupplier.getText() + "',`email`='" + fieldInputEmailSupplier.getText() + "',`catatan`='" + textAreaCatatan.getText() + "' WHERE `id_supplier`='" + fieldInputIDSupplier.getText() + "';";
 
                     execSQLQuery(query, "diubah");
@@ -2157,6 +2161,18 @@ if (regexIdBarang(fieldInputId_barang.getText())){
             }
         }
     }//GEN-LAST:event_buttonUbahQtyTransaksiActionPerformed
+
+    private void tabelSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelSupplierMouseClicked
+        // Menampilkan row yang dipilih di table ke text field
+        int i = tabelSupplier.getSelectedRow();
+        TableModel model = tabelSupplier.getModel();
+        fieldInputIDSupplier.setText(model.getValueAt(i,0).toString());
+        fieldInputNamaSupplier.setText(model.getValueAt(i,1).toString());
+        fieldInputAlamatSupplier.setText(model.getValueAt(i,2).toString());
+        fieldInputTelponSupplier.setText(model.getValueAt(i,3).toString());
+        fieldInputEmailSupplier.setText(model.getValueAt(i,4).toString());
+        textAreaCatatan.setText(model.getValueAt(i,5).toString());
+    }//GEN-LAST:event_tabelSupplierMouseClicked
 
 // </editor-fold>
     /**

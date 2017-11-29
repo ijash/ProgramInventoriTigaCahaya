@@ -59,13 +59,13 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="panelBawah" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="panelKiri" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="panelTengah" max="32767" attributes="0"/>
                   </Group>
                   <Component id="panelAtas" max="32767" attributes="0"/>
+                  <Component id="panelBawah" alignment="0" pref="943" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -75,9 +75,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="panelTengah" max="32767" attributes="0"/>
-                          <Component id="panelKiri" max="32767" attributes="0"/>
+                          <Component id="panelKiri" pref="285" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="panelBawah" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -88,6 +88,9 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="cc" red="ff" type="rgb"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[154, 250]"/>
                 </Property>
               </Properties>
 
@@ -112,9 +115,9 @@
                           <Component id="labelInfo" min="-2" pref="21" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="textAreaKiri" min="-2" pref="170" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="buttonRefreshDB" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="45" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -148,43 +151,79 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="0" type="rgb"/>
                 </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[285, 136]"/>
+                </Property>
               </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace pref="21" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="fieldInputJenis" max="32767" attributes="0"/>
+                              <Component id="jLabelBarangJenis" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelBarangIdBarang" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="fieldInputId_barang" min="-2" pref="125" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabelBarangMerk" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="fieldInputQty" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
+                                              <Component id="jLabelBarangQty" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="fieldInputHarga_beli" max="32767" attributes="0"/>
+                                              <Component id="jLabelBarangHargaBeli" min="-2" pref="80" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="fieldInputSupplier" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="jLabelBarangSupplier" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelBarangRagam" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabelBarangSeri" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabelBarangTanggal" min="-2" max="-2" attributes="0"/>
+                                              <Component id="fieldInputTanggal_masuk" min="-2" pref="144" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                                  <Component id="jLabelBarangGaransi" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="comboBoxGaransi" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="fieldInputMerk" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="fieldInputRagam" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="fieldInputSeri" min="-2" pref="260" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="tombolAtc" min="-2" pref="110" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="fieldInputId_barang" min="-2" pref="78" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="fieldInputJenis" min="-2" pref="73" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="fieldInputMerk" min="-2" pref="86" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="fieldInputRagam" min="-2" pref="86" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="fieldInputSeri" min="-2" pref="153" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="fieldInputQty" min="-2" pref="42" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="fieldInputHarga_beli" min="-2" pref="75" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="fieldInputSupplier" min="-2" pref="92" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="fieldInputTanggal_masuk" min="-2" pref="134" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="comboBoxGaransi" min="-2" pref="107" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="tombolUbah" min="-2" pref="86" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="tombolAtc" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="tombolHapus" min="-2" pref="86" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="tombolTambah" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
+                              <Component id="tombolUbah" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                              <Component id="tombolHapus" min="-2" pref="110" max="-2" attributes="0"/>
+                              <Component id="tombolTambah" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -192,29 +231,54 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="fieldInputId_barang" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldInputJenis" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldInputMerk" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldInputRagam" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldInputSeri" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldInputQty" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldInputHarga_beli" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldInputSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldInputTanggal_masuk" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="comboBoxGaransi" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tombolUbah" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabelBarangIdBarang" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelBarangQty" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelBarangHargaBeli" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelBarangSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelBarangTanggal" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelBarangGaransi" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="fieldInputId_barang" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="fieldInputSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="fieldInputQty" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="fieldInputHarga_beli" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="fieldInputTanggal_masuk" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="comboBoxGaransi" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabelBarangJenis" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelBarangMerk" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelBarangRagam" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelBarangSeri" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="fieldInputMerk" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="fieldInputRagam" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="fieldInputSeri" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="fieldInputJenis" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="tombolUbah" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="tombolTambah" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="tombolHapus" min="-2" pref="24" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="tombolAtc" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="tombolTambah" min="-2" pref="25" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tombolAtc" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="tombolHapus" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="12" max="32767" attributes="0"/>
+                          <EmptySpace pref="34" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -226,8 +290,8 @@
                     <Property name="toolTipText" type="java.lang.String" value="ID Barang"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputId_barangFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputId_barangFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputId_barangFocusLost"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputId_barangKeyTyped"/>
                   </Events>
                 </Component>
@@ -237,8 +301,8 @@
                     <Property name="toolTipText" type="java.lang.String" value="Jenis atau tipe barang"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputJenisFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputJenisFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputJenisFocusLost"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputJenisKeyTyped"/>
                   </Events>
                 </Component>
@@ -248,8 +312,8 @@
                     <Property name="toolTipText" type="java.lang.String" value="Merk barang"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputMerkFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputMerkFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputMerkFocusLost"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputMerkKeyTyped"/>
                   </Events>
                 </Component>
@@ -259,8 +323,8 @@
                     <Property name="toolTipText" type="java.lang.String" value="Ragam atau sub-kategori barang"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputRagamFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputRagamFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputRagamFocusLost"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputRagamKeyTyped"/>
                   </Events>
                 </Component>
@@ -270,8 +334,8 @@
                     <Property name="toolTipText" type="java.lang.String" value="Keterangan lengkap dari ragam yang ada"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputSeriFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputSeriFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputSeriFocusLost"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputSeriKeyTyped"/>
                   </Events>
                 </Component>
@@ -281,8 +345,8 @@
                     <Property name="toolTipText" type="java.lang.String" value="Banyaknya barang"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputQtyFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputQtyFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputQtyFocusLost"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputQtyKeyTyped"/>
                   </Events>
                 </Component>
@@ -292,8 +356,8 @@
                     <Property name="toolTipText" type="java.lang.String" value="Harga modal awal"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputHarga_beliFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputHarga_beliFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputHarga_beliFocusLost"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputHarga_beliKeyTyped"/>
                   </Events>
                 </Component>
@@ -303,8 +367,8 @@
                     <Property name="toolTipText" type="java.lang.String" value="Pemasok, distributor atau sumber barang, kode bisa dilihat di tab supplier"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputSupplierFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputSupplierFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputSupplierFocusLost"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputSupplierKeyTyped"/>
                   </Events>
                 </Component>
@@ -314,8 +378,8 @@
                     <Property name="toolTipText" type="java.lang.String" value="Otomatis sesuai penginputan barang (tidak perlu diatur/ubah)"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputTanggal_masukFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputTanggal_masukFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputTanggal_masukFocusLost"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="comboBoxGaransi">
@@ -365,11 +429,62 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="tombolAtc">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="add to cart"/>
+                    <Property name="text" type="java.lang.String" value="add to&#xa;cart"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolAtcActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabelBarangIdBarang">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="ID Barang"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabelBarangJenis">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Jenis"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabelBarangMerk">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Merk"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabelBarangQty">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Qty"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabelBarangHargaBeli">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Harga Beli"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabelBarangSupplier">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Supplier"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabelBarangTanggal">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Tanggal Masuk"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabelBarangGaransi">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Garansi"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabelBarangRagam">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ragam"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabelBarangSeri">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Seri"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -577,6 +692,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="tabTrans">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="cc" red="33" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Transaksi">
@@ -588,13 +708,13 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="panelBawahTransaksi" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="panelKiri1" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelKiriTransaksi" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="panelTengahTransaksi" max="32767" attributes="0"/>
                   </Group>
                   <Component id="panelAtasTransaksi" alignment="0" max="32767" attributes="0"/>
+                  <Component id="panelBawahTransaksi" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -603,20 +723,23 @@
                       <Component id="panelAtasTransaksi" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="panelTengahTransaksi" alignment="0" max="32767" attributes="0"/>
-                          <Component id="panelKiri1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="panelKiriTransaksi" pref="296" max="32767" attributes="0"/>
+                          <Component id="panelTengahTransaksi" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="panelBawahTransaksi" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="panelKiri1">
+            <Container class="javax.swing.JPanel" name="panelKiriTransaksi">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="cc" red="ff" type="rgb"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[154, 250]"/>
                 </Property>
               </Properties>
 
@@ -641,9 +764,9 @@
                           <Component id="labelInfoTransaksi" min="-2" pref="21" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="textAreaKiriTransaksi" min="-2" pref="170" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="buttonRefreshDBTransaksi" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="56" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -682,13 +805,27 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="fieldIdBarangTransaksi" min="-2" pref="132" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabelTransaksiQty" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelTransaksiIdBarang" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="fieldInputQtyTransaksi" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="tombolCheckoutTransaksi" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="fieldInputQtyTransaksi" max="32767" attributes="0"/>
+                                      <Component id="fieldIdBarangTransaksi" min="-2" pref="140" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="buttonTransaksiHapus" min="-2" pref="110" max="-2" attributes="0"/>
+                                      <Component id="buttonUbahQtyTransaksi" min="-2" pref="110" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="tombolCheckoutTransaksi" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -697,14 +834,20 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="fieldIdBarangTransaksi" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="fieldInputQtyTransaksi" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="tombolCheckoutTransaksi" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="fieldIdBarangTransaksi" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelTransaksiIdBarang" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="buttonTransaksiHapus" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="68" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="fieldInputQtyTransaksi" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelTransaksiQty" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="buttonUbahQtyTransaksi" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="tombolCheckoutTransaksi" pref="54" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -717,11 +860,8 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputQtyTransaksi">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="qty"/>
+                    <Property name="text" type="java.lang.String" value="Qty"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldInputQtyTransaksiActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="tombolCheckoutTransaksi">
                   <Properties>
@@ -729,6 +869,32 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolCheckoutTransaksiActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabelTransaksiIdBarang">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="ID Barang"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabelTransaksiQty">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Quantity"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="buttonTransaksiHapus">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Hapus"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonTransaksiHapusActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="buttonUbahQtyTransaksi">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ubah qty"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonUbahQtyTransaksiActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -769,16 +935,11 @@
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="panelTengahTransaksi">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="66" green="0" red="66" type="rgb"/>
-                </Property>
-              </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="scrollPaneTransaksi" alignment="0" pref="939" max="32767" attributes="0"/>
+                      <Component id="scrollPaneTransaksi" alignment="0" pref="783" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -838,6 +999,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="tabSupplier">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="cc" red="33" type="rgb"/>
+            </Property>
+          </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabSupplierMouseClicked"/>
           </Events>
@@ -852,13 +1018,13 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="panelBawahSupplier" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="panelKiriSupplier" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="panelTengahSupplier" max="32767" attributes="0"/>
                   </Group>
                   <Component id="panelAtasSupplier" alignment="0" max="32767" attributes="0"/>
+                  <Component id="panelBawahSupplier" alignment="0" pref="943" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -867,10 +1033,10 @@
                       <Component id="panelAtasSupplier" min="-2" pref="55" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="panelTengahSupplier" alignment="0" max="32767" attributes="0"/>
-                          <Component id="panelKiriSupplier" alignment="0" max="32767" attributes="0"/>
+                          <Component id="panelTengahSupplier" max="32767" attributes="0"/>
+                          <Component id="panelKiriSupplier" pref="285" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="panelBawahSupplier" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -881,6 +1047,9 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="cc" red="ff" type="rgb"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[154, 250]"/>
                 </Property>
               </Properties>
 
@@ -905,9 +1074,9 @@
                           <Component id="labelInfoSupplier" min="-2" pref="21" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="textAreaKiriSupplier" min="-2" pref="170" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="buttonRefreshDBSupplier" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="45" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -941,30 +1110,48 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="0" type="rgb"/>
                 </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[285, 136]"/>
+                </Property>
               </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="197" max="32767" attributes="0"/>
-                          <Component id="fieldInputIDSupplier" min="-2" pref="46" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="fieldInputNamaSupplier" min="-2" pref="107" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="fieldInputAlamatSupplier" min="-2" pref="107" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="fieldInputTelponSupplier" min="-2" pref="100" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="fieldInputEmailSupplier" min="-2" pref="119" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jScrollPaneSupplier" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tombolUbahSupplier" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
-                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="tombolTambahSupplier" alignment="1" pref="86" max="32767" attributes="0"/>
-                                  <Component id="tombolHapusSupplier" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="fieldInputIDSupplier" pref="160" max="32767" attributes="0"/>
+                              <Component id="fieldInputAlamatSupplier" alignment="1" pref="160" max="32767" attributes="0"/>
+                              <Component id="fieldInputTelponSupplier" alignment="1" pref="160" max="32767" attributes="0"/>
+                              <Component id="fieldInputNamaSupplier" pref="160" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel9" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="fieldInputEmailSupplier" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="tombolUbahSupplier" min="-2" pref="86" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jScrollPaneSupplier" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="tombolTambahSupplier" alignment="1" pref="86" max="32767" attributes="0"/>
+                                      <Component id="tombolHapusSupplier" alignment="1" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -973,26 +1160,49 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="fieldInputEmailSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="fieldInputTelponSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="fieldInputAlamatSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="fieldInputNamaSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="fieldInputIDSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jScrollPaneSupplier" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="tombolUbahSupplier" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="tombolUbahSupplier" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="fieldInputEmailSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="fieldInputIDSupplier" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="tombolTambahSupplier" min="-2" pref="25" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="tombolHapusSupplier" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="tombolTambahSupplier" min="-2" pref="25" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="tombolHapusSupplier" min="-2" pref="25" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="fieldInputNamaSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="fieldInputAlamatSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="fieldInputTelponSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Component id="jScrollPaneSupplier" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="12" max="32767" attributes="0"/>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1038,12 +1248,14 @@
                     <Component class="javax.swing.JTextArea" name="textAreaCatatan">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
+                        <Property name="lineWrap" type="boolean" value="true"/>
                         <Property name="rows" type="int" value="5"/>
                         <Property name="text" type="java.lang.String" value="Catatan..."/>
+                        <Property name="wrapStyleWord" type="boolean" value="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textAreaCatatanFocusLost"/>
                         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textAreaCatatanFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textAreaCatatanFocusLost"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -1053,8 +1265,8 @@
                     <Property name="text" type="java.lang.String" value="Email"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputEmailSupplierFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputEmailSupplierFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputEmailSupplierFocusLost"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputTelponSupplier">
@@ -1062,8 +1274,8 @@
                     <Property name="text" type="java.lang.String" value="Telpon"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputTelponSupplierFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputTelponSupplierFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputTelponSupplierFocusLost"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputAlamatSupplier">
@@ -1071,8 +1283,8 @@
                     <Property name="text" type="java.lang.String" value="Alamat"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputAlamatSupplierFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputAlamatSupplierFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputAlamatSupplierFocusLost"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputNamaSupplier">
@@ -1080,8 +1292,8 @@
                     <Property name="text" type="java.lang.String" value="Nama"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputNamaSupplierFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputNamaSupplierFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputNamaSupplierFocusLost"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputIDSupplier">
@@ -1089,9 +1301,39 @@
                     <Property name="text" type="java.lang.String" value="ID"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputIDSupplierFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputIDSupplierFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputIDSupplierFocusLost"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel4">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nama"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel5">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Alamat"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel6">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Telpon"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel7">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="E-Mail"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel8">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="ID Supplier"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel9">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Catatan"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -1152,18 +1394,14 @@
                 <Component class="javax.swing.JComboBox" name="comboBoxKolomSupplier">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="11">
+                      <StringArray count="7">
                         <StringItem index="0" value="All Coloumn"/>
-                        <StringItem index="1" value="ID Barang"/>
-                        <StringItem index="2" value="Jenis"/>
-                        <StringItem index="3" value="Merk"/>
-                        <StringItem index="4" value="Ragam"/>
-                        <StringItem index="5" value="Seri"/>
-                        <StringItem index="6" value="Qty"/>
-                        <StringItem index="7" value="Harga Beli"/>
-                        <StringItem index="8" value="Supplier"/>
-                        <StringItem index="9" value="Tanggal Masuk"/>
-                        <StringItem index="10" value="Garansi"/>
+                        <StringItem index="1" value="ID Supplier"/>
+                        <StringItem index="2" value="Nama"/>
+                        <StringItem index="3" value="Alamat"/>
+                        <StringItem index="4" value="Telpon"/>
+                        <StringItem index="5" value="Email"/>
+                        <StringItem index="6" value="Catatan"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1193,17 +1431,22 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="scrollPaneSupplier" alignment="0" max="32767" attributes="0"/>
+                      <Component id="scrollPaneSupplier" alignment="0" pref="783" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="scrollPaneSupplier" alignment="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="scrollPaneSupplier" alignment="0" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
                 <Container class="javax.swing.JScrollPane" name="scrollPaneSupplier">
+                  <Properties>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[453, 60]"/>
+                    </Property>
+                  </Properties>
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>
@@ -1214,11 +1457,11 @@
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="6" rowCount="0">
-                            <Column editable="true" title="ID Supplier" type="java.lang.Object"/>
-                            <Column editable="true" title="Nama" type="java.lang.Object"/>
-                            <Column editable="true" title="Alamat" type="java.lang.Object"/>
-                            <Column editable="true" title="Telpon" type="java.lang.Object"/>
-                            <Column editable="true" title="Email" type="java.lang.Object"/>
+                            <Column editable="false" title="ID Supplier" type="java.lang.Object"/>
+                            <Column editable="false" title="Nama" type="java.lang.Object"/>
+                            <Column editable="false" title="Alamat" type="java.lang.Object"/>
+                            <Column editable="false" title="Telp" type="java.lang.Object"/>
+                            <Column editable="true" title="E-Mail" type="java.lang.Object"/>
                             <Column editable="true" title="Catatan" type="java.lang.Object"/>
                           </Table>
                         </Property>
@@ -1268,6 +1511,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="tabRetur">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="cc" red="33" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Retur">
@@ -1279,13 +1527,13 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="panelBawahRetur" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="panelKiriRetur" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="panelTengahRetur" max="32767" attributes="0"/>
                   </Group>
                   <Component id="panelAtasRetur" alignment="0" max="32767" attributes="0"/>
+                  <Component id="panelBawahRetur" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -1294,10 +1542,10 @@
                       <Component id="panelAtasRetur" min="-2" pref="55" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="panelTengahRetur" alignment="0" max="32767" attributes="0"/>
-                          <Component id="panelKiriRetur" alignment="0" max="32767" attributes="0"/>
+                          <Component id="panelTengahRetur" max="32767" attributes="0"/>
+                          <Component id="panelKiriRetur" pref="283" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="panelBawahRetur" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1308,6 +1556,9 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="cc" red="ff" type="rgb"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[154, 250]"/>
                 </Property>
               </Properties>
 
@@ -1332,9 +1583,9 @@
                           <Component id="labelInfoRetur" min="-2" pref="21" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="textAreaKiriRetur" min="-2" pref="170" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="buttonRefreshDBRetur" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="43" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1373,19 +1624,31 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="822" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tombolHapusRetur" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="fieldInputIdBarangRetur" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="fieldInputNamaBarangRetur" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="fieldInputJumlahBarangRetur" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="tombolTambahRetur" min="-2" pref="86" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="580" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                               </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="fieldInputIdRetur" pref="159" max="32767" attributes="0"/>
+                              <Component id="fieldInputJumlahBarangRetur" alignment="0" max="32767" attributes="0"/>
+                              <Component id="fieldInputIdBarangRetur" alignment="1" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="tombolTambahRetur" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
+                              <Component id="tombolHapusRetur" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1395,15 +1658,30 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="tombolTambahRetur" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="fieldInputJumlahBarangRetur" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldInputNamaBarangRetur" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="fieldInputIdBarangRetur" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="fieldInputIdRetur" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="fieldInputIdBarangRetur" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="fieldInputJumlahBarangRetur" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="tombolTambahRetur" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="tombolHapusRetur" min="-2" pref="25" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="tombolHapusRetur" min="-2" pref="25" max="-2" attributes="0"/>
-                          <EmptySpace pref="43" max="32767" attributes="0"/>
+                          <EmptySpace pref="46" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1435,17 +1713,17 @@
                     <Property name="text" type="java.lang.String" value="Jumlah"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputJumlahBarangReturFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputJumlahBarangReturFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputJumlahBarangReturFocusLost"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="fieldInputNamaBarangRetur">
+                <Component class="javax.swing.JTextField" name="fieldInputIdRetur">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Nama"/>
+                    <Property name="text" type="java.lang.String" value="ID Retur"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputNamaBarangReturFocusLost"/>
-                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputNamaBarangReturFocusGained"/>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputIdReturFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputIdReturFocusLost"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputIdBarangRetur">
@@ -1453,9 +1731,24 @@
                     <Property name="text" type="java.lang.String" value="ID"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputIdBarangReturFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputIdBarangReturFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputIdBarangReturFocusLost"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="ID Retur"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="ID Barang"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel3">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Quantity"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -1516,18 +1809,12 @@
                 <Component class="javax.swing.JComboBox" name="comboBoxKolomRetur">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="11">
+                      <StringArray count="5">
                         <StringItem index="0" value="All Coloumn"/>
-                        <StringItem index="1" value="ID Barang"/>
-                        <StringItem index="2" value="Jenis"/>
-                        <StringItem index="3" value="Merk"/>
-                        <StringItem index="4" value="Ragam"/>
-                        <StringItem index="5" value="Seri"/>
-                        <StringItem index="6" value="Qty"/>
-                        <StringItem index="7" value="Harga Beli"/>
-                        <StringItem index="8" value="Supplier"/>
-                        <StringItem index="9" value="Tanggal Masuk"/>
-                        <StringItem index="10" value="Garansi"/>
+                        <StringItem index="1" value="ID Retur"/>
+                        <StringItem index="2" value="ID Barang"/>
+                        <StringItem index="3" value="Nama"/>
+                        <StringItem index="4" value="Jumlah"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1578,31 +1865,31 @@
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="4" rowCount="0">
-                            <Column editable="true" title="ID Retur" type="java.lang.Object"/>
-                            <Column editable="true" title="ID Barang" type="java.lang.Object"/>
-                            <Column editable="true" title="Nama" type="java.lang.Object"/>
-                            <Column editable="true" title="Jumlah" type="java.lang.Object"/>
+                            <Column editable="false" title="ID Retur" type="java.lang.Object"/>
+                            <Column editable="false" title="ID Barang" type="java.lang.Object"/>
+                            <Column editable="false" title="Nama" type="java.lang.Object"/>
+                            <Column editable="false" title="Jumlah" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
+                              <Title value="ID Retur"/>
                               <Editor/>
                               <Renderer/>
                             </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
+                              <Title value="ID Barang"/>
                               <Editor/>
                               <Renderer/>
                             </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
+                              <Title value="Nama"/>
                               <Editor/>
                               <Renderer/>
                             </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
+                              <Title value="Jumlah"/>
                               <Editor/>
                               <Renderer/>
                             </Column>
@@ -1612,6 +1899,9 @@
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabelReturMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

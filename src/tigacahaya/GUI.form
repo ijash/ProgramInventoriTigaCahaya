@@ -160,7 +160,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="27" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="fieldInputJenis" max="32767" attributes="0"/>
                               <Component id="jLabelBarangJenis" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -218,7 +218,10 @@
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="tombolAtc" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="tombolAtc" pref="110" max="32767" attributes="0"/>
+                              <Component id="tombolClearField" max="32767" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="tombolUbah" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
@@ -267,15 +270,20 @@
                                       <Component id="fieldInputJenis" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="tombolUbah" min="-2" pref="24" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="tombolTambah" min="-2" pref="24" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="tombolHapus" min="-2" pref="24" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="tombolUbah" min="-2" pref="24" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="tombolTambah" min="-2" pref="24" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="tombolAtc" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="tombolAtc" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="tombolHapus" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="tombolClearField" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace pref="15" max="32767" attributes="0"/>
@@ -485,6 +493,14 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Seri"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="tombolClearField">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Clear"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolClearFieldActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -860,11 +876,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="ID Barang"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldIdBarangTransaksiFocusGained"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputQtyTransaksi">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Qty"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputQtyTransaksiFocusGained"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="tombolCheckoutTransaksi">
                   <Properties>
@@ -947,7 +969,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="scrollPaneTransaksi" alignment="0" pref="804" max="32767" attributes="0"/>
+                      <Component id="scrollPaneTransaksi" alignment="0" min="-2" pref="804" max="-2" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -1127,7 +1149,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="174" max="32767" attributes="0"/>
+                          <EmptySpace pref="82" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -1142,8 +1164,8 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="fieldInputAlamatSupplier" alignment="1" pref="160" max="32767" attributes="0"/>
-                                      <Component id="fieldInputTelponSupplier" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="fieldInputAlamatSupplier" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="fieldInputTelponSupplier" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -1164,6 +1186,10 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="tombolUbahSupplier" min="-2" pref="86" max="-2" attributes="0"/>
                               <Component id="tombolTambahSupplier" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="tombolClearSupplier" min="-2" pref="86" max="-2" attributes="0"/>
                               <Component id="tombolHapusSupplier" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1184,13 +1210,13 @@
                                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="fieldInputIDSupplier" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tombolClearSupplier" min="-2" pref="25" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="tombolTambahSupplier" min="-2" pref="25" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="tombolHapusSupplier" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="tombolTambahSupplier" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                          <Component id="tombolHapusSupplier" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="3" attributes="0">
@@ -1206,9 +1232,10 @@
                                           </Group>
                                       </Group>
                                   </Group>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="24" max="32767" attributes="0"/>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1340,6 +1367,14 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Nama"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="tombolClearSupplier">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Clear"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolClearSupplierActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1651,8 +1686,11 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tombolTambahRetur" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
-                              <Component id="tombolHapusRetur" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="tombolTambahRetur" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
+                                  <Component id="tombolHapusRetur" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="tombolClearRetur" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1673,10 +1711,11 @@
                                       <Component id="fieldInputIdBarangRetur" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="fieldInputJumlahBarangRetur" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tombolClearRetur" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -1685,7 +1724,7 @@
                                   <Component id="tombolHapusRetur" min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="25" max="32767" attributes="0"/>
+                          <EmptySpace pref="28" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1753,6 +1792,14 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Quantity"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="tombolClearRetur">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Clear"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolClearReturActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

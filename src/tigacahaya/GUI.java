@@ -238,6 +238,7 @@ public class GUI extends javax.swing.JFrame {
         jLabelBarangGaransi = new javax.swing.JLabel();
         jLabelBarangRagam = new javax.swing.JLabel();
         jLabelBarangSeri = new javax.swing.JLabel();
+        tombolClearField = new javax.swing.JButton();
         panelAtas = new javax.swing.JPanel();
         searchField = new javax.swing.JTextField();
         comboBoxKolom = new javax.swing.JComboBox<>();
@@ -286,6 +287,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         fieldInputNamaSupplier = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        tombolClearSupplier = new javax.swing.JButton();
         panelAtasSupplier = new javax.swing.JPanel();
         searchFieldSupplier = new javax.swing.JTextField();
         comboBoxKolomSupplier = new javax.swing.JComboBox<>();
@@ -308,6 +310,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        tombolClearRetur = new javax.swing.JButton();
         panelAtasRetur = new javax.swing.JPanel();
         searchFieldRetur = new javax.swing.JTextField();
         comboBoxKolomRetur = new javax.swing.JComboBox<>();
@@ -562,12 +565,19 @@ public class GUI extends javax.swing.JFrame {
 
         jLabelBarangSeri.setText("Seri");
 
+        tombolClearField.setText("Clear");
+        tombolClearField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolClearFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelBawahLayout = new javax.swing.GroupLayout(panelBawah);
         panelBawah.setLayout(panelBawahLayout);
         panelBawahLayout.setHorizontalGroup(
             panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(fieldInputJenis)
                     .addComponent(jLabelBarangJenis)
@@ -611,7 +621,9 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(fieldInputSeri, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tombolAtc, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tombolAtc, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                    .addComponent(tombolClearField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tombolUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -652,14 +664,17 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(fieldInputRagam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fieldInputSeri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fieldInputJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(panelBawahLayout.createSequentialGroup()
-                            .addComponent(tombolUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(tombolTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(tombolAtc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(panelBawahLayout.createSequentialGroup()
+                        .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(panelBawahLayout.createSequentialGroup()
+                                .addComponent(tombolUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tombolTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tombolAtc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tombolClearField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -830,8 +845,18 @@ public class GUI extends javax.swing.JFrame {
         panelBawahTransaksi.setPreferredSize(new java.awt.Dimension(285, 126));
 
         fieldIdBarangTransaksi.setText("ID Barang");
+        fieldIdBarangTransaksi.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldIdBarangTransaksiFocusGained(evt);
+            }
+        });
 
         fieldInputQtyTransaksi.setText("Qty");
+        fieldInputQtyTransaksi.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputQtyTransaksiFocusGained(evt);
+            }
+        });
 
         tombolCheckoutTransaksi.setText("Checkout");
         tombolCheckoutTransaksi.addActionListener(new java.awt.event.ActionListener() {
@@ -948,7 +973,7 @@ public class GUI extends javax.swing.JFrame {
         panelTengahTransaksi.setLayout(panelTengahTransaksiLayout);
         panelTengahTransaksiLayout.setHorizontalGroup(
             panelTengahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPaneTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
+            .addComponent(scrollPaneTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         panelTengahTransaksiLayout.setVerticalGroup(
             panelTengahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1133,12 +1158,19 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel4.setText("Nama");
 
+        tombolClearSupplier.setText("Clear");
+        tombolClearSupplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolClearSupplierActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelBawahSupplierLayout = new javax.swing.GroupLayout(panelBawahSupplier);
         panelBawahSupplier.setLayout(panelBawahSupplierLayout);
         panelBawahSupplierLayout.setHorizontalGroup(
             panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBawahSupplierLayout.createSequentialGroup()
-                .addContainerGap(174, Short.MAX_VALUE)
+                .addContainerGap(82, Short.MAX_VALUE)
                 .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahSupplierLayout.createSequentialGroup()
                         .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1151,8 +1183,8 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(fieldInputAlamatSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                            .addComponent(fieldInputTelponSupplier)))
+                            .addComponent(fieldInputAlamatSupplier)
+                            .addComponent(fieldInputTelponSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahSupplierLayout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1168,8 +1200,11 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tombolUbahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tombolTambahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tombolHapusSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tombolTambahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tombolClearSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolHapusSupplier, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         panelBawahSupplierLayout.setVerticalGroup(
@@ -1185,12 +1220,12 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(fieldInputEmailSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
                             .addComponent(fieldInputIDSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
+                            .addComponent(jLabel8)
+                            .addComponent(tombolClearSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelBawahSupplierLayout.createSequentialGroup()
+                            .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(tombolTambahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tombolHapusSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelBawahSupplierLayout.createSequentialGroup()
                                 .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1201,8 +1236,9 @@ public class GUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(fieldInputTelponSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6))))))
-                .addContainerGap(24, Short.MAX_VALUE))
+                                    .addComponent(jLabel6))))
+                        .addGap(10, 10, 10)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         panelAtasSupplier.setBackground(new java.awt.Color(0, 204, 153));
@@ -1421,6 +1457,13 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel3.setText("Quantity");
 
+        tombolClearRetur.setText("Clear");
+        tombolClearRetur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolClearReturActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelBawahReturLayout = new javax.swing.GroupLayout(panelBawahRetur);
         panelBawahRetur.setLayout(panelBawahReturLayout);
         panelBawahReturLayout.setHorizontalGroup(
@@ -1438,8 +1481,10 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(fieldInputIdBarangRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tombolTambahRetur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tombolHapusRetur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(tombolTambahRetur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tombolHapusRetur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tombolClearRetur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         panelBawahReturLayout.setVerticalGroup(
@@ -1455,15 +1500,16 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(fieldInputIdBarangRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
-                        .addGap(5, 5, 5)
+                        .addGap(2, 2, 2)
                         .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(fieldInputJumlahBarangRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)))
+                            .addComponent(jLabel3)
+                            .addComponent(tombolClearRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelBawahReturLayout.createSequentialGroup()
                         .addComponent(tombolTambahRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tombolHapusRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         panelAtasRetur.setBackground(new java.awt.Color(0, 204, 153));
@@ -1642,6 +1688,7 @@ public class GUI extends javax.swing.JFrame {
         fieldInputSupplier.setText(MySQLconn.executeSingleQueryResult("SELECT supplier FROM `barang` WHERE barang.id_barang='" + (model.getValueAt(i, 0).toString()) + "'", "supplier"));
     }//GEN-LAST:event_tabelMouseClicked
     private void tombolTambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahMouseClicked
+       
         if (regexIdBarang(fieldInputId_barang.getText())){
             if(regexBilangan(fieldInputQty.getText(),"Qty")||regexBilangan(fieldInputHarga_beli.getText(),"Harga")){
         String query = "INSERT INTO `barang`(`code`, `no`, `id_barang`, `jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `tgl_masuk`, `garansi`) VALUES('P',NULL,NULL,'" + fieldInputJenis.getText() + "','" + fieldInputMerk.getText() + "','" + fieldInputRagam.getText() + "','" + fieldInputSeri.getText() + "','" + fieldInputQty.getText() + "','" + fieldInputHarga_beli.getText() + "','" + fieldInputSupplier.getText() + "',CURRENT_TIMESTAMP,'" + comboBoxGaransi.getSelectedItem() + "')";
@@ -1651,6 +1698,7 @@ public class GUI extends javax.swing.JFrame {
         refreshTable();
             }
         }
+        
     }//GEN-LAST:event_tombolTambahMouseClicked
     private void tombolUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahActionPerformed
 if (regexIdBarang(fieldInputId_barang.getText())){
@@ -2153,11 +2201,11 @@ if (regexIdBarang(fieldInputId_barang.getText())){
     private void buttonUbahQtyTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUbahQtyTransaksiActionPerformed
         if (fieldIdBarangTransaksi.getText().matches("\\bP[0-9][0-9][0-9][0-9][0-9][0-9][0-9]\\b")) {
             if (regexBilangan(fieldInputQtyTransaksi.getText(), "Qty")) {
-                String query = "UPDATE `transaksi_cart` SET `qty`= '" + fieldInputQtyTransaksi.getText() + "'WHERE `transaksi_cart`.`id_barang`='" + fieldIdBarangTransaksi.getText() + "';";
-                execSQLQuery(query, "diubah");
-                MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\") );");
+                String query = "UPDATE `transaksi_cart` SET `qty`= ' " + fieldInputQtyTransaksi.getText() + "' WHERE `transaksi_cart`.`id_barang`='" + fieldIdBarangTransaksi.getText() + "';";
+               // execSQLQuery(query, "diubah");
+               MySQLconn.executeVoidQuery(query);
                 System.out.println(query);
-                refreshTable();
+                refreshTableTransaksi();
             }
         }
     }//GEN-LAST:event_buttonUbahQtyTransaksiActionPerformed
@@ -2173,6 +2221,47 @@ if (regexIdBarang(fieldInputId_barang.getText())){
         fieldInputEmailSupplier.setText(model.getValueAt(i,4).toString());
         textAreaCatatan.setText(model.getValueAt(i,5).toString());
     }//GEN-LAST:event_tabelSupplierMouseClicked
+
+    private void tombolClearFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolClearFieldActionPerformed
+       fieldInputId_barang.setText("(Otomatis)");
+       fieldInputQty.setText("");
+       fieldInputHarga_beli.setText("");
+       fieldInputSupplier.setText("");
+       fieldInputTanggal_masuk.setText("(Otomatis)");
+       fieldInputJenis.setText("");
+       fieldInputMerk.setText("");
+       fieldInputRagam.setText("");
+       fieldInputSeri.setText("");
+
+       fieldInputQty.requestFocus();
+    }//GEN-LAST:event_tombolClearFieldActionPerformed
+
+    private void tombolClearSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolClearSupplierActionPerformed
+       fieldInputIDSupplier.setText("(Otomatis)");
+       fieldInputEmailSupplier.setText("");
+       textAreaCatatan.setText("");
+       fieldInputNamaSupplier.setText("");
+       fieldInputAlamatSupplier.setText("");
+       fieldInputTelponSupplier.setText("");
+      
+       fieldInputEmailSupplier.requestFocus();
+    }//GEN-LAST:event_tombolClearSupplierActionPerformed
+
+    private void tombolClearReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolClearReturActionPerformed
+       fieldInputIdRetur.setText("(Otomatis)");
+       fieldInputIdBarangRetur.setText("");
+       fieldInputJumlahBarangRetur.setText("");
+      
+       fieldInputIdBarangRetur.requestFocus();
+    }//GEN-LAST:event_tombolClearReturActionPerformed
+
+    private void fieldIdBarangTransaksiFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldIdBarangTransaksiFocusGained
+        fieldIdBarangTransaksi.setText("");
+    }//GEN-LAST:event_fieldIdBarangTransaksiFocusGained
+
+    private void fieldInputQtyTransaksiFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputQtyTransaksiFocusGained
+        fieldInputQtyTransaksi.setText("");
+    }//GEN-LAST:event_fieldInputQtyTransaksiFocusGained
 
 // </editor-fold>
     /**
@@ -2315,6 +2404,9 @@ if (regexIdBarang(fieldInputId_barang.getText())){
     private javax.swing.JTextArea textAreaKiriTransaksi;
     private javax.swing.JButton tombolAtc;
     private javax.swing.JButton tombolCheckoutTransaksi;
+    private javax.swing.JButton tombolClearField;
+    private javax.swing.JButton tombolClearRetur;
+    private javax.swing.JButton tombolClearSupplier;
     private javax.swing.JButton tombolHapus;
     private javax.swing.JButton tombolHapusRetur;
     private javax.swing.JButton tombolHapusSupplier;

@@ -246,6 +246,7 @@ public class GUI extends javax.swing.JFrame {
         comboBoxKolom = new javax.swing.JComboBox<>();
         labelFilter = new javax.swing.JLabel();
         labelKolom = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         panelTengah = new javax.swing.JPanel();
         panelScrollTabel = new javax.swing.JScrollPane();
         tabel = new javax.swing.JTable();
@@ -323,19 +324,24 @@ public class GUI extends javax.swing.JFrame {
         tabelRetur = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Stock Opaname [Toko Listrik Tiga Cahaya]");
 
         panelUtama.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        tabStok.setBackground(new java.awt.Color(73, 138, 192));
+        tabStok.setBackground(new java.awt.Color(117, 179, 226));
 
-        panelKiri.setBackground(new java.awt.Color(8, 75, 127));
+        panelKiri.setBackground(new java.awt.Color(117, 179, 226));
         panelKiri.setPreferredSize(new java.awt.Dimension(154, 250));
 
-        labelInfo.setBackground(new java.awt.Color(255, 255, 255));
-        labelInfo.setForeground(new java.awt.Color(255, 255, 255));
+        labelInfo.setBackground(new java.awt.Color(12, 30, 42));
+        labelInfo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        labelInfo.setForeground(new java.awt.Color(12, 30, 42));
         labelInfo.setText("Info");
 
-        buttonRefreshDB.setText("Refresh Data");
+        buttonRefreshDB.setForeground(new java.awt.Color(12, 30, 42));
+        buttonRefreshDB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/refresh.png"))); // NOI18N
+        buttonRefreshDB.setText("Refresh");
+        buttonRefreshDB.setIconTextGap(6);
         buttonRefreshDB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRefreshDBActionPerformed(evt);
@@ -343,9 +349,9 @@ public class GUI extends javax.swing.JFrame {
         });
 
         textAreaKiri.setEditable(false);
-        textAreaKiri.setBackground(new java.awt.Color(8, 75, 127));
+        textAreaKiri.setBackground(new java.awt.Color(117, 179, 226));
         textAreaKiri.setColumns(20);
-        textAreaKiri.setForeground(new java.awt.Color(255, 255, 255));
+        textAreaKiri.setForeground(new java.awt.Color(12, 30, 42));
         textAreaKiri.setLineWrap(true);
         textAreaKiri.setRows(5);
         textAreaKiri.setWrapStyleWord(true);
@@ -376,17 +382,18 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelBawah.setBackground(new java.awt.Color(73, 139, 201));
+        panelBawah.setBackground(new java.awt.Color(25, 104, 178));
         panelBawah.setPreferredSize(new java.awt.Dimension(285, 126));
 
+        fieldInputId_barang.setForeground(new java.awt.Color(12, 30, 42));
         fieldInputId_barang.setText("ID");
         fieldInputId_barang.setToolTipText("ID Barang");
         fieldInputId_barang.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputId_barangFocusGained(evt);
-            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 fieldInputId_barangFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputId_barangFocusGained(evt);
             }
         });
         fieldInputId_barang.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -395,14 +402,15 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        fieldInputJenis.setForeground(new java.awt.Color(12, 30, 42));
         fieldInputJenis.setText("Jenis");
         fieldInputJenis.setToolTipText("Jenis atau tipe barang");
         fieldInputJenis.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputJenisFocusGained(evt);
-            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 fieldInputJenisFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputJenisFocusGained(evt);
             }
         });
         fieldInputJenis.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -411,14 +419,15 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        fieldInputMerk.setForeground(new java.awt.Color(12, 30, 42));
         fieldInputMerk.setText("Merk");
         fieldInputMerk.setToolTipText("Merk barang");
         fieldInputMerk.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputMerkFocusGained(evt);
-            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 fieldInputMerkFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputMerkFocusGained(evt);
             }
         });
         fieldInputMerk.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -427,14 +436,15 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        fieldInputRagam.setForeground(new java.awt.Color(12, 30, 42));
         fieldInputRagam.setText("Ragam");
         fieldInputRagam.setToolTipText("Ragam atau sub-kategori barang");
         fieldInputRagam.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputRagamFocusGained(evt);
-            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 fieldInputRagamFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputRagamFocusGained(evt);
             }
         });
         fieldInputRagam.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -443,14 +453,15 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        fieldInputSeri.setForeground(new java.awt.Color(12, 30, 42));
         fieldInputSeri.setText("Seri");
         fieldInputSeri.setToolTipText("Keterangan lengkap dari ragam yang ada");
         fieldInputSeri.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputSeriFocusGained(evt);
-            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 fieldInputSeriFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputSeriFocusGained(evt);
             }
         });
         fieldInputSeri.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -459,14 +470,15 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        fieldInputQty.setForeground(new java.awt.Color(12, 30, 42));
         fieldInputQty.setText("Qty");
         fieldInputQty.setToolTipText("Banyaknya barang");
         fieldInputQty.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputQtyFocusGained(evt);
-            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 fieldInputQtyFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputQtyFocusGained(evt);
             }
         });
         fieldInputQty.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -475,14 +487,15 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        fieldInputHarga_beli.setForeground(new java.awt.Color(12, 30, 42));
         fieldInputHarga_beli.setText("Hrg Beli");
         fieldInputHarga_beli.setToolTipText("Harga modal awal");
         fieldInputHarga_beli.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputHarga_beliFocusGained(evt);
-            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 fieldInputHarga_beliFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputHarga_beliFocusGained(evt);
             }
         });
         fieldInputHarga_beli.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -491,14 +504,15 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        fieldInputSupplier.setForeground(new java.awt.Color(12, 30, 42));
         fieldInputSupplier.setText("Supplier");
         fieldInputSupplier.setToolTipText("Pemasok, distributor atau sumber barang, kode bisa dilihat di tab supplier");
         fieldInputSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputSupplierFocusGained(evt);
-            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 fieldInputSupplierFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputSupplierFocusGained(evt);
             }
         });
         fieldInputSupplier.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -507,30 +521,42 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        fieldInputTanggal_masuk.setForeground(new java.awt.Color(12, 30, 42));
         fieldInputTanggal_masuk.setText("Tanggal Masuk");
         fieldInputTanggal_masuk.setToolTipText("Otomatis sesuai penginputan barang (tidak perlu diatur/ubah)");
         fieldInputTanggal_masuk.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputTanggal_masukFocusGained(evt);
-            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 fieldInputTanggal_masukFocusLost(evt);
             }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldInputTanggal_masukFocusGained(evt);
+            }
         });
 
+        comboBoxGaransi.setForeground(new java.awt.Color(12, 30, 42));
         comboBoxGaransi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "distributor", "toko", "tidak" }));
         comboBoxGaransi.setToolTipText("ketentuan garansi");
 
+        tombolUbah.setForeground(new java.awt.Color(12, 30, 42));
+        tombolUbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/edit_pencil.png"))); // NOI18N
         tombolUbah.setText("Ubah");
         tombolUbah.setToolTipText("Edit atau ubah barang sesuai dengan masukan yang ada.");
+        tombolUbah.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        tombolUbah.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        tombolUbah.setIconTextGap(11);
         tombolUbah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tombolUbahActionPerformed(evt);
             }
         });
 
+        tombolTambah.setForeground(new java.awt.Color(12, 30, 42));
+        tombolTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/add_plus.png"))); // NOI18N
         tombolTambah.setText("Tambah");
         tombolTambah.setToolTipText("Tambah barang sesuai dengan masukan yang ada.");
+        tombolTambah.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        tombolTambah.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        tombolTambah.setIconTextGap(6);
         tombolTambah.setPreferredSize(new java.awt.Dimension(80, 30));
         tombolTambah.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -538,7 +564,8 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        tombolAtc.setText("add to\ncart");
+        tombolAtc.setForeground(new java.awt.Color(12, 30, 42));
+        tombolAtc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/cart_25px.png"))); // NOI18N
         tombolAtc.setToolTipText("");
         tombolAtc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -586,13 +613,17 @@ public class GUI extends javax.swing.JFrame {
         jLabelBarangSeri.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBarangSeri.setText("Seri");
 
+        tombolClearField.setForeground(new java.awt.Color(12, 30, 42));
+        tombolClearField.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/delete_x_big.png"))); // NOI18N
         tombolClearField.setText("Clear");
+        tombolClearField.setIconTextGap(8);
         tombolClearField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tombolClearFieldActionPerformed(evt);
             }
         });
 
+        tombolHapus.setForeground(new java.awt.Color(12, 30, 42));
         tombolHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/delete.png"))); // NOI18N
         tombolHapus.setText("Hapus");
         tombolHapus.setToolTipText("Hapus barang sesuai dengan baris yang terpilih.");
@@ -713,6 +744,7 @@ public class GUI extends javax.swing.JFrame {
 
         panelAtas.setBackground(new java.awt.Color(25, 104, 178));
 
+        searchField.setForeground(new java.awt.Color(12, 30, 42));
         searchField.setText("search...");
         searchField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -730,43 +762,60 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        comboBoxKolom.setForeground(new java.awt.Color(12, 30, 42));
         comboBoxKolom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Coloumn", "ID Barang", "Jenis", "Merk", "Ragam", "Seri", "Qty", "Harga Beli", "Supplier", "Tanggal Masuk", "Garansi" }));
 
+        labelFilter.setBackground(new java.awt.Color(255, 255, 255));
+        labelFilter.setForeground(new java.awt.Color(255, 255, 255));
         labelFilter.setText("Filter");
 
+        labelKolom.setBackground(new java.awt.Color(255, 255, 255));
+        labelKolom.setForeground(new java.awt.Color(255, 255, 255));
         labelKolom.setText("Kolom");
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/tiga_cahaya_logo.png"))); // NOI18N
 
         javax.swing.GroupLayout panelAtasLayout = new javax.swing.GroupLayout(panelAtas);
         panelAtas.setLayout(panelAtasLayout);
         panelAtasLayout.setHorizontalGroup(
             panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
                 .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelFilter)
-                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboBoxKolom, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelKolom))
+                    .addGroup(panelAtasLayout.createSequentialGroup()
+                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboBoxKolom, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelAtasLayout.createSequentialGroup()
+                        .addComponent(labelFilter)
+                        .addGap(122, 122, 122)
+                        .addComponent(labelKolom)))
                 .addContainerGap())
         );
         panelAtasLayout.setVerticalGroup(
             panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasLayout.createSequentialGroup()
+            .addGroup(panelAtasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelFilter)
-                    .addComponent(labelKolom))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxKolom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelAtasLayout.createSequentialGroup()
+                        .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelFilter)
+                            .addComponent(labelKolom))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboBoxKolom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelAtasLayout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        panelTengah.setBackground(new java.awt.Color(73, 139, 201));
+        panelTengah.setBackground(new java.awt.Color(73, 138, 192));
 
+        tabel.setForeground(new java.awt.Color(12, 30, 42));
         tabel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -783,6 +832,8 @@ public class GUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabel.setSelectionBackground(new java.awt.Color(25, 104, 178));
+        tabel.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tabel.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tabel.setShowHorizontalLines(false);
         tabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2366,6 +2417,7 @@ if (regexIdBarang(fieldInputId_barang.getText())){
     private javax.swing.JTextField fieldInputTanggal_masuk;
     private javax.swing.JTextField fieldInputTelponSupplier;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -2153,7 +2153,7 @@ if (regexIdBarang(fieldInputId_barang.getText())){
     private void buttonUbahQtyTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUbahQtyTransaksiActionPerformed
         if (fieldIdBarangTransaksi.getText().matches("\\bP[0-9][0-9][0-9][0-9][0-9][0-9][0-9]\\b")) {
             if (regexBilangan(fieldInputQtyTransaksi.getText(), "Qty")) {
-                String query = "UPDATE `transaksi_cart` SET `qty`= '" + fieldInputQtyTransaksi.getText() + "WHERE `transaksi_cart`.`id_barang`='" + fieldIdBarangTransaksi.getText() + "';";
+                String query = "UPDATE `transaksi_cart` SET `qty`= '" + fieldInputQtyTransaksi.getText() + "'WHERE `transaksi_cart`.`id_barang`='" + fieldIdBarangTransaksi.getText() + "';";
                 execSQLQuery(query, "diubah");
                 MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\") );");
                 System.out.println(query);

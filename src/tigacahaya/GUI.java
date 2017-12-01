@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import javax.swing.UIManager;
 import static tigacahaya.TableRowContent.tableContent;
 import static tigacahaya.TableRowContentRetur.tableContentRetur;
 import static tigacahaya.TableRowContentSupplier.tableContentSupplier;
@@ -38,6 +39,7 @@ public class GUI extends javax.swing.JFrame {
         sortTableSupplier();
         displayTableRetur();
         sortTableRetur();
+       
 
     }
     // back-end methods......................................
@@ -226,7 +228,6 @@ public class GUI extends javax.swing.JFrame {
         comboBoxGaransi = new javax.swing.JComboBox<>();
         tombolUbah = new javax.swing.JButton();
         tombolTambah = new javax.swing.JButton();
-        tombolHapus = new javax.swing.JButton();
         tombolAtc = new javax.swing.JButton();
         jLabelBarangIdBarang = new javax.swing.JLabel();
         jLabelBarangJenis = new javax.swing.JLabel();
@@ -239,6 +240,7 @@ public class GUI extends javax.swing.JFrame {
         jLabelBarangRagam = new javax.swing.JLabel();
         jLabelBarangSeri = new javax.swing.JLabel();
         tombolClearField = new javax.swing.JButton();
+        tombolHapus = new javax.swing.JButton();
         panelAtas = new javax.swing.JPanel();
         searchField = new javax.swing.JTextField();
         comboBoxKolom = new javax.swing.JComboBox<>();
@@ -324,11 +326,13 @@ public class GUI extends javax.swing.JFrame {
 
         panelUtama.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        tabStok.setBackground(new java.awt.Color(0, 204, 255));
+        tabStok.setBackground(new java.awt.Color(73, 138, 192));
 
-        panelKiri.setBackground(new java.awt.Color(255, 204, 102));
+        panelKiri.setBackground(new java.awt.Color(8, 75, 127));
         panelKiri.setPreferredSize(new java.awt.Dimension(154, 250));
 
+        labelInfo.setBackground(new java.awt.Color(255, 255, 255));
+        labelInfo.setForeground(new java.awt.Color(255, 255, 255));
         labelInfo.setText("Info");
 
         buttonRefreshDB.setText("Refresh Data");
@@ -338,10 +342,15 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        textAreaKiri.setEditable(false);
+        textAreaKiri.setBackground(new java.awt.Color(8, 75, 127));
         textAreaKiri.setColumns(20);
+        textAreaKiri.setForeground(new java.awt.Color(255, 255, 255));
         textAreaKiri.setLineWrap(true);
         textAreaKiri.setRows(5);
         textAreaKiri.setWrapStyleWord(true);
+        textAreaKiri.setBorder(null);
+        textAreaKiri.setCaretColor(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout panelKiriLayout = new javax.swing.GroupLayout(panelKiri);
         panelKiri.setLayout(panelKiriLayout);
@@ -367,7 +376,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelBawah.setBackground(new java.awt.Color(0, 153, 153));
+        panelBawah.setBackground(new java.awt.Color(73, 139, 201));
         panelBawah.setPreferredSize(new java.awt.Dimension(285, 126));
 
         fieldInputId_barang.setText("ID");
@@ -529,14 +538,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        tombolHapus.setText("Hapus");
-        tombolHapus.setToolTipText("Hapus barang sesuai dengan baris yang terpilih.");
-        tombolHapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolHapusActionPerformed(evt);
-            }
-        });
-
         tombolAtc.setText("add to\ncart");
         tombolAtc.setToolTipText("");
         tombolAtc.addActionListener(new java.awt.event.ActionListener() {
@@ -545,30 +546,62 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        jLabelBarangIdBarang.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelBarangIdBarang.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBarangIdBarang.setText("ID Barang");
 
+        jLabelBarangJenis.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelBarangJenis.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBarangJenis.setText("Jenis");
 
+        jLabelBarangMerk.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelBarangMerk.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBarangMerk.setText("Merk");
 
+        jLabelBarangQty.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelBarangQty.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBarangQty.setText("Qty");
 
+        jLabelBarangHargaBeli.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelBarangHargaBeli.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBarangHargaBeli.setText("Harga Beli");
 
+        jLabelBarangSupplier.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelBarangSupplier.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBarangSupplier.setText("Supplier");
 
+        jLabelBarangTanggal.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelBarangTanggal.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBarangTanggal.setText("Tanggal Masuk");
 
+        jLabelBarangGaransi.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelBarangGaransi.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBarangGaransi.setText("Garansi");
 
+        jLabelBarangRagam.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelBarangRagam.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBarangRagam.setText("Ragam");
 
+        jLabelBarangSeri.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelBarangSeri.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBarangSeri.setText("Seri");
 
         tombolClearField.setText("Clear");
         tombolClearField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tombolClearFieldActionPerformed(evt);
+            }
+        });
+
+        tombolHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/delete.png"))); // NOI18N
+        tombolHapus.setText("Hapus");
+        tombolHapus.setToolTipText("Hapus barang sesuai dengan baris yang terpilih.");
+        tombolHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        tombolHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        tombolHapus.setIconTextGap(10);
+        tombolHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolHapusActionPerformed(evt);
             }
         });
 
@@ -627,8 +660,8 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tombolUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tombolTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tombolTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         panelBawahLayout.setVerticalGroup(
@@ -673,12 +706,12 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(tombolAtc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tombolClearField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(tombolClearField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        panelAtas.setBackground(new java.awt.Color(0, 204, 153));
+        panelAtas.setBackground(new java.awt.Color(25, 104, 178));
 
         searchField.setText("search...");
         searchField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -732,7 +765,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelTengah.setBackground(new java.awt.Color(102, 0, 102));
+        panelTengah.setBackground(new java.awt.Color(73, 139, 201));
 
         tabel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -973,7 +1006,7 @@ public class GUI extends javax.swing.JFrame {
         panelTengahTransaksi.setLayout(panelTengahTransaksiLayout);
         panelTengahTransaksiLayout.setHorizontalGroup(
             panelTengahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPaneTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(scrollPaneTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
         );
         panelTengahTransaksiLayout.setVerticalGroup(
             panelTengahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

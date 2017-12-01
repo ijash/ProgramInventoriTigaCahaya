@@ -34,6 +34,8 @@ public class MySQLconn {
         return null;
 
     }
+
+    
     public static String executeSingleQueryResult(String queries,String coloumn) {
         try {
             Connection conn = connect();

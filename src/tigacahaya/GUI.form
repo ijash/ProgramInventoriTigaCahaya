@@ -150,6 +150,7 @@
                       <Image iconType="3" name="/tigacahaya/res/refresh.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Refresh"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Refresh database"/>
                     <Property name="iconTextGap" type="int" value="6"/>
                   </Properties>
                   <Events>
@@ -327,6 +328,7 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="fieldInputId_barang">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
                     </Property>
@@ -334,8 +336,8 @@
                     <Property name="toolTipText" type="java.lang.String" value="ID Barang"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputId_barangFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputId_barangFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputId_barangFocusLost"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputId_barangKeyTyped"/>
                   </Events>
                 </Component>
@@ -439,16 +441,13 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputTanggal_masuk">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Tanggal Masuk"/>
                     <Property name="toolTipText" type="java.lang.String" value="Otomatis sesuai penginputan barang (tidak perlu diatur/ubah)"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputTanggal_masukFocusLost"/>
-                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputTanggal_masukFocusGained"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="comboBoxGaransi">
                   <Properties>
@@ -726,6 +725,7 @@
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="search..."/>
+                    <Property name="toolTipText" type="java.lang.String" value="Cari dari tabel dibawah"/>
                   </Properties>
                   <Events>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="searchFieldFocusLost"/>
@@ -753,6 +753,7 @@
                         <StringItem index="10" value="Garansi"/>
                       </StringArray>
                     </Property>
+                    <Property name="toolTipText" type="java.lang.String" value="Pencarian berdasarkan kolom yang ada"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -1017,6 +1018,7 @@
                       <Image iconType="3" name="/tigacahaya/res/refresh.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Refresh"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Refresh database"/>
                     <Property name="iconTextGap" type="int" value="6"/>
                   </Properties>
                   <Events>
@@ -1105,14 +1107,13 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="fieldIdBarangTransaksi">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="ID Barang"/>
+                    <Property name="toolTipText" type="java.lang.String" value="ID Barang, tidak perlu diubah."/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldIdBarangTransaksiFocusGained"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputQtyTransaksi">
                   <Properties>
@@ -1120,6 +1121,7 @@
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Qty"/>
+                    <Property name="toolTipText" type="java.lang.String" value="banyaknya barang"/>
                   </Properties>
                   <Events>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputQtyTransaksiFocusGained"/>
@@ -1133,6 +1135,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/tigacahaya/res/box_check_25px.png"/>
                     </Property>
+                    <Property name="toolTipText" type="java.lang.String" value="Checkout barang, otomatis mengurangi barang stok"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolCheckoutTransaksiActionPerformed"/>
@@ -1163,6 +1166,7 @@
                       <Image iconType="3" name="/tigacahaya/res/delete.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Hapus"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Hapus barang transaksi"/>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="iconTextGap" type="int" value="10"/>
@@ -1180,6 +1184,7 @@
                       <Image iconType="3" name="/tigacahaya/res/edit_pencil.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Ubah"/>
+                    <Property name="toolTipText" type="java.lang.String" value="ubah banyak barang transaksi"/>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="iconTextGap" type="int" value="11"/>
@@ -1231,6 +1236,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Invoice:"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Nomer invoice transaksi saat ini"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel11">
@@ -1326,9 +1332,6 @@
               <Color blue="e2" green="b3" red="75" type="rgb"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabSupplierMouseClicked"/>
-          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Supplier">
@@ -1424,6 +1427,7 @@
                       <Image iconType="3" name="/tigacahaya/res/refresh.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Refresh"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Refresh database"/>
                     <Property name="iconTextGap" type="int" value="6"/>
                   </Properties>
                   <Events>
@@ -1476,10 +1480,15 @@
                                       </Group>
                                       <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="fieldInputAlamatSupplier" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="fieldInputTelponSupplier" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="fieldInputTelponSupplier" min="-2" pref="160" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                          <Component id="fieldInputAlamatSupplier" min="-2" pref="160" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -1628,11 +1637,12 @@
                         <Property name="lineWrap" type="boolean" value="true"/>
                         <Property name="rows" type="int" value="5"/>
                         <Property name="text" type="java.lang.String" value="Catatan..."/>
+                        <Property name="toolTipText" type="java.lang.String" value="Catatan tambahan untuk supplier"/>
                         <Property name="wrapStyleWord" type="boolean" value="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textAreaCatatanFocusLost"/>
                         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textAreaCatatanFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textAreaCatatanFocusLost"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -1643,10 +1653,12 @@
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Email"/>
+                    <Property name="toolTipText" type="java.lang.String" value="E-mail supplier. Harus diisi sesuai dengan format email"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputEmailSupplierFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputEmailSupplierFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputEmailSupplierFocusLost"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputEmailSupplierKeyTyped"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputTelponSupplier">
@@ -1655,10 +1667,12 @@
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Telpon"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Telpon/hp supplier. hanya bisa di isi dengan angka"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputTelponSupplierFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputTelponSupplierFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputTelponSupplierFocusLost"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputTelponSupplierKeyTyped"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputAlamatSupplier">
@@ -1667,10 +1681,14 @@
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Alamat"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Text Cursor"/>
+                    </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputAlamatSupplierFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputAlamatSupplierFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputAlamatSupplierFocusLost"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputAlamatSupplierKeyTyped"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputIDSupplier">
@@ -1679,10 +1697,11 @@
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="ID"/>
+                    <Property name="toolTipText" type="java.lang.String" value="ID Supplier. tidak perlu diubah"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputIDSupplierFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputIDSupplierFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputIDSupplierFocusLost"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel5">
@@ -1731,10 +1750,12 @@
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Nama"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Nama supplier"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputNamaSupplierFocusLost"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputNamaSupplierFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputNamaSupplierFocusLost"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputNamaSupplierKeyTyped"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel4">
@@ -1754,6 +1775,7 @@
                       <Image iconType="3" name="/tigacahaya/res/delete_x_big.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Clear"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Hapus semua text field"/>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="iconTextGap" type="int" value="9"/>
@@ -1824,6 +1846,7 @@
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="search..."/>
+                    <Property name="toolTipText" type="java.lang.String" value="Cari dari tabel dibawah"/>
                   </Properties>
                   <Events>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="searchFieldSupplierFocusLost"/>
@@ -1847,6 +1870,7 @@
                         <StringItem index="6" value="Catatan"/>
                       </StringArray>
                     </Property>
+                    <Property name="toolTipText" type="java.lang.String" value="Pencarian berdasarkan kolom yang ada"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -2079,6 +2103,7 @@
                       <Image iconType="3" name="/tigacahaya/res/refresh.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Refresh"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Refresh database"/>
                     <Property name="iconTextGap" type="int" value="6"/>
                   </Properties>
                   <Events>
@@ -2228,6 +2253,7 @@
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Jumlah"/>
+                    <Property name="toolTipText" type="java.lang.String" value="banyaknya barang retur"/>
                   </Properties>
                   <Events>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputJumlahBarangReturFocusLost"/>
@@ -2240,6 +2266,7 @@
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="ID Retur"/>
+                    <Property name="toolTipText" type="java.lang.String" value="ID tidak perlu diubah"/>
                   </Properties>
                   <Events>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputIdReturFocusLost"/>
@@ -2252,6 +2279,7 @@
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="ID"/>
+                    <Property name="toolTipText" type="java.lang.String" value="ID Barang, Masukan dari tabel barang yang tersedia"/>
                   </Properties>
                   <Events>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputIdBarangReturFocusLost"/>
@@ -2291,6 +2319,7 @@
                       <Image iconType="3" name="/tigacahaya/res/delete_x_big.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Clear"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Hapus semua text field"/>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="iconTextGap" type="int" value="9"/>
@@ -2361,6 +2390,7 @@
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="search..."/>
+                    <Property name="toolTipText" type="java.lang.String" value="Cari dari tabel dibawah"/>
                   </Properties>
                   <Events>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="searchFieldReturFocusLost"/>
@@ -2382,6 +2412,7 @@
                         <StringItem index="4" value="Jumlah"/>
                       </StringArray>
                     </Property>
+                    <Property name="toolTipText" type="java.lang.String" value="Pencarian berdasarkan kolom yang ada"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

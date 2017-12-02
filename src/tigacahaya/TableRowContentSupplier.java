@@ -57,7 +57,6 @@ public class TableRowContentSupplier {
         return catatan;
     }
     //table row methods
-    
     // All table content
     public static ArrayList<TableRowContentSupplier> tableContentSupplier() {
         try {

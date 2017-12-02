@@ -110,8 +110,5 @@ public class TableRowContentTransaksi {
         MySQLconn.executeVoidQuery("INSERT INTO `transaksi_invoice` (`prefix_inv`) VALUES ('TC')");
         MySQLconn.executeVoidQuery("UPDATE transaksi_invoice SET `id_inv` = concat( `prefix_inv`,LPAD(transaksi_invoice.no_inv, 8,\"0\") );");
     }}
-
-
 }
 // buat get value tabel buat di post        
-//System.out.println(model.getValueAt(1,3));

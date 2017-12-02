@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import javax.swing.UIManager;
 import static tigacahaya.TableRowContent.tableContent;
 import static tigacahaya.TableRowContentRetur.tableContentRetur;
 import static tigacahaya.TableRowContentSupplier.tableContentSupplier;
@@ -25,7 +24,6 @@ import static tigacahaya.TableRowContentTransaksi.tableContentTransaksi;
  * @author ijash
  */
 public class GUI extends javax.swing.JFrame {
-
     /**
      * Creates new form GUI & GUI execution
      */
@@ -39,7 +37,6 @@ public class GUI extends javax.swing.JFrame {
         sortTableSupplier();
         displayTableRetur();
         sortTableRetur();
-       
 
     }
     // back-end methods......................................
@@ -75,7 +72,6 @@ public class GUI extends javax.swing.JFrame {
             row[2] = list.get(i).getQty();
             model.addRow(row);
             labelTransaksiAtas.setText("Invoice :" + TableRowContentTransaksi.statusInvoiceAkhir());
-         //   System.out.println("klasOOOOOOOOOOOOOOOOOkaskaljskjas");
         }
     }
     public void sortTableTransaksi() {
@@ -125,7 +121,7 @@ public class GUI extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tabelTransaksi.getModel();
         model.setRowCount(0);
         displayTableTransaksi();
-        
+
     }
     public void refreshTableRetur() {
         DefaultTableModel model = (DefaultTableModel) tabelRetur.getModel();
@@ -145,7 +141,7 @@ public class GUI extends javax.swing.JFrame {
         } else {
             tf.setRowFilter(RowFilter.regexFilter("(?i)" + query, column - 1));
         }
-    }   
+    }
     public void filterTableSupplier(String query, int column) {
         TableRowSorter<DefaultTableModel> tf = new TableRowSorter<>((DefaultTableModel) tabelSupplier.getModel());
         tabelSupplier.setRowSorter(tf);
@@ -154,7 +150,7 @@ public class GUI extends javax.swing.JFrame {
         } else {
             tf.setRowFilter(RowFilter.regexFilter("(?i)" + query, column - 1));
         }
-    }     
+    }
     public void filterTableRetur(String query, int column) {
         TableRowSorter<DefaultTableModel> tf = new TableRowSorter<>((DefaultTableModel) tabelRetur.getModel());
         tabelRetur.setRowSorter(tf);
@@ -178,25 +174,23 @@ public class GUI extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }   
-    public boolean regexIdBarang(String statement){
-        if (statement.matches("\\bP[0-9][0-9][0-9][0-9][0-9][0-9][0-9]\\b")){
-            return true;   
-        }
-        else {
+    }
+    public boolean regexIdBarang(String statement) {
+        if (statement.matches("\\bP[0-9][0-9][0-9][0-9][0-9][0-9][0-9]\\b")) {
+            return true;
+        } else {
             JOptionPane.showMessageDialog(null, "ID Barang salah");
-            return false;   
+            return false;
         }
     }
-    public boolean regexBilangan(String statement, String namaField){
-                if ((statement.matches("\\d+"))||(statement.matches("^([+-]?\\d*\\.?\\d*)$"))){
-            return true;   
+    public boolean regexBilangan(String statement, String namaField) {
+        if ((statement.matches("\\d+")) || (statement.matches("^([+-]?\\d*\\.?\\d*)$"))) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, namaField + " harus angka!");
+            return false;
         }
-        else {
-            JOptionPane.showMessageDialog(null, namaField+" harus angka!");
-            return false;   
-        }
-        
+
     }
     // <editor-fold defaultstate="collapsed" desc=" IDE Generated Code ">
 
@@ -1910,7 +1904,6 @@ public class GUI extends javax.swing.JFrame {
 // </editor-fold> 
 // <editor-fold defaultstate="collapsed" desc=" Action Event ">
     // action event methods.
-
     private void tabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMouseClicked
         // Display selected row in text fields
         String comb = "Tidak";
@@ -1949,38 +1942,39 @@ public class GUI extends javax.swing.JFrame {
         fieldInputSupplier.setText(MySQLconn.executeSingleQueryResult("SELECT supplier FROM `barang` WHERE barang.id_barang='" + (model.getValueAt(i, 0).toString()) + "'", "supplier"));
     }//GEN-LAST:event_tabelMouseClicked
     private void tombolTambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahMouseClicked
-       
-        if (regexIdBarang(fieldInputId_barang.getText())){
-            if(regexBilangan(fieldInputQty.getText(),"Qty")||regexBilangan(fieldInputHarga_beli.getText(),"Harga")){
-        String query = "INSERT INTO `barang`(`code`, `no`, `id_barang`, `jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `tgl_masuk`, `garansi`) VALUES('P',NULL,NULL,'" + fieldInputJenis.getText() + "','" + fieldInputMerk.getText() + "','" + fieldInputRagam.getText() + "','" + fieldInputSeri.getText() + "','" + fieldInputQty.getText() + "','" + fieldInputHarga_beli.getText() + "','" + fieldInputSupplier.getText() + "',CURRENT_TIMESTAMP,'" + comboBoxGaransi.getSelectedItem() + "')";
-        execSQLQuery(query, "ditambahkan");
-        MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\") );");
-        System.out.println(query);
-        refreshTable();
+
+        if (regexIdBarang(fieldInputId_barang.getText())) {
+            if (regexBilangan(fieldInputQty.getText(), "Qty") || regexBilangan(fieldInputHarga_beli.getText(), "Harga")) {
+                String query = "INSERT INTO `barang`(`code`, `no`, `id_barang`, `jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `tgl_masuk`, `garansi`) VALUES('P',NULL,NULL,'" + fieldInputJenis.getText() + "','" + fieldInputMerk.getText() + "','" + fieldInputRagam.getText() + "','" + fieldInputSeri.getText() + "','" + fieldInputQty.getText() + "','" + fieldInputHarga_beli.getText() + "','" + fieldInputSupplier.getText() + "',CURRENT_TIMESTAMP,'" + comboBoxGaransi.getSelectedItem() + "')";
+                execSQLQuery(query, "ditambahkan");
+                MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\") );");
+                System.out.println(query);
+                refreshTable();
             }
         }
-        
+
     }//GEN-LAST:event_tombolTambahMouseClicked
     private void tombolUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahActionPerformed
-if (regexIdBarang(fieldInputId_barang.getText())){
-    if(regexBilangan(fieldInputQty.getText(),"Qty")||regexBilangan(fieldInputHarga_beli.getText(),"Harga")){
-        String query = "UPDATE `barang` SET `jenis`= '" + fieldInputJenis.getText() + "',`merk`='" + fieldInputMerk.getText() + "',`ragam`='" + fieldInputRagam.getText() + "',`seri`='" + fieldInputSeri.getText() + "',`qty`='" + fieldInputQty.getText() + "',`harga_beli`='" + fieldInputHarga_beli.getText() + "',`supplier`='" + fieldInputSupplier.getText() + "',`garansi`='" + (String) comboBoxGaransi.getSelectedItem() + "' WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
+        if (regexIdBarang(fieldInputId_barang.getText())) {
+            if (regexBilangan(fieldInputQty.getText(), "Qty") || regexBilangan(fieldInputHarga_beli.getText(), "Harga")) {
+                String query = "UPDATE `barang` SET `jenis`= '" + fieldInputJenis.getText() + "',`merk`='" + fieldInputMerk.getText() + "',`ragam`='" + fieldInputRagam.getText() + "',`seri`='" + fieldInputSeri.getText() + "',`qty`='" + fieldInputQty.getText() + "',`harga_beli`='" + fieldInputHarga_beli.getText() + "',`supplier`='" + fieldInputSupplier.getText() + "',`garansi`='" + (String) comboBoxGaransi.getSelectedItem() + "' WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
 
-        execSQLQuery(query, "diubah");
-        MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\") );");
+                execSQLQuery(query, "diubah");
+                MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\") );");
 
-        System.out.println(query);
-        refreshTable();
-}}
+                System.out.println(query);
+                refreshTable();
+            }
+        }
     }//GEN-LAST:event_tombolUbahActionPerformed
     private void tombolHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusActionPerformed
-if (regexIdBarang(fieldInputId_barang.getText())){
+        if (regexIdBarang(fieldInputId_barang.getText())) {
 
-        String query = "DELETE from `barang` WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
-        execSQLQuery(query, "" + "dihapus");
-        System.out.println(query);
-        refreshTable();
-}
+            String query = "DELETE from `barang` WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
+            execSQLQuery(query, "" + "dihapus");
+            System.out.println(query);
+            refreshTable();
+        }
     }//GEN-LAST:event_tombolHapusActionPerformed
     private void buttonRefreshDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBActionPerformed
 
@@ -1988,7 +1982,7 @@ if (regexIdBarang(fieldInputId_barang.getText())){
         refreshTable();
         JOptionPane.showMessageDialog(null, "Data telah direfresh");
         TableRowContentTransaksi.statusInvoiceAkhir();
-       // System.out.println(TableRowContentTransaksi.statusInvoiceAkhir());
+        // System.out.println(TableRowContentTransaksi.statusInvoiceAkhir());
     }//GEN-LAST:event_buttonRefreshDBActionPerformed
     private void fieldInputId_barangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputId_barangKeyTyped
         if (fieldInputId_barang.getText().length() > 10) {
@@ -2045,18 +2039,18 @@ if (regexIdBarang(fieldInputId_barang.getText())){
         }
     }//GEN-LAST:event_searchFieldFocusLost
     private void buttonRefreshDBTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBTransaksiActionPerformed
- 
+
         refreshTableTransaksi();
         JOptionPane.showMessageDialog(null, "Data telah direfresh");
     }//GEN-LAST:event_buttonRefreshDBTransaksiActionPerformed
     private void buttonRefreshDBSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBSupplierActionPerformed
-        
+
         refreshTableSupplier();
         JOptionPane.showMessageDialog(null, "Data telah direfresh");
     }//GEN-LAST:event_buttonRefreshDBSupplierActionPerformed
     private void tombolTambahSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahSupplierMouseClicked
-        if (fieldInputEmailSupplier.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")|| fieldInputEmailSupplier.getText().equals("")) {
-            if (fieldInputTelponSupplier.getText().matches("\\d+")|| fieldInputTelponSupplier.getText().equals("")) {
+        if (fieldInputEmailSupplier.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$") || fieldInputEmailSupplier.getText().equals("")) {
+            if (fieldInputTelponSupplier.getText().matches("\\d+") || fieldInputTelponSupplier.getText().equals("")) {
 
                 String query = "INSERT INTO `supplier`(`nama`, `alamat`, `telp`, `email`, `catatan`) VALUES ('" + fieldInputNamaSupplier.getText() + "','" + fieldInputAlamatSupplier.getText() + "','" + fieldInputTelponSupplier.getText() + "','" + fieldInputEmailSupplier.getText() + "','" + textAreaCatatan.getText() + "')";
                 execSQLQuery(query, "ditambahkan");
@@ -2077,13 +2071,14 @@ if (regexIdBarang(fieldInputId_barang.getText())){
         refreshTableSupplier();
     }//GEN-LAST:event_tombolHapusSupplierActionPerformed
     private void searchFieldSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldSupplierFocusLost
-    if ((searchFieldSupplier.getText()).equals("")) {
-            searchFieldSupplier.setText("search...");}
+        if ((searchFieldSupplier.getText()).equals("")) {
+            searchFieldSupplier.setText("search...");
+        }
     }//GEN-LAST:event_searchFieldSupplierFocusLost
     private void searchFieldSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldSupplierMouseClicked
-         if ("search...".equals(searchFieldSupplier.getText())) {
+        if ("search...".equals(searchFieldSupplier.getText())) {
             searchFieldSupplier.setText("");
-         }
+        }
     }//GEN-LAST:event_searchFieldSupplierMouseClicked
     private void searchFieldSupplierKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldSupplierKeyReleased
         String query = searchFieldSupplier.getText();
@@ -2091,8 +2086,8 @@ if (regexIdBarang(fieldInputId_barang.getText())){
     }//GEN-LAST:event_searchFieldSupplierKeyReleased
     private void tombolUbahSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahSupplierActionPerformed
         if (fieldInputIDSupplier.getText().matches("\\d+")) {
-            if (fieldInputEmailSupplier.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")|| fieldInputEmailSupplier.getText().equals("")) {
-                if (fieldInputTelponSupplier.getText().matches("\\d+")|| fieldInputTelponSupplier.getText().equals("")) {
+            if (fieldInputEmailSupplier.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$") || fieldInputEmailSupplier.getText().equals("")) {
+                if (fieldInputTelponSupplier.getText().matches("\\d+") || fieldInputTelponSupplier.getText().equals("")) {
                     String query = "UPDATE `supplier` SET `nama`= '" + fieldInputNamaSupplier.getText() + "',`alamat`='" + fieldInputAlamatSupplier.getText() + "',`telp`='" + fieldInputTelponSupplier.getText() + "',`email`='" + fieldInputEmailSupplier.getText() + "',`catatan`='" + textAreaCatatan.getText() + "' WHERE `id_supplier`='" + fieldInputIDSupplier.getText() + "';";
 
                     execSQLQuery(query, "diubah");
@@ -2118,105 +2113,105 @@ if (regexIdBarang(fieldInputId_barang.getText())){
     }//GEN-LAST:event_fieldInputId_barangFocusGained
     private void fieldInputId_barangFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputId_barangFocusLost
 
-        if (fieldInputId_barang.getText().equals("")){
-       fieldInputId_barang.setText("ID");
-     }
+        if (fieldInputId_barang.getText().equals("")) {
+            fieldInputId_barang.setText("ID");
+        }
     }//GEN-LAST:event_fieldInputId_barangFocusLost
     private void fieldInputJenisFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputJenisFocusGained
 
-        if(fieldInputJenis.getText().equals("Jenis")){
-      fieldInputJenis.setText("");
-      }
+        if (fieldInputJenis.getText().equals("Jenis")) {
+            fieldInputJenis.setText("");
+        }
     }//GEN-LAST:event_fieldInputJenisFocusGained
     private void fieldInputJenisFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputJenisFocusLost
 
-        if (fieldInputJenis.getText().equals("")){
-       fieldInputJenis.setText("Jenis");
-     }
+        if (fieldInputJenis.getText().equals("")) {
+            fieldInputJenis.setText("Jenis");
+        }
     }//GEN-LAST:event_fieldInputJenisFocusLost
     private void fieldInputMerkFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputMerkFocusGained
 
-         if(fieldInputMerk.getText().equals("Merk")){
-      fieldInputMerk.setText("");
-      }
+        if (fieldInputMerk.getText().equals("Merk")) {
+            fieldInputMerk.setText("");
+        }
     }//GEN-LAST:event_fieldInputMerkFocusGained
     private void fieldInputMerkFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputMerkFocusLost
 
-         if (fieldInputMerk.getText().equals("")){
-       fieldInputMerk.setText("Merk");
-     }
+        if (fieldInputMerk.getText().equals("")) {
+            fieldInputMerk.setText("Merk");
+        }
     }//GEN-LAST:event_fieldInputMerkFocusLost
     private void fieldInputRagamFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputRagamFocusGained
 
-        if(fieldInputRagam.getText().equals("Ragam")){
-      fieldInputRagam.setText("");
-      }
+        if (fieldInputRagam.getText().equals("Ragam")) {
+            fieldInputRagam.setText("");
+        }
     }//GEN-LAST:event_fieldInputRagamFocusGained
     private void fieldInputRagamFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputRagamFocusLost
 
-        if (fieldInputRagam.getText().equals("")){
-       fieldInputRagam.setText("Ragam");
-     }
+        if (fieldInputRagam.getText().equals("")) {
+            fieldInputRagam.setText("Ragam");
+        }
     }//GEN-LAST:event_fieldInputRagamFocusLost
     private void fieldInputSeriFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputSeriFocusGained
 
-        if(fieldInputSeri.getText().equals("Seri")){
-      fieldInputSeri.setText("");
-      }
+        if (fieldInputSeri.getText().equals("Seri")) {
+            fieldInputSeri.setText("");
+        }
     }//GEN-LAST:event_fieldInputSeriFocusGained
     private void fieldInputSeriFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputSeriFocusLost
 
-        if (fieldInputSeri.getText().equals("")){
-       fieldInputSeri.setText("Seri");
-     }
+        if (fieldInputSeri.getText().equals("")) {
+            fieldInputSeri.setText("Seri");
+        }
     }//GEN-LAST:event_fieldInputSeriFocusLost
     private void fieldInputQtyFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputQtyFocusGained
 
-         if(fieldInputQty.getText().equals("Qty")){
-      fieldInputQty.setText("");
-      }
+        if (fieldInputQty.getText().equals("Qty")) {
+            fieldInputQty.setText("");
+        }
     }//GEN-LAST:event_fieldInputQtyFocusGained
     private void fieldInputQtyFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputQtyFocusLost
 
-        if (fieldInputQty.getText().equals("")){
-       fieldInputQty.setText("Qty");
-     }
+        if (fieldInputQty.getText().equals("")) {
+            fieldInputQty.setText("Qty");
+        }
     }//GEN-LAST:event_fieldInputQtyFocusLost
     private void fieldInputHarga_beliFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputHarga_beliFocusGained
 
-        if(fieldInputHarga_beli.getText().equals("Hrg Beli")){
-      fieldInputHarga_beli.setText("");
-      }
+        if (fieldInputHarga_beli.getText().equals("Hrg Beli")) {
+            fieldInputHarga_beli.setText("");
+        }
     }//GEN-LAST:event_fieldInputHarga_beliFocusGained
     private void fieldInputHarga_beliFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputHarga_beliFocusLost
 
-        if (fieldInputHarga_beli.getText().equals("")){
-       fieldInputHarga_beli.setText("Hrg Beli");
-     }
+        if (fieldInputHarga_beli.getText().equals("")) {
+            fieldInputHarga_beli.setText("Hrg Beli");
+        }
     }//GEN-LAST:event_fieldInputHarga_beliFocusLost
     private void fieldInputSupplierFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputSupplierFocusGained
 
-         if(fieldInputSupplier.getText().equals("Supplier")){
-      fieldInputSupplier.setText("");
-      }
+        if (fieldInputSupplier.getText().equals("Supplier")) {
+            fieldInputSupplier.setText("");
+        }
     }//GEN-LAST:event_fieldInputSupplierFocusGained
     private void fieldInputSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputSupplierFocusLost
 
-         if (fieldInputSupplier.getText().equals("")){
-       fieldInputSupplier.setText("Supplier");
-     }
+        if (fieldInputSupplier.getText().equals("")) {
+            fieldInputSupplier.setText("Supplier");
+        }
     }//GEN-LAST:event_fieldInputSupplierFocusLost
     private void fieldInputIDSupplierFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputIDSupplierFocusGained
 
-        if(fieldInputIDSupplier.getText().equals("ID")){
-      fieldInputIDSupplier.setText("");
-      }
+        if (fieldInputIDSupplier.getText().equals("ID")) {
+            fieldInputIDSupplier.setText("");
+        }
     }//GEN-LAST:event_fieldInputIDSupplierFocusGained
     private void fieldInputIDSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputIDSupplierFocusLost
 
-        if (fieldInputIDSupplier.getText().equals("")){
-       fieldInputIDSupplier.setText("ID");
-     }
+        if (fieldInputIDSupplier.getText().equals("")) {
+            fieldInputIDSupplier.setText("ID");
+        }
     }//GEN-LAST:event_fieldInputIDSupplierFocusLost
     private void fieldInputNamaSupplierFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputNamaSupplierFocusGained
 
@@ -2278,7 +2273,6 @@ if (regexIdBarang(fieldInputId_barang.getText())){
             textAreaCatatan.setText("Catatan...");
         }
     }//GEN-LAST:event_textAreaCatatanFocusLost
-
     private void tombolAtcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolAtcActionPerformed
         ArrayList<TableRowContentTransaksi> list = tableContentTransaksi();
         String query = "null";
@@ -2297,16 +2291,15 @@ if (regexIdBarang(fieldInputId_barang.getText())){
                 query = "INSERT INTO `transaksi_cart` (`id_inv`, `id_barang`, `qty`, `harga`, `keterangan`) VALUES ('" + statusInvoiceAkhir() + "', '" + fieldInputId_barang.getText() + "', '1', '" + fieldInputHarga_beli.getText() + "', '');";
                 Duplicate = false;
             }
-           
+
         }
         System.out.println(query);
         MySQLconn.executeVoidQuery(query);
-        
+
         refreshTableTransaksi();
 
 
     }//GEN-LAST:event_tombolAtcActionPerformed
-
     private void tabelTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelTransaksiMouseClicked
         int i = tabelTransaksi.getSelectedRow();
         TableModel model = tabelTransaksi.getModel();
@@ -2316,10 +2309,9 @@ if (regexIdBarang(fieldInputId_barang.getText())){
         fieldInputQtyTransaksi.setText(model.getValueAt(i, 2).toString());
         textAreaKiriTransaksi.setText(model.getValueAt(i, 1).toString());
     }//GEN-LAST:event_tabelTransaksiMouseClicked
-
     private void tombolCheckoutTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCheckoutTransaksiActionPerformed
         //disini nantinya dikasih failsafe if, untuk cek barang supaya ga ngurangin sampe minus.
-        
+
         TableModel model = tabelTransaksi.getModel();
         if (model.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Cart tidak boleh kosong");
@@ -2343,7 +2335,6 @@ if (regexIdBarang(fieldInputId_barang.getText())){
             labelTransaksiAtas.setText("Invoice :" + TableRowContentTransaksi.statusInvoiceAkhir());
         }
     }//GEN-LAST:event_tombolCheckoutTransaksiActionPerformed
-
     private void tabelReturMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelReturMouseClicked
 
         int i = tabelRetur.getSelectedRow();
@@ -2354,86 +2345,73 @@ if (regexIdBarang(fieldInputId_barang.getText())){
         fieldInputJumlahBarangRetur.setText(model.getValueAt(i, 3).toString());
         textAreaKiriRetur.setText(model.getValueAt(i, 2).toString());
     }//GEN-LAST:event_tabelReturMouseClicked
-
     private void searchFieldReturKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldReturKeyReleased
         String query = searchFieldRetur.getText();
         filterTableRetur(query, comboBoxKolomRetur.getSelectedIndex());
     }//GEN-LAST:event_searchFieldReturKeyReleased
-
     private void searchFieldReturMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldReturMouseClicked
         if ("search...".equals(searchFieldRetur.getText())) {
             searchFieldRetur.setText("");
         }
     }//GEN-LAST:event_searchFieldReturMouseClicked
-
     private void searchFieldReturFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldReturFocusLost
         if ((searchFieldRetur.getText()).equals("")) {
             searchFieldRetur.setText("search...");
         }
     }//GEN-LAST:event_searchFieldReturFocusLost
-
     private void fieldInputIdBarangReturFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputIdBarangReturFocusGained
 
         if (fieldInputIdBarangRetur.getText().equals("ID")) {
             fieldInputIdBarangRetur.setText("");
         }
     }//GEN-LAST:event_fieldInputIdBarangReturFocusGained
-
     private void fieldInputIdBarangReturFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputIdBarangReturFocusLost
 
         if (fieldInputIdBarangRetur.getText().equals("")) {
             fieldInputIdBarangRetur.setText("ID");
         }
     }//GEN-LAST:event_fieldInputIdBarangReturFocusLost
-
     private void fieldInputIdReturFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputIdReturFocusGained
 
         if (fieldInputIdRetur.getText().equals("ID Retur")) {
             fieldInputIdRetur.setText("");
         }
     }//GEN-LAST:event_fieldInputIdReturFocusGained
-
     private void fieldInputIdReturFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputIdReturFocusLost
 
         if (fieldInputIdRetur.getText().equals("")) {
             fieldInputIdRetur.setText("ID Retur");
         }
     }//GEN-LAST:event_fieldInputIdReturFocusLost
-
     private void fieldInputJumlahBarangReturFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputJumlahBarangReturFocusGained
 
         if (fieldInputJumlahBarangRetur.getText().equals("Jumlah")) {
             fieldInputJumlahBarangRetur.setText("");
         }
     }//GEN-LAST:event_fieldInputJumlahBarangReturFocusGained
-
     private void fieldInputJumlahBarangReturFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputJumlahBarangReturFocusLost
 
         if (fieldInputJumlahBarangRetur.getText().equals("")) {
             fieldInputJumlahBarangRetur.setText("Jumlah");
         }
     }//GEN-LAST:event_fieldInputJumlahBarangReturFocusLost
-
     private void tombolHapusReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusReturActionPerformed
         String query = "DELETE from `barang_retur` WHERE `id_retur`='" + fieldInputIdRetur.getText() + "';";
         execSQLQuery(query, "" + "dihapus");
         System.out.println(query);
         refreshTableRetur();
     }//GEN-LAST:event_tombolHapusReturActionPerformed
-
     private void tombolTambahReturMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahReturMouseClicked
         String query = "INSERT INTO `barang_retur`(`id_barang`, `qty`) VALUES ('" + fieldInputIdBarangRetur.getText() + "','" + fieldInputJumlahBarangRetur.getText() + "')";
         execSQLQuery(query, "ditambahkan");
         System.out.println(query);
         refreshTableRetur();
     }//GEN-LAST:event_tombolTambahReturMouseClicked
-
     private void buttonRefreshDBReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBReturActionPerformed
 
         refreshTable();
         JOptionPane.showMessageDialog(null, "Data telah direfresh");
     }//GEN-LAST:event_buttonRefreshDBReturActionPerformed
-
     private void buttonTransaksiHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTransaksiHapusActionPerformed
         if (fieldIdBarangTransaksi.getText().matches("\\bP[0-9][0-9][0-9][0-9][0-9][0-9][0-9]\\b")) {
             MySQLconn.executeVoidQuery("DELETE FROM `transaksi_cart` WHERE `transaksi_cart`.`id_barang` ='" + fieldIdBarangTransaksi.getText() + "';");
@@ -2442,94 +2420,83 @@ if (regexIdBarang(fieldInputId_barang.getText())){
             JOptionPane.showMessageDialog(null, "Pilih barang dahulu");
         }
     }//GEN-LAST:event_buttonTransaksiHapusActionPerformed
-
     private void buttonUbahQtyTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUbahQtyTransaksiActionPerformed
         if (fieldIdBarangTransaksi.getText().matches("\\bP[0-9][0-9][0-9][0-9][0-9][0-9][0-9]\\b")) {
             if (regexBilangan(fieldInputQtyTransaksi.getText(), "Qty")) {
                 String query = "UPDATE `transaksi_cart` SET `qty`= ' " + fieldInputQtyTransaksi.getText() + "' WHERE `transaksi_cart`.`id_barang`='" + fieldIdBarangTransaksi.getText() + "';";
-               // execSQLQuery(query, "diubah");
-               MySQLconn.executeVoidQuery(query);
+                // execSQLQuery(query, "diubah");
+                MySQLconn.executeVoidQuery(query);
                 System.out.println(query);
                 refreshTableTransaksi();
             }
         }
     }//GEN-LAST:event_buttonUbahQtyTransaksiActionPerformed
-
     private void tabelSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelSupplierMouseClicked
         // Menampilkan row yang dipilih di table ke text field
         int i = tabelSupplier.getSelectedRow();
         TableModel model = tabelSupplier.getModel();
         i = tabelSupplier.convertRowIndexToModel(i);
-        fieldInputIDSupplier.setText(model.getValueAt(i,0).toString());
-        fieldInputNamaSupplier.setText(model.getValueAt(i,1).toString());
-        fieldInputAlamatSupplier.setText(model.getValueAt(i,2).toString());
-        fieldInputTelponSupplier.setText(model.getValueAt(i,3).toString());
-        fieldInputEmailSupplier.setText(model.getValueAt(i,4).toString());
-        textAreaCatatan.setText(model.getValueAt(i,5).toString());
-        textAreaKiriSupplier.setText(model.getValueAt(i, 1).toString()+"\n"+model.getValueAt(i, 1).toString()+"\n"+model.getValueAt(i, 5).toString());
+        fieldInputIDSupplier.setText(model.getValueAt(i, 0).toString());
+        fieldInputNamaSupplier.setText(model.getValueAt(i, 1).toString());
+        fieldInputAlamatSupplier.setText(model.getValueAt(i, 2).toString());
+        fieldInputTelponSupplier.setText(model.getValueAt(i, 3).toString());
+        fieldInputEmailSupplier.setText(model.getValueAt(i, 4).toString());
+        textAreaCatatan.setText(model.getValueAt(i, 5).toString());
+        textAreaKiriSupplier.setText(model.getValueAt(i, 1).toString() + "\n" + model.getValueAt(i, 1).toString() + "\n" + model.getValueAt(i, 5).toString());
     }//GEN-LAST:event_tabelSupplierMouseClicked
-
     private void tombolClearFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolClearFieldActionPerformed
-       fieldInputId_barang.setText("(Otomatis)");
-       fieldInputQty.setText("");
-       fieldInputHarga_beli.setText("");
-       fieldInputSupplier.setText("");
-       fieldInputTanggal_masuk.setText("(Otomatis)");
-       fieldInputJenis.setText("");
-       fieldInputMerk.setText("");
-       fieldInputRagam.setText("");
-       fieldInputSeri.setText("");
+        fieldInputId_barang.setText("(Otomatis)");
+        fieldInputQty.setText("");
+        fieldInputHarga_beli.setText("");
+        fieldInputSupplier.setText("");
+        fieldInputTanggal_masuk.setText("(Otomatis)");
+        fieldInputJenis.setText("");
+        fieldInputMerk.setText("");
+        fieldInputRagam.setText("");
+        fieldInputSeri.setText("");
 
-       fieldInputQty.requestFocus();
+        fieldInputQty.requestFocus();
     }//GEN-LAST:event_tombolClearFieldActionPerformed
-
     private void tombolClearSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolClearSupplierActionPerformed
-       fieldInputIDSupplier.setText("(Otomatis)");
-       fieldInputEmailSupplier.setText("");
-       textAreaCatatan.setText("");
-       fieldInputNamaSupplier.setText("");
-       fieldInputAlamatSupplier.setText("");
-       fieldInputTelponSupplier.setText("");
-      
-       fieldInputEmailSupplier.requestFocus();
+        fieldInputIDSupplier.setText("(Otomatis)");
+        fieldInputEmailSupplier.setText("");
+        textAreaCatatan.setText("");
+        fieldInputNamaSupplier.setText("");
+        fieldInputAlamatSupplier.setText("");
+        fieldInputTelponSupplier.setText("");
+
+        fieldInputEmailSupplier.requestFocus();
     }//GEN-LAST:event_tombolClearSupplierActionPerformed
-
     private void tombolClearReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolClearReturActionPerformed
-       fieldInputIdRetur.setText("(Otomatis)");
-       fieldInputIdBarangRetur.setText("");
-       fieldInputJumlahBarangRetur.setText("");
-      
-       fieldInputIdBarangRetur.requestFocus();
-    }//GEN-LAST:event_tombolClearReturActionPerformed
+        fieldInputIdRetur.setText("(Otomatis)");
+        fieldInputIdBarangRetur.setText("");
+        fieldInputJumlahBarangRetur.setText("");
 
+        fieldInputIdBarangRetur.requestFocus();
+    }//GEN-LAST:event_tombolClearReturActionPerformed
     private void fieldInputQtyTransaksiFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputQtyTransaksiFocusGained
         fieldInputQtyTransaksi.setText("");
     }//GEN-LAST:event_fieldInputQtyTransaksiFocusGained
-
     private void fieldInputNamaSupplierKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputNamaSupplierKeyTyped
-                if (fieldInputNamaSupplier.getText().length() > 50) {
+        if (fieldInputNamaSupplier.getText().length() > 50) {
             evt.consume();
         }
     }//GEN-LAST:event_fieldInputNamaSupplierKeyTyped
-
     private void fieldInputAlamatSupplierKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputAlamatSupplierKeyTyped
-            if (fieldInputAlamatSupplier.getText().length() > 180) {
+        if (fieldInputAlamatSupplier.getText().length() > 180) {
             evt.consume();
         }
     }//GEN-LAST:event_fieldInputAlamatSupplierKeyTyped
-
     private void fieldInputTelponSupplierKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputTelponSupplierKeyTyped
-          if (fieldInputTelponSupplier.getText().length() > 15) {
+        if (fieldInputTelponSupplier.getText().length() > 15) {
             evt.consume();
         }
     }//GEN-LAST:event_fieldInputTelponSupplierKeyTyped
-
     private void fieldInputEmailSupplierKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputEmailSupplierKeyTyped
-              if (fieldInputEmailSupplier.getText().length() > 35) {
+        if (fieldInputEmailSupplier.getText().length() > 35) {
             evt.consume();
         }
     }//GEN-LAST:event_fieldInputEmailSupplierKeyTyped
-
 // </editor-fold>
     public static void guiStart() {
         /* Set the Nimbus look and feel */
@@ -2541,7 +2508,7 @@ if (regexIdBarang(fieldInputId_barang.getText())){
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 System.out.println(info.getName());
                 if ("Nimbus".equals(info.getName())) {
-                    
+
                     //javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;

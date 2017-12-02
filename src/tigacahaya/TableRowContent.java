@@ -102,7 +102,6 @@ public class TableRowContent {
         this.garansi = garansi;
     }
     //table row methods
-    
     // All table content
     public static ArrayList<TableRowContent> tableContent() {
         try {

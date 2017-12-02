@@ -53,7 +53,6 @@ public class TableRowContentRetur {
         this.qty = qty;
     }
     //table row methods
-    
     // All table content
     public static ArrayList<TableRowContentRetur> tableContentRetur() {
         try {

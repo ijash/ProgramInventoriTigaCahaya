@@ -178,8 +178,7 @@ public class GUI extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-    
+    }   
     public boolean regexIdBarang(String statement){
         if (statement.matches("\\bP[0-9][0-9][0-9][0-9][0-9][0-9][0-9]\\b")){
             return true;   
@@ -2532,9 +2531,6 @@ if (regexIdBarang(fieldInputId_barang.getText())){
     }//GEN-LAST:event_fieldInputEmailSupplierKeyTyped
 
 // </editor-fold>
-    /**
-     * by ijash
-     */
     public static void guiStart() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -2546,7 +2542,7 @@ if (regexIdBarang(fieldInputId_barang.getText())){
                 System.out.println(info.getName());
                 if ("Nimbus".equals(info.getName())) {
                     
-                   // javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+                    //javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

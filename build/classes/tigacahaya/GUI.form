@@ -514,7 +514,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/tigacahaya/res/cart_25px.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value=""/>
+                    <Property name="toolTipText" type="java.lang.String" value="Masukan barang ke tabel transaksi terakhir"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolAtcActionPerformed"/>
@@ -639,6 +639,7 @@
                       <Image iconType="3" name="/tigacahaya/res/delete_x_big.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Clear"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Hapus text dari field pengisian"/>
                     <Property name="iconTextGap" type="int" value="8"/>
                   </Properties>
                   <Events>

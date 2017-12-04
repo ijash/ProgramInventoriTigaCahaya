@@ -559,7 +559,7 @@ public class GUI extends javax.swing.JFrame {
 
         tombolAtc.setForeground(new java.awt.Color(12, 30, 42));
         tombolAtc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/cart_25px.png"))); // NOI18N
-        tombolAtc.setToolTipText("");
+        tombolAtc.setToolTipText("Masukan barang ke tabel transaksi terakhir");
         tombolAtc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tombolAtcActionPerformed(evt);
@@ -609,6 +609,7 @@ public class GUI extends javax.swing.JFrame {
         tombolClearField.setForeground(new java.awt.Color(12, 30, 42));
         tombolClearField.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/delete_x_big.png"))); // NOI18N
         tombolClearField.setText("Clear");
+        tombolClearField.setToolTipText("Hapus text dari field pengisian");
         tombolClearField.setIconTextGap(8);
         tombolClearField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

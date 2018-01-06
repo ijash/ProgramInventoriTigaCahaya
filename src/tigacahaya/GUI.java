@@ -826,1094 +826,1156 @@ public class GUI extends javax.swing.JFrame {
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
-        });
-        tabel.setSelectionBackground(new java.awt.Color(25, 104, 178));
-        tabel.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        tabel.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tabel.setShowHorizontalLines(false);
-        tabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelMouseClicked(evt);
+            @Override
+            public Class getColumnClass(int column) {
+                Class returnValue;
+
+                // Verifying that the column exists (index > 0 && index < number of columns
+
+                    if ((column >= 0) && (column < getColumnCount())) {
+                        returnValue = getValueAt(0, column).getClass();
+                    } else {
+
+                        // Returns the class for the item in the column
+
+                        returnValue = Object.class;
+                    }
+                    return returnValue;
+                };
+            });
+            tabel.setSelectionBackground(new java.awt.Color(25, 104, 178));
+            tabel.setSelectionForeground(new java.awt.Color(255, 255, 255));
+            tabel.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+            tabel.setShowHorizontalLines(false);
+            tabel.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    tabelMouseClicked(evt);
+                }
+            });
+            panelScrollTabel.setViewportView(tabel);
+            if (tabel.getColumnModel().getColumnCount() > 0) {
+                tabel.getColumnModel().getColumn(5).setMaxWidth(40);
             }
-        });
-        panelScrollTabel.setViewportView(tabel);
-        if (tabel.getColumnModel().getColumnCount() > 0) {
-            tabel.getColumnModel().getColumn(5).setMaxWidth(40);
-        }
 
-        javax.swing.GroupLayout panelTengahLayout = new javax.swing.GroupLayout(panelTengah);
-        panelTengah.setLayout(panelTengahLayout);
-        panelTengahLayout.setHorizontalGroup(
-            panelTengahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelScrollTabel, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-        panelTengahLayout.setVerticalGroup(
-            panelTengahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelScrollTabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-        );
+            javax.swing.GroupLayout panelTengahLayout = new javax.swing.GroupLayout(panelTengah);
+            panelTengah.setLayout(panelTengahLayout);
+            panelTengahLayout.setHorizontalGroup(
+                panelTengahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(panelScrollTabel, javax.swing.GroupLayout.Alignment.TRAILING)
+            );
+            panelTengahLayout.setVerticalGroup(
+                panelTengahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(panelScrollTabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            );
 
-        javax.swing.GroupLayout tabStokLayout = new javax.swing.GroupLayout(tabStok);
-        tabStok.setLayout(tabStokLayout);
-        tabStokLayout.setHorizontalGroup(
-            tabStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabStokLayout.createSequentialGroup()
-                .addComponent(panelKiri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelTengah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(panelAtas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelBawah, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
-        );
-        tabStokLayout.setVerticalGroup(
-            tabStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabStokLayout.createSequentialGroup()
-                .addComponent(panelAtas, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tabStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelKiri, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+            javax.swing.GroupLayout tabStokLayout = new javax.swing.GroupLayout(tabStok);
+            tabStok.setLayout(tabStokLayout);
+            tabStokLayout.setHorizontalGroup(
+                tabStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(tabStokLayout.createSequentialGroup()
+                    .addComponent(panelKiri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(panelTengah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelBawah, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+                .addComponent(panelAtas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelBawah, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+            );
+            tabStokLayout.setVerticalGroup(
+                tabStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(tabStokLayout.createSequentialGroup()
+                    .addComponent(panelAtas, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(tabStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(panelKiri, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                        .addComponent(panelTengah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(panelBawah, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+            );
 
-        panelUtama.addTab("Stok", tabStok);
+            panelUtama.addTab("Stok", tabStok);
 
-        tabTrans.setBackground(new java.awt.Color(117, 179, 226));
+            tabTrans.setBackground(new java.awt.Color(117, 179, 226));
 
-        panelKiriTransaksi.setBackground(new java.awt.Color(117, 179, 226));
-        panelKiriTransaksi.setForeground(new java.awt.Color(117, 179, 226));
-        panelKiriTransaksi.setPreferredSize(new java.awt.Dimension(154, 250));
+            panelKiriTransaksi.setBackground(new java.awt.Color(117, 179, 226));
+            panelKiriTransaksi.setForeground(new java.awt.Color(117, 179, 226));
+            panelKiriTransaksi.setPreferredSize(new java.awt.Dimension(154, 250));
 
-        labelInfoTransaksi.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        labelInfoTransaksi.setForeground(new java.awt.Color(12, 30, 42));
-        labelInfoTransaksi.setText("Info");
+            labelInfoTransaksi.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+            labelInfoTransaksi.setForeground(new java.awt.Color(12, 30, 42));
+            labelInfoTransaksi.setText("Info");
 
-        buttonRefreshDBTransaksi.setForeground(new java.awt.Color(12, 30, 42));
-        buttonRefreshDBTransaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/refresh.png"))); // NOI18N
-        buttonRefreshDBTransaksi.setText("Refresh");
-        buttonRefreshDBTransaksi.setToolTipText("Refresh database");
-        buttonRefreshDBTransaksi.setIconTextGap(6);
-        buttonRefreshDBTransaksi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRefreshDBTransaksiActionPerformed(evt);
-            }
-        });
+            buttonRefreshDBTransaksi.setForeground(new java.awt.Color(12, 30, 42));
+            buttonRefreshDBTransaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/refresh.png"))); // NOI18N
+            buttonRefreshDBTransaksi.setText("Refresh");
+            buttonRefreshDBTransaksi.setToolTipText("Refresh database");
+            buttonRefreshDBTransaksi.setIconTextGap(6);
+            buttonRefreshDBTransaksi.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    buttonRefreshDBTransaksiActionPerformed(evt);
+                }
+            });
 
-        textAreaKiriTransaksi.setBackground(new java.awt.Color(117, 179, 226));
-        textAreaKiriTransaksi.setColumns(20);
-        textAreaKiriTransaksi.setForeground(new java.awt.Color(12, 30, 42));
-        textAreaKiriTransaksi.setLineWrap(true);
-        textAreaKiriTransaksi.setRows(5);
-        textAreaKiriTransaksi.setWrapStyleWord(true);
-        textAreaKiriTransaksi.setBorder(null);
+            textAreaKiriTransaksi.setBackground(new java.awt.Color(117, 179, 226));
+            textAreaKiriTransaksi.setColumns(20);
+            textAreaKiriTransaksi.setForeground(new java.awt.Color(12, 30, 42));
+            textAreaKiriTransaksi.setLineWrap(true);
+            textAreaKiriTransaksi.setRows(5);
+            textAreaKiriTransaksi.setWrapStyleWord(true);
+            textAreaKiriTransaksi.setBorder(null);
 
-        javax.swing.GroupLayout panelKiriTransaksiLayout = new javax.swing.GroupLayout(panelKiriTransaksi);
-        panelKiriTransaksi.setLayout(panelKiriTransaksiLayout);
-        panelKiriTransaksiLayout.setHorizontalGroup(
-            panelKiriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelKiriTransaksiLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelKiriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textAreaKiriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                    .addComponent(labelInfoTransaksi)
-                    .addComponent(buttonRefreshDBTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelKiriTransaksiLayout.setVerticalGroup(
-            panelKiriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelKiriTransaksiLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelInfoTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textAreaKiriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonRefreshDBTransaksi)
-                .addContainerGap())
-        );
+            javax.swing.GroupLayout panelKiriTransaksiLayout = new javax.swing.GroupLayout(panelKiriTransaksi);
+            panelKiriTransaksi.setLayout(panelKiriTransaksiLayout);
+            panelKiriTransaksiLayout.setHorizontalGroup(
+                panelKiriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelKiriTransaksiLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(panelKiriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(textAreaKiriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                        .addComponent(labelInfoTransaksi)
+                        .addComponent(buttonRefreshDBTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+            panelKiriTransaksiLayout.setVerticalGroup(
+                panelKiriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelKiriTransaksiLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(labelInfoTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(textAreaKiriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(buttonRefreshDBTransaksi)
+                    .addContainerGap())
+            );
 
-        panelBawahTransaksi.setBackground(new java.awt.Color(25, 104, 178));
-        panelBawahTransaksi.setPreferredSize(new java.awt.Dimension(285, 126));
+            panelBawahTransaksi.setBackground(new java.awt.Color(25, 104, 178));
+            panelBawahTransaksi.setPreferredSize(new java.awt.Dimension(285, 126));
 
-        fieldIdBarangTransaksi.setEditable(false);
-        fieldIdBarangTransaksi.setForeground(new java.awt.Color(12, 30, 42));
-        fieldIdBarangTransaksi.setText("ID Barang");
-        fieldIdBarangTransaksi.setToolTipText("ID Barang, tidak perlu diubah.");
+            fieldIdBarangTransaksi.setEditable(false);
+            fieldIdBarangTransaksi.setForeground(new java.awt.Color(12, 30, 42));
+            fieldIdBarangTransaksi.setText("ID Barang");
+            fieldIdBarangTransaksi.setToolTipText("ID Barang, tidak perlu diubah.");
 
-        fieldInputQtyTransaksi.setForeground(new java.awt.Color(12, 30, 42));
-        fieldInputQtyTransaksi.setText("Qty");
-        fieldInputQtyTransaksi.setToolTipText("banyaknya barang");
-        fieldInputQtyTransaksi.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputQtyTransaksiFocusGained(evt);
-            }
-        });
+            fieldInputQtyTransaksi.setForeground(new java.awt.Color(12, 30, 42));
+            fieldInputQtyTransaksi.setText("Qty");
+            fieldInputQtyTransaksi.setToolTipText("banyaknya barang");
+            fieldInputQtyTransaksi.addFocusListener(new java.awt.event.FocusAdapter() {
+                public void focusGained(java.awt.event.FocusEvent evt) {
+                    fieldInputQtyTransaksiFocusGained(evt);
+                }
+            });
 
-        tombolCheckoutTransaksi.setForeground(new java.awt.Color(12, 30, 42));
-        tombolCheckoutTransaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/box_check_25px.png"))); // NOI18N
-        tombolCheckoutTransaksi.setToolTipText("Checkout barang, otomatis mengurangi barang stok");
-        tombolCheckoutTransaksi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolCheckoutTransaksiActionPerformed(evt);
-            }
-        });
+            tombolCheckoutTransaksi.setForeground(new java.awt.Color(12, 30, 42));
+            tombolCheckoutTransaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/box_check_25px.png"))); // NOI18N
+            tombolCheckoutTransaksi.setToolTipText("Checkout barang, otomatis mengurangi barang stok");
+            tombolCheckoutTransaksi.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    tombolCheckoutTransaksiActionPerformed(evt);
+                }
+            });
 
-        jLabelTransaksiIdBarang.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTransaksiIdBarang.setText("ID Barang");
+            jLabelTransaksiIdBarang.setForeground(new java.awt.Color(255, 255, 255));
+            jLabelTransaksiIdBarang.setText("ID Barang");
 
-        jLabelTransaksiQty.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTransaksiQty.setText("Quantity");
+            jLabelTransaksiQty.setForeground(new java.awt.Color(255, 255, 255));
+            jLabelTransaksiQty.setText("Quantity");
 
-        buttonTransaksiHapus.setForeground(new java.awt.Color(12, 30, 42));
-        buttonTransaksiHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/delete.png"))); // NOI18N
-        buttonTransaksiHapus.setText("Hapus");
-        buttonTransaksiHapus.setToolTipText("Hapus barang transaksi");
-        buttonTransaksiHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        buttonTransaksiHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        buttonTransaksiHapus.setIconTextGap(10);
-        buttonTransaksiHapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonTransaksiHapusActionPerformed(evt);
-            }
-        });
+            buttonTransaksiHapus.setForeground(new java.awt.Color(12, 30, 42));
+            buttonTransaksiHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/delete.png"))); // NOI18N
+            buttonTransaksiHapus.setText("Hapus");
+            buttonTransaksiHapus.setToolTipText("Hapus barang transaksi");
+            buttonTransaksiHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+            buttonTransaksiHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+            buttonTransaksiHapus.setIconTextGap(10);
+            buttonTransaksiHapus.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    buttonTransaksiHapusActionPerformed(evt);
+                }
+            });
 
-        buttonUbahQtyTransaksi.setForeground(new java.awt.Color(12, 30, 42));
-        buttonUbahQtyTransaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/edit_pencil.png"))); // NOI18N
-        buttonUbahQtyTransaksi.setText("Ubah");
-        buttonUbahQtyTransaksi.setToolTipText("ubah banyak barang transaksi");
-        buttonUbahQtyTransaksi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        buttonUbahQtyTransaksi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        buttonUbahQtyTransaksi.setIconTextGap(11);
-        buttonUbahQtyTransaksi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonUbahQtyTransaksiActionPerformed(evt);
-            }
-        });
+            buttonUbahQtyTransaksi.setForeground(new java.awt.Color(12, 30, 42));
+            buttonUbahQtyTransaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/edit_pencil.png"))); // NOI18N
+            buttonUbahQtyTransaksi.setText("Ubah");
+            buttonUbahQtyTransaksi.setToolTipText("ubah banyak barang transaksi");
+            buttonUbahQtyTransaksi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+            buttonUbahQtyTransaksi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+            buttonUbahQtyTransaksi.setIconTextGap(11);
+            buttonUbahQtyTransaksi.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    buttonUbahQtyTransaksiActionPerformed(evt);
+                }
+            });
 
-        javax.swing.GroupLayout panelBawahTransaksiLayout = new javax.swing.GroupLayout(panelBawahTransaksi);
-        panelBawahTransaksi.setLayout(panelBawahTransaksiLayout);
-        panelBawahTransaksiLayout.setHorizontalGroup(
-            panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahTransaksiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahTransaksiLayout.createSequentialGroup()
-                        .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelTransaksiQty, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelTransaksiIdBarang, javax.swing.GroupLayout.Alignment.TRAILING))
+            javax.swing.GroupLayout panelBawahTransaksiLayout = new javax.swing.GroupLayout(panelBawahTransaksi);
+            panelBawahTransaksi.setLayout(panelBawahTransaksiLayout);
+            panelBawahTransaksiLayout.setHorizontalGroup(
+                panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahTransaksiLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahTransaksiLayout.createSequentialGroup()
+                            .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelTransaksiQty, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabelTransaksiIdBarang, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(fieldInputQtyTransaksi)
+                                .addComponent(fieldIdBarangTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(buttonTransaksiHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(buttonUbahQtyTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tombolCheckoutTransaksi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap())
+            );
+            panelBawahTransaksiLayout.setVerticalGroup(
+                panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelBawahTransaksiLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(fieldIdBarangTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelTransaksiIdBarang)
+                        .addComponent(buttonTransaksiHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(3, 3, 3)
+                    .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(fieldInputQtyTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelTransaksiQty)
+                        .addComponent(buttonUbahQtyTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(tombolCheckoutTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                    .addContainerGap())
+            );
+
+            panelAtasTransaksi.setBackground(new java.awt.Color(25, 104, 178));
+
+            labelTransaksiAtas.setForeground(new java.awt.Color(255, 255, 255));
+            labelTransaksiAtas.setText("Invoice:");
+            labelTransaksiAtas.setToolTipText("Nomer invoice transaksi saat ini");
+
+            jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/tiga_cahaya_logo.png"))); // NOI18N
+
+            javax.swing.GroupLayout panelAtasTransaksiLayout = new javax.swing.GroupLayout(panelAtasTransaksi);
+            panelAtasTransaksi.setLayout(panelAtasTransaksiLayout);
+            panelAtasTransaksiLayout.setHorizontalGroup(
+                panelAtasTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasTransaksiLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel11)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelTransaksiAtas)
+                    .addContainerGap())
+            );
+            panelAtasTransaksiLayout.setVerticalGroup(
+                panelAtasTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasTransaksiLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelTransaksiAtas)
+                    .addGap(14, 14, 14))
+                .addGroup(panelAtasTransaksiLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel11)
+                    .addContainerGap(9, Short.MAX_VALUE))
+            );
+
+            panelTengahTransaksi.setBackground(new java.awt.Color(73, 138, 192));
+
+            tabelTransaksi.setForeground(new java.awt.Color(12, 30, 42));
+            tabelTransaksi.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+
+                },
+                new String [] {
+                    "ID Barang", "Nama Barang", "Quantity"
+                }
+            ) {
+                boolean[] canEdit = new boolean [] {
+                    false, false, false
+                };
+
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit [columnIndex];
+                }
+                @Override
+                public Class getColumnClass(int column) {
+                    Class returnValue;
+
+                    // Verifying that the column exists (index > 0 && index < number of columns
+
+                        if ((column >= 0) && (column < getColumnCount())) {
+                            returnValue = getValueAt(0, column).getClass();
+                        } else {
+
+                            // Returns the class for the item in the column
+
+                            returnValue = Object.class;
+                        }
+                        return returnValue;
+                    };
+                });
+                tabelTransaksi.setSelectionBackground(new java.awt.Color(25, 104, 178));
+                tabelTransaksi.setSelectionForeground(new java.awt.Color(255, 255, 255));
+                tabelTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        tabelTransaksiMouseClicked(evt);
+                    }
+                });
+                scrollPaneTransaksi.setViewportView(tabelTransaksi);
+
+                javax.swing.GroupLayout panelTengahTransaksiLayout = new javax.swing.GroupLayout(panelTengahTransaksi);
+                panelTengahTransaksi.setLayout(panelTengahTransaksiLayout);
+                panelTengahTransaksiLayout.setHorizontalGroup(
+                    panelTengahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPaneTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
+                );
+                panelTengahTransaksiLayout.setVerticalGroup(
+                    panelTengahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPaneTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                );
+
+                javax.swing.GroupLayout tabTransLayout = new javax.swing.GroupLayout(tabTrans);
+                tabTrans.setLayout(tabTransLayout);
+                tabTransLayout.setHorizontalGroup(
+                    tabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabTransLayout.createSequentialGroup()
+                        .addComponent(panelKiriTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(fieldInputQtyTransaksi)
-                            .addComponent(fieldIdBarangTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(panelTengahTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelAtasTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelBawahTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+                );
+                tabTransLayout.setVerticalGroup(
+                    tabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabTransLayout.createSequentialGroup()
+                        .addComponent(panelAtasTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonTransaksiHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonUbahQtyTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(tombolCheckoutTransaksi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        panelBawahTransaksiLayout.setVerticalGroup(
-            panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBawahTransaksiLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fieldIdBarangTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelTransaksiIdBarang)
-                    .addComponent(buttonTransaksiHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addGroup(panelBawahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fieldInputQtyTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelTransaksiQty)
-                    .addComponent(buttonUbahQtyTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tombolCheckoutTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+                        .addGroup(tabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelKiriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                            .addComponent(panelTengahTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelBawahTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                );
 
-        panelAtasTransaksi.setBackground(new java.awt.Color(25, 104, 178));
+                panelUtama.addTab("Transaksi", tabTrans);
 
-        labelTransaksiAtas.setForeground(new java.awt.Color(255, 255, 255));
-        labelTransaksiAtas.setText("Invoice:");
-        labelTransaksiAtas.setToolTipText("Nomer invoice transaksi saat ini");
+                tabSupplier.setBackground(new java.awt.Color(117, 179, 226));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/tiga_cahaya_logo.png"))); // NOI18N
+                panelKiriSupplier.setBackground(new java.awt.Color(117, 179, 226));
+                panelKiriSupplier.setPreferredSize(new java.awt.Dimension(154, 250));
 
-        javax.swing.GroupLayout panelAtasTransaksiLayout = new javax.swing.GroupLayout(panelAtasTransaksi);
-        panelAtasTransaksi.setLayout(panelAtasTransaksiLayout);
-        panelAtasTransaksiLayout.setHorizontalGroup(
-            panelAtasTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasTransaksiLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelTransaksiAtas)
-                .addContainerGap())
-        );
-        panelAtasTransaksiLayout.setVerticalGroup(
-            panelAtasTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasTransaksiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelTransaksiAtas)
-                .addGap(14, 14, 14))
-            .addGroup(panelAtasTransaksiLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel11)
-                .addContainerGap(9, Short.MAX_VALUE))
-        );
+                labelInfoSupplier.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+                labelInfoSupplier.setForeground(new java.awt.Color(12, 30, 42));
+                labelInfoSupplier.setText("Info");
 
-        panelTengahTransaksi.setBackground(new java.awt.Color(73, 138, 192));
+                buttonRefreshDBSupplier.setForeground(new java.awt.Color(12, 30, 42));
+                buttonRefreshDBSupplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/refresh.png"))); // NOI18N
+                buttonRefreshDBSupplier.setText("Refresh");
+                buttonRefreshDBSupplier.setToolTipText("Refresh database");
+                buttonRefreshDBSupplier.setIconTextGap(6);
+                buttonRefreshDBSupplier.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        buttonRefreshDBSupplierActionPerformed(evt);
+                    }
+                });
 
-        tabelTransaksi.setForeground(new java.awt.Color(12, 30, 42));
-        tabelTransaksi.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                textAreaKiriSupplier.setBackground(new java.awt.Color(117, 179, 226));
+                textAreaKiriSupplier.setColumns(20);
+                textAreaKiriSupplier.setForeground(new java.awt.Color(12, 30, 42));
+                textAreaKiriSupplier.setLineWrap(true);
+                textAreaKiriSupplier.setRows(5);
+                textAreaKiriSupplier.setWrapStyleWord(true);
+                textAreaKiriSupplier.setBorder(null);
 
-            },
-            new String [] {
-                "ID Barang", "Nama Barang", "Quantity"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
+                javax.swing.GroupLayout panelKiriSupplierLayout = new javax.swing.GroupLayout(panelKiriSupplier);
+                panelKiriSupplier.setLayout(panelKiriSupplierLayout);
+                panelKiriSupplierLayout.setHorizontalGroup(
+                    panelKiriSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelKiriSupplierLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panelKiriSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textAreaKiriSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                            .addComponent(labelInfoSupplier)
+                            .addComponent(buttonRefreshDBSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                );
+                panelKiriSupplierLayout.setVerticalGroup(
+                    panelKiriSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelKiriSupplierLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labelInfoSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textAreaKiriSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonRefreshDBSupplier)
+                        .addContainerGap())
+                );
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tabelTransaksi.setSelectionBackground(new java.awt.Color(25, 104, 178));
-        tabelTransaksi.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        tabelTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelTransaksiMouseClicked(evt);
-            }
-        });
-        scrollPaneTransaksi.setViewportView(tabelTransaksi);
+                panelBawahSupplier.setBackground(new java.awt.Color(25, 104, 178));
+                panelBawahSupplier.setPreferredSize(new java.awt.Dimension(285, 126));
 
-        javax.swing.GroupLayout panelTengahTransaksiLayout = new javax.swing.GroupLayout(panelTengahTransaksi);
-        panelTengahTransaksi.setLayout(panelTengahTransaksiLayout);
-        panelTengahTransaksiLayout.setHorizontalGroup(
-            panelTengahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPaneTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
-        );
-        panelTengahTransaksiLayout.setVerticalGroup(
-            panelTengahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPaneTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-        );
+                tombolUbahSupplier.setForeground(new java.awt.Color(12, 30, 42));
+                tombolUbahSupplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/edit_pencil.png"))); // NOI18N
+                tombolUbahSupplier.setText("Ubah");
+                tombolUbahSupplier.setToolTipText("Edit atau ubah barang sesuai dengan masukan yang ada.");
+                tombolUbahSupplier.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+                tombolUbahSupplier.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+                tombolUbahSupplier.setIconTextGap(11);
+                tombolUbahSupplier.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        tombolUbahSupplierActionPerformed(evt);
+                    }
+                });
 
-        javax.swing.GroupLayout tabTransLayout = new javax.swing.GroupLayout(tabTrans);
-        tabTrans.setLayout(tabTransLayout);
-        tabTransLayout.setHorizontalGroup(
-            tabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabTransLayout.createSequentialGroup()
-                .addComponent(panelKiriTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelTengahTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(panelAtasTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelBawahTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
-        );
-        tabTransLayout.setVerticalGroup(
-            tabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabTransLayout.createSequentialGroup()
-                .addComponent(panelAtasTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelKiriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
-                    .addComponent(panelTengahTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelBawahTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+                tombolTambahSupplier.setForeground(new java.awt.Color(12, 30, 42));
+                tombolTambahSupplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/add_plus.png"))); // NOI18N
+                tombolTambahSupplier.setText("Tambah");
+                tombolTambahSupplier.setToolTipText("Tambah barang sesuai dengan masukan yang ada.");
+                tombolTambahSupplier.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+                tombolTambahSupplier.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+                tombolTambahSupplier.setIconTextGap(6);
+                tombolTambahSupplier.setPreferredSize(new java.awt.Dimension(80, 30));
+                tombolTambahSupplier.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        tombolTambahSupplierMouseClicked(evt);
+                    }
+                });
 
-        panelUtama.addTab("Transaksi", tabTrans);
+                tombolHapusSupplier.setForeground(new java.awt.Color(12, 30, 42));
+                tombolHapusSupplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/delete.png"))); // NOI18N
+                tombolHapusSupplier.setText("Hapus");
+                tombolHapusSupplier.setToolTipText("Hapus barang sesuai dengan baris yang terpilih.");
+                tombolHapusSupplier.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+                tombolHapusSupplier.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+                tombolHapusSupplier.setIconTextGap(10);
+                tombolHapusSupplier.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        tombolHapusSupplierActionPerformed(evt);
+                    }
+                });
 
-        tabSupplier.setBackground(new java.awt.Color(117, 179, 226));
+                textAreaCatatan.setColumns(20);
+                textAreaCatatan.setForeground(new java.awt.Color(12, 30, 42));
+                textAreaCatatan.setLineWrap(true);
+                textAreaCatatan.setRows(5);
+                textAreaCatatan.setText("Catatan...");
+                textAreaCatatan.setToolTipText("Catatan tambahan untuk supplier");
+                textAreaCatatan.setWrapStyleWord(true);
+                textAreaCatatan.addFocusListener(new java.awt.event.FocusAdapter() {
+                    public void focusGained(java.awt.event.FocusEvent evt) {
+                        textAreaCatatanFocusGained(evt);
+                    }
+                    public void focusLost(java.awt.event.FocusEvent evt) {
+                        textAreaCatatanFocusLost(evt);
+                    }
+                });
+                jScrollPaneSupplier.setViewportView(textAreaCatatan);
 
-        panelKiriSupplier.setBackground(new java.awt.Color(117, 179, 226));
-        panelKiriSupplier.setPreferredSize(new java.awt.Dimension(154, 250));
+                fieldInputEmailSupplier.setForeground(new java.awt.Color(12, 30, 42));
+                fieldInputEmailSupplier.setText("Email");
+                fieldInputEmailSupplier.setToolTipText("E-mail supplier. Harus diisi sesuai dengan format email");
+                fieldInputEmailSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
+                    public void focusGained(java.awt.event.FocusEvent evt) {
+                        fieldInputEmailSupplierFocusGained(evt);
+                    }
+                    public void focusLost(java.awt.event.FocusEvent evt) {
+                        fieldInputEmailSupplierFocusLost(evt);
+                    }
+                });
+                fieldInputEmailSupplier.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        fieldInputEmailSupplierKeyTyped(evt);
+                    }
+                });
 
-        labelInfoSupplier.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        labelInfoSupplier.setForeground(new java.awt.Color(12, 30, 42));
-        labelInfoSupplier.setText("Info");
+                fieldInputTelponSupplier.setForeground(new java.awt.Color(12, 30, 42));
+                fieldInputTelponSupplier.setText("Telpon");
+                fieldInputTelponSupplier.setToolTipText("Telpon/hp supplier. hanya bisa di isi dengan angka");
+                fieldInputTelponSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
+                    public void focusGained(java.awt.event.FocusEvent evt) {
+                        fieldInputTelponSupplierFocusGained(evt);
+                    }
+                    public void focusLost(java.awt.event.FocusEvent evt) {
+                        fieldInputTelponSupplierFocusLost(evt);
+                    }
+                });
+                fieldInputTelponSupplier.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        fieldInputTelponSupplierKeyTyped(evt);
+                    }
+                });
 
-        buttonRefreshDBSupplier.setForeground(new java.awt.Color(12, 30, 42));
-        buttonRefreshDBSupplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/refresh.png"))); // NOI18N
-        buttonRefreshDBSupplier.setText("Refresh");
-        buttonRefreshDBSupplier.setToolTipText("Refresh database");
-        buttonRefreshDBSupplier.setIconTextGap(6);
-        buttonRefreshDBSupplier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRefreshDBSupplierActionPerformed(evt);
-            }
-        });
+                fieldInputAlamatSupplier.setForeground(new java.awt.Color(12, 30, 42));
+                fieldInputAlamatSupplier.setText("Alamat");
+                fieldInputAlamatSupplier.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+                fieldInputAlamatSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
+                    public void focusGained(java.awt.event.FocusEvent evt) {
+                        fieldInputAlamatSupplierFocusGained(evt);
+                    }
+                    public void focusLost(java.awt.event.FocusEvent evt) {
+                        fieldInputAlamatSupplierFocusLost(evt);
+                    }
+                });
+                fieldInputAlamatSupplier.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        fieldInputAlamatSupplierKeyTyped(evt);
+                    }
+                });
 
-        textAreaKiriSupplier.setBackground(new java.awt.Color(117, 179, 226));
-        textAreaKiriSupplier.setColumns(20);
-        textAreaKiriSupplier.setForeground(new java.awt.Color(12, 30, 42));
-        textAreaKiriSupplier.setLineWrap(true);
-        textAreaKiriSupplier.setRows(5);
-        textAreaKiriSupplier.setWrapStyleWord(true);
-        textAreaKiriSupplier.setBorder(null);
+                fieldInputIDSupplier.setForeground(new java.awt.Color(12, 30, 42));
+                fieldInputIDSupplier.setText("ID");
+                fieldInputIDSupplier.setToolTipText("ID Supplier. tidak perlu diubah");
+                fieldInputIDSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
+                    public void focusGained(java.awt.event.FocusEvent evt) {
+                        fieldInputIDSupplierFocusGained(evt);
+                    }
+                    public void focusLost(java.awt.event.FocusEvent evt) {
+                        fieldInputIDSupplierFocusLost(evt);
+                    }
+                });
 
-        javax.swing.GroupLayout panelKiriSupplierLayout = new javax.swing.GroupLayout(panelKiriSupplier);
-        panelKiriSupplier.setLayout(panelKiriSupplierLayout);
-        panelKiriSupplierLayout.setHorizontalGroup(
-            panelKiriSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelKiriSupplierLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelKiriSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textAreaKiriSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                    .addComponent(labelInfoSupplier)
-                    .addComponent(buttonRefreshDBSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelKiriSupplierLayout.setVerticalGroup(
-            panelKiriSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelKiriSupplierLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelInfoSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textAreaKiriSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonRefreshDBSupplier)
-                .addContainerGap())
-        );
+                jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+                jLabel5.setText("Alamat");
 
-        panelBawahSupplier.setBackground(new java.awt.Color(25, 104, 178));
-        panelBawahSupplier.setPreferredSize(new java.awt.Dimension(285, 126));
+                jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+                jLabel6.setText("Telpon");
 
-        tombolUbahSupplier.setForeground(new java.awt.Color(12, 30, 42));
-        tombolUbahSupplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/edit_pencil.png"))); // NOI18N
-        tombolUbahSupplier.setText("Ubah");
-        tombolUbahSupplier.setToolTipText("Edit atau ubah barang sesuai dengan masukan yang ada.");
-        tombolUbahSupplier.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        tombolUbahSupplier.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        tombolUbahSupplier.setIconTextGap(11);
-        tombolUbahSupplier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolUbahSupplierActionPerformed(evt);
-            }
-        });
+                jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+                jLabel7.setText("E-Mail");
 
-        tombolTambahSupplier.setForeground(new java.awt.Color(12, 30, 42));
-        tombolTambahSupplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/add_plus.png"))); // NOI18N
-        tombolTambahSupplier.setText("Tambah");
-        tombolTambahSupplier.setToolTipText("Tambah barang sesuai dengan masukan yang ada.");
-        tombolTambahSupplier.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        tombolTambahSupplier.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        tombolTambahSupplier.setIconTextGap(6);
-        tombolTambahSupplier.setPreferredSize(new java.awt.Dimension(80, 30));
-        tombolTambahSupplier.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tombolTambahSupplierMouseClicked(evt);
-            }
-        });
+                jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+                jLabel8.setText("ID Supplier");
 
-        tombolHapusSupplier.setForeground(new java.awt.Color(12, 30, 42));
-        tombolHapusSupplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/delete.png"))); // NOI18N
-        tombolHapusSupplier.setText("Hapus");
-        tombolHapusSupplier.setToolTipText("Hapus barang sesuai dengan baris yang terpilih.");
-        tombolHapusSupplier.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        tombolHapusSupplier.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        tombolHapusSupplier.setIconTextGap(10);
-        tombolHapusSupplier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolHapusSupplierActionPerformed(evt);
-            }
-        });
+                jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+                jLabel9.setText("Catatan");
 
-        textAreaCatatan.setColumns(20);
-        textAreaCatatan.setForeground(new java.awt.Color(12, 30, 42));
-        textAreaCatatan.setLineWrap(true);
-        textAreaCatatan.setRows(5);
-        textAreaCatatan.setText("Catatan...");
-        textAreaCatatan.setToolTipText("Catatan tambahan untuk supplier");
-        textAreaCatatan.setWrapStyleWord(true);
-        textAreaCatatan.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                textAreaCatatanFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                textAreaCatatanFocusLost(evt);
-            }
-        });
-        jScrollPaneSupplier.setViewportView(textAreaCatatan);
+                fieldInputNamaSupplier.setForeground(new java.awt.Color(12, 30, 42));
+                fieldInputNamaSupplier.setText("Nama");
+                fieldInputNamaSupplier.setToolTipText("Nama supplier");
+                fieldInputNamaSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
+                    public void focusGained(java.awt.event.FocusEvent evt) {
+                        fieldInputNamaSupplierFocusGained(evt);
+                    }
+                    public void focusLost(java.awt.event.FocusEvent evt) {
+                        fieldInputNamaSupplierFocusLost(evt);
+                    }
+                });
+                fieldInputNamaSupplier.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        fieldInputNamaSupplierKeyTyped(evt);
+                    }
+                });
 
-        fieldInputEmailSupplier.setForeground(new java.awt.Color(12, 30, 42));
-        fieldInputEmailSupplier.setText("Email");
-        fieldInputEmailSupplier.setToolTipText("E-mail supplier. Harus diisi sesuai dengan format email");
-        fieldInputEmailSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputEmailSupplierFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldInputEmailSupplierFocusLost(evt);
-            }
-        });
-        fieldInputEmailSupplier.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldInputEmailSupplierKeyTyped(evt);
-            }
-        });
+                jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+                jLabel4.setText("Nama");
 
-        fieldInputTelponSupplier.setForeground(new java.awt.Color(12, 30, 42));
-        fieldInputTelponSupplier.setText("Telpon");
-        fieldInputTelponSupplier.setToolTipText("Telpon/hp supplier. hanya bisa di isi dengan angka");
-        fieldInputTelponSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputTelponSupplierFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldInputTelponSupplierFocusLost(evt);
-            }
-        });
-        fieldInputTelponSupplier.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldInputTelponSupplierKeyTyped(evt);
-            }
-        });
+                tombolClearSupplier.setForeground(new java.awt.Color(12, 30, 42));
+                tombolClearSupplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/delete_x_big.png"))); // NOI18N
+                tombolClearSupplier.setText("Clear");
+                tombolClearSupplier.setToolTipText("Hapus semua text field");
+                tombolClearSupplier.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+                tombolClearSupplier.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+                tombolClearSupplier.setIconTextGap(9);
+                tombolClearSupplier.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        tombolClearSupplierActionPerformed(evt);
+                    }
+                });
 
-        fieldInputAlamatSupplier.setForeground(new java.awt.Color(12, 30, 42));
-        fieldInputAlamatSupplier.setText("Alamat");
-        fieldInputAlamatSupplier.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        fieldInputAlamatSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputAlamatSupplierFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldInputAlamatSupplierFocusLost(evt);
-            }
-        });
-        fieldInputAlamatSupplier.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldInputAlamatSupplierKeyTyped(evt);
-            }
-        });
-
-        fieldInputIDSupplier.setForeground(new java.awt.Color(12, 30, 42));
-        fieldInputIDSupplier.setText("ID");
-        fieldInputIDSupplier.setToolTipText("ID Supplier. tidak perlu diubah");
-        fieldInputIDSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputIDSupplierFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldInputIDSupplierFocusLost(evt);
-            }
-        });
-
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Alamat");
-
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Telpon");
-
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("E-Mail");
-
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("ID Supplier");
-
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Catatan");
-
-        fieldInputNamaSupplier.setForeground(new java.awt.Color(12, 30, 42));
-        fieldInputNamaSupplier.setText("Nama");
-        fieldInputNamaSupplier.setToolTipText("Nama supplier");
-        fieldInputNamaSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputNamaSupplierFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldInputNamaSupplierFocusLost(evt);
-            }
-        });
-        fieldInputNamaSupplier.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldInputNamaSupplierKeyTyped(evt);
-            }
-        });
-
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Nama");
-
-        tombolClearSupplier.setForeground(new java.awt.Color(12, 30, 42));
-        tombolClearSupplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/delete_x_big.png"))); // NOI18N
-        tombolClearSupplier.setText("Clear");
-        tombolClearSupplier.setToolTipText("Hapus semua text field");
-        tombolClearSupplier.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        tombolClearSupplier.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        tombolClearSupplier.setIconTextGap(9);
-        tombolClearSupplier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolClearSupplierActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelBawahSupplierLayout = new javax.swing.GroupLayout(panelBawahSupplier);
-        panelBawahSupplier.setLayout(panelBawahSupplierLayout);
-        panelBawahSupplierLayout.setHorizontalGroup(
-            panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBawahSupplierLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
-                .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahSupplierLayout.createSequentialGroup()
+                javax.swing.GroupLayout panelBawahSupplierLayout = new javax.swing.GroupLayout(panelBawahSupplier);
+                panelBawahSupplier.setLayout(panelBawahSupplierLayout);
+                panelBawahSupplierLayout.setHorizontalGroup(
+                    panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBawahSupplierLayout.createSequentialGroup()
+                        .addContainerGap(34, Short.MAX_VALUE)
                         .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahSupplierLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahSupplierLayout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(fieldInputNamaSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel5))
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelBawahSupplierLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(fieldInputTelponSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelBawahSupplierLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(fieldInputAlamatSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahSupplierLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fieldInputNamaSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(fieldInputIDSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5))
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelBawahSupplierLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fieldInputTelponSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelBawahSupplierLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(fieldInputAlamatSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahSupplierLayout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                                .addComponent(fieldInputEmailSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fieldInputIDSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel7)
+                        .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fieldInputEmailSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tombolUbahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tombolTambahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tombolClearSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tombolHapusSupplier, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        panelBawahSupplierLayout.setVerticalGroup(
-            panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBawahSupplierLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPaneSupplier, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelBawahSupplierLayout.createSequentialGroup()
-                        .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tombolUbahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)
-                            .addComponent(fieldInputEmailSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
-                            .addComponent(fieldInputIDSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(tombolClearSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPaneSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tombolUbahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tombolTambahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(tombolTambahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tombolHapusSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelBawahSupplierLayout.createSequentialGroup()
+                            .addComponent(tombolClearSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tombolHapusSupplier, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
+                );
+                panelBawahSupplierLayout.setVerticalGroup(
+                    panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBawahSupplierLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPaneSupplier, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelBawahSupplierLayout.createSequentialGroup()
                                 .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(fieldInputAlamatSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(fieldInputNamaSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4))
+                                    .addComponent(tombolUbahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9)
+                                    .addComponent(fieldInputEmailSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(fieldInputIDSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(tombolClearSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(fieldInputTelponSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6))))
-                        .addGap(10, 10, 10)))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
+                                .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(tombolTambahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tombolHapusSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelBawahSupplierLayout.createSequentialGroup()
+                                        .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(fieldInputAlamatSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel5)
+                                            .addComponent(fieldInputNamaSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel4))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(fieldInputTelponSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel6))))
+                                .addGap(10, 10, 10)))
+                        .addContainerGap(18, Short.MAX_VALUE))
+                );
 
-        panelAtasSupplier.setBackground(new java.awt.Color(25, 104, 178));
+                panelAtasSupplier.setBackground(new java.awt.Color(25, 104, 178));
 
-        searchFieldSupplier.setForeground(new java.awt.Color(12, 30, 42));
-        searchFieldSupplier.setText("search...");
-        searchFieldSupplier.setToolTipText("Cari dari tabel dibawah");
-        searchFieldSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                searchFieldSupplierFocusLost(evt);
-            }
-        });
-        searchFieldSupplier.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                searchFieldSupplierMouseClicked(evt);
-            }
-        });
-        searchFieldSupplier.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                searchFieldSupplierKeyReleased(evt);
-            }
-        });
+                searchFieldSupplier.setForeground(new java.awt.Color(12, 30, 42));
+                searchFieldSupplier.setText("search...");
+                searchFieldSupplier.setToolTipText("Cari dari tabel dibawah");
+                searchFieldSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
+                    public void focusLost(java.awt.event.FocusEvent evt) {
+                        searchFieldSupplierFocusLost(evt);
+                    }
+                });
+                searchFieldSupplier.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        searchFieldSupplierMouseClicked(evt);
+                    }
+                });
+                searchFieldSupplier.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyReleased(java.awt.event.KeyEvent evt) {
+                        searchFieldSupplierKeyReleased(evt);
+                    }
+                });
 
-        comboBoxKolomSupplier.setForeground(new java.awt.Color(12, 30, 42));
-        comboBoxKolomSupplier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Coloumn", "ID Supplier", "Nama", "Alamat", "Telpon", "Email", "Catatan" }));
-        comboBoxKolomSupplier.setToolTipText("Pencarian berdasarkan kolom yang ada");
-        comboBoxKolomSupplier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxKolomSupplierActionPerformed(evt);
-            }
-        });
+                comboBoxKolomSupplier.setForeground(new java.awt.Color(12, 30, 42));
+                comboBoxKolomSupplier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Coloumn", "ID Supplier", "Nama", "Alamat", "Telpon", "Email", "Catatan" }));
+                comboBoxKolomSupplier.setToolTipText("Pencarian berdasarkan kolom yang ada");
+                comboBoxKolomSupplier.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        comboBoxKolomSupplierActionPerformed(evt);
+                    }
+                });
 
-        labelFilterSupplier.setForeground(new java.awt.Color(255, 255, 255));
-        labelFilterSupplier.setText("Filter");
+                labelFilterSupplier.setForeground(new java.awt.Color(255, 255, 255));
+                labelFilterSupplier.setText("Filter");
 
-        labelKolomSupplier.setBackground(new java.awt.Color(255, 255, 255));
-        labelKolomSupplier.setForeground(new java.awt.Color(255, 255, 255));
-        labelKolomSupplier.setText("Kolom");
+                labelKolomSupplier.setBackground(new java.awt.Color(255, 255, 255));
+                labelKolomSupplier.setForeground(new java.awt.Color(255, 255, 255));
+                labelKolomSupplier.setText("Kolom");
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/tiga_cahaya_logo.png"))); // NOI18N
+                jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/tiga_cahaya_logo.png"))); // NOI18N
 
-        javax.swing.GroupLayout panelAtasSupplierLayout = new javax.swing.GroupLayout(panelAtasSupplier);
-        panelAtasSupplier.setLayout(panelAtasSupplierLayout);
-        panelAtasSupplierLayout.setHorizontalGroup(
-            panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasSupplierLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelFilterSupplier)
-                    .addComponent(searchFieldSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboBoxKolomSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelKolomSupplier))
-                .addContainerGap())
-        );
-        panelAtasSupplierLayout.setVerticalGroup(
-            panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAtasSupplierLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelAtasSupplierLayout.createSequentialGroup()
+                javax.swing.GroupLayout panelAtasSupplierLayout = new javax.swing.GroupLayout(panelAtasSupplier);
+                panelAtasSupplier.setLayout(panelAtasSupplierLayout);
+                panelAtasSupplierLayout.setHorizontalGroup(
+                    panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasSupplierLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel12)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(panelAtasSupplierLayout.createSequentialGroup()
-                        .addGroup(panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelFilterSupplier)
-                            .addComponent(labelKolomSupplier))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchFieldSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboBoxKolomSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
-        );
-
-        panelTengahSupplier.setBackground(new java.awt.Color(73, 138, 192));
-
-        scrollPaneSupplier.setPreferredSize(new java.awt.Dimension(453, 60));
-
-        tabelSupplier.setForeground(new java.awt.Color(12, 30, 42));
-        tabelSupplier.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID Supplier", "Nama", "Alamat", "Telp", "E-Mail", "Catatan"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tabelSupplier.setSelectionBackground(new java.awt.Color(25, 104, 178));
-        tabelSupplier.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        tabelSupplier.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelSupplierMouseClicked(evt);
-            }
-        });
-        scrollPaneSupplier.setViewportView(tabelSupplier);
-
-        javax.swing.GroupLayout panelTengahSupplierLayout = new javax.swing.GroupLayout(panelTengahSupplier);
-        panelTengahSupplier.setLayout(panelTengahSupplierLayout);
-        panelTengahSupplierLayout.setHorizontalGroup(
-            panelTengahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPaneSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        panelTengahSupplierLayout.setVerticalGroup(
-            panelTengahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPaneSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout tabSupplierLayout = new javax.swing.GroupLayout(tabSupplier);
-        tabSupplier.setLayout(tabSupplierLayout);
-        tabSupplierLayout.setHorizontalGroup(
-            tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabSupplierLayout.createSequentialGroup()
-                .addComponent(panelKiriSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelTengahSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(panelAtasSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelBawahSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
-        );
-        tabSupplierLayout.setVerticalGroup(
-            tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabSupplierLayout.createSequentialGroup()
-                .addComponent(panelAtasSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelKiriSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
-                    .addComponent(panelTengahSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelBawahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        panelUtama.addTab("Supplier", tabSupplier);
-
-        tabRetur.setBackground(new java.awt.Color(117, 179, 226));
-
-        panelKiriRetur.setBackground(new java.awt.Color(117, 179, 226));
-        panelKiriRetur.setPreferredSize(new java.awt.Dimension(154, 250));
-
-        labelInfoRetur.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        labelInfoRetur.setForeground(new java.awt.Color(12, 30, 42));
-        labelInfoRetur.setText("Info");
-
-        buttonRefreshDBRetur.setForeground(new java.awt.Color(12, 30, 42));
-        buttonRefreshDBRetur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/refresh.png"))); // NOI18N
-        buttonRefreshDBRetur.setText("Refresh");
-        buttonRefreshDBRetur.setToolTipText("Refresh database");
-        buttonRefreshDBRetur.setIconTextGap(6);
-        buttonRefreshDBRetur.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRefreshDBReturActionPerformed(evt);
-            }
-        });
-
-        textAreaKiriRetur.setBackground(new java.awt.Color(117, 179, 226));
-        textAreaKiriRetur.setColumns(20);
-        textAreaKiriRetur.setForeground(new java.awt.Color(12, 30, 42));
-        textAreaKiriRetur.setLineWrap(true);
-        textAreaKiriRetur.setRows(5);
-        textAreaKiriRetur.setWrapStyleWord(true);
-        textAreaKiriRetur.setBorder(null);
-
-        javax.swing.GroupLayout panelKiriReturLayout = new javax.swing.GroupLayout(panelKiriRetur);
-        panelKiriRetur.setLayout(panelKiriReturLayout);
-        panelKiriReturLayout.setHorizontalGroup(
-            panelKiriReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelKiriReturLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelKiriReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textAreaKiriRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                    .addComponent(labelInfoRetur)
-                    .addComponent(buttonRefreshDBRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelKiriReturLayout.setVerticalGroup(
-            panelKiriReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelKiriReturLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelInfoRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textAreaKiriRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonRefreshDBRetur)
-                .addContainerGap())
-        );
-
-        panelBawahRetur.setBackground(new java.awt.Color(25, 104, 178));
-        panelBawahRetur.setForeground(new java.awt.Color(255, 255, 255));
-        panelBawahRetur.setPreferredSize(new java.awt.Dimension(285, 126));
-
-        tombolTambahRetur.setForeground(new java.awt.Color(12, 30, 42));
-        tombolTambahRetur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/add_plus.png"))); // NOI18N
-        tombolTambahRetur.setText("Tambah");
-        tombolTambahRetur.setToolTipText("Tambah barang sesuai dengan masukan yang ada.");
-        tombolTambahRetur.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        tombolTambahRetur.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        tombolTambahRetur.setIconTextGap(6);
-        tombolTambahRetur.setPreferredSize(new java.awt.Dimension(80, 30));
-        tombolTambahRetur.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tombolTambahReturMouseClicked(evt);
-            }
-        });
-
-        tombolHapusRetur.setForeground(new java.awt.Color(12, 30, 42));
-        tombolHapusRetur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/delete.png"))); // NOI18N
-        tombolHapusRetur.setText("Hapus");
-        tombolHapusRetur.setToolTipText("Hapus barang sesuai dengan baris yang terpilih.");
-        tombolHapusRetur.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        tombolHapusRetur.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        tombolHapusRetur.setIconTextGap(10);
-        tombolHapusRetur.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolHapusReturActionPerformed(evt);
-            }
-        });
-
-        fieldInputJumlahBarangRetur.setForeground(new java.awt.Color(12, 30, 42));
-        fieldInputJumlahBarangRetur.setText("Jumlah");
-        fieldInputJumlahBarangRetur.setToolTipText("banyaknya barang retur");
-        fieldInputJumlahBarangRetur.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldInputJumlahBarangReturFocusLost(evt);
-            }
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputJumlahBarangReturFocusGained(evt);
-            }
-        });
-
-        fieldInputIdRetur.setForeground(new java.awt.Color(12, 30, 42));
-        fieldInputIdRetur.setText("ID Retur");
-        fieldInputIdRetur.setToolTipText("ID tidak perlu diubah");
-        fieldInputIdRetur.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldInputIdReturFocusLost(evt);
-            }
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputIdReturFocusGained(evt);
-            }
-        });
-
-        fieldInputIdBarangRetur.setForeground(new java.awt.Color(12, 30, 42));
-        fieldInputIdBarangRetur.setText("ID");
-        fieldInputIdBarangRetur.setToolTipText("ID Barang, Masukan dari tabel barang yang tersedia");
-        fieldInputIdBarangRetur.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldInputIdBarangReturFocusLost(evt);
-            }
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputIdBarangReturFocusGained(evt);
-            }
-        });
-
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("ID Retur");
-
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("ID Barang");
-
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Quantity");
-
-        tombolClearRetur.setForeground(new java.awt.Color(12, 30, 42));
-        tombolClearRetur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/delete_x_big.png"))); // NOI18N
-        tombolClearRetur.setText("Clear");
-        tombolClearRetur.setToolTipText("Hapus semua text field");
-        tombolClearRetur.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        tombolClearRetur.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        tombolClearRetur.setIconTextGap(9);
-        tombolClearRetur.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolClearReturActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelBawahReturLayout = new javax.swing.GroupLayout(panelBawahRetur);
-        panelBawahRetur.setLayout(panelBawahReturLayout);
-        panelBawahReturLayout.setHorizontalGroup(
-            panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahReturLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(fieldInputIdRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldInputJumlahBarangRetur, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldInputIdBarangRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(tombolTambahRetur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tombolHapusRetur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(tombolClearRetur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        panelBawahReturLayout.setVerticalGroup(
-            panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBawahReturLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelBawahReturLayout.createSequentialGroup()
-                        .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(fieldInputIdRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(searchFieldSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelBawahReturLayout.createSequentialGroup()
-                                .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tombolHapusRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(3, 3, 3))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahReturLayout.createSequentialGroup()
-                                .addComponent(fieldInputIdBarangRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(fieldInputJumlahBarangRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tombolClearRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(tombolTambahRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+                        .addGroup(panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboBoxKolomSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelKolomSupplier))
+                        .addContainerGap())
+                );
+                panelAtasSupplierLayout.setVerticalGroup(
+                    panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelAtasSupplierLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelAtasSupplierLayout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(panelAtasSupplierLayout.createSequentialGroup()
+                                .addGroup(panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(labelFilterSupplier)
+                                    .addComponent(labelKolomSupplier))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(searchFieldSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboBoxKolomSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap())
+                );
 
-        panelAtasRetur.setBackground(new java.awt.Color(25, 104, 178));
+                panelTengahSupplier.setBackground(new java.awt.Color(73, 138, 192));
 
-        searchFieldRetur.setForeground(new java.awt.Color(12, 30, 42));
-        searchFieldRetur.setText("search...");
-        searchFieldRetur.setToolTipText("Cari dari tabel dibawah");
-        searchFieldRetur.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                searchFieldReturFocusLost(evt);
-            }
-        });
-        searchFieldRetur.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                searchFieldReturMouseClicked(evt);
-            }
-        });
-        searchFieldRetur.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                searchFieldReturKeyReleased(evt);
-            }
-        });
+                scrollPaneSupplier.setPreferredSize(new java.awt.Dimension(453, 60));
 
-        comboBoxKolomRetur.setForeground(new java.awt.Color(12, 30, 42));
-        comboBoxKolomRetur.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Coloumn", "ID Retur", "ID Barang", "Nama", "Jumlah" }));
-        comboBoxKolomRetur.setToolTipText("Pencarian berdasarkan kolom yang ada");
-        comboBoxKolomRetur.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxKolomReturActionPerformed(evt);
-            }
-        });
+                tabelSupplier.setForeground(new java.awt.Color(12, 30, 42));
+                tabelSupplier.setModel(new javax.swing.table.DefaultTableModel(
+                    new Object [][] {
 
-        labelFilterRetur.setForeground(new java.awt.Color(255, 255, 255));
-        labelFilterRetur.setText("Filter");
+                    },
+                    new String [] {
+                        "ID Supplier", "Nama", "Alamat", "Telp", "E-Mail", "Catatan"
+                    }
+                ) {
+                    boolean[] canEdit = new boolean [] {
+                        false, false, false, false, true, true
+                    };
 
-        labelKolomRetur.setForeground(new java.awt.Color(255, 255, 255));
-        labelKolomRetur.setText("Kolom");
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return canEdit [columnIndex];
+                    }@Override
+                    public Class getColumnClass(int column) {
+                        Class returnValue;
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/tiga_cahaya_logo.png"))); // NOI18N
+                        // Verifying that the column exists (index > 0 && index < number of columns
 
-        javax.swing.GroupLayout panelAtasReturLayout = new javax.swing.GroupLayout(panelAtasRetur);
-        panelAtasRetur.setLayout(panelAtasReturLayout);
-        panelAtasReturLayout.setHorizontalGroup(
-            panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasReturLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelFilterRetur)
-                    .addComponent(searchFieldRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboBoxKolomRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelKolomRetur))
-                .addContainerGap())
-        );
-        panelAtasReturLayout.setVerticalGroup(
-            panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAtasReturLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelAtasReturLayout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(panelAtasReturLayout.createSequentialGroup()
-                        .addGroup(panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelFilterRetur)
-                            .addComponent(labelKolomRetur))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchFieldRetur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboBoxKolomRetur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
-        );
+                            if ((column >= 0) && (column < getColumnCount())) {
+                                returnValue = getValueAt(0, column).getClass();
+                            } else {
 
-        panelTengahRetur.setBackground(new java.awt.Color(73, 138, 192));
+                                // Returns the class for the item in the column
 
-        tabelRetur.setForeground(new java.awt.Color(12, 30, 42));
-        tabelRetur.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                                returnValue = Object.class;
+                            }
+                            return returnValue;
+                        };
+                    });
+                    tabelSupplier.setSelectionBackground(new java.awt.Color(25, 104, 178));
+                    tabelSupplier.setSelectionForeground(new java.awt.Color(255, 255, 255));
+                    tabelSupplier.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            tabelSupplierMouseClicked(evt);
+                        }
+                    });
+                    scrollPaneSupplier.setViewportView(tabelSupplier);
 
-            },
-            new String [] {
-                "ID Retur", "ID Barang", "Nama", "Jumlah"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
+                    javax.swing.GroupLayout panelTengahSupplierLayout = new javax.swing.GroupLayout(panelTengahSupplier);
+                    panelTengahSupplier.setLayout(panelTengahSupplierLayout);
+                    panelTengahSupplierLayout.setHorizontalGroup(
+                        panelTengahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(scrollPaneSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    );
+                    panelTengahSupplierLayout.setVerticalGroup(
+                        panelTengahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(scrollPaneSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    );
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tabelRetur.setSelectionBackground(new java.awt.Color(25, 104, 178));
-        tabelRetur.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        tabelRetur.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelReturMouseClicked(evt);
-            }
-        });
-        scrollPaneRetur.setViewportView(tabelRetur);
-        if (tabelRetur.getColumnModel().getColumnCount() > 0) {
-            tabelRetur.getColumnModel().getColumn(0).setHeaderValue("ID Retur");
-            tabelRetur.getColumnModel().getColumn(1).setHeaderValue("ID Barang");
-            tabelRetur.getColumnModel().getColumn(2).setHeaderValue("Nama");
-            tabelRetur.getColumnModel().getColumn(3).setHeaderValue("Jumlah");
-        }
+                    javax.swing.GroupLayout tabSupplierLayout = new javax.swing.GroupLayout(tabSupplier);
+                    tabSupplier.setLayout(tabSupplierLayout);
+                    tabSupplierLayout.setHorizontalGroup(
+                        tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(tabSupplierLayout.createSequentialGroup()
+                            .addComponent(panelKiriSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(panelTengahSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(panelAtasSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelBawahSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+                    );
+                    tabSupplierLayout.setVerticalGroup(
+                        tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(tabSupplierLayout.createSequentialGroup()
+                            .addComponent(panelAtasSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(panelKiriSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                                .addComponent(panelTengahSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(panelBawahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    );
 
-        javax.swing.GroupLayout panelTengahReturLayout = new javax.swing.GroupLayout(panelTengahRetur);
-        panelTengahRetur.setLayout(panelTengahReturLayout);
-        panelTengahReturLayout.setHorizontalGroup(
-            panelTengahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPaneRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
-        );
-        panelTengahReturLayout.setVerticalGroup(
-            panelTengahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPaneRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-        );
+                    panelUtama.addTab("Supplier", tabSupplier);
 
-        javax.swing.GroupLayout tabReturLayout = new javax.swing.GroupLayout(tabRetur);
-        tabRetur.setLayout(tabReturLayout);
-        tabReturLayout.setHorizontalGroup(
-            tabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabReturLayout.createSequentialGroup()
-                .addComponent(panelKiriRetur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelTengahRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(panelAtasRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelBawahRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
-        );
-        tabReturLayout.setVerticalGroup(
-            tabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabReturLayout.createSequentialGroup()
-                .addComponent(panelAtasRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelKiriRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
-                    .addComponent(panelTengahRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelBawahRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+                    tabRetur.setBackground(new java.awt.Color(117, 179, 226));
 
-        panelUtama.addTab("Retur", tabRetur);
+                    panelKiriRetur.setBackground(new java.awt.Color(117, 179, 226));
+                    panelKiriRetur.setPreferredSize(new java.awt.Dimension(154, 250));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelUtama)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelUtama)
-        );
+                    labelInfoRetur.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+                    labelInfoRetur.setForeground(new java.awt.Color(12, 30, 42));
+                    labelInfoRetur.setText("Info");
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+                    buttonRefreshDBRetur.setForeground(new java.awt.Color(12, 30, 42));
+                    buttonRefreshDBRetur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/refresh.png"))); // NOI18N
+                    buttonRefreshDBRetur.setText("Refresh");
+                    buttonRefreshDBRetur.setToolTipText("Refresh database");
+                    buttonRefreshDBRetur.setIconTextGap(6);
+                    buttonRefreshDBRetur.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            buttonRefreshDBReturActionPerformed(evt);
+                        }
+                    });
+
+                    textAreaKiriRetur.setBackground(new java.awt.Color(117, 179, 226));
+                    textAreaKiriRetur.setColumns(20);
+                    textAreaKiriRetur.setForeground(new java.awt.Color(12, 30, 42));
+                    textAreaKiriRetur.setLineWrap(true);
+                    textAreaKiriRetur.setRows(5);
+                    textAreaKiriRetur.setWrapStyleWord(true);
+                    textAreaKiriRetur.setBorder(null);
+
+                    javax.swing.GroupLayout panelKiriReturLayout = new javax.swing.GroupLayout(panelKiriRetur);
+                    panelKiriRetur.setLayout(panelKiriReturLayout);
+                    panelKiriReturLayout.setHorizontalGroup(
+                        panelKiriReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelKiriReturLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(panelKiriReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(textAreaKiriRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                                .addComponent(labelInfoRetur)
+                                .addComponent(buttonRefreshDBRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    );
+                    panelKiriReturLayout.setVerticalGroup(
+                        panelKiriReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelKiriReturLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(labelInfoRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(textAreaKiriRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(buttonRefreshDBRetur)
+                            .addContainerGap())
+                    );
+
+                    panelBawahRetur.setBackground(new java.awt.Color(25, 104, 178));
+                    panelBawahRetur.setForeground(new java.awt.Color(255, 255, 255));
+                    panelBawahRetur.setPreferredSize(new java.awt.Dimension(285, 126));
+
+                    tombolTambahRetur.setForeground(new java.awt.Color(12, 30, 42));
+                    tombolTambahRetur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/add_plus.png"))); // NOI18N
+                    tombolTambahRetur.setText("Tambah");
+                    tombolTambahRetur.setToolTipText("Tambah barang sesuai dengan masukan yang ada.");
+                    tombolTambahRetur.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+                    tombolTambahRetur.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+                    tombolTambahRetur.setIconTextGap(6);
+                    tombolTambahRetur.setPreferredSize(new java.awt.Dimension(80, 30));
+                    tombolTambahRetur.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            tombolTambahReturMouseClicked(evt);
+                        }
+                    });
+
+                    tombolHapusRetur.setForeground(new java.awt.Color(12, 30, 42));
+                    tombolHapusRetur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/delete.png"))); // NOI18N
+                    tombolHapusRetur.setText("Hapus");
+                    tombolHapusRetur.setToolTipText("Hapus barang sesuai dengan baris yang terpilih.");
+                    tombolHapusRetur.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+                    tombolHapusRetur.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+                    tombolHapusRetur.setIconTextGap(10);
+                    tombolHapusRetur.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            tombolHapusReturActionPerformed(evt);
+                        }
+                    });
+
+                    fieldInputJumlahBarangRetur.setForeground(new java.awt.Color(12, 30, 42));
+                    fieldInputJumlahBarangRetur.setText("Jumlah");
+                    fieldInputJumlahBarangRetur.setToolTipText("banyaknya barang retur");
+                    fieldInputJumlahBarangRetur.addFocusListener(new java.awt.event.FocusAdapter() {
+                        public void focusLost(java.awt.event.FocusEvent evt) {
+                            fieldInputJumlahBarangReturFocusLost(evt);
+                        }
+                        public void focusGained(java.awt.event.FocusEvent evt) {
+                            fieldInputJumlahBarangReturFocusGained(evt);
+                        }
+                    });
+
+                    fieldInputIdRetur.setForeground(new java.awt.Color(12, 30, 42));
+                    fieldInputIdRetur.setText("ID Retur");
+                    fieldInputIdRetur.setToolTipText("ID tidak perlu diubah");
+                    fieldInputIdRetur.addFocusListener(new java.awt.event.FocusAdapter() {
+                        public void focusLost(java.awt.event.FocusEvent evt) {
+                            fieldInputIdReturFocusLost(evt);
+                        }
+                        public void focusGained(java.awt.event.FocusEvent evt) {
+                            fieldInputIdReturFocusGained(evt);
+                        }
+                    });
+
+                    fieldInputIdBarangRetur.setForeground(new java.awt.Color(12, 30, 42));
+                    fieldInputIdBarangRetur.setText("ID");
+                    fieldInputIdBarangRetur.setToolTipText("ID Barang, Masukan dari tabel barang yang tersedia");
+                    fieldInputIdBarangRetur.addFocusListener(new java.awt.event.FocusAdapter() {
+                        public void focusLost(java.awt.event.FocusEvent evt) {
+                            fieldInputIdBarangReturFocusLost(evt);
+                        }
+                        public void focusGained(java.awt.event.FocusEvent evt) {
+                            fieldInputIdBarangReturFocusGained(evt);
+                        }
+                    });
+
+                    jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+                    jLabel1.setText("ID Retur");
+
+                    jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+                    jLabel2.setText("ID Barang");
+
+                    jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+                    jLabel3.setText("Quantity");
+
+                    tombolClearRetur.setForeground(new java.awt.Color(12, 30, 42));
+                    tombolClearRetur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/delete_x_big.png"))); // NOI18N
+                    tombolClearRetur.setText("Clear");
+                    tombolClearRetur.setToolTipText("Hapus semua text field");
+                    tombolClearRetur.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+                    tombolClearRetur.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+                    tombolClearRetur.setIconTextGap(9);
+                    tombolClearRetur.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            tombolClearReturActionPerformed(evt);
+                        }
+                    });
+
+                    javax.swing.GroupLayout panelBawahReturLayout = new javax.swing.GroupLayout(panelBawahRetur);
+                    panelBawahRetur.setLayout(panelBawahReturLayout);
+                    panelBawahReturLayout.setHorizontalGroup(
+                        panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahReturLayout.createSequentialGroup()
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel1))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(fieldInputIdRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(fieldInputJumlahBarangRetur, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(fieldInputIdBarangRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tombolTambahRetur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tombolHapusRetur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(tombolClearRetur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addContainerGap())
+                    );
+                    panelBawahReturLayout.setVerticalGroup(
+                        panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelBawahReturLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelBawahReturLayout.createSequentialGroup()
+                                    .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(fieldInputIdRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(panelBawahReturLayout.createSequentialGroup()
+                                            .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(tombolHapusRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(3, 3, 3))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahReturLayout.createSequentialGroup()
+                                            .addComponent(fieldInputIdBarangRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                    .addGroup(panelBawahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(fieldInputJumlahBarangRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tombolClearRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(tombolTambahRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addContainerGap(25, Short.MAX_VALUE))
+                    );
+
+                    panelAtasRetur.setBackground(new java.awt.Color(25, 104, 178));
+
+                    searchFieldRetur.setForeground(new java.awt.Color(12, 30, 42));
+                    searchFieldRetur.setText("search...");
+                    searchFieldRetur.setToolTipText("Cari dari tabel dibawah");
+                    searchFieldRetur.addFocusListener(new java.awt.event.FocusAdapter() {
+                        public void focusLost(java.awt.event.FocusEvent evt) {
+                            searchFieldReturFocusLost(evt);
+                        }
+                    });
+                    searchFieldRetur.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                            searchFieldReturMouseClicked(evt);
+                        }
+                    });
+                    searchFieldRetur.addKeyListener(new java.awt.event.KeyAdapter() {
+                        public void keyReleased(java.awt.event.KeyEvent evt) {
+                            searchFieldReturKeyReleased(evt);
+                        }
+                    });
+
+                    comboBoxKolomRetur.setForeground(new java.awt.Color(12, 30, 42));
+                    comboBoxKolomRetur.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Coloumn", "ID Retur", "ID Barang", "Nama", "Jumlah" }));
+                    comboBoxKolomRetur.setToolTipText("Pencarian berdasarkan kolom yang ada");
+                    comboBoxKolomRetur.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            comboBoxKolomReturActionPerformed(evt);
+                        }
+                    });
+
+                    labelFilterRetur.setForeground(new java.awt.Color(255, 255, 255));
+                    labelFilterRetur.setText("Filter");
+
+                    labelKolomRetur.setForeground(new java.awt.Color(255, 255, 255));
+                    labelKolomRetur.setText("Kolom");
+
+                    jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/tiga_cahaya_logo.png"))); // NOI18N
+
+                    javax.swing.GroupLayout panelAtasReturLayout = new javax.swing.GroupLayout(panelAtasRetur);
+                    panelAtasRetur.setLayout(panelAtasReturLayout);
+                    panelAtasReturLayout.setHorizontalGroup(
+                        panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasReturLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel13)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(labelFilterRetur)
+                                .addComponent(searchFieldRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(comboBoxKolomRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelKolomRetur))
+                            .addContainerGap())
+                    );
+                    panelAtasReturLayout.setVerticalGroup(
+                        panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelAtasReturLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelAtasReturLayout.createSequentialGroup()
+                                    .addComponent(jLabel13)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(panelAtasReturLayout.createSequentialGroup()
+                                    .addGroup(panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(labelFilterRetur)
+                                        .addComponent(labelKolomRetur))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(panelAtasReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(searchFieldRetur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(comboBoxKolomRetur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addContainerGap())
+                    );
+
+                    panelTengahRetur.setBackground(new java.awt.Color(73, 138, 192));
+
+                    tabelRetur.setForeground(new java.awt.Color(12, 30, 42));
+                    tabelRetur.setModel(new javax.swing.table.DefaultTableModel(
+                        new Object [][] {
+
+                        },
+                        new String [] {
+                            "ID Retur", "ID Barang", "Nama", "Jumlah"
+                        }
+                    ) {
+                        boolean[] canEdit = new boolean [] {
+                            false, false, false, false
+                        };
+
+                        public boolean isCellEditable(int rowIndex, int columnIndex) {
+                            return canEdit [columnIndex];
+                        }@Override
+                        public Class getColumnClass(int column) {
+                            Class returnValue;
+
+                            // Verifying that the column exists (index > 0 && index < number of columns
+
+                                if ((column >= 0) && (column < getColumnCount())) {
+                                    returnValue = getValueAt(0, column).getClass();
+                                } else {
+
+                                    // Returns the class for the item in the column
+
+                                    returnValue = Object.class;
+                                }
+                                return returnValue;
+                            };
+                        });
+                        tabelRetur.setSelectionBackground(new java.awt.Color(25, 104, 178));
+                        tabelRetur.setSelectionForeground(new java.awt.Color(255, 255, 255));
+                        tabelRetur.addMouseListener(new java.awt.event.MouseAdapter() {
+                            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                tabelReturMouseClicked(evt);
+                            }
+                        });
+                        scrollPaneRetur.setViewportView(tabelRetur);
+                        if (tabelRetur.getColumnModel().getColumnCount() > 0) {
+                            tabelRetur.getColumnModel().getColumn(0).setHeaderValue("ID Retur");
+                            tabelRetur.getColumnModel().getColumn(1).setHeaderValue("ID Barang");
+                            tabelRetur.getColumnModel().getColumn(2).setHeaderValue("Nama");
+                            tabelRetur.getColumnModel().getColumn(3).setHeaderValue("Jumlah");
+                        }
+
+                        javax.swing.GroupLayout panelTengahReturLayout = new javax.swing.GroupLayout(panelTengahRetur);
+                        panelTengahRetur.setLayout(panelTengahReturLayout);
+                        panelTengahReturLayout.setHorizontalGroup(
+                            panelTengahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scrollPaneRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
+                        );
+                        panelTengahReturLayout.setVerticalGroup(
+                            panelTengahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scrollPaneRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        );
+
+                        javax.swing.GroupLayout tabReturLayout = new javax.swing.GroupLayout(tabRetur);
+                        tabRetur.setLayout(tabReturLayout);
+                        tabReturLayout.setHorizontalGroup(
+                            tabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tabReturLayout.createSequentialGroup()
+                                .addComponent(panelKiriRetur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(panelTengahRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(panelAtasRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelBawahRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+                        );
+                        tabReturLayout.setVerticalGroup(
+                            tabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tabReturLayout.createSequentialGroup()
+                                .addComponent(panelAtasRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(tabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(panelKiriRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                                    .addComponent(panelTengahRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(panelBawahRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        );
+
+                        panelUtama.addTab("Retur", tabRetur);
+
+                        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+                        getContentPane().setLayout(layout);
+                        layout.setHorizontalGroup(
+                            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelUtama)
+                        );
+                        layout.setVerticalGroup(
+                            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelUtama)
+                        );
+
+                        pack();
+                    }// </editor-fold>//GEN-END:initComponents
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc=" Action Event ">
     // action event methods.

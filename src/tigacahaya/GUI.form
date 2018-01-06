@@ -220,9 +220,9 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="fieldInputSupplier" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
                                       <Component id="jLabelBarangSupplier" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabelBarangRagam" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="comboBoxSupplier" min="-2" pref="140" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -234,11 +234,8 @@
                                           </Group>
                                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                                  <Component id="jLabelBarangGaransi" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="comboBoxGaransi" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="comboBoxGaransi" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabelBarangGaransi" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -283,11 +280,11 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="fieldInputId_barang" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="fieldInputSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="fieldInputQty" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="fieldInputHarga_beli" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="fieldInputTanggal_masuk" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="comboBoxGaransi" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="comboBoxSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -425,20 +422,6 @@
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputHarga_beliKeyTyped"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="fieldInputSupplier">
-                  <Properties>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="2a" green="1e" red="c" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Supplier"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Pemasok, distributor atau sumber barang, kode bisa dilihat di tab supplier"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputSupplierFocusLost"/>
-                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldInputSupplierFocusGained"/>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldInputSupplierKeyTyped"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputTanggal_masuk">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
@@ -503,7 +486,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tombolTambahMouseClicked"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolTambahActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="tombolAtc">
@@ -514,7 +497,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/tigacahaya/res/cart_25px.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value=""/>
+                    <Property name="toolTipText" type="java.lang.String" value="Masukan barang ke tabel transaksi terakhir"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolAtcActionPerformed"/>
@@ -639,6 +622,7 @@
                       <Image iconType="3" name="/tigacahaya/res/delete_x_big.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Clear"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Hapus text dari field pengisian"/>
                     <Property name="iconTextGap" type="int" value="8"/>
                   </Properties>
                   <Events>
@@ -663,6 +647,17 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolHapusActionPerformed"/>
                   </Events>
                 </Component>
+                <Component class="javax.swing.JComboBox" name="comboBoxSupplier">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                    <Property name="toolTipText" type="java.lang.String" value="Supllier atau pemasok  barang"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="panelAtas">
@@ -678,18 +673,15 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="248" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="searchField" min="-2" pref="153" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="comboBoxKolom" min="-2" pref="132" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="labelFilter" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
-                                  <Component id="labelKolom" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="searchField" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
+                              <Component id="labelFilter" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="labelKolom" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboBoxKolom" min="-2" pref="132" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -700,7 +692,6 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="labelFilter" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -712,6 +703,7 @@
                                       <Component id="comboBoxKolom" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -1886,6 +1878,9 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="labelKolomSupplier">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>

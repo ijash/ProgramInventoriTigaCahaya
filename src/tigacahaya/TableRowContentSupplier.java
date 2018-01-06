@@ -8,7 +8,10 @@ package tigacahaya;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static tigacahaya.MySQLconn.connect;
 
 /**
@@ -84,5 +87,23 @@ public class TableRowContentSupplier {
             System.out.println("a");
         }
         return null;
+    }
+    public static ArrayList<String> comboBoxSupplierData() {
+        try {
+            ArrayList<String> accumulatedContentSupplier = new ArrayList<String>();
+            Connection conn = connect();
+            PreparedStatement statement;
+            statement = conn.prepareStatement("SELECT `nama` AS supplier FROM `supplier` ORDER BY id_supplier ASC;");
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                accumulatedContentSupplier.add(rs.getString("supplier"));
+          
+            }
+            return accumulatedContentSupplier;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(TableRowContentSupplier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return  null;
     }
 }

@@ -57,8 +57,8 @@ public class GUI extends javax.swing.JFrame {
             row[8] = list.get(i).getTgl_masuk();
             row[9] = list.get(i).getGaransi();
             model.addRow(row);
-            
-            
+
+
         }
     }
     public void sortTable() {
@@ -120,7 +120,7 @@ public class GUI extends javax.swing.JFrame {
         model.setRowCount(0);
         displayTable();
         displaySupplierComboBox();
-        
+
     }
     public void refreshTableTransaksi() {
         DefaultTableModel model = (DefaultTableModel) tabelTransaksi.getModel();
@@ -187,7 +187,7 @@ public class GUI extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         JOptionPane.showMessageDialog(this,"<html><body><p style='width: 250px;'><b>Error:<br></b><br><i>"+e+"</i><br><br>Cari petunjuk di catatan penggunaan tentang error diatas atau kontak admin anda mengenai masalah ini</p></body></html>","Aduh! ada yang salah..", JOptionPane.ERROR_MESSAGE);
-            
+
         }
     }
     public boolean regexIdBarang(String statement) {
@@ -222,7 +222,7 @@ public class GUI extends javax.swing.JFrame {
         tabStok = new javax.swing.JPanel();
         panelKiri = new javax.swing.JPanel();
         labelInfo = new javax.swing.JLabel();
-        buttonRefreshDB = new javax.swing.JToggleButton();
+        buttonRefreshDB = new javax.swing.JButton();
         textAreaKiri = new javax.swing.JTextArea();
         panelBawah = new javax.swing.JPanel();
         fieldInputId_barang = new javax.swing.JTextField();
@@ -262,7 +262,7 @@ public class GUI extends javax.swing.JFrame {
         tabTrans = new javax.swing.JPanel();
         panelKiriTransaksi = new javax.swing.JPanel();
         labelInfoTransaksi = new javax.swing.JLabel();
-        buttonRefreshDBTransaksi = new javax.swing.JToggleButton();
+        buttonRefreshDBTransaksi = new javax.swing.JButton();
         textAreaKiriTransaksi = new javax.swing.JTextArea();
         panelBawahTransaksi = new javax.swing.JPanel();
         fieldIdBarangTransaksi = new javax.swing.JTextField();
@@ -281,7 +281,7 @@ public class GUI extends javax.swing.JFrame {
         tabSupplier = new javax.swing.JPanel();
         panelKiriSupplier = new javax.swing.JPanel();
         labelInfoSupplier = new javax.swing.JLabel();
-        buttonRefreshDBSupplier = new javax.swing.JToggleButton();
+        buttonRefreshDBSupplier = new javax.swing.JButton();
         textAreaKiriSupplier = new javax.swing.JTextArea();
         panelBawahSupplier = new javax.swing.JPanel();
         tombolUbahSupplier = new javax.swing.JButton();
@@ -313,7 +313,7 @@ public class GUI extends javax.swing.JFrame {
         tabRetur = new javax.swing.JPanel();
         panelKiriRetur = new javax.swing.JPanel();
         labelInfoRetur = new javax.swing.JLabel();
-        buttonRefreshDBRetur = new javax.swing.JToggleButton();
+        buttonRefreshDBRetur = new javax.swing.JButton();
         textAreaKiriRetur = new javax.swing.JTextArea();
         panelBawahRetur = new javax.swing.JPanel();
         tombolTambahRetur = new javax.swing.JButton();
@@ -1899,7 +1899,7 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-// </editor-fold> 
+// </editor-fold>
 // <editor-fold defaultstate="collapsed" desc=" Action Event ">
     // action event methods.
     private void tabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMouseClicked
@@ -1907,7 +1907,7 @@ public class GUI extends javax.swing.JFrame {
         String comb = "Tidak";
         int i = tabel.getSelectedRow();
         TableModel model = tabel.getModel();
-        //Get index from sorted table  
+        //Get index from sorted table
         i = tabel.convertRowIndexToModel(i);
         //get values of the cells
         fieldInputId_barang.setText(model.getValueAt(i, 0).toString());
@@ -1941,9 +1941,9 @@ public class GUI extends javax.swing.JFrame {
     private void tombolUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahActionPerformed
         if (regexIdBarang(fieldInputId_barang.getText())) {
             if (regexBilangan(fieldInputQty.getText(), "Qty") || regexBilangan(fieldInputHarga_beli.getText(), "Harga")) {
-                
+
                 int supplierIndex = Integer.parseInt(MySQLconn.executeSingleQueryResult("SELECT `id_supplier` FROM `supplier` WHERE nama = '"+comboBoxSupplier.getSelectedItem()+"'", "id_supplier"));
-              
+
                 String query = "UPDATE `barang` SET `jenis`= '" + fieldInputJenis.getText() + "',`merk`='" + fieldInputMerk.getText() + "',`ragam`='" + fieldInputRagam.getText() + "',`seri`='" + fieldInputSeri.getText() + "',`qty`='" + fieldInputQty.getText() + "',`harga_beli`='" + fieldInputHarga_beli.getText() + "',`supplier`='" + supplierIndex +"',`garansi`='" + (String) comboBoxGaransi.getSelectedItem() + "' WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
 
                 execSQLQuery(query, "diubah");
@@ -2486,7 +2486,7 @@ displaySupplierComboBox();
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -2518,10 +2518,10 @@ displaySupplierComboBox();
     }
 // <editor-fold defaultstate="collapsed" desc=" Variable Declaration ">
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton buttonRefreshDB;
-    private javax.swing.JToggleButton buttonRefreshDBRetur;
-    private javax.swing.JToggleButton buttonRefreshDBSupplier;
-    private javax.swing.JToggleButton buttonRefreshDBTransaksi;
+    private javax.swing.JButton buttonRefreshDB;
+    private javax.swing.JButton buttonRefreshDBRetur;
+    private javax.swing.JButton buttonRefreshDBSupplier;
+    private javax.swing.JButton buttonRefreshDBTransaksi;
     private javax.swing.JButton buttonTransaksiHapus;
     private javax.swing.JButton buttonUbahQtyTransaksi;
     private javax.swing.JComboBox<String> comboBoxGaransi;

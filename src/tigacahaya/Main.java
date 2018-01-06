@@ -11,8 +11,9 @@ package tigacahaya;
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        MySQLconn.connect();
-        GUI.guiStart();
+        Login.guiStart();
+//        MySQLconn.connect();
+//        GUI.guiStart();
    
     }
 }

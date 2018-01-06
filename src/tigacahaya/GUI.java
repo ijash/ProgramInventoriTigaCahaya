@@ -222,7 +222,7 @@ public class GUI extends javax.swing.JFrame {
         tabStok = new javax.swing.JPanel();
         panelKiri = new javax.swing.JPanel();
         labelInfo = new javax.swing.JLabel();
-        buttonRefreshDB = new javax.swing.JButton();
+        buttonRefreshDB = new javax.swing.JToggleButton();
         textAreaKiri = new javax.swing.JTextArea();
         panelBawah = new javax.swing.JPanel();
         fieldInputId_barang = new javax.swing.JTextField();
@@ -262,7 +262,7 @@ public class GUI extends javax.swing.JFrame {
         tabTrans = new javax.swing.JPanel();
         panelKiriTransaksi = new javax.swing.JPanel();
         labelInfoTransaksi = new javax.swing.JLabel();
-        buttonRefreshDBTransaksi = new javax.swing.JButton();
+        buttonRefreshDBTransaksi = new javax.swing.JToggleButton();
         textAreaKiriTransaksi = new javax.swing.JTextArea();
         panelBawahTransaksi = new javax.swing.JPanel();
         fieldIdBarangTransaksi = new javax.swing.JTextField();
@@ -281,7 +281,7 @@ public class GUI extends javax.swing.JFrame {
         tabSupplier = new javax.swing.JPanel();
         panelKiriSupplier = new javax.swing.JPanel();
         labelInfoSupplier = new javax.swing.JLabel();
-        buttonRefreshDBSupplier = new javax.swing.JButton();
+        buttonRefreshDBSupplier = new javax.swing.JToggleButton();
         textAreaKiriSupplier = new javax.swing.JTextArea();
         panelBawahSupplier = new javax.swing.JPanel();
         tombolUbahSupplier = new javax.swing.JButton();
@@ -313,7 +313,7 @@ public class GUI extends javax.swing.JFrame {
         tabRetur = new javax.swing.JPanel();
         panelKiriRetur = new javax.swing.JPanel();
         labelInfoRetur = new javax.swing.JLabel();
-        buttonRefreshDBRetur = new javax.swing.JButton();
+        buttonRefreshDBRetur = new javax.swing.JToggleButton();
         textAreaKiriRetur = new javax.swing.JTextArea();
         panelBawahRetur = new javax.swing.JPanel();
         tombolTambahRetur = new javax.swing.JButton();
@@ -758,6 +758,11 @@ public class GUI extends javax.swing.JFrame {
         comboBoxKolom.setForeground(new java.awt.Color(12, 30, 42));
         comboBoxKolom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Coloumn", "ID Barang", "Jenis", "Merk", "Ragam", "Seri", "Qty", "Harga Beli", "Supplier", "Tanggal Masuk", "Garansi" }));
         comboBoxKolom.setToolTipText("Pencarian berdasarkan kolom yang ada");
+        comboBoxKolom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxKolomActionPerformed(evt);
+            }
+        });
 
         labelFilter.setBackground(new java.awt.Color(255, 255, 255));
         labelFilter.setForeground(new java.awt.Color(255, 255, 255));
@@ -1444,6 +1449,11 @@ public class GUI extends javax.swing.JFrame {
         comboBoxKolomSupplier.setForeground(new java.awt.Color(12, 30, 42));
         comboBoxKolomSupplier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Coloumn", "ID Supplier", "Nama", "Alamat", "Telpon", "Email", "Catatan" }));
         comboBoxKolomSupplier.setToolTipText("Pencarian berdasarkan kolom yang ada");
+        comboBoxKolomSupplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxKolomSupplierActionPerformed(evt);
+            }
+        });
 
         labelFilterSupplier.setForeground(new java.awt.Color(255, 255, 255));
         labelFilterSupplier.setText("Filter");
@@ -1771,6 +1781,11 @@ public class GUI extends javax.swing.JFrame {
         comboBoxKolomRetur.setForeground(new java.awt.Color(12, 30, 42));
         comboBoxKolomRetur.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Coloumn", "ID Retur", "ID Barang", "Nama", "Jumlah" }));
         comboBoxKolomRetur.setToolTipText("Pencarian berdasarkan kolom yang ada");
+        comboBoxKolomRetur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxKolomReturActionPerformed(evt);
+            }
+        });
 
         labelFilterRetur.setForeground(new java.awt.Color(255, 255, 255));
         labelFilterRetur.setText("Filter");
@@ -2481,6 +2496,21 @@ displaySupplierComboBox();
             }
 
     }//GEN-LAST:event_tombolTambahActionPerformed
+
+    private void comboBoxKolomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxKolomActionPerformed
+        String query = searchField.getText();
+        filterTable(query, comboBoxKolom.getSelectedIndex());
+    }//GEN-LAST:event_comboBoxKolomActionPerformed
+
+    private void comboBoxKolomSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxKolomSupplierActionPerformed
+        String query = searchFieldSupplier.getText();
+        filterTableSupplier(query, comboBoxKolomSupplier.getSelectedIndex());
+    }//GEN-LAST:event_comboBoxKolomSupplierActionPerformed
+
+    private void comboBoxKolomReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxKolomReturActionPerformed
+       String query = searchFieldRetur.getText();
+        filterTableRetur(query, comboBoxKolomRetur.getSelectedIndex());
+    }//GEN-LAST:event_comboBoxKolomReturActionPerformed
 // </editor-fold>
     public static void guiStart() {
         /* Set the Nimbus look and feel */
@@ -2518,10 +2548,10 @@ displaySupplierComboBox();
     }
 // <editor-fold defaultstate="collapsed" desc=" Variable Declaration ">
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonRefreshDB;
-    private javax.swing.JButton buttonRefreshDBRetur;
-    private javax.swing.JButton buttonRefreshDBSupplier;
-    private javax.swing.JButton buttonRefreshDBTransaksi;
+    private javax.swing.JToggleButton buttonRefreshDB;
+    private javax.swing.JToggleButton buttonRefreshDBRetur;
+    private javax.swing.JToggleButton buttonRefreshDBSupplier;
+    private javax.swing.JToggleButton buttonRefreshDBTransaksi;
     private javax.swing.JButton buttonTransaksiHapus;
     private javax.swing.JButton buttonUbahQtyTransaksi;
     private javax.swing.JComboBox<String> comboBoxGaransi;

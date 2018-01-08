@@ -24,6 +24,7 @@ import static tigacahaya.TableRowContentTransaksi.tableContentTransaksi;
  * @author ijash
  */
 public class GUI extends javax.swing.JFrame {
+
     /**
      * Creates new form GUI & GUI execution
      */
@@ -40,6 +41,7 @@ public class GUI extends javax.swing.JFrame {
         sortTableRetur();
 
     }
+
     // back-end methods......................................
     public void displayTable() {
         ArrayList<TableRowContent> list = tableContent();
@@ -58,13 +60,14 @@ public class GUI extends javax.swing.JFrame {
             row[9] = list.get(i).getGaransi();
             model.addRow(row);
 
-
         }
     }
+
     public void sortTable() {
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>((DefaultTableModel) tabel.getModel());
         tabel.setRowSorter(sorter);
     }
+
     public void displayTableTransaksi() {
         ArrayList<TableRowContentTransaksi> list = tableContentTransaksi();
         DefaultTableModel model = (DefaultTableModel) tabelTransaksi.getModel();
@@ -77,10 +80,12 @@ public class GUI extends javax.swing.JFrame {
             labelTransaksiAtas.setText("Invoice :" + TableRowContentTransaksi.statusInvoiceAkhir());
         }
     }
+
     public void sortTableTransaksi() {
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>((DefaultTableModel) tabelTransaksi.getModel());
         tabelTransaksi.setRowSorter(sorter);
     }
+
     public void displayTableRetur() {
         ArrayList<TableRowContentRetur> list = tableContentRetur();
         DefaultTableModel model = (DefaultTableModel) tabelRetur.getModel();
@@ -93,10 +98,12 @@ public class GUI extends javax.swing.JFrame {
             model.addRow(row);
         }
     }
+
     public void sortTableRetur() {
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>((DefaultTableModel) tabelRetur.getModel());
         tabelRetur.setRowSorter(sorter);
     }
+
     public void displayTableSupplier() {
         ArrayList<TableRowContentSupplier> list = tableContentSupplier();
         DefaultTableModel model = (DefaultTableModel) tabelSupplier.getModel();
@@ -111,35 +118,57 @@ public class GUI extends javax.swing.JFrame {
             model.addRow(row);
         }
     }
+
     public void sortTableSupplier() {
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>((DefaultTableModel) tabelSupplier.getModel());
         tabelSupplier.setRowSorter(sorter);
     }
+
     public void refreshTable() {
 
-       DefaultTableModel model = (DefaultTableModel) tabel.getModel();
-       model.setRowCount(0);
-       displayTable();
-       displaySupplierComboBox();
+        DefaultTableModel model = (DefaultTableModel) tabel.getModel();
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
+        displayTable();
+        displaySupplierComboBox();
 
     }
+
     public void refreshTableTransaksi() {
         DefaultTableModel model = (DefaultTableModel) tabelTransaksi.getModel();
-        model.setRowCount(0);
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
         displayTableTransaksi();
 
     }
+
     public void refreshTableRetur() {
         DefaultTableModel model = (DefaultTableModel) tabelRetur.getModel();
-        model.setRowCount(0);
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
         displayTableRetur();
 
     }
+
     public void refreshTableSupplier() {
         DefaultTableModel model = (DefaultTableModel) tabelSupplier.getModel();
-        model.setRowCount(0);
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
         displayTableSupplier();
     }
+
     public void filterTable(String query, int column) {
         TableRowSorter<DefaultTableModel> tf = new TableRowSorter<>((DefaultTableModel) tabel.getModel());
         tabel.setRowSorter(tf);
@@ -149,6 +178,7 @@ public class GUI extends javax.swing.JFrame {
             tf.setRowFilter(RowFilter.regexFilter("(?i)" + query, column - 1));
         }
     }
+
     public void filterTableSupplier(String query, int column) {
         TableRowSorter<DefaultTableModel> tf = new TableRowSorter<>((DefaultTableModel) tabelSupplier.getModel());
         tabelSupplier.setRowSorter(tf);
@@ -158,6 +188,7 @@ public class GUI extends javax.swing.JFrame {
             tf.setRowFilter(RowFilter.regexFilter("(?i)" + query, column - 1));
         }
     }
+
     public void filterTableRetur(String query, int column) {
         TableRowSorter<DefaultTableModel> tf = new TableRowSorter<>((DefaultTableModel) tabelRetur.getModel());
         tabelRetur.setRowSorter(tf);
@@ -167,14 +198,16 @@ public class GUI extends javax.swing.JFrame {
             tf.setRowFilter(RowFilter.regexFilter("(?i)" + query, column - 1));
         }
     }
-    public void displaySupplierComboBox(){
+
+    public void displaySupplierComboBox() {
         comboBoxSupplier.removeAllItems();
         ArrayList<String> list;
         list = TableRowContentSupplier.comboBoxSupplierData();
-        for (String i:list){
-        comboBoxSupplier.addItem(i);
+        for (String i : list) {
+            comboBoxSupplier.addItem(i);
+        }
     }
-    }
+
     // execute SQL query
     public void execSQLQuery(String query, String message) {
         Connection conn = MySQLconn.connect();
@@ -188,10 +221,11 @@ public class GUI extends javax.swing.JFrame {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        JOptionPane.showMessageDialog(rootPane,"<html><body><p style='width: 250px;'><b>Error:<br></b><br><i>"+e+"</i><br><br>Cari petunjuk di catatan penggunaan tentang error diatas atau kontak admin anda mengenai masalah ini</p></body></html>","Aduh! ada yang salah..", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "<html><body><p style='width: 250px;'><b>Error:<br></b><br><i>" + e + "</i><br><br>Cari petunjuk di catatan penggunaan tentang error diatas atau kontak admin anda mengenai masalah ini</p></body></html>", "Aduh! ada yang salah..", JOptionPane.ERROR_MESSAGE);
 
         }
     }
+
     public boolean regexIdBarang(String statement) {
         if (statement.matches("\\bP[0-9][0-9][0-9][0-9][0-9][0-9][0-9]\\b")) {
             return true;
@@ -200,6 +234,7 @@ public class GUI extends javax.swing.JFrame {
             return false;
         }
     }
+
     public boolean regexBilangan(String statement, String namaField) {
         if ((statement.matches("\\d+")) || (statement.matches("^([+-]?\\d*\\.?\\d*)$"))) {
             return true;
@@ -827,6 +862,7 @@ public class GUI extends javax.swing.JFrame {
                     }
                     return returnValue;
                 };
+
             });
             tabel.setSelectionBackground(new java.awt.Color(25, 104, 178));
             tabel.setSelectionForeground(new java.awt.Color(255, 255, 255));
@@ -1963,9 +1999,9 @@ public class GUI extends javax.swing.JFrame {
         if (regexIdBarang(fieldInputId_barang.getText())) {
             if (regexBilangan(fieldInputQty.getText(), "Qty") || regexBilangan(fieldInputHarga_beli.getText(), "Harga")) {
 
-                int supplierIndex = Integer.parseInt(MySQLconn.executeSingleQueryResult("SELECT `id_supplier` FROM `supplier` WHERE nama = '"+comboBoxSupplier.getSelectedItem()+"'", "id_supplier"));
+                int supplierIndex = Integer.parseInt(MySQLconn.executeSingleQueryResult("SELECT `id_supplier` FROM `supplier` WHERE nama = '" + comboBoxSupplier.getSelectedItem() + "'", "id_supplier"));
 
-                String query = "UPDATE `barang` SET `jenis`= '" + fieldInputJenis.getText() + "',`merk`='" + fieldInputMerk.getText() + "',`ragam`='" + fieldInputRagam.getText() + "',`seri`='" + fieldInputSeri.getText() + "',`qty`='" + fieldInputQty.getText() + "',`harga_beli`='" + fieldInputHarga_beli.getText() + "',`supplier`='" + supplierIndex +"',`garansi`='" + (String) comboBoxGaransi.getSelectedItem() + "' WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
+                String query = "UPDATE `barang` SET `jenis`= '" + fieldInputJenis.getText() + "',`merk`='" + fieldInputMerk.getText() + "',`ragam`='" + fieldInputRagam.getText() + "',`seri`='" + fieldInputSeri.getText() + "',`qty`='" + fieldInputQty.getText() + "',`harga_beli`='" + fieldInputHarga_beli.getText() + "',`supplier`='" + supplierIndex + "',`garansi`='" + (String) comboBoxGaransi.getSelectedItem() + "' WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
 
                 execSQLQuery(query, "diubah");
                 MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\") );");
@@ -2047,10 +2083,10 @@ public class GUI extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(rootPane, "Email tidak valid");
         }
-displaySupplierComboBox();
+        displaySupplierComboBox();
     }//GEN-LAST:event_tombolTambahSupplierMouseClicked
     private void tombolHapusSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusSupplierActionPerformed
-    String query = "DELETE from `supplier` WHERE `id_supplier`='" + fieldInputIDSupplier.getText() + "';";
+        String query = "DELETE from `supplier` WHERE `id_supplier`='" + fieldInputIDSupplier.getText() + "';";
         execSQLQuery(query, "" + "dihapus");
         System.out.println(query);
         refreshTableSupplier();
@@ -2089,7 +2125,7 @@ displaySupplierComboBox();
         } else {
             JOptionPane.showMessageDialog(rootPane, "Supplier ID salah");
         }
-displaySupplierComboBox();
+        displaySupplierComboBox();
     }//GEN-LAST:event_tombolUbahSupplierActionPerformed
     private void fieldInputId_barangFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputId_barangFocusGained
         if (fieldInputId_barang.getText().equals("ID")) {
@@ -2418,7 +2454,7 @@ displaySupplierComboBox();
         fieldInputId_barang.setText("");
         fieldInputQty.setText("");
         fieldInputHarga_beli.setText("");
-        comboBoxSupplier.setSelectedIndex(0+1);
+        comboBoxSupplier.setSelectedIndex(0 + 1);
         fieldInputTanggal_masuk.setText("");
         fieldInputJenis.setText("");
         fieldInputMerk.setText("");
@@ -2469,22 +2505,22 @@ displaySupplierComboBox();
     }//GEN-LAST:event_fieldInputEmailSupplierKeyTyped
     private void tombolTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolTambahActionPerformed
 
-            if ((regexBilangan(fieldInputQty.getText(), "Qty") ) && (regexBilangan(fieldInputHarga_beli.getText(), "Harga"))) {
-                int supplierIndex = Integer.parseInt(MySQLconn.executeSingleQueryResult("SELECT `id_supplier` FROM `supplier` WHERE nama = '"+comboBoxSupplier.getSelectedItem()+"'", "id_supplier"));
-                String query = "INSERT INTO `barang`(`code`, `no`, `id_barang`, `jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `tgl_masuk`, `garansi`) VALUES('P',NULL,NULL,'" + fieldInputJenis.getText() + "','" + fieldInputMerk.getText() + "','" + fieldInputRagam.getText() + "','" + fieldInputSeri.getText() + "','" + fieldInputQty.getText() + "','" + fieldInputHarga_beli.getText() + "','" + supplierIndex + "',CURRENT_TIMESTAMP,'" + comboBoxGaransi.getSelectedItem() + "')";
-                execSQLQuery(query, "ditambahkan");
-                MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\") );");
-                System.out.println(query);
-                refreshTable();
-            }
+        if ((regexBilangan(fieldInputQty.getText(), "Qty")) && (regexBilangan(fieldInputHarga_beli.getText(), "Harga"))) {
+            int supplierIndex = Integer.parseInt(MySQLconn.executeSingleQueryResult("SELECT `id_supplier` FROM `supplier` WHERE nama = '" + comboBoxSupplier.getSelectedItem() + "'", "id_supplier"));
+            String query = "INSERT INTO `barang`(`code`, `no`, `id_barang`, `jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `tgl_masuk`, `garansi`) VALUES('P',NULL,NULL,'" + fieldInputJenis.getText() + "','" + fieldInputMerk.getText() + "','" + fieldInputRagam.getText() + "','" + fieldInputSeri.getText() + "','" + fieldInputQty.getText() + "','" + fieldInputHarga_beli.getText() + "','" + supplierIndex + "',CURRENT_TIMESTAMP,'" + comboBoxGaransi.getSelectedItem() + "')";
+            execSQLQuery(query, "ditambahkan");
+            MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\") );");
+            System.out.println(query);
+            refreshTable();
+        }
 
     }//GEN-LAST:event_tombolTambahActionPerformed
 
     private void comboBoxKolomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxKolomActionPerformed
-        if (!(searchField.getText().equals("search..."))){
-         
-        String query = searchField.getText();
-        filterTable(query, comboBoxKolom.getSelectedIndex());
+        if (!(searchField.getText().equals("search..."))) {
+
+            String query = searchField.getText();
+            filterTable(query, comboBoxKolom.getSelectedIndex());
         }
     }//GEN-LAST:event_comboBoxKolomActionPerformed
 
@@ -2494,10 +2530,11 @@ displaySupplierComboBox();
     }//GEN-LAST:event_comboBoxKolomSupplierActionPerformed
 
     private void comboBoxKolomReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxKolomReturActionPerformed
-       String query = searchFieldRetur.getText();
+        String query = searchFieldRetur.getText();
         filterTableRetur(query, comboBoxKolomRetur.getSelectedIndex());
     }//GEN-LAST:event_comboBoxKolomReturActionPerformed
 // </editor-fold>
+
     public static void guiStart() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

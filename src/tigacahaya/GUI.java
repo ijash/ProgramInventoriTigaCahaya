@@ -2441,6 +2441,7 @@ public class GUI extends javax.swing.JFrame {
         fieldInputIDSupplier.setText("ID");
         fieldInputEmailSupplier.setText("Email");
         fieldInputNamaSupplier.setText("Nama");
+        textAreaCatatan.setText("");
         fieldInputAlamatSupplier.setText("Alamat");
         fieldInputTelponSupplier.setText("Telpon");
 

@@ -222,7 +222,7 @@ public class GUI extends javax.swing.JFrame {
         tabStok = new javax.swing.JPanel();
         panelKiri = new javax.swing.JPanel();
         labelInfo = new javax.swing.JLabel();
-        buttonRefreshDB = new javax.swing.JToggleButton();
+        buttonRefreshDB = new javax.swing.JButton();
         textAreaKiri = new javax.swing.JTextArea();
         panelBawah = new javax.swing.JPanel();
         fieldInputId_barang = new javax.swing.JTextField();
@@ -262,7 +262,7 @@ public class GUI extends javax.swing.JFrame {
         tabTrans = new javax.swing.JPanel();
         panelKiriTransaksi = new javax.swing.JPanel();
         labelInfoTransaksi = new javax.swing.JLabel();
-        buttonRefreshDBTransaksi = new javax.swing.JToggleButton();
+        buttonRefreshDBTransaksi = new javax.swing.JButton();
         textAreaKiriTransaksi = new javax.swing.JTextArea();
         panelBawahTransaksi = new javax.swing.JPanel();
         fieldIdBarangTransaksi = new javax.swing.JTextField();
@@ -281,7 +281,7 @@ public class GUI extends javax.swing.JFrame {
         tabSupplier = new javax.swing.JPanel();
         panelKiriSupplier = new javax.swing.JPanel();
         labelInfoSupplier = new javax.swing.JLabel();
-        buttonRefreshDBSupplier = new javax.swing.JToggleButton();
+        buttonRefreshDBSupplier = new javax.swing.JButton();
         textAreaKiriSupplier = new javax.swing.JTextArea();
         panelBawahSupplier = new javax.swing.JPanel();
         tombolUbahSupplier = new javax.swing.JButton();
@@ -313,7 +313,7 @@ public class GUI extends javax.swing.JFrame {
         tabRetur = new javax.swing.JPanel();
         panelKiriRetur = new javax.swing.JPanel();
         labelInfoRetur = new javax.swing.JLabel();
-        buttonRefreshDBRetur = new javax.swing.JToggleButton();
+        buttonRefreshDBRetur = new javax.swing.JButton();
         textAreaKiriRetur = new javax.swing.JTextArea();
         panelBawahRetur = new javax.swing.JPanel();
         tombolTambahRetur = new javax.swing.JButton();
@@ -2608,10 +2608,10 @@ displaySupplierComboBox();
     }
 // <editor-fold defaultstate="collapsed" desc=" Variable Declaration ">
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton buttonRefreshDB;
-    private javax.swing.JToggleButton buttonRefreshDBRetur;
-    private javax.swing.JToggleButton buttonRefreshDBSupplier;
-    private javax.swing.JToggleButton buttonRefreshDBTransaksi;
+    private javax.swing.JButton buttonRefreshDB;
+    private javax.swing.JButton buttonRefreshDBRetur;
+    private javax.swing.JButton buttonRefreshDBSupplier;
+    private javax.swing.JButton buttonRefreshDBTransaksi;
     private javax.swing.JButton buttonTransaksiHapus;
     private javax.swing.JButton buttonUbahQtyTransaksi;
     private javax.swing.JComboBox<String> comboBoxGaransi;

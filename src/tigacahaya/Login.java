@@ -202,11 +202,6 @@ public class Login extends javax.swing.JFrame {
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
         
        try {
-           
-        System.out.println(prop.getProperty("server"));
-        System.out.println(prop.getProperty("username"));
-        System.out.println(prop.getProperty("db"));
-        System.out.println(prop.getProperty("password"));
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn = DriverManager.getConnection("jdbc:mysql://" + server + ":3306/" + db + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", userName, password);
             String Sql="Select * from karyawan where id =? and password =?";
@@ -218,7 +213,7 @@ public class Login extends javax.swing.JFrame {
             rs=pst.executeQuery();
             if(rs.next())
             {
-                JOptionPane.showMessageDialog(null, "Login Berhasil");
+                
                 
                 Properties prop = new Properties();
                 OutputStream output = null;
@@ -323,8 +318,6 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_labelServerMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        Properties prop = new Properties();
-	
         
         if(Field_name.getText().equals(null)){
             Field_name.setText("");

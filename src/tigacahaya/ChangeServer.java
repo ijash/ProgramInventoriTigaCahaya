@@ -237,8 +237,7 @@ public class ChangeServer extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCancelActionPerformed
 
     private void buttonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOkActionPerformed
-        Properties prop = new Properties();
-                OutputStream output = null;
+                
 
 	try {
                 
@@ -290,9 +289,6 @@ public class ChangeServer extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        Properties prop = new Properties();
-	
-        InputStream input = null;
         
         if(fieldUsername.getText().equals(null)&&fieldServer.getText().equals(null)&&fieldDatabase.getText().equals(null)&&fieldPassword.getText().equals(null)){
             fieldUsername.setText("");

@@ -141,7 +141,7 @@
                     <Property name="text" type="java.lang.String" value="Info"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JToggleButton" name="buttonRefreshDB">
+                <Component class="javax.swing.JButton" name="buttonRefreshDB">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
@@ -942,7 +942,7 @@
                     <Property name="text" type="java.lang.String" value="Info"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JToggleButton" name="buttonRefreshDBTransaksi">
+                <Component class="javax.swing.JButton" name="buttonRefreshDBTransaksi">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
@@ -1346,7 +1346,7 @@
                     <Property name="text" type="java.lang.String" value="Info"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JToggleButton" name="buttonRefreshDBSupplier">
+                <Component class="javax.swing.JButton" name="buttonRefreshDBSupplier">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
@@ -2022,7 +2022,7 @@
                     <Property name="text" type="java.lang.String" value="Info"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JToggleButton" name="buttonRefreshDBRetur">
+                <Component class="javax.swing.JButton" name="buttonRefreshDBRetur">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="2a" green="1e" red="c" type="rgb"/>

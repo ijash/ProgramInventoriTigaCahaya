@@ -21,30 +21,29 @@ public class ChangeServer extends javax.swing.JFrame {
     MySQLconn mysql = new MySQLconn();
     Properties prop = new Properties();
     OutputStream output = null;
-    InputStream input = null;  
+    InputStream input = null;
     ResultSet rs = null;
-    
+
     public static String userName;
     public static String password;
-    public static String server ;
-    public static String db ;
-    
+    public static String server;
+    public static String db;
+
     public ChangeServer() {
-        
+
         try {
-            
-        
-            input = new FileInputStream("config.properties");    
+
+            input = new FileInputStream("config.properties");
             prop.load(input);
-            
-            userName=prop.getProperty("username");
-            password=prop.getProperty("password");
-            server=prop.getProperty("server");
-            db=prop.getProperty("db");
-            } catch (IOException e) {
+
+            userName = prop.getProperty("username");
+            password = prop.getProperty("password");
+            server = prop.getProperty("server");
+            db = prop.getProperty("db");
+        } catch (IOException e) {
         }
-        
-     initComponents();
+
+        initComponents();
     }
 
     /**
@@ -56,25 +55,26 @@ public class ChangeServer extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jPanelUtama = new javax.swing.JPanel();
+        jLabelPassword = new javax.swing.JLabel();
         fieldUsername = new javax.swing.JTextField();
         fieldPassword = new javax.swing.JPasswordField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
+        jSeparatorUname = new javax.swing.JSeparator();
+        jSeparatorPw = new javax.swing.JSeparator();
+        jLabelUname = new javax.swing.JLabel();
+        jLabelServer = new javax.swing.JLabel();
+        jSeparatorSrvr = new javax.swing.JSeparator();
         fieldServer = new javax.swing.JTextField();
         buttonCancel = new javax.swing.JButton();
         buttonOk = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jSeparator4 = new javax.swing.JSeparator();
+        jLabelDB = new javax.swing.JLabel();
+        jSeparatorDB = new javax.swing.JSeparator();
         fieldDatabase = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(new java.awt.Color(18, 104, 178));
         setLocationByPlatform(true);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -84,10 +84,10 @@ public class ChangeServer extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(18, 104, 178));
+        jPanelUtama.setBackground(new java.awt.Color(18, 104, 178));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Password");
+        jLabelPassword.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelPassword.setText("Password");
 
         fieldUsername.setBackground(new java.awt.Color(18, 104, 178));
         fieldUsername.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -100,20 +100,20 @@ public class ChangeServer extends javax.swing.JFrame {
         fieldPassword.setForeground(new java.awt.Color(255, 255, 255));
         fieldPassword.setBorder(null);
 
-        jSeparator1.setBackground(new java.awt.Color(12, 30, 42));
-        jSeparator1.setForeground(new java.awt.Color(12, 30, 42));
+        jSeparatorUname.setBackground(new java.awt.Color(12, 30, 42));
+        jSeparatorUname.setForeground(new java.awt.Color(12, 30, 42));
 
-        jSeparator2.setBackground(new java.awt.Color(12, 30, 42));
-        jSeparator2.setForeground(new java.awt.Color(12, 30, 42));
+        jSeparatorPw.setBackground(new java.awt.Color(12, 30, 42));
+        jSeparatorPw.setForeground(new java.awt.Color(12, 30, 42));
 
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Username");
+        jLabelUname.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelUname.setText("Username");
 
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Server");
+        jLabelServer.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelServer.setText("Server");
 
-        jSeparator3.setBackground(new java.awt.Color(12, 30, 42));
-        jSeparator3.setForeground(new java.awt.Color(12, 30, 42));
+        jSeparatorSrvr.setBackground(new java.awt.Color(12, 30, 42));
+        jSeparatorSrvr.setForeground(new java.awt.Color(12, 30, 42));
 
         fieldServer.setBackground(new java.awt.Color(18, 104, 178));
         fieldServer.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -142,11 +142,11 @@ public class ChangeServer extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Database");
+        jLabelDB.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelDB.setText("Database");
 
-        jSeparator4.setBackground(new java.awt.Color(12, 30, 42));
-        jSeparator4.setForeground(new java.awt.Color(12, 30, 42));
+        jSeparatorDB.setBackground(new java.awt.Color(12, 30, 42));
+        jSeparatorDB.setForeground(new java.awt.Color(12, 30, 42));
 
         fieldDatabase.setBackground(new java.awt.Color(18, 104, 178));
         fieldDatabase.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -155,73 +155,73 @@ public class ChangeServer extends javax.swing.JFrame {
         fieldDatabase.setCaretColor(new java.awt.Color(255, 255, 255));
         fieldDatabase.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelUtamaLayout = new javax.swing.GroupLayout(jPanelUtama);
+        jPanelUtama.setLayout(jPanelUtamaLayout);
+        jPanelUtamaLayout.setHorizontalGroup(
+            jPanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelUtamaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelUtamaLayout.createSequentialGroup()
                         .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonOk, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(166, 166, 166))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jLabel1))
+                    .addGroup(jPanelUtamaLayout.createSequentialGroup()
+                        .addGroup(jPanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparatorDB, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanelUtamaLayout.createSequentialGroup()
+                                    .addGroup(jPanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabelUname)
+                                        .addComponent(jLabelServer)
+                                        .addComponent(jLabelPassword))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(fieldPassword)
                                         .addComponent(fieldUsername)
-                                        .addComponent(jSeparator1)
-                                        .addComponent(jSeparator3)
+                                        .addComponent(jSeparatorUname)
+                                        .addComponent(jSeparatorSrvr)
                                         .addComponent(fieldServer, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                                        .addComponent(jSeparator2)))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
+                                        .addComponent(jSeparatorPw)))
+                                .addGroup(jPanelUtamaLayout.createSequentialGroup()
+                                    .addComponent(jLabelDB)
                                     .addGap(13, 13, 13)
                                     .addComponent(fieldDatabase, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        jPanelUtamaLayout.setVerticalGroup(
+            jPanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUtamaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                .addGroup(jPanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelUtamaLayout.createSequentialGroup()
+                        .addComponent(jLabelServer)
                         .addGap(25, 25, 25)
-                        .addComponent(jLabel6))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabelUname))
+                    .addGroup(jPanelUtamaLayout.createSequentialGroup()
                         .addComponent(fieldServer, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparatorSrvr, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(fieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jSeparatorUname, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                .addGroup(jPanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelDB)
                     .addComponent(fieldDatabase, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparatorDB, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelPassword)
+                    .addGroup(jPanelUtamaLayout.createSequentialGroup()
                         .addComponent(fieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jSeparatorPw, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonOk, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -231,11 +231,11 @@ public class ChangeServer extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, Short.MAX_VALUE)
+            .addComponent(jPanelUtama, javax.swing.GroupLayout.PREFERRED_SIZE, 261, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelUtama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -249,47 +249,46 @@ public class ChangeServer extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCancelActionPerformed
 
     private void buttonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOkActionPerformed
-                
 
-	try {
-                
-		output = new FileOutputStream("config.properties");
-		// set the properties value
-		prop.setProperty("username", fieldUsername.getText());
-                prop.setProperty("server", fieldServer.getText());
-                prop.setProperty("db", fieldDatabase.getText());
-                prop.setProperty("password", fieldPassword.getText());
-		prop.store(output,null);
-                
-                 try {
-            
-                     server=prop.getProperty("server");
-                     userName=prop.getProperty("username");
-                     db=prop.getProperty("db");
-                     password=prop.getProperty("password");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://" + server + ":3306/" + db + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", userName, password);
-            
-            Class.forName("com.mysql.cj.jdbc.Driver");
-              
-                  this.dispose();
-                  Login login = new Login();
-                  login.setLocationRelativeTo(null);
-                  login.setVisible(true);
-        } catch (Exception e) {
-                    JOptionPane.showMessageDialog(rootPane, "Input Salah");
-        }
+        try {
 
-	} catch (IOException io) {
-		io.printStackTrace();
-	} finally {
-		if (output != null) {
-			try {
-				output.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+            output = new FileOutputStream("config.properties");
+            // set the properties value
+            prop.setProperty("username", fieldUsername.getText());
+            prop.setProperty("server", fieldServer.getText());
+            prop.setProperty("db", fieldDatabase.getText());
+            prop.setProperty("password", fieldPassword.getText());
+            prop.store(output, null);
+
+            try {
+
+                server = prop.getProperty("server");
+                userName = prop.getProperty("username");
+                db = prop.getProperty("db");
+                password = prop.getProperty("password");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://" + server + ":3306/" + db + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", userName, password);
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+
+                this.dispose();
+                Login login = new Login();
+                login.setLocationRelativeTo(null);
+                login.setVisible(true);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Input Salah");
+            }
+
+        } catch (IOException io) {
+            io.printStackTrace();
+        } finally {
+            if (output != null) {
+                try {
+                    output.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-		}
+            }
+        }
     }//GEN-LAST:event_buttonOkActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -300,47 +299,42 @@ public class ChangeServer extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        
-        if(fieldUsername.getText().equals(null)&&fieldServer.getText().equals(null)&&fieldDatabase.getText().equals(null)&&fieldPassword.getText().equals(null)){
+
+        if (fieldUsername.getText().equals(null) && fieldServer.getText().equals(null) && fieldDatabase.getText().equals(null) && fieldPassword.getText().equals(null)) {
             fieldUsername.setText("");
             fieldDatabase.setText("");
             fieldPassword.setText("");
             fieldServer.setText("");
-        }
-	
-        else{
-        try {
-            
-        input = new FileInputStream("config.properties");    
-        
-        prop.load(input);
+        } else {
+            try {
 
-		// get the property value and print it out
-		fieldUsername.setText(prop.getProperty("username"));
+                input = new FileInputStream("config.properties");
+
+                prop.load(input);
+
+                // get the property value and print it out
+                fieldUsername.setText(prop.getProperty("username"));
                 fieldServer.setText(prop.getProperty("server"));
                 fieldDatabase.setText(prop.getProperty("db"));
                 fieldPassword.setText(prop.getProperty("password"));
-                
-		
 
-	} catch (IOException ex) {
-		ex.printStackTrace();
-	} finally {
-		if (input != null) {
-			try {
-				input.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-        }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } finally {
+                if (input != null) {
+                    try {
+                        input.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
         }
     }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
      */
-    
     public static void guiStart() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -366,10 +360,7 @@ public class ChangeServer extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ChangeServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -386,16 +377,15 @@ public class ChangeServer extends javax.swing.JFrame {
     private javax.swing.JPasswordField fieldPassword;
     private javax.swing.JTextField fieldServer;
     private javax.swing.JTextField fieldUsername;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JLabel jLabelDB;
+    private javax.swing.JLabel jLabelPassword;
+    private javax.swing.JLabel jLabelServer;
+    private javax.swing.JLabel jLabelUname;
+    private javax.swing.JPanel jPanelUtama;
+    private javax.swing.JSeparator jSeparatorDB;
+    private javax.swing.JSeparator jSeparatorPw;
+    private javax.swing.JSeparator jSeparatorSrvr;
+    private javax.swing.JSeparator jSeparatorUname;
     // End of variables declaration//GEN-END:variables
 
-    
 }

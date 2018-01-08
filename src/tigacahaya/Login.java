@@ -45,8 +45,9 @@ public class Login extends javax.swing.JFrame {
         }
         initComponents();
     }
-public void loginAction(){
-            try {
+
+    public void loginAction() {
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn = DriverManager.getConnection("jdbc:mysql://" + server + ":3306/" + db + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", userName, password);
             String Sql = "Select * from karyawan where id =? and password =?";
@@ -118,7 +119,8 @@ public void loginAction(){
             JOptionPane.showMessageDialog(rootPane, "Login Gagal");
 
         }
-}
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -128,14 +130,14 @@ public void loginAction(){
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jPanelUtama = new javax.swing.JPanel();
+        jLabelPW = new javax.swing.JLabel();
         Field_name = new javax.swing.JTextField();
         Field_password = new javax.swing.JPasswordField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
+        jSeparatorName = new javax.swing.JSeparator();
+        jSeparatorPW = new javax.swing.JSeparator();
         buttonLogin = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        jLabelUname = new javax.swing.JLabel();
         labelAbout = new javax.swing.JLabel();
         labelServer = new javax.swing.JLabel();
         CheckBoxRememberMe = new javax.swing.JCheckBox();
@@ -144,16 +146,17 @@ public void loginAction(){
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(18, 104, 178));
         setLocationByPlatform(true);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(18, 104, 178));
+        jPanelUtama.setBackground(new java.awt.Color(18, 104, 178));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Password");
+        jLabelPW.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelPW.setText("Password");
 
         Field_name.setBackground(new java.awt.Color(18, 104, 178));
         Field_name.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -171,11 +174,11 @@ public void loginAction(){
             }
         });
 
-        jSeparator1.setBackground(new java.awt.Color(12, 30, 42));
-        jSeparator1.setForeground(new java.awt.Color(12, 30, 42));
+        jSeparatorName.setBackground(new java.awt.Color(12, 30, 42));
+        jSeparatorName.setForeground(new java.awt.Color(12, 30, 42));
 
-        jSeparator2.setBackground(new java.awt.Color(12, 30, 42));
-        jSeparator2.setForeground(new java.awt.Color(12, 30, 42));
+        jSeparatorPW.setBackground(new java.awt.Color(12, 30, 42));
+        jSeparatorPW.setForeground(new java.awt.Color(12, 30, 42));
 
         buttonLogin.setBackground(new java.awt.Color(117, 179, 226));
         buttonLogin.setForeground(new java.awt.Color(12, 30, 42));
@@ -187,8 +190,8 @@ public void loginAction(){
             }
         });
 
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Name");
+        jLabelUname.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelUname.setText("Name");
 
         labelAbout.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
         labelAbout.setForeground(new java.awt.Color(117, 179, 226));
@@ -222,61 +225,61 @@ public void loginAction(){
 
         CheckBoxRememberMe.setBackground(new java.awt.Color(12, 30, 42));
         CheckBoxRememberMe.setForeground(new java.awt.Color(255, 255, 255));
-        CheckBoxRememberMe.setText("Remember me");
+        CheckBoxRememberMe.setText("Ingat saya");
 
         splashLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/menu_logo.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelUtamaLayout = new javax.swing.GroupLayout(jPanelUtama);
+        jPanelUtama.setLayout(jPanelUtamaLayout);
+        jPanelUtamaLayout.setHorizontalGroup(
+            jPanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelUtamaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelServer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
                 .addComponent(labelAbout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanelUtamaLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(splashLogo)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanelUtamaLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CheckBoxRememberMe)
-                            .addComponent(jLabel6)
+                            .addComponent(jLabelUname)
                             .addComponent(Field_name, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
+                            .addComponent(jSeparatorName, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelPW)
                             .addComponent(Field_password, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparatorPW, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        jPanelUtamaLayout.setVerticalGroup(
+            jPanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUtamaLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(splashLogo)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
+                .addComponent(jLabelUname)
                 .addGap(5, 5, 5)
                 .addComponent(Field_name, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparatorName, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addComponent(jLabelPW)
                 .addGap(5, 5, 5)
                 .addComponent(Field_password, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparatorPW, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CheckBoxRememberMe)
                 .addGap(27, 27, 27)
                 .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelAbout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelServer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -288,18 +291,18 @@ public void loginAction(){
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelUtama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelUtama, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
-loginAction();
+        loginAction();
 
     }//GEN-LAST:event_buttonLoginActionPerformed
 
@@ -399,22 +402,22 @@ loginAction();
                 + "<html><b><center>Team:</center></b></html>\n"
                 + "Founder: Ijash\n"
                 + "Co-Founder:Jose\n"
-                + "Data: Kevin\n"
+                + "Data & Beta test: Kevin\n"
+                + "Data & Beta test: Simon\n"                
                 + "Research Paper: Adel\n"
                 + "Financial Consultant : Yuni\n"
-                + "Data: Simon\n"
                 + "Investor: Fahmi\n"
                 + "<html><b>Links:</b></html>\n"
                 + "https://github.com/ijash/ProgramInventoriTigaCahaya\n"
                 + "ijash1000@gmail.com\n"
                 + "Donate here:\n"
-                + "bitcoin: 1AV6DtBUYnNhrRoJsW3PzJkaMbkdVgnRfCubl");
+                + "bitcoin: 1AV6DtBUYnNhrRoJsW3PzJkaMbkdVgnRfCubl","About Us", WIDTH);
     }//GEN-LAST:event_labelAboutMouseClicked
 
     private void Field_passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Field_passwordKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
-           loginAction();
+            loginAction();
         }
     }//GEN-LAST:event_Field_passwordKeyPressed
 
@@ -465,11 +468,11 @@ loginAction();
     private javax.swing.JTextField Field_name;
     private javax.swing.JPasswordField Field_password;
     private javax.swing.JButton buttonLogin;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel jLabelPW;
+    private javax.swing.JLabel jLabelUname;
+    private javax.swing.JPanel jPanelUtama;
+    private javax.swing.JSeparator jSeparatorName;
+    private javax.swing.JSeparator jSeparatorPW;
     private javax.swing.JLabel labelAbout;
     private javax.swing.JLabel labelServer;
     private javax.swing.JLabel splashLogo;

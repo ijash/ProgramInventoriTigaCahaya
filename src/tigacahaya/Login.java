@@ -46,6 +46,8 @@ public class Login extends javax.swing.JFrame {
      initComponents();    
     }
 
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,8 +94,14 @@ public class Login extends javax.swing.JFrame {
         Field_password.setForeground(new java.awt.Color(255, 255, 255));
         Field_password.setBorder(null);
 
+        jSeparator1.setBackground(new java.awt.Color(12, 30, 42));
+        jSeparator1.setForeground(new java.awt.Color(12, 30, 42));
+
+        jSeparator2.setBackground(new java.awt.Color(12, 30, 42));
+        jSeparator2.setForeground(new java.awt.Color(12, 30, 42));
+
         buttonLogin.setBackground(new java.awt.Color(117, 179, 226));
-        buttonLogin.setForeground(new java.awt.Color(255, 255, 255));
+        buttonLogin.setForeground(new java.awt.Color(12, 30, 42));
         buttonLogin.setText("Log in");
         buttonLogin.setBorder(null);
         buttonLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +117,9 @@ public class Login extends javax.swing.JFrame {
         labelAbout.setForeground(new java.awt.Color(117, 179, 226));
         labelAbout.setText("<html><u>About</u></html>");
         labelAbout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelAboutMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 labelAboutMouseExited(evt);
             }
@@ -132,6 +143,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        CheckBoxRememberMe.setBackground(new java.awt.Color(12, 30, 42));
+        CheckBoxRememberMe.setForeground(new java.awt.Color(255, 255, 255));
         CheckBoxRememberMe.setText("Remember me");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -275,13 +288,13 @@ public class Login extends javax.swing.JFrame {
             }
             else
             {
-                JOptionPane.showMessageDialog(null, "Username Atau Password Salah");
+                JOptionPane.showMessageDialog(rootPane, "Username Atau Password Salah");
             }
             
             
             
         } catch (Exception e) {
-                            JOptionPane.showMessageDialog(null, "Login Gagal");
+                            JOptionPane.showMessageDialog(rootPane, "Login Gagal");
 
             
         }
@@ -384,39 +397,29 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowActivated
 
+    private void labelAboutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelAboutMouseClicked
+        String message = "<html><body><div width='200px' align='right'>This is some text!</div></body></html>";
+        JOptionPane.showMessageDialog(rootPane,"<html><b>ABOUT</b>\n" +
+"Program ini dibuat oleh team BURIT divisi Software engineering.\n" +
+"© 2018 Burit Software\n" +
+"<html><b><center>Team:</center></b></html>\n" +
+"Founder: Ijash\n" +
+"Co-Founder:Jose\n" +
+"Data: Kevin\n" +
+"Research Paper: Adel\n" +
+"Financial Consultant : Yuni\n" +
+"Data: Simon\n" +
+"Investor: Fahmi\n" +
+"<html><b>Links:</b></html>\n" +
+"https://github.com/ijash/ProgramInventoriTigaCahaya\n" +
+"ijash1000@gmail.com\n" +
+"Donate here:\n" +
+"bitcoin: 1AV6DtBUYnNhrRoJsW3PzJkaMbkdVgnRfCubl" );
+    }//GEN-LAST:event_labelAboutMouseClicked
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        
-        
-        
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-       
-        
-    }
     
     public static void guiStart() {
         /* Set the Nimbus look and feel */
@@ -449,7 +452,10 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                Login login = new Login();
+                login.setLocationRelativeTo(null);
+                login.setVisible(true);
+                //new Login().setVisible(true);
             }
         });
     }

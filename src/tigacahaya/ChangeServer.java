@@ -100,11 +100,20 @@ public class ChangeServer extends javax.swing.JFrame {
         fieldPassword.setForeground(new java.awt.Color(255, 255, 255));
         fieldPassword.setBorder(null);
 
+        jSeparator1.setBackground(new java.awt.Color(12, 30, 42));
+        jSeparator1.setForeground(new java.awt.Color(12, 30, 42));
+
+        jSeparator2.setBackground(new java.awt.Color(12, 30, 42));
+        jSeparator2.setForeground(new java.awt.Color(12, 30, 42));
+
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Username");
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Server");
+
+        jSeparator3.setBackground(new java.awt.Color(12, 30, 42));
+        jSeparator3.setForeground(new java.awt.Color(12, 30, 42));
 
         fieldServer.setBackground(new java.awt.Color(18, 104, 178));
         fieldServer.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -114,7 +123,7 @@ public class ChangeServer extends javax.swing.JFrame {
         fieldServer.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         buttonCancel.setBackground(new java.awt.Color(117, 179, 226));
-        buttonCancel.setForeground(new java.awt.Color(255, 255, 255));
+        buttonCancel.setForeground(new java.awt.Color(12, 30, 42));
         buttonCancel.setText("Cancel");
         buttonCancel.setBorder(null);
         buttonCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +133,7 @@ public class ChangeServer extends javax.swing.JFrame {
         });
 
         buttonOk.setBackground(new java.awt.Color(117, 179, 226));
-        buttonOk.setForeground(new java.awt.Color(255, 255, 255));
+        buttonOk.setForeground(new java.awt.Color(12, 30, 42));
         buttonOk.setText("Ok");
         buttonOk.setBorder(null);
         buttonOk.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +144,9 @@ public class ChangeServer extends javax.swing.JFrame {
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Database");
+
+        jSeparator4.setBackground(new java.awt.Color(12, 30, 42));
+        jSeparator4.setForeground(new java.awt.Color(12, 30, 42));
 
         fieldDatabase.setBackground(new java.awt.Color(18, 104, 178));
         fieldDatabase.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -259,13 +271,12 @@ public class ChangeServer extends javax.swing.JFrame {
             
             Class.forName("com.mysql.cj.jdbc.Driver");
               
-                  JOptionPane.showMessageDialog(null, "Input Benar");
                   this.dispose();
                   Login login = new Login();
                   login.setLocationRelativeTo(null);
                   login.setVisible(true);
         } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Input Salah");
+                    JOptionPane.showMessageDialog(rootPane, "Input Salah");
         }
 
 	} catch (IOException io) {
@@ -329,38 +340,6 @@ public class ChangeServer extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        
-        
-        
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ChangeServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ChangeServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ChangeServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ChangeServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-       
-        
-    }
     
     public static void guiStart() {
         /* Set the Nimbus look and feel */

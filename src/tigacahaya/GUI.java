@@ -180,13 +180,13 @@ public class GUI extends javax.swing.JFrame {
         try {
             st = conn.createStatement();
             if ((st.executeUpdate(query)) == 1) {
-                JOptionPane.showMessageDialog(null, "Data berhasil " + message);
+                JOptionPane.showMessageDialog(rootPane, "Data berhasil " + message);
             } else {
-                JOptionPane.showMessageDialog(null, "Data gagal " + message);
+                JOptionPane.showMessageDialog(rootPane, "Data gagal " + message);
             }
         } catch (Exception e) {
             e.printStackTrace();
-        JOptionPane.showMessageDialog(this,"<html><body><p style='width: 250px;'><b>Error:<br></b><br><i>"+e+"</i><br><br>Cari petunjuk di catatan penggunaan tentang error diatas atau kontak admin anda mengenai masalah ini</p></body></html>","Aduh! ada yang salah..", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(rootPane,"<html><body><p style='width: 250px;'><b>Error:<br></b><br><i>"+e+"</i><br><br>Cari petunjuk di catatan penggunaan tentang error diatas atau kontak admin anda mengenai masalah ini</p></body></html>","Aduh! ada yang salah..", JOptionPane.ERROR_MESSAGE);
 
         }
     }
@@ -194,7 +194,7 @@ public class GUI extends javax.swing.JFrame {
         if (statement.matches("\\bP[0-9][0-9][0-9][0-9][0-9][0-9][0-9]\\b")) {
             return true;
         } else {
-            JOptionPane.showMessageDialog(null, "ID Barang salah");
+            JOptionPane.showMessageDialog(rootPane, "ID Barang salah");
             return false;
         }
     }
@@ -202,7 +202,7 @@ public class GUI extends javax.swing.JFrame {
         if ((statement.matches("\\d+")) || (statement.matches("^([+-]?\\d*\\.?\\d*)$"))) {
             return true;
         } else {
-            JOptionPane.showMessageDialog(null, namaField + " harus angka!");
+            JOptionPane.showMessageDialog(rootPane, namaField + " harus angka!");
             return false;
         }
 
@@ -337,6 +337,7 @@ public class GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Stock Opaname [Toko Listrik Tiga Cahaya]");
+        setLocationByPlatform(true);
 
         panelUtama.setForeground(new java.awt.Color(12, 30, 42));
         panelUtama.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -2042,7 +2043,7 @@ public class GUI extends javax.swing.JFrame {
 
         MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\"))");
         refreshTable();
-        JOptionPane.showMessageDialog(null, "Data telah direfresh");
+        JOptionPane.showMessageDialog(rootPane, "Data telah direfresh");
         TableRowContentTransaksi.statusInvoiceAkhir();
         // System.out.println(TableRowContentTransaksi.statusInvoiceAkhir());
     }//GEN-LAST:event_buttonRefreshDBActionPerformed
@@ -2098,12 +2099,12 @@ public class GUI extends javax.swing.JFrame {
     private void buttonRefreshDBTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBTransaksiActionPerformed
 
         refreshTableTransaksi();
-        JOptionPane.showMessageDialog(null, "Data telah direfresh");
+        JOptionPane.showMessageDialog(rootPane, "Data telah direfresh");
     }//GEN-LAST:event_buttonRefreshDBTransaksiActionPerformed
     private void buttonRefreshDBSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBSupplierActionPerformed
 
         refreshTableSupplier();
-        JOptionPane.showMessageDialog(null, "Data telah direfresh");
+        JOptionPane.showMessageDialog(rootPane, "Data telah direfresh");
     }//GEN-LAST:event_buttonRefreshDBSupplierActionPerformed
     private void tombolTambahSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahSupplierMouseClicked
         if (fieldInputEmailSupplier.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$") || fieldInputEmailSupplier.getText().equals("")) {
@@ -2114,10 +2115,10 @@ public class GUI extends javax.swing.JFrame {
                 System.out.println(query);
                 refreshTableSupplier();
             } else {
-                JOptionPane.showMessageDialog(null, "Telpon tidak valid");
+                JOptionPane.showMessageDialog(rootPane, "Telpon tidak valid");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Email tidak valid");
+            JOptionPane.showMessageDialog(rootPane, "Email tidak valid");
         }
 displaySupplierComboBox();
     }//GEN-LAST:event_tombolTambahSupplierMouseClicked
@@ -2153,13 +2154,13 @@ displaySupplierComboBox();
                     System.out.println(query);
                     refreshTableSupplier();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Telpon tidak valid");
+                    JOptionPane.showMessageDialog(rootPane, "Telpon tidak valid");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Email tidak valid");
+                JOptionPane.showMessageDialog(rootPane, "Email tidak valid");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Supplier ID salah");
+            JOptionPane.showMessageDialog(rootPane, "Supplier ID salah");
         }
 displaySupplierComboBox();
     }//GEN-LAST:event_tombolUbahSupplierActionPerformed
@@ -2361,7 +2362,7 @@ displaySupplierComboBox();
 
         TableModel model = tabelTransaksi.getModel();
         if (model.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Cart tidak boleh kosong");
+            JOptionPane.showMessageDialog(rootPane, "Cart tidak boleh kosong");
         } else {
             String qtyCol;
             String idBarangCol;
@@ -2457,14 +2458,14 @@ displaySupplierComboBox();
     private void buttonRefreshDBReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBReturActionPerformed
 
         refreshTable();
-        JOptionPane.showMessageDialog(null, "Data telah direfresh");
+        JOptionPane.showMessageDialog(rootPane, "Data telah direfresh");
     }//GEN-LAST:event_buttonRefreshDBReturActionPerformed
     private void buttonTransaksiHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTransaksiHapusActionPerformed
         if (fieldIdBarangTransaksi.getText().matches("\\bP[0-9][0-9][0-9][0-9][0-9][0-9][0-9]\\b")) {
             MySQLconn.executeVoidQuery("DELETE FROM `transaksi_cart` WHERE `transaksi_cart`.`id_barang` ='" + fieldIdBarangTransaksi.getText() + "';");
             refreshTableTransaksi();
         } else {
-            JOptionPane.showMessageDialog(null, "Pilih barang dahulu");
+            JOptionPane.showMessageDialog(rootPane, "Pilih barang dahulu");
         }
     }//GEN-LAST:event_buttonTransaksiHapusActionPerformed
     private void buttonUbahQtyTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUbahQtyTransaksiActionPerformed
@@ -2602,7 +2603,10 @@ displaySupplierComboBox();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI().setVisible(true);
+                GUI gui = new GUI();
+                gui.setLocationRelativeTo(null);
+                gui.setVisible(true);
+                //new GUI().setVisible(true);
             }
         });
     }

@@ -853,9 +853,6 @@ public class GUI extends javax.swing.JFrame {
                 }
             });
             panelScrollTabel.setViewportView(tabel);
-            if (tabel.getColumnModel().getColumnCount() > 0) {
-                tabel.getColumnModel().getColumn(5).setMaxWidth(40);
-            }
 
             javax.swing.GroupLayout panelTengahLayout = new javax.swing.GroupLayout(panelTengah);
             panelTengah.setLayout(panelTengahLayout);

@@ -5,12 +5,8 @@
  */
 package tigacahaya;
 
-import static tigacahaya.MySQLconn.connString;
-import static tigacahaya.MySQLconn.userName;
-import static tigacahaya.MySQLconn.password;
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.event.MouseMotionListener;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -18,18 +14,35 @@ import java.io.OutputStream;
 import java.util.Properties;
 import java.io.InputStream;
 import java.sql.*;
-import javax.swing.*;
-
-
-
+import javax.swing.JOptionPane;
+import static tigacahaya.ChangeServer.db;
+import static tigacahaya.ChangeServer.password;
+import static tigacahaya.ChangeServer.server;
+import static tigacahaya.ChangeServer.userName;
 
 public class Login extends javax.swing.JFrame {
 
-    int xMouse;
-    int yMouse;
+    Properties prop = new Properties();
+    OutputStream output = null;
+    InputStream input = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
+    
     public Login() {
+        
+     try{
+             input = new FileInputStream("config.properties");
+          
+            prop.load(input);
+            
+            userName=prop.getProperty("username");
+            password=prop.getProperty("password");
+            server=prop.getProperty("server");
+            db=prop.getProperty("db");
+         }
+         catch(IOException e){
+             
+         }   
      initComponents();    
     }
 
@@ -52,6 +65,7 @@ public class Login extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         labelAbout = new javax.swing.JLabel();
         labelServer = new javax.swing.JLabel();
+        CheckBoxRememberMe = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(18, 104, 178));
@@ -118,35 +132,35 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        CheckBoxRememberMe.setText("Remember me");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(Field_name, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(Field_password, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(46, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelServer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelAbout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CheckBoxRememberMe)
+                    .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(Field_name, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(Field_password, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(170, Short.MAX_VALUE)
+                .addContainerGap(160, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addGap(5, 5, 5)
                 .addComponent(Field_name, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,9 +172,11 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(Field_password, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CheckBoxRememberMe)
+                .addGap(18, 18, 18)
                 .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(138, 138, 138)
+                .addGap(114, 114, 114)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelAbout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelServer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -185,9 +201,14 @@ public class Login extends javax.swing.JFrame {
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
         
-        try {
+       try {
+           
+        System.out.println(prop.getProperty("server"));
+        System.out.println(prop.getProperty("username"));
+        System.out.println(prop.getProperty("db"));
+        System.out.println(prop.getProperty("password"));
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            Connection conn = DriverManager.getConnection(connString,userName,password);
+            Connection conn = DriverManager.getConnection("jdbc:mysql://" + server + ":3306/" + db + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", userName, password);
             String Sql="Select * from karyawan where id =? and password =?";
             
             
@@ -197,15 +218,19 @@ public class Login extends javax.swing.JFrame {
             rs=pst.executeQuery();
             if(rs.next())
             {
+                JOptionPane.showMessageDialog(null, "Login Berhasil");
+                
                 Properties prop = new Properties();
                 OutputStream output = null;
-        
-
-	try {
                 
-		output = new FileOutputStream("config.properties");
+                if(CheckBoxRememberMe.isSelected()==true)
+                {
+                    try {
+                
+		output = new FileOutputStream("configUser.properties");
 		// set the properties value
-		prop.setProperty("username", Field_name.getText());
+		prop.setProperty("name", Field_name.getText());
+                prop.setProperty("password", Field_password.getText());
 
 		// save properties to project root folder
 		prop.store(output,null);
@@ -220,17 +245,49 @@ public class Login extends javax.swing.JFrame {
 				e.printStackTrace();
 			}
 		}
+                }
+                }
+                
+                
+                    else{
+
+	try {
+                
+		output = new FileOutputStream("configUser.properties");
+		// set the properties value
+		prop.setProperty("name", Field_name.getText());
+                prop.setProperty("password", "");
+                
+		// save properties to project root folder
+		prop.store(output,null);
+
+	} catch (IOException io) {
+		io.printStackTrace();
+	} finally {
+		if (output != null) {
+			try {
+				output.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+                            }
+                            
     }
+        
+        this.dispose();
+        GUI.guiStart();
             }
             else
             {
-                System.out.println("Gagal");
+                JOptionPane.showMessageDialog(null, "Username Atau Password Salah");
             }
             
             
             
         } catch (Exception e) {
-            
+                            JOptionPane.showMessageDialog(null, "Login Gagal");
+
             
         }
     }//GEN-LAST:event_buttonLoginActionPerformed
@@ -268,7 +325,6 @@ public class Login extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         Properties prop = new Properties();
 	
-        InputStream input = null;
         
         if(Field_name.getText().equals(null)){
             Field_name.setText("");
@@ -277,12 +333,12 @@ public class Login extends javax.swing.JFrame {
         else{
         try {
             
-        input = new FileInputStream("config.properties");    
+        input = new FileInputStream("configUser.properties");    
         
         prop.load(input);
 
 		// get the property value and print it out
-		Field_name.setText(prop.getProperty("username"));
+		Field_name.setText(prop.getProperty("name"));
 		
 
 	} catch (IOException ex) {
@@ -296,6 +352,42 @@ public class Login extends javax.swing.JFrame {
 			}
 		}
         }
+        if(Field_password.getText().equals(null))
+        {
+            Field_password.setText("");
+        }
+        else{
+             try {
+            
+        input = new FileInputStream("configUser.properties");    
+        
+        prop.load(input);
+
+		// get the property value and print it out
+		Field_password.setText(prop.getProperty("password"));
+		
+
+	} catch (IOException ex) {
+		ex.printStackTrace();
+	} finally {
+		if (input != null) {
+			try {
+				input.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+        }
+        }
+        
+        
+        
+        }
+        if(prop.getProperty("password").equals("")){
+            CheckBoxRememberMe.setSelected(false);
+        }
+        else{
+            CheckBoxRememberMe.setSelected(true);
         }
     }//GEN-LAST:event_formWindowActivated
 
@@ -370,6 +462,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox CheckBoxRememberMe;
     private javax.swing.JTextField Field_name;
     private javax.swing.JPasswordField Field_password;
     private javax.swing.JButton buttonLogin;

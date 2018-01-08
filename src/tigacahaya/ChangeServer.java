@@ -5,26 +5,45 @@
  */
 package tigacahaya;
 
-import static tigacahaya.MySQLconn.connString;
-import static tigacahaya.MySQLconn.userName;
-import static tigacahaya.MySQLconn.password;
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.event.MouseMotionListener;
-import java.sql.*;
-import javax.swing.*;
-import org.w3c.dom.css.RGBColor;
-
-
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.io.FileOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Properties;
+import java.io.InputStream;
+import javax.swing.JOptionPane;
 
 public class ChangeServer extends javax.swing.JFrame {
 
-    int xMouse;
-    int yMouse;
-    PreparedStatement pst = null;
+    MySQLconn mysql = new MySQLconn();
+    Properties prop = new Properties();
+    OutputStream output = null;
+    InputStream input = null;  
     ResultSet rs = null;
+    
+    public static String userName;
+    public static String password;
+    public static String server ;
+    public static String db ;
+    
     public ChangeServer() {
+        
+        try {
+            
+        
+            input = new FileInputStream("config.properties");    
+            prop.load(input);
+            
+            userName=prop.getProperty("username");
+            password=prop.getProperty("password");
+            server=prop.getProperty("server");
+            db=prop.getProperty("db");
+            } catch (IOException e) {
+        }
+        
      initComponents();
     }
 
@@ -43,16 +62,15 @@ public class ChangeServer extends javax.swing.JFrame {
         fieldPassword = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        buttonTest = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         fieldServer = new javax.swing.JTextField();
-        buttonTest1 = new javax.swing.JButton();
-        buttonTest2 = new javax.swing.JButton();
+        buttonCancel = new javax.swing.JButton();
+        buttonOk = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        fieldServer1 = new javax.swing.JTextField();
+        fieldDatabase = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(new java.awt.Color(18, 104, 178));
@@ -60,6 +78,9 @@ public class ChangeServer extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
+            }
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
             }
         });
 
@@ -78,26 +99,6 @@ public class ChangeServer extends javax.swing.JFrame {
         fieldPassword.setBackground(new java.awt.Color(18, 104, 178));
         fieldPassword.setForeground(new java.awt.Color(255, 255, 255));
         fieldPassword.setBorder(null);
-        fieldPassword.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldPasswordFocusGained(evt);
-            }
-        });
-        fieldPassword.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                fieldPasswordMouseClicked(evt);
-            }
-        });
-
-        buttonTest.setBackground(new java.awt.Color(117, 179, 226));
-        buttonTest.setForeground(new java.awt.Color(255, 255, 255));
-        buttonTest.setText("Test");
-        buttonTest.setBorder(null);
-        buttonTest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonTestActionPerformed(evt);
-            }
-        });
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Username");
@@ -112,35 +113,35 @@ public class ChangeServer extends javax.swing.JFrame {
         fieldServer.setCaretColor(new java.awt.Color(255, 255, 255));
         fieldServer.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-        buttonTest1.setBackground(new java.awt.Color(117, 179, 226));
-        buttonTest1.setForeground(new java.awt.Color(255, 255, 255));
-        buttonTest1.setText("Cancel");
-        buttonTest1.setBorder(null);
-        buttonTest1.addActionListener(new java.awt.event.ActionListener() {
+        buttonCancel.setBackground(new java.awt.Color(117, 179, 226));
+        buttonCancel.setForeground(new java.awt.Color(255, 255, 255));
+        buttonCancel.setText("Cancel");
+        buttonCancel.setBorder(null);
+        buttonCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonTest1ActionPerformed(evt);
+                buttonCancelActionPerformed(evt);
             }
         });
 
-        buttonTest2.setBackground(new java.awt.Color(117, 179, 226));
-        buttonTest2.setForeground(new java.awt.Color(255, 255, 255));
-        buttonTest2.setText("Ok");
-        buttonTest2.setBorder(null);
-        buttonTest2.addActionListener(new java.awt.event.ActionListener() {
+        buttonOk.setBackground(new java.awt.Color(117, 179, 226));
+        buttonOk.setForeground(new java.awt.Color(255, 255, 255));
+        buttonOk.setText("Ok");
+        buttonOk.setBorder(null);
+        buttonOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonTest2ActionPerformed(evt);
+                buttonOkActionPerformed(evt);
             }
         });
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Database");
 
-        fieldServer1.setBackground(new java.awt.Color(18, 104, 178));
-        fieldServer1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        fieldServer1.setForeground(new java.awt.Color(255, 255, 255));
-        fieldServer1.setBorder(null);
-        fieldServer1.setCaretColor(new java.awt.Color(255, 255, 255));
-        fieldServer1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        fieldDatabase.setBackground(new java.awt.Color(18, 104, 178));
+        fieldDatabase.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        fieldDatabase.setForeground(new java.awt.Color(255, 255, 255));
+        fieldDatabase.setBorder(null);
+        fieldDatabase.setCaretColor(new java.awt.Color(255, 255, 255));
+        fieldDatabase.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -150,11 +151,9 @@ public class ChangeServer extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(buttonTest, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonTest1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonTest2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonOk, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(166, 166, 166))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -176,7 +175,7 @@ public class ChangeServer extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addGap(13, 13, 13)
-                                    .addComponent(fieldServer1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(fieldDatabase, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -199,7 +198,7 @@ public class ChangeServer extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(fieldServer1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldDatabase, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -211,13 +210,10 @@ public class ChangeServer extends javax.swing.JFrame {
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonTest1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonTest, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonTest2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonOk, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        buttonTest.getAccessibleContext().setAccessibleName("button_login");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -233,50 +229,58 @@ public class ChangeServer extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fieldPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldPasswordMouseClicked
-fieldPassword.setText("");
-    }//GEN-LAST:event_fieldPasswordMouseClicked
+    private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelActionPerformed
+        this.dispose();
+        Login login = new Login();
+        login.setLocationRelativeTo(null);
+        login.setVisible(true);
+    }//GEN-LAST:event_buttonCancelActionPerformed
 
-    private void buttonTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTestActionPerformed
-        
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            Connection conn = DriverManager.getConnection(connString,userName,password);
-            String Sql="Select * from karyawan where id =? and password =?";
+    private void buttonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOkActionPerformed
+        Properties prop = new Properties();
+                OutputStream output = null;
+
+	try {
+                
+		output = new FileOutputStream("config.properties");
+		// set the properties value
+		prop.setProperty("username", fieldUsername.getText());
+                prop.setProperty("server", fieldServer.getText());
+                prop.setProperty("db", fieldDatabase.getText());
+                prop.setProperty("password", fieldPassword.getText());
+		prop.store(output,null);
+                
+                 try {
             
+                     server=prop.getProperty("server");
+                     userName=prop.getProperty("username");
+                     db=prop.getProperty("db");
+                     password=prop.getProperty("password");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://" + server + ":3306/" + db + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", userName, password);
             
-            pst=conn.prepareStatement(Sql);
-            pst.setString(1, fieldUsername.getText());
-            pst.setString(2, fieldPassword.getText());
-            rs=pst.executeQuery();
-            if(rs.next())
-            {
-                System.out.println("Berhasil");   
-            }
-            else
-            {
-                System.out.println("Gagal");
-            }
-            
-            
-            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+              
+                  JOptionPane.showMessageDialog(null, "Input Benar");
+                  this.dispose();
+                  Login login = new Login();
+                  login.setLocationRelativeTo(null);
+                  login.setVisible(true);
         } catch (Exception e) {
-            
-            
+                    JOptionPane.showMessageDialog(null, "Input Salah");
         }
-    }//GEN-LAST:event_buttonTestActionPerformed
 
-    private void fieldPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldPasswordFocusGained
-        fieldPassword.setText("");
-    }//GEN-LAST:event_fieldPasswordFocusGained
-
-    private void buttonTest1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTest1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonTest1ActionPerformed
-
-    private void buttonTest2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTest2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonTest2ActionPerformed
+	} catch (IOException io) {
+		io.printStackTrace();
+	} finally {
+		if (output != null) {
+			try {
+				output.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+                }
+		}
+    }//GEN-LAST:event_buttonOkActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         this.dispose();
@@ -284,6 +288,47 @@ fieldPassword.setText("");
         login.setLocationRelativeTo(null);
         login.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Properties prop = new Properties();
+	
+        InputStream input = null;
+        
+        if(fieldUsername.getText().equals(null)&&fieldServer.getText().equals(null)&&fieldDatabase.getText().equals(null)&&fieldPassword.getText().equals(null)){
+            fieldUsername.setText("");
+            fieldDatabase.setText("");
+            fieldPassword.setText("");
+            fieldServer.setText("");
+        }
+	
+        else{
+        try {
+            
+        input = new FileInputStream("config.properties");    
+        
+        prop.load(input);
+
+		// get the property value and print it out
+		fieldUsername.setText(prop.getProperty("username"));
+                fieldServer.setText(prop.getProperty("server"));
+                fieldDatabase.setText(prop.getProperty("db"));
+                fieldPassword.setText(prop.getProperty("password"));
+                
+		
+
+	} catch (IOException ex) {
+		ex.printStackTrace();
+	} finally {
+		if (input != null) {
+			try {
+				input.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+        }
+        }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -360,12 +405,11 @@ fieldPassword.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonTest;
-    private javax.swing.JButton buttonTest1;
-    private javax.swing.JButton buttonTest2;
+    private javax.swing.JButton buttonCancel;
+    private javax.swing.JButton buttonOk;
+    private javax.swing.JTextField fieldDatabase;
     private javax.swing.JPasswordField fieldPassword;
     private javax.swing.JTextField fieldServer;
-    private javax.swing.JTextField fieldServer1;
     private javax.swing.JTextField fieldUsername;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

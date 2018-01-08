@@ -760,13 +760,11 @@ public class GUI extends javax.swing.JFrame {
         searchField.setText("search...");
         searchField.setToolTipText("Cari dari tabel dibawah");
         searchField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                searchFieldFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 searchFieldFocusLost(evt);
-            }
-        });
-        searchField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                searchFieldMouseClicked(evt);
             }
         });
         searchField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1245,17 +1243,8 @@ public class GUI extends javax.swing.JFrame {
                 textAreaCatatan.setForeground(new java.awt.Color(12, 30, 42));
                 textAreaCatatan.setLineWrap(true);
                 textAreaCatatan.setRows(5);
-                textAreaCatatan.setText("Catatan...");
                 textAreaCatatan.setToolTipText("Catatan tambahan untuk supplier");
                 textAreaCatatan.setWrapStyleWord(true);
-                textAreaCatatan.addFocusListener(new java.awt.event.FocusAdapter() {
-                    public void focusGained(java.awt.event.FocusEvent evt) {
-                        textAreaCatatanFocusGained(evt);
-                    }
-                    public void focusLost(java.awt.event.FocusEvent evt) {
-                        textAreaCatatanFocusLost(evt);
-                    }
-                });
                 jScrollPaneSupplier.setViewportView(textAreaCatatan);
 
                 fieldInputEmailSupplier.setForeground(new java.awt.Color(12, 30, 42));
@@ -1455,13 +1444,11 @@ public class GUI extends javax.swing.JFrame {
                 searchFieldSupplier.setText("search...");
                 searchFieldSupplier.setToolTipText("Cari dari tabel dibawah");
                 searchFieldSupplier.addFocusListener(new java.awt.event.FocusAdapter() {
+                    public void focusGained(java.awt.event.FocusEvent evt) {
+                        searchFieldSupplierFocusGained(evt);
+                    }
                     public void focusLost(java.awt.event.FocusEvent evt) {
                         searchFieldSupplierFocusLost(evt);
-                    }
-                });
-                searchFieldSupplier.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        searchFieldSupplierMouseClicked(evt);
                     }
                 });
                 searchFieldSupplier.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1790,13 +1777,11 @@ public class GUI extends javax.swing.JFrame {
                     searchFieldRetur.setText("search...");
                     searchFieldRetur.setToolTipText("Cari dari tabel dibawah");
                     searchFieldRetur.addFocusListener(new java.awt.event.FocusAdapter() {
+                        public void focusGained(java.awt.event.FocusEvent evt) {
+                            searchFieldReturFocusGained(evt);
+                        }
                         public void focusLost(java.awt.event.FocusEvent evt) {
                             searchFieldReturFocusLost(evt);
-                        }
-                    });
-                    searchFieldRetur.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            searchFieldReturMouseClicked(evt);
                         }
                     });
                     searchFieldRetur.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -2068,11 +2053,6 @@ public class GUI extends javax.swing.JFrame {
         String query = searchField.getText();
         filterTable(query, comboBoxKolom.getSelectedIndex());
     }//GEN-LAST:event_searchFieldKeyReleased
-    private void searchFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldMouseClicked
-        if ("search...".equals(searchField.getText())) {
-            searchField.setText("");
-        }
-    }//GEN-LAST:event_searchFieldMouseClicked
     private void searchFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusLost
         if ((searchField.getText()).equals("")) {
             searchField.setText("search...");
@@ -2099,11 +2079,6 @@ public class GUI extends javax.swing.JFrame {
             searchFieldSupplier.setText("search...");
         }
     }//GEN-LAST:event_searchFieldSupplierFocusLost
-    private void searchFieldSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldSupplierMouseClicked
-        if ("search...".equals(searchFieldSupplier.getText())) {
-            searchFieldSupplier.setText("");
-        }
-    }//GEN-LAST:event_searchFieldSupplierMouseClicked
     private void searchFieldSupplierKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldSupplierKeyReleased
         String query = searchFieldSupplier.getText();
         filterTableSupplier(query, comboBoxKolomSupplier.getSelectedIndex());
@@ -2273,18 +2248,6 @@ public class GUI extends javax.swing.JFrame {
             fieldInputEmailSupplier.setText("Email");
         }
     }//GEN-LAST:event_fieldInputEmailSupplierFocusLost
-    private void textAreaCatatanFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textAreaCatatanFocusGained
-
-        if (textAreaCatatan.getText().equals("Catatan...")) {
-            textAreaCatatan.setText("");
-        }
-    }//GEN-LAST:event_textAreaCatatanFocusGained
-    private void textAreaCatatanFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textAreaCatatanFocusLost
-
-        if (textAreaCatatan.getText().equals("")) {
-            textAreaCatatan.setText("Catatan...");
-        }
-    }//GEN-LAST:event_textAreaCatatanFocusLost
     private void tombolAtcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolAtcActionPerformed
         ArrayList<TableRowContentTransaksi> list = tableContentTransaksi();
         String query = "null";
@@ -2361,11 +2324,6 @@ public class GUI extends javax.swing.JFrame {
         String query = searchFieldRetur.getText();
         filterTableRetur(query, comboBoxKolomRetur.getSelectedIndex());
     }//GEN-LAST:event_searchFieldReturKeyReleased
-    private void searchFieldReturMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldReturMouseClicked
-        if ("search...".equals(searchFieldRetur.getText())) {
-            searchFieldRetur.setText("");
-        }
-    }//GEN-LAST:event_searchFieldReturMouseClicked
     private void searchFieldReturFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldReturFocusLost
         if ((searchFieldRetur.getText()).equals("")) {
             searchFieldRetur.setText("search...");
@@ -2482,7 +2440,6 @@ public class GUI extends javax.swing.JFrame {
     private void tombolClearSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolClearSupplierActionPerformed
         fieldInputIDSupplier.setText("ID");
         fieldInputEmailSupplier.setText("Email");
-        textAreaCatatan.setText("Catatan...");
         fieldInputNamaSupplier.setText("Nama");
         fieldInputAlamatSupplier.setText("Alamat");
         fieldInputTelponSupplier.setText("Telpon");
@@ -2546,13 +2503,17 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_comboBoxKolomActionPerformed
 
     private void comboBoxKolomSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxKolomSupplierActionPerformed
+         if (!(searchFieldSupplier.getText().equals("search..."))) {
         String query = searchFieldSupplier.getText();
         filterTableSupplier(query, comboBoxKolomSupplier.getSelectedIndex());
+         }
     }//GEN-LAST:event_comboBoxKolomSupplierActionPerformed
 
     private void comboBoxKolomReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxKolomReturActionPerformed
+         if (!(searchFieldRetur.getText().equals("search..."))) {
         String query = searchFieldRetur.getText();
         filterTableRetur(query, comboBoxKolomRetur.getSelectedIndex());
+         }
     }//GEN-LAST:event_comboBoxKolomReturActionPerformed
 
     private void tombolTambahSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolTambahSupplierActionPerformed
@@ -2590,6 +2551,24 @@ public class GUI extends javax.swing.JFrame {
         refreshTableRetur();
         }
     }//GEN-LAST:event_tombolTambahReturActionPerformed
+
+    private void searchFieldSupplierFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldSupplierFocusGained
+       if (searchFieldSupplier.getText().equals("search...")) {
+            searchFieldSupplier.setText("");
+        }
+    }//GEN-LAST:event_searchFieldSupplierFocusGained
+
+    private void searchFieldReturFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldReturFocusGained
+         if (searchFieldRetur.getText().equals("search...")) {
+            searchFieldRetur.setText("");
+        }
+    }//GEN-LAST:event_searchFieldReturFocusGained
+
+    private void searchFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusGained
+        if (searchField.getText().equals("search...")) {
+            searchField.setText("");
+        }
+    }//GEN-LAST:event_searchFieldFocusGained
 // </editor-fold>
 
     public static void guiStart() {

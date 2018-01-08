@@ -705,8 +705,8 @@
                     <Property name="toolTipText" type="java.lang.String" value="Cari dari tabel dibawah"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="searchFieldFocusGained"/>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="searchFieldFocusLost"/>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="searchFieldMouseClicked"/>
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="searchFieldKeyReleased"/>
                   </Events>
                 </Component>
@@ -1513,14 +1513,9 @@
                         </Property>
                         <Property name="lineWrap" type="boolean" value="true"/>
                         <Property name="rows" type="int" value="5"/>
-                        <Property name="text" type="java.lang.String" value="Catatan..."/>
                         <Property name="toolTipText" type="java.lang.String" value="Catatan tambahan untuk supplier"/>
                         <Property name="wrapStyleWord" type="boolean" value="true"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textAreaCatatanFocusGained"/>
-                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textAreaCatatanFocusLost"/>
-                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1727,8 +1722,8 @@
                     <Property name="toolTipText" type="java.lang.String" value="Cari dari tabel dibawah"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="searchFieldSupplierFocusGained"/>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="searchFieldSupplierFocusLost"/>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="searchFieldSupplierMouseClicked"/>
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="searchFieldSupplierKeyReleased"/>
                   </Events>
                 </Component>
@@ -2253,8 +2248,8 @@
                     <Property name="toolTipText" type="java.lang.String" value="Cari dari tabel dibawah"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="searchFieldReturFocusGained"/>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="searchFieldReturFocusLost"/>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="searchFieldReturMouseClicked"/>
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="searchFieldReturKeyReleased"/>
                   </Events>
                 </Component>

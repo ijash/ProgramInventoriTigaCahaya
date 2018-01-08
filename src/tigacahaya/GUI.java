@@ -116,10 +116,11 @@ public class GUI extends javax.swing.JFrame {
         tabelSupplier.setRowSorter(sorter);
     }
     public void refreshTable() {
-        DefaultTableModel model = (DefaultTableModel) tabel.getModel();
-        model.setRowCount(0);
-        displayTable();
-        displaySupplierComboBox();
+
+       DefaultTableModel model = (DefaultTableModel) tabel.getModel();
+       model.setRowCount(0);
+       displayTable();
+       displaySupplierComboBox();
 
     }
     public void refreshTableTransaksi() {
@@ -132,6 +133,7 @@ public class GUI extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tabelRetur.getModel();
         model.setRowCount(0);
         displayTableRetur();
+
     }
     public void refreshTableSupplier() {
         DefaultTableModel model = (DefaultTableModel) tabelSupplier.getModel();
@@ -222,7 +224,6 @@ public class GUI extends javax.swing.JFrame {
         tabStok = new javax.swing.JPanel();
         panelKiri = new javax.swing.JPanel();
         labelInfo = new javax.swing.JLabel();
-        buttonRefreshDB = new javax.swing.JButton();
         textAreaKiri = new javax.swing.JTextArea();
         panelBawah = new javax.swing.JPanel();
         fieldInputId_barang = new javax.swing.JTextField();
@@ -262,7 +263,6 @@ public class GUI extends javax.swing.JFrame {
         tabTrans = new javax.swing.JPanel();
         panelKiriTransaksi = new javax.swing.JPanel();
         labelInfoTransaksi = new javax.swing.JLabel();
-        buttonRefreshDBTransaksi = new javax.swing.JButton();
         textAreaKiriTransaksi = new javax.swing.JTextArea();
         panelBawahTransaksi = new javax.swing.JPanel();
         fieldIdBarangTransaksi = new javax.swing.JTextField();
@@ -281,7 +281,6 @@ public class GUI extends javax.swing.JFrame {
         tabSupplier = new javax.swing.JPanel();
         panelKiriSupplier = new javax.swing.JPanel();
         labelInfoSupplier = new javax.swing.JLabel();
-        buttonRefreshDBSupplier = new javax.swing.JButton();
         textAreaKiriSupplier = new javax.swing.JTextArea();
         panelBawahSupplier = new javax.swing.JPanel();
         tombolUbahSupplier = new javax.swing.JButton();
@@ -313,7 +312,6 @@ public class GUI extends javax.swing.JFrame {
         tabRetur = new javax.swing.JPanel();
         panelKiriRetur = new javax.swing.JPanel();
         labelInfoRetur = new javax.swing.JLabel();
-        buttonRefreshDBRetur = new javax.swing.JButton();
         textAreaKiriRetur = new javax.swing.JTextArea();
         panelBawahRetur = new javax.swing.JPanel();
         tombolTambahRetur = new javax.swing.JButton();
@@ -352,17 +350,6 @@ public class GUI extends javax.swing.JFrame {
         labelInfo.setForeground(new java.awt.Color(12, 30, 42));
         labelInfo.setText("Info");
 
-        buttonRefreshDB.setForeground(new java.awt.Color(12, 30, 42));
-        buttonRefreshDB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/refresh.png"))); // NOI18N
-        buttonRefreshDB.setText("Refresh");
-        buttonRefreshDB.setToolTipText("Refresh database");
-        buttonRefreshDB.setIconTextGap(6);
-        buttonRefreshDB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRefreshDBActionPerformed(evt);
-            }
-        });
-
         textAreaKiri.setEditable(false);
         textAreaKiri.setBackground(new java.awt.Color(117, 179, 226));
         textAreaKiri.setColumns(20);
@@ -379,10 +366,9 @@ public class GUI extends javax.swing.JFrame {
             panelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelKiriLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textAreaKiri, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                    .addComponent(labelInfo)
-                    .addComponent(buttonRefreshDB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textAreaKiri, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelInfo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelKiriLayout.setVerticalGroup(
@@ -392,9 +378,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(labelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textAreaKiri, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonRefreshDB)
-                .addContainerGap())
+                .addGap(43, 43, 43))
         );
 
         panelBawah.setBackground(new java.awt.Color(25, 104, 178));
@@ -901,17 +885,7 @@ public class GUI extends javax.swing.JFrame {
             labelInfoTransaksi.setForeground(new java.awt.Color(12, 30, 42));
             labelInfoTransaksi.setText("Info");
 
-            buttonRefreshDBTransaksi.setForeground(new java.awt.Color(12, 30, 42));
-            buttonRefreshDBTransaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/refresh.png"))); // NOI18N
-            buttonRefreshDBTransaksi.setText("Refresh");
-            buttonRefreshDBTransaksi.setToolTipText("Refresh database");
-            buttonRefreshDBTransaksi.setIconTextGap(6);
-            buttonRefreshDBTransaksi.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    buttonRefreshDBTransaksiActionPerformed(evt);
-                }
-            });
-
+            textAreaKiriTransaksi.setEditable(false);
             textAreaKiriTransaksi.setBackground(new java.awt.Color(117, 179, 226));
             textAreaKiriTransaksi.setColumns(20);
             textAreaKiriTransaksi.setForeground(new java.awt.Color(12, 30, 42));
@@ -926,10 +900,9 @@ public class GUI extends javax.swing.JFrame {
                 panelKiriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelKiriTransaksiLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(panelKiriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(textAreaKiriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                        .addComponent(labelInfoTransaksi)
-                        .addComponent(buttonRefreshDBTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelKiriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(textAreaKiriTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelInfoTransaksi))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             panelKiriTransaksiLayout.setVerticalGroup(
@@ -939,9 +912,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(labelInfoTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(textAreaKiriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(buttonRefreshDBTransaksi)
-                    .addContainerGap())
+                    .addGap(43, 43, 43))
             );
 
             panelBawahTransaksi.setBackground(new java.awt.Color(25, 104, 178));
@@ -1161,17 +1132,7 @@ public class GUI extends javax.swing.JFrame {
                 labelInfoSupplier.setForeground(new java.awt.Color(12, 30, 42));
                 labelInfoSupplier.setText("Info");
 
-                buttonRefreshDBSupplier.setForeground(new java.awt.Color(12, 30, 42));
-                buttonRefreshDBSupplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/refresh.png"))); // NOI18N
-                buttonRefreshDBSupplier.setText("Refresh");
-                buttonRefreshDBSupplier.setToolTipText("Refresh database");
-                buttonRefreshDBSupplier.setIconTextGap(6);
-                buttonRefreshDBSupplier.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        buttonRefreshDBSupplierActionPerformed(evt);
-                    }
-                });
-
+                textAreaKiriSupplier.setEditable(false);
                 textAreaKiriSupplier.setBackground(new java.awt.Color(117, 179, 226));
                 textAreaKiriSupplier.setColumns(20);
                 textAreaKiriSupplier.setForeground(new java.awt.Color(12, 30, 42));
@@ -1186,10 +1147,9 @@ public class GUI extends javax.swing.JFrame {
                     panelKiriSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelKiriSupplierLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(panelKiriSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textAreaKiriSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                            .addComponent(labelInfoSupplier)
-                            .addComponent(buttonRefreshDBSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(panelKiriSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textAreaKiriSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelInfoSupplier))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
                 panelKiriSupplierLayout.setVerticalGroup(
@@ -1199,9 +1159,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(labelInfoSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(textAreaKiriSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonRefreshDBSupplier)
-                        .addContainerGap())
+                        .addGap(43, 43, 43))
                 );
 
                 panelBawahSupplier.setBackground(new java.awt.Color(25, 104, 178));
@@ -1620,17 +1578,7 @@ public class GUI extends javax.swing.JFrame {
                     labelInfoRetur.setForeground(new java.awt.Color(12, 30, 42));
                     labelInfoRetur.setText("Info");
 
-                    buttonRefreshDBRetur.setForeground(new java.awt.Color(12, 30, 42));
-                    buttonRefreshDBRetur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/refresh.png"))); // NOI18N
-                    buttonRefreshDBRetur.setText("Refresh");
-                    buttonRefreshDBRetur.setToolTipText("Refresh database");
-                    buttonRefreshDBRetur.setIconTextGap(6);
-                    buttonRefreshDBRetur.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                            buttonRefreshDBReturActionPerformed(evt);
-                        }
-                    });
-
+                    textAreaKiriRetur.setEditable(false);
                     textAreaKiriRetur.setBackground(new java.awt.Color(117, 179, 226));
                     textAreaKiriRetur.setColumns(20);
                     textAreaKiriRetur.setForeground(new java.awt.Color(12, 30, 42));
@@ -1645,10 +1593,9 @@ public class GUI extends javax.swing.JFrame {
                         panelKiriReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(panelKiriReturLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addGroup(panelKiriReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(textAreaKiriRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                                .addComponent(labelInfoRetur)
-                                .addComponent(buttonRefreshDBRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(panelKiriReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(textAreaKiriRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelInfoRetur))
                             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     );
                     panelKiriReturLayout.setVerticalGroup(
@@ -1658,9 +1605,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(labelInfoRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(textAreaKiriRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(buttonRefreshDBRetur)
-                            .addContainerGap())
+                            .addGap(43, 43, 43))
                     );
 
                     panelBawahRetur.setBackground(new java.awt.Color(25, 104, 178));
@@ -2039,14 +1984,6 @@ public class GUI extends javax.swing.JFrame {
             refreshTable();
         }
     }//GEN-LAST:event_tombolHapusActionPerformed
-    private void buttonRefreshDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBActionPerformed
-
-        MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\"))");
-        refreshTable();
-        JOptionPane.showMessageDialog(rootPane, "Data telah direfresh");
-        TableRowContentTransaksi.statusInvoiceAkhir();
-        // System.out.println(TableRowContentTransaksi.statusInvoiceAkhir());
-    }//GEN-LAST:event_buttonRefreshDBActionPerformed
     private void fieldInputId_barangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputId_barangKeyTyped
         if (fieldInputId_barang.getText().length() > 10) {
             evt.consume();
@@ -2096,16 +2033,6 @@ public class GUI extends javax.swing.JFrame {
             searchField.setText("search...");
         }
     }//GEN-LAST:event_searchFieldFocusLost
-    private void buttonRefreshDBTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBTransaksiActionPerformed
-
-        refreshTableTransaksi();
-        JOptionPane.showMessageDialog(rootPane, "Data telah direfresh");
-    }//GEN-LAST:event_buttonRefreshDBTransaksiActionPerformed
-    private void buttonRefreshDBSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBSupplierActionPerformed
-
-        refreshTableSupplier();
-        JOptionPane.showMessageDialog(rootPane, "Data telah direfresh");
-    }//GEN-LAST:event_buttonRefreshDBSupplierActionPerformed
     private void tombolTambahSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahSupplierMouseClicked
         if (fieldInputEmailSupplier.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$") || fieldInputEmailSupplier.getText().equals("")) {
             if (fieldInputTelponSupplier.getText().matches("\\d+") || fieldInputTelponSupplier.getText().equals("")) {
@@ -2455,11 +2382,6 @@ displaySupplierComboBox();
         System.out.println(query);
         refreshTableRetur();
     }//GEN-LAST:event_tombolTambahReturMouseClicked
-    private void buttonRefreshDBReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshDBReturActionPerformed
-
-        refreshTable();
-        JOptionPane.showMessageDialog(rootPane, "Data telah direfresh");
-    }//GEN-LAST:event_buttonRefreshDBReturActionPerformed
     private void buttonTransaksiHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTransaksiHapusActionPerformed
         if (fieldIdBarangTransaksi.getText().matches("\\bP[0-9][0-9][0-9][0-9][0-9][0-9][0-9]\\b")) {
             MySQLconn.executeVoidQuery("DELETE FROM `transaksi_cart` WHERE `transaksi_cart`.`id_barang` ='" + fieldIdBarangTransaksi.getText() + "';");
@@ -2559,8 +2481,11 @@ displaySupplierComboBox();
     }//GEN-LAST:event_tombolTambahActionPerformed
 
     private void comboBoxKolomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxKolomActionPerformed
+        if (!(searchField.getText().equals("search..."))){
+         
         String query = searchField.getText();
         filterTable(query, comboBoxKolom.getSelectedIndex());
+        }
     }//GEN-LAST:event_comboBoxKolomActionPerformed
 
     private void comboBoxKolomSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxKolomSupplierActionPerformed
@@ -2612,10 +2537,6 @@ displaySupplierComboBox();
     }
 // <editor-fold defaultstate="collapsed" desc=" Variable Declaration ">
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonRefreshDB;
-    private javax.swing.JButton buttonRefreshDBRetur;
-    private javax.swing.JButton buttonRefreshDBSupplier;
-    private javax.swing.JButton buttonRefreshDBTransaksi;
     private javax.swing.JButton buttonTransaksiHapus;
     private javax.swing.JButton buttonUbahQtyTransaksi;
     private javax.swing.JComboBox<String> comboBoxGaransi;

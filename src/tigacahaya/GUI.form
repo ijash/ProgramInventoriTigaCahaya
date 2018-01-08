@@ -107,10 +107,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="textAreaKiri" pref="142" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="textAreaKiri" min="-2" pref="142" max="-2" attributes="0"/>
                               <Component id="labelInfo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="buttonRefreshDB" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -123,9 +122,7 @@
                           <Component id="labelInfo" min="-2" pref="21" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="textAreaKiri" pref="211" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="buttonRefreshDB" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -144,22 +141,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Info"/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JButton" name="buttonRefreshDB">
-                  <Properties>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="2a" green="1e" red="c" type="rgb"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/tigacahaya/res/refresh.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Refresh"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Refresh database"/>
-                    <Property name="iconTextGap" type="int" value="6"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRefreshDBActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextArea" name="textAreaKiri">
                   <Properties>
@@ -911,10 +892,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="textAreaKiriTransaksi" alignment="0" pref="142" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="textAreaKiriTransaksi" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
                               <Component id="labelInfoTransaksi" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="buttonRefreshDBTransaksi" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -927,9 +907,7 @@
                           <Component id="labelInfoTransaksi" min="-2" pref="21" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="textAreaKiriTransaksi" pref="211" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="buttonRefreshDBTransaksi" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -946,24 +924,9 @@
                     <Property name="text" type="java.lang.String" value="Info"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="buttonRefreshDBTransaksi">
-                  <Properties>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="2a" green="1e" red="c" type="rgb"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/tigacahaya/res/refresh.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Refresh"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Refresh database"/>
-                    <Property name="iconTextGap" type="int" value="6"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRefreshDBTransaksiActionPerformed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JTextArea" name="textAreaKiriTransaksi">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="e2" green="b3" red="75" type="rgb"/>
                     </Property>
@@ -1315,10 +1278,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="textAreaKiriSupplier" alignment="0" pref="142" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="textAreaKiriSupplier" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
                               <Component id="labelInfoSupplier" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="buttonRefreshDBSupplier" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -1331,9 +1293,7 @@
                           <Component id="labelInfoSupplier" min="-2" pref="21" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="textAreaKiriSupplier" pref="211" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="buttonRefreshDBSupplier" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1350,24 +1310,9 @@
                     <Property name="text" type="java.lang.String" value="Info"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="buttonRefreshDBSupplier">
-                  <Properties>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="2a" green="1e" red="c" type="rgb"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/tigacahaya/res/refresh.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Refresh"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Refresh database"/>
-                    <Property name="iconTextGap" type="int" value="6"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRefreshDBSupplierActionPerformed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JTextArea" name="textAreaKiriSupplier">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="e2" green="b3" red="75" type="rgb"/>
                     </Property>
@@ -1991,10 +1936,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="textAreaKiriRetur" alignment="0" pref="142" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="textAreaKiriRetur" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
                               <Component id="labelInfoRetur" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="buttonRefreshDBRetur" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -2007,9 +1951,7 @@
                           <Component id="labelInfoRetur" min="-2" pref="21" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="textAreaKiriRetur" pref="211" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="buttonRefreshDBRetur" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2026,24 +1968,9 @@
                     <Property name="text" type="java.lang.String" value="Info"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="buttonRefreshDBRetur">
-                  <Properties>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="2a" green="1e" red="c" type="rgb"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/tigacahaya/res/refresh.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Refresh"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Refresh database"/>
-                    <Property name="iconTextGap" type="int" value="6"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRefreshDBReturActionPerformed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JTextArea" name="textAreaKiriRetur">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="e2" green="b3" red="75" type="rgb"/>
                     </Property>

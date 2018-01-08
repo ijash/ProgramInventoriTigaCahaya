@@ -946,7 +946,6 @@ public class GUI extends javax.swing.JFrame {
             panelBawahTransaksi.setBackground(new java.awt.Color(25, 104, 178));
             panelBawahTransaksi.setPreferredSize(new java.awt.Dimension(285, 126));
 
-            fieldIdBarangTransaksi.setEditable(false);
             fieldIdBarangTransaksi.setForeground(new java.awt.Color(12, 30, 42));
             fieldIdBarangTransaksi.setText("ID Barang");
             fieldIdBarangTransaksi.setToolTipText("ID Barang, tidak perlu diubah.");
@@ -1315,6 +1314,7 @@ public class GUI extends javax.swing.JFrame {
                     }
                 });
 
+                fieldInputIDSupplier.setEditable(false);
                 fieldInputIDSupplier.setForeground(new java.awt.Color(12, 30, 42));
                 fieldInputIDSupplier.setText("ID");
                 fieldInputIDSupplier.setToolTipText("ID Supplier. tidak perlu diubah");
@@ -1705,6 +1705,7 @@ public class GUI extends javax.swing.JFrame {
                         }
                     });
 
+                    fieldInputIdRetur.setEditable(false);
                     fieldInputIdRetur.setForeground(new java.awt.Color(12, 30, 42));
                     fieldInputIdRetur.setText("ID Retur");
                     fieldInputIdRetur.setToolTipText("ID tidak perlu diubah");
@@ -2491,11 +2492,11 @@ displaySupplierComboBox();
         textAreaKiriSupplier.setText(model.getValueAt(i, 1).toString() + "\nAlamat:\n" + model.getValueAt(i, 2).toString() + "\nCatatan:\n" + model.getValueAt(i, 5).toString());
     }//GEN-LAST:event_tabelSupplierMouseClicked
     private void tombolClearFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolClearFieldActionPerformed
-        fieldInputId_barang.setText("(Otomatis)");
+        fieldInputId_barang.setText("");
         fieldInputQty.setText("");
         fieldInputHarga_beli.setText("");
         comboBoxSupplier.setSelectedIndex(0+1);
-        fieldInputTanggal_masuk.setText("(Otomatis)");
+        fieldInputTanggal_masuk.setText("");
         fieldInputJenis.setText("");
         fieldInputMerk.setText("");
         fieldInputRagam.setText("");
@@ -2504,7 +2505,7 @@ displaySupplierComboBox();
         fieldInputQty.requestFocus();
     }//GEN-LAST:event_tombolClearFieldActionPerformed
     private void tombolClearSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolClearSupplierActionPerformed
-        fieldInputIDSupplier.setText("(Otomatis)");
+        fieldInputIDSupplier.setText("");
         fieldInputEmailSupplier.setText("");
         textAreaCatatan.setText("");
         fieldInputNamaSupplier.setText("");
@@ -2514,7 +2515,7 @@ displaySupplierComboBox();
         fieldInputEmailSupplier.requestFocus();
     }//GEN-LAST:event_tombolClearSupplierActionPerformed
     private void tombolClearReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolClearReturActionPerformed
-        fieldInputIdRetur.setText("(Otomatis)");
+        fieldInputIdRetur.setText("");
         fieldInputIdBarangRetur.setText("");
         fieldInputJumlahBarangRetur.setText("");
 

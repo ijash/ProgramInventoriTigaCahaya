@@ -1040,7 +1040,6 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="fieldIdBarangTransaksi">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
                     </Property>
@@ -1622,6 +1621,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputIDSupplier">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
                     </Property>
@@ -2190,6 +2190,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInputIdRetur">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="2a" green="1e" red="c" type="rgb"/>
                     </Property>

@@ -7,6 +7,7 @@ package tigacahaya;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.event.KeyEvent;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -27,27 +28,97 @@ public class Login extends javax.swing.JFrame {
     InputStream input = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
-    
-    public Login() {
-        
-     try{
-             input = new FileInputStream("config.properties");
-          
-            prop.load(input);
-            
-            userName=prop.getProperty("username");
-            password=prop.getProperty("password");
-            server=prop.getProperty("server");
-            db=prop.getProperty("db");
-         }
-         catch(IOException e){
-             
-         }   
-     initComponents();    
-    }
 
-    
-    
+    public Login() {
+
+        try {
+            input = new FileInputStream("config.properties");
+
+            prop.load(input);
+
+            userName = prop.getProperty("username");
+            password = prop.getProperty("password");
+            server = prop.getProperty("server");
+            db = prop.getProperty("db");
+        } catch (IOException e) {
+
+        }
+        initComponents();
+    }
+public void loginAction(){
+            try {
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            Connection conn = DriverManager.getConnection("jdbc:mysql://" + server + ":3306/" + db + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", userName, password);
+            String Sql = "Select * from karyawan where id =? and password =?";
+
+            pst = conn.prepareStatement(Sql);
+            pst.setString(1, Field_name.getText());
+            pst.setString(2, Field_password.getText());
+            rs = pst.executeQuery();
+            if (rs.next()) {
+
+                Properties prop = new Properties();
+                OutputStream output = null;
+
+                if (CheckBoxRememberMe.isSelected() == true) {
+                    try {
+
+                        output = new FileOutputStream("configUser.properties");
+                        // set the properties value
+                        prop.setProperty("name", Field_name.getText());
+                        prop.setProperty("password", Field_password.getText());
+
+                        // save properties to project root folder
+                        prop.store(output, null);
+
+                    } catch (IOException io) {
+                        io.printStackTrace();
+                    } finally {
+                        if (output != null) {
+                            try {
+                                output.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                } else {
+
+                    try {
+
+                        output = new FileOutputStream("configUser.properties");
+                        // set the properties value
+                        prop.setProperty("name", Field_name.getText());
+                        prop.setProperty("password", "");
+
+                        // save properties to project root folder
+                        prop.store(output, null);
+
+                    } catch (IOException io) {
+                        io.printStackTrace();
+                    } finally {
+                        if (output != null) {
+                            try {
+                                output.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+                }
+
+                this.dispose();
+                GUI.guiStart();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Username Atau Password Salah");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Login Gagal");
+
+        }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,6 +165,11 @@ public class Login extends javax.swing.JFrame {
         Field_password.setBackground(new java.awt.Color(18, 104, 178));
         Field_password.setForeground(new java.awt.Color(255, 255, 255));
         Field_password.setBorder(null);
+        Field_password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Field_passwordKeyPressed(evt);
+            }
+        });
 
         jSeparator1.setBackground(new java.awt.Color(12, 30, 42));
         jSeparator1.setForeground(new java.awt.Color(12, 30, 42));
@@ -223,101 +299,18 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
-        
-       try {
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            Connection conn = DriverManager.getConnection("jdbc:mysql://" + server + ":3306/" + db + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", userName, password);
-            String Sql="Select * from karyawan where id =? and password =?";
-            
-            
-            pst=conn.prepareStatement(Sql);
-            pst.setString(1, Field_name.getText());
-            pst.setString(2, Field_password.getText());
-            rs=pst.executeQuery();
-            if(rs.next())
-            {
-                
-                
-                Properties prop = new Properties();
-                OutputStream output = null;
-                
-                if(CheckBoxRememberMe.isSelected()==true)
-                {
-                    try {
-                
-		output = new FileOutputStream("configUser.properties");
-		// set the properties value
-		prop.setProperty("name", Field_name.getText());
-                prop.setProperty("password", Field_password.getText());
+loginAction();
 
-		// save properties to project root folder
-		prop.store(output,null);
-
-	} catch (IOException io) {
-		io.printStackTrace();
-	} finally {
-		if (output != null) {
-			try {
-				output.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-                }
-                }
-                
-                
-                    else{
-
-	try {
-                
-		output = new FileOutputStream("configUser.properties");
-		// set the properties value
-		prop.setProperty("name", Field_name.getText());
-                prop.setProperty("password", "");
-                
-		// save properties to project root folder
-		prop.store(output,null);
-
-	} catch (IOException io) {
-		io.printStackTrace();
-	} finally {
-		if (output != null) {
-			try {
-				output.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-                            }
-                            
-    }
-        
-        this.dispose();
-        GUI.guiStart();
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(rootPane, "Username Atau Password Salah");
-            }
-            
-            
-            
-        } catch (Exception e) {
-                            JOptionPane.showMessageDialog(rootPane, "Login Gagal");
-
-            
-        }
     }//GEN-LAST:event_buttonLoginActionPerformed
 
     private void labelAboutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelAboutMouseEntered
-       
+
         setCursor(Cursor.HAND_CURSOR);
         labelAbout.setForeground(Color.WHITE);
     }//GEN-LAST:event_labelAboutMouseEntered
 
     private void labelAboutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelAboutMouseExited
-        Color lightblue = new Color(117,179,226);
+        Color lightblue = new Color(117, 179, 226);
         setCursor(Cursor.DEFAULT_CURSOR);
         labelAbout.setForeground(lightblue);
     }//GEN-LAST:event_labelAboutMouseExited
@@ -328,7 +321,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_labelServerMouseEntered
 
     private void labelServerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelServerMouseExited
-        Color lightblue = new Color(117,179,226);
+        Color lightblue = new Color(117, 179, 226);
         setCursor(Cursor.DEFAULT_CURSOR);
         labelServer.setForeground(lightblue);
     }//GEN-LAST:event_labelServerMouseExited
@@ -337,100 +330,97 @@ public class Login extends javax.swing.JFrame {
         this.dispose();
         ChangeServer server = new ChangeServer();
         server.setLocationRelativeTo(null);
-        server.setVisible(true);       
+        server.setVisible(true);
     }//GEN-LAST:event_labelServerMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        
-        if(Field_name.getText().equals(null)){
+
+        if (Field_name.getText().equals(null)) {
             Field_name.setText("");
-        }
-	
-        else{
-        try {
-            
-        input = new FileInputStream("configUser.properties");    
-        
-        prop.load(input);
+        } else {
+            try {
 
-		// get the property value and print it out
-		Field_name.setText(prop.getProperty("name"));
-		
+                input = new FileInputStream("configUser.properties");
 
-	} catch (IOException ex) {
-		ex.printStackTrace();
-	} finally {
-		if (input != null) {
-			try {
-				input.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-        }
-        if(Field_password.getText().equals(null))
-        {
-            Field_password.setText("");
-        }
-        else{
-             try {
-            
-        input = new FileInputStream("configUser.properties");    
-        
-        prop.load(input);
+                prop.load(input);
 
-		// get the property value and print it out
-		Field_password.setText(prop.getProperty("password"));
-		
+                // get the property value and print it out
+                Field_name.setText(prop.getProperty("name"));
 
-	} catch (IOException ex) {
-		ex.printStackTrace();
-	} finally {
-		if (input != null) {
-			try {
-				input.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } finally {
+                if (input != null) {
+                    try {
+                        input.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            if (Field_password.getText().equals(null)) {
+                Field_password.setText("");
+            } else {
+                try {
+
+                    input = new FileInputStream("configUser.properties");
+
+                    prop.load(input);
+
+                    // get the property value and print it out
+                    Field_password.setText(prop.getProperty("password"));
+
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } finally {
+                    if (input != null) {
+                        try {
+                            input.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+
         }
-        }
-        
-        
-        
-        }
-        if(prop.getProperty("password").equals("")){
+        if (prop.getProperty("password").equals("")) {
             CheckBoxRememberMe.setSelected(false);
-        }
-        else{
+        } else {
             CheckBoxRememberMe.setSelected(true);
         }
     }//GEN-LAST:event_formWindowActivated
 
     private void labelAboutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelAboutMouseClicked
         String message = "<html><body><div width='200px' align='right'>This is some text!</div></body></html>";
-        JOptionPane.showMessageDialog(rootPane,"<html><b>ABOUT</b>\n" +
-"Program ini dibuat oleh team BURIT divisi Software engineering.\n" +
-"© 2018 Burit Software\n" +
-"<html><b><center>Team:</center></b></html>\n" +
-"Founder: Ijash\n" +
-"Co-Founder:Jose\n" +
-"Data: Kevin\n" +
-"Research Paper: Adel\n" +
-"Financial Consultant : Yuni\n" +
-"Data: Simon\n" +
-"Investor: Fahmi\n" +
-"<html><b>Links:</b></html>\n" +
-"https://github.com/ijash/ProgramInventoriTigaCahaya\n" +
-"ijash1000@gmail.com\n" +
-"Donate here:\n" +
-"bitcoin: 1AV6DtBUYnNhrRoJsW3PzJkaMbkdVgnRfCubl" );
+        JOptionPane.showMessageDialog(rootPane, "<html><b>ABOUT</b>\n"
+                + "Program ini dibuat oleh team BURIT divisi Software engineering.\n"
+                + "© 2018 Burit Software\n"
+                + "<html><b><center>Team:</center></b></html>\n"
+                + "Founder: Ijash\n"
+                + "Co-Founder:Jose\n"
+                + "Data: Kevin\n"
+                + "Research Paper: Adel\n"
+                + "Financial Consultant : Yuni\n"
+                + "Data: Simon\n"
+                + "Investor: Fahmi\n"
+                + "<html><b>Links:</b></html>\n"
+                + "https://github.com/ijash/ProgramInventoriTigaCahaya\n"
+                + "ijash1000@gmail.com\n"
+                + "Donate here:\n"
+                + "bitcoin: 1AV6DtBUYnNhrRoJsW3PzJkaMbkdVgnRfCubl");
     }//GEN-LAST:event_labelAboutMouseClicked
+
+    private void Field_passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Field_passwordKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+           loginAction();
+        }
+    }//GEN-LAST:event_Field_passwordKeyPressed
 
     /**
      * @param args the command line arguments
      */
-    
     public static void guiStart() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -485,5 +475,4 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel splashLogo;
     // End of variables declaration//GEN-END:variables
 
-    
 }

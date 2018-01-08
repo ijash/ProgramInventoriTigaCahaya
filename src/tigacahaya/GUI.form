@@ -1477,7 +1477,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tombolTambahSupplierMouseClicked"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolTambahSupplierActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="tombolHapusSupplier">
@@ -2085,7 +2085,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tombolTambahReturMouseClicked"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tombolTambahReturActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="tombolHapusRetur">

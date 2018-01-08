@@ -1222,9 +1222,9 @@ public class GUI extends javax.swing.JFrame {
                 tombolTambahSupplier.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
                 tombolTambahSupplier.setIconTextGap(6);
                 tombolTambahSupplier.setPreferredSize(new java.awt.Dimension(80, 30));
-                tombolTambahSupplier.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        tombolTambahSupplierMouseClicked(evt);
+                tombolTambahSupplier.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        tombolTambahSupplierActionPerformed(evt);
                     }
                 });
 
@@ -1656,9 +1656,9 @@ public class GUI extends javax.swing.JFrame {
                     tombolTambahRetur.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
                     tombolTambahRetur.setIconTextGap(6);
                     tombolTambahRetur.setPreferredSize(new java.awt.Dimension(80, 30));
-                    tombolTambahRetur.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                            tombolTambahReturMouseClicked(evt);
+                    tombolTambahRetur.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            tombolTambahReturActionPerformed(evt);
                         }
                     });
 
@@ -2012,13 +2012,22 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tombolUbahActionPerformed
     private void tombolHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusActionPerformed
-        if (regexIdBarang(fieldInputId_barang.getText())) {
+       Object[] pilihan = {"Hapus","Batal"};
+       int n = JOptionPane.showOptionDialog(rootPane, "Yakin ingin menghapus?","Hapus barang" , JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, pilihan, pilihan[0]);
+        if(n==JOptionPane.YES_OPTION)
+        {
+            if (regexIdBarang(fieldInputId_barang.getText())) {
 
             String query = "DELETE from `barang` WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
             execSQLQuery(query, "" + "dihapus");
             System.out.println(query);
             refreshTable();
+        } 
         }
+        else{
+            JOptionPane.getRootFrame().dispose();
+        }
+       
     }//GEN-LAST:event_tombolHapusActionPerformed
     private void fieldInputId_barangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputId_barangKeyTyped
         if (fieldInputId_barang.getText().length() > 10) {
@@ -2069,29 +2078,21 @@ public class GUI extends javax.swing.JFrame {
             searchField.setText("search...");
         }
     }//GEN-LAST:event_searchFieldFocusLost
-    private void tombolTambahSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahSupplierMouseClicked
-        if (fieldInputEmailSupplier.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$") || fieldInputEmailSupplier.getText().equals("")) {
-            if (fieldInputTelponSupplier.getText().matches("\\d+") || fieldInputTelponSupplier.getText().equals("")) {
-
-                String query = "INSERT INTO `supplier`(`nama`, `alamat`, `telp`, `email`, `catatan`) VALUES ('" + fieldInputNamaSupplier.getText() + "','" + fieldInputAlamatSupplier.getText() + "','" + fieldInputTelponSupplier.getText() + "','" + fieldInputEmailSupplier.getText() + "','" + textAreaCatatan.getText() + "')";
-                execSQLQuery(query, "ditambahkan");
-                System.out.println(query);
-                refreshTableSupplier();
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Telpon tidak valid");
-            }
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Email tidak valid");
-        }
-        displaySupplierComboBox();
-    }//GEN-LAST:event_tombolTambahSupplierMouseClicked
     private void tombolHapusSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusSupplierActionPerformed
+       Object[] pilihan = {"Hapus","Batal"};
+       int n = JOptionPane.showOptionDialog(rootPane, "Yakin ingin menghapus?","Hapus barang" , JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, pilihan, pilihan[0]);
+        if(n==JOptionPane.YES_OPTION)
+        {
         String query = "DELETE from `supplier` WHERE `id_supplier`='" + fieldInputIDSupplier.getText() + "';";
         execSQLQuery(query, "" + "dihapus");
         System.out.println(query);
         refreshTableSupplier();
-        displaySupplierComboBox();
-
+        displaySupplierComboBox(); 
+        }
+        
+        else{
+            JOptionPane.getRootFrame().dispose();
+                }
     }//GEN-LAST:event_tombolHapusSupplierActionPerformed
     private void searchFieldSupplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldSupplierFocusLost
         if ((searchFieldSupplier.getText()).equals("")) {
@@ -2407,24 +2408,39 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_fieldInputJumlahBarangReturFocusLost
     private void tombolHapusReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusReturActionPerformed
+        Object[] pilihan = {"Hapus","Batal"};
+       int n = JOptionPane.showOptionDialog(rootPane, "Yakin ingin menghapus?","Hapus barang" , JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, pilihan, pilihan[0]);
+        if(n==JOptionPane.YES_OPTION)
+        {
         String query = "DELETE from `barang_retur` WHERE `id_retur`='" + fieldInputIdRetur.getText() + "';";
         execSQLQuery(query, "" + "dihapus");
         System.out.println(query);
-        refreshTableRetur();
+        refreshTableRetur(); 
+        }
+        
+        else{
+            JOptionPane.getRootFrame().dispose();
+                }
+        
     }//GEN-LAST:event_tombolHapusReturActionPerformed
-    private void tombolTambahReturMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolTambahReturMouseClicked
-        String query = "INSERT INTO `barang_retur`(`id_barang`, `qty`) VALUES ('" + fieldInputIdBarangRetur.getText() + "','" + fieldInputJumlahBarangRetur.getText() + "')";
-        execSQLQuery(query, "ditambahkan");
-        System.out.println(query);
-        refreshTableRetur();
-    }//GEN-LAST:event_tombolTambahReturMouseClicked
     private void buttonTransaksiHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTransaksiHapusActionPerformed
-        if (fieldIdBarangTransaksi.getText().matches("\\bP[0-9][0-9][0-9][0-9][0-9][0-9][0-9]\\b")) {
+        Object[] pilihan = {"Hapus","Batal"};
+       int n = JOptionPane.showOptionDialog(rootPane, "Yakin ingin menghapus?","Hapus barang" , JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, pilihan, pilihan[0]);
+        if(n==JOptionPane.YES_OPTION)
+        {
+             if (fieldIdBarangTransaksi.getText().matches("\\bP[0-9][0-9][0-9][0-9][0-9][0-9][0-9]\\b")) {
             MySQLconn.executeVoidQuery("DELETE FROM `transaksi_cart` WHERE `transaksi_cart`.`id_barang` ='" + fieldIdBarangTransaksi.getText() + "';");
             refreshTableTransaksi();
         } else {
             JOptionPane.showMessageDialog(rootPane, "Pilih barang dahulu");
         }
+        }
+        
+        else{
+            JOptionPane.getRootFrame().dispose();
+                }
+        
+       
     }//GEN-LAST:event_buttonTransaksiHapusActionPerformed
     private void buttonUbahQtyTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUbahQtyTransaksiActionPerformed
         if (fieldIdBarangTransaksi.getText().matches("\\bP[0-9][0-9][0-9][0-9][0-9][0-9][0-9]\\b")) {
@@ -2451,32 +2467,32 @@ public class GUI extends javax.swing.JFrame {
         textAreaKiriSupplier.setText(model.getValueAt(i, 1).toString() + "\nAlamat:\n" + model.getValueAt(i, 2).toString() + "\nCatatan:\n" + model.getValueAt(i, 5).toString());
     }//GEN-LAST:event_tabelSupplierMouseClicked
     private void tombolClearFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolClearFieldActionPerformed
-        fieldInputId_barang.setText("");
+        fieldInputId_barang.setText("ID");
         fieldInputQty.setText("");
-        fieldInputHarga_beli.setText("");
+        fieldInputHarga_beli.setText("Hrg Beli");
         comboBoxSupplier.setSelectedIndex(0 + 1);
-        fieldInputTanggal_masuk.setText("");
-        fieldInputJenis.setText("");
-        fieldInputMerk.setText("");
-        fieldInputRagam.setText("");
-        fieldInputSeri.setText("");
+        fieldInputTanggal_masuk.setText("Hari Ini");
+        fieldInputJenis.setText("Jenis");
+        fieldInputMerk.setText("Merk");
+        fieldInputRagam.setText("Ragam");
+        fieldInputSeri.setText("Seri");
 
         fieldInputQty.requestFocus();
     }//GEN-LAST:event_tombolClearFieldActionPerformed
     private void tombolClearSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolClearSupplierActionPerformed
-        fieldInputIDSupplier.setText("");
-        fieldInputEmailSupplier.setText("");
-        textAreaCatatan.setText("");
-        fieldInputNamaSupplier.setText("");
-        fieldInputAlamatSupplier.setText("");
-        fieldInputTelponSupplier.setText("");
+        fieldInputIDSupplier.setText("ID");
+        fieldInputEmailSupplier.setText("Email");
+        textAreaCatatan.setText("Catatan...");
+        fieldInputNamaSupplier.setText("Nama");
+        fieldInputAlamatSupplier.setText("Alamat");
+        fieldInputTelponSupplier.setText("Telpon");
 
-        fieldInputEmailSupplier.requestFocus();
+        fieldInputNamaSupplier.requestFocus();
     }//GEN-LAST:event_tombolClearSupplierActionPerformed
     private void tombolClearReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolClearReturActionPerformed
-        fieldInputIdRetur.setText("");
-        fieldInputIdBarangRetur.setText("");
-        fieldInputJumlahBarangRetur.setText("");
+        fieldInputIdRetur.setText("ID Retur");
+        fieldInputIdBarangRetur.setText("ID");
+        fieldInputJumlahBarangRetur.setText("Jumlah");
 
         fieldInputIdBarangRetur.requestFocus();
     }//GEN-LAST:event_tombolClearReturActionPerformed
@@ -2504,7 +2520,11 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_fieldInputEmailSupplierKeyTyped
     private void tombolTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolTambahActionPerformed
-
+        if(fieldInputJenis.getText().equals("Jenis")||fieldInputMerk.getText().equals("Merk")||fieldInputRagam.getText().equals("Ragam")||fieldInputSeri.getText().equals("Seri"))
+        {
+            JOptionPane.showMessageDialog(rootPane, "Cek Kembali Data Yang Baru Diisi", "Ada Yang Salah",WIDTH);
+        }
+        else{
         if ((regexBilangan(fieldInputQty.getText(), "Qty")) && (regexBilangan(fieldInputHarga_beli.getText(), "Harga"))) {
             int supplierIndex = Integer.parseInt(MySQLconn.executeSingleQueryResult("SELECT `id_supplier` FROM `supplier` WHERE nama = '" + comboBoxSupplier.getSelectedItem() + "'", "id_supplier"));
             String query = "INSERT INTO `barang`(`code`, `no`, `id_barang`, `jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `tgl_masuk`, `garansi`) VALUES('P',NULL,NULL,'" + fieldInputJenis.getText() + "','" + fieldInputMerk.getText() + "','" + fieldInputRagam.getText() + "','" + fieldInputSeri.getText() + "','" + fieldInputQty.getText() + "','" + fieldInputHarga_beli.getText() + "','" + supplierIndex + "',CURRENT_TIMESTAMP,'" + comboBoxGaransi.getSelectedItem() + "')";
@@ -2512,6 +2532,7 @@ public class GUI extends javax.swing.JFrame {
             MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\") );");
             System.out.println(query);
             refreshTable();
+        }
         }
 
     }//GEN-LAST:event_tombolTambahActionPerformed
@@ -2533,6 +2554,42 @@ public class GUI extends javax.swing.JFrame {
         String query = searchFieldRetur.getText();
         filterTableRetur(query, comboBoxKolomRetur.getSelectedIndex());
     }//GEN-LAST:event_comboBoxKolomReturActionPerformed
+
+    private void tombolTambahSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolTambahSupplierActionPerformed
+         if(fieldInputNamaSupplier.getText().equals("Nama")||fieldInputEmailSupplier.getText().equals("Email")||fieldInputAlamatSupplier.getText().equals("Alamat")||fieldInputTelponSupplier.getText().equals("Telpon")||textAreaCatatan.getText().equals("Catatan..."))
+        {
+            JOptionPane.showMessageDialog(rootPane, "Cek Kembali Data Yang Baru Diisi", "Ada Yang Salah",WIDTH);
+        }
+         else{
+        if (fieldInputEmailSupplier.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$") || fieldInputEmailSupplier.getText().equals("")) {
+            if (fieldInputTelponSupplier.getText().matches("\\d+") || fieldInputTelponSupplier.getText().equals("")) {
+
+                String query = "INSERT INTO `supplier`(`nama`, `alamat`, `telp`, `email`, `catatan`) VALUES ('" + fieldInputNamaSupplier.getText() + "','" + fieldInputAlamatSupplier.getText() + "','" + fieldInputTelponSupplier.getText() + "','" + fieldInputEmailSupplier.getText() + "','" + textAreaCatatan.getText() + "')";
+                execSQLQuery(query, "ditambahkan");
+                System.out.println(query);
+                refreshTableSupplier();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Telpon tidak valid");
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Email tidak valid");
+        }
+         }
+        displaySupplierComboBox();
+    }//GEN-LAST:event_tombolTambahSupplierActionPerformed
+
+    private void tombolTambahReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolTambahReturActionPerformed
+        if(fieldInputIdBarangRetur.getText().equals("ID")||fieldInputJumlahBarangRetur.getText().equals("Jumlah"))
+        {
+            JOptionPane.showMessageDialog(rootPane, "Cek Kembali Data Yang Baru Diisi", "Ada Yang Salah",WIDTH);
+        }
+        else{
+        String query = "INSERT INTO `barang_retur`(`id_barang`, `qty`) VALUES ('" + fieldInputIdBarangRetur.getText() + "','" + fieldInputJumlahBarangRetur.getText() + "')";
+        execSQLQuery(query, "ditambahkan");
+        System.out.println(query);
+        refreshTableRetur();
+        }
+    }//GEN-LAST:event_tombolTambahReturActionPerformed
 // </editor-fold>
 
     public static void guiStart() {

@@ -74,7 +74,6 @@
                               <Component id="Field_password" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                               <Component id="jSeparatorPW" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="25" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>

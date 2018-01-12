@@ -170,6 +170,9 @@
               <Color id="Text Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldUsernameKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="fieldPassword">
           <Properties>
@@ -183,6 +186,9 @@
               <Border info="null"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldPasswordKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparatorUname">
           <Properties>
@@ -251,6 +257,9 @@
               <Color id="Text Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldServerKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="buttonCancel">
           <Properties>
@@ -325,6 +334,9 @@
               <Color id="Text Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldDatabaseKeyPressed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

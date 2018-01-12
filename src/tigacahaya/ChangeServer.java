@@ -5,6 +5,7 @@
  */
 package tigacahaya;
 
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -46,6 +47,48 @@ public class ChangeServer extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void okAction(){
+         try {
+
+            output = new FileOutputStream("config.properties");
+            // set the properties value
+            prop.setProperty("username", fieldUsername.getText());
+            prop.setProperty("server", fieldServer.getText());
+            prop.setProperty("db", fieldDatabase.getText());
+            prop.setProperty("password", fieldPassword.getText());
+            prop.store(output, null);
+
+            try {
+
+                server = prop.getProperty("server");
+                userName = prop.getProperty("username");
+                db = prop.getProperty("db");
+                password = prop.getProperty("password");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://" + server + ":3306/" + db + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", userName, password);
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+
+                this.dispose();
+                Login login = new Login();
+                login.setLocationRelativeTo(null);
+                login.setVisible(true);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Input Salah");
+            }
+
+        } catch (IOException io) {
+            io.printStackTrace();
+        } finally {
+            if (output != null) {
+                try {
+                    output.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,10 +138,20 @@ public class ChangeServer extends javax.swing.JFrame {
         fieldUsername.setBorder(null);
         fieldUsername.setCaretColor(new java.awt.Color(255, 255, 255));
         fieldUsername.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        fieldUsername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fieldUsernameKeyPressed(evt);
+            }
+        });
 
         fieldPassword.setBackground(new java.awt.Color(18, 104, 178));
         fieldPassword.setForeground(new java.awt.Color(255, 255, 255));
         fieldPassword.setBorder(null);
+        fieldPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fieldPasswordKeyPressed(evt);
+            }
+        });
 
         jSeparatorUname.setBackground(new java.awt.Color(12, 30, 42));
         jSeparatorUname.setForeground(new java.awt.Color(12, 30, 42));
@@ -121,6 +174,11 @@ public class ChangeServer extends javax.swing.JFrame {
         fieldServer.setBorder(null);
         fieldServer.setCaretColor(new java.awt.Color(255, 255, 255));
         fieldServer.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        fieldServer.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fieldServerKeyPressed(evt);
+            }
+        });
 
         buttonCancel.setBackground(new java.awt.Color(117, 179, 226));
         buttonCancel.setForeground(new java.awt.Color(12, 30, 42));
@@ -154,6 +212,11 @@ public class ChangeServer extends javax.swing.JFrame {
         fieldDatabase.setBorder(null);
         fieldDatabase.setCaretColor(new java.awt.Color(255, 255, 255));
         fieldDatabase.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        fieldDatabase.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fieldDatabaseKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelUtamaLayout = new javax.swing.GroupLayout(jPanelUtama);
         jPanelUtama.setLayout(jPanelUtamaLayout);
@@ -249,46 +312,7 @@ public class ChangeServer extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCancelActionPerformed
 
     private void buttonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOkActionPerformed
-
-        try {
-
-            output = new FileOutputStream("config.properties");
-            // set the properties value
-            prop.setProperty("username", fieldUsername.getText());
-            prop.setProperty("server", fieldServer.getText());
-            prop.setProperty("db", fieldDatabase.getText());
-            prop.setProperty("password", fieldPassword.getText());
-            prop.store(output, null);
-
-            try {
-
-                server = prop.getProperty("server");
-                userName = prop.getProperty("username");
-                db = prop.getProperty("db");
-                password = prop.getProperty("password");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://" + server + ":3306/" + db + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", userName, password);
-
-                Class.forName("com.mysql.cj.jdbc.Driver");
-
-                this.dispose();
-                Login login = new Login();
-                login.setLocationRelativeTo(null);
-                login.setVisible(true);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, "Input Salah");
-            }
-
-        } catch (IOException io) {
-            io.printStackTrace();
-        } finally {
-            if (output != null) {
-                try {
-                    output.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        okAction();       
     }//GEN-LAST:event_buttonOkActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -331,6 +355,34 @@ public class ChangeServer extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_formWindowActivated
+
+    private void fieldPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldPasswordKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            okAction();
+        }
+    }//GEN-LAST:event_fieldPasswordKeyPressed
+
+    private void fieldDatabaseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldDatabaseKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            okAction();
+        }
+    }//GEN-LAST:event_fieldDatabaseKeyPressed
+
+    private void fieldUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldUsernameKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            okAction();
+        }
+    }//GEN-LAST:event_fieldUsernameKeyPressed
+
+    private void fieldServerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldServerKeyPressed
+       if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            okAction();
+        }
+    }//GEN-LAST:event_fieldServerKeyPressed
 
     /**
      * @param args the command line arguments

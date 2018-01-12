@@ -2249,30 +2249,37 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_fieldInputEmailSupplierFocusLost
     private void tombolAtcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolAtcActionPerformed
+        int jumlah = Integer.parseInt( JOptionPane.showInputDialog(rootPane, "Input jumlah yang ingin dibeli", "Masukan jumlah", JOptionPane.QUESTION_MESSAGE));
+        
+        if(jumlah<=0){
+         JOptionPane.showMessageDialog(rootPane, "Input salah");
+        }
+        else{
         ArrayList<TableRowContentTransaksi> list = tableContentTransaksi();
         String query = "null";
         if (("empty".equals(statusInvoiceAkhir())) || ("paid".equals(statusInvoiceAkhir()))) {
             TableRowContentTransaksi.tambahInvoice();
-            query = "INSERT INTO `transaksi_cart` (`id_inv`, `id_barang`, `qty`, `harga`, `keterangan`) VALUES ('" + statusInvoiceAkhir() + "', '" + fieldInputId_barang.getText() + "', '1', '" + fieldInputHarga_beli.getText() + "', '');";
+            query = "INSERT INTO `transaksi_cart` (`id_inv`, `id_barang`, `qty`, `harga`, `keterangan`) VALUES ('" + statusInvoiceAkhir() + "', '" + fieldInputId_barang.getText() + "', '"+jumlah+"', '" + fieldInputHarga_beli.getText() + "', '');";
         } else {
             boolean Duplicate = false;
             for (int i = 0; i < list.size(); i++) {
                 if (list.get(i).getIdBarang().equals(fieldInputId_barang.getText())) {
-                    query = "UPDATE `transaksi_cart` SET `qty` = `qty`+1 WHERE `transaksi_cart`.`id_barang` = '" + fieldInputId_barang.getText() + "' AND `transaksi_cart`.`id_inv` ='" + statusInvoiceAkhir() + "';";
+                    query = "UPDATE `transaksi_cart` SET `qty` = '"+jumlah+"'  WHERE `transaksi_cart`.`id_barang` = '" + fieldInputId_barang.getText() + "' AND `transaksi_cart`.`id_inv` ='" + statusInvoiceAkhir() + "';";
                     Duplicate = true;
                 }
             }
             if (!Duplicate) {
-                query = "INSERT INTO `transaksi_cart` (`id_inv`, `id_barang`, `qty`, `harga`, `keterangan`) VALUES ('" + statusInvoiceAkhir() + "', '" + fieldInputId_barang.getText() + "', '1', '" + fieldInputHarga_beli.getText() + "', '');";
+                query = "INSERT INTO `transaksi_cart` (`id_inv`, `id_barang`, `qty`, `harga`, `keterangan`) VALUES ('" + statusInvoiceAkhir() + "', '" + fieldInputId_barang.getText() + "', '"+jumlah+"', '" + fieldInputHarga_beli.getText() + "', '');";
                 Duplicate = false;
             }
 
         }
+        
         System.out.println(query);
         MySQLconn.executeVoidQuery(query);
 
         refreshTableTransaksi();
-
+        }
 
     }//GEN-LAST:event_tombolAtcActionPerformed
     private void tabelTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelTransaksiMouseClicked

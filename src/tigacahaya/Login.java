@@ -415,8 +415,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_labelAboutMouseClicked
 
     private void Field_passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Field_passwordKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
             loginAction();
         }
     }//GEN-LAST:event_Field_passwordKeyPressed

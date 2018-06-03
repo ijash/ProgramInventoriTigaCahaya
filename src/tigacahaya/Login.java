@@ -111,21 +111,19 @@ public class Login extends javax.swing.JFrame {
                     }
 
                 }
-                GUI gui = new GUI();
-                gui.setLocationRelativeTo(null);
-                gui.Level=rs.getString("level");
-                gui.setVisible(true);
                 
+                // kirim variable Level ke class GUI
+                GUI.setLevel(rs.getString("level"));
+                GUI gui = new GUI();
+                gui.setLocationRelativeTo(null); 
+                System.out.println("pas abis login Level status :"+rs.getString("level"));
+                gui.setVisible(true);
+                  
                 this.dispose();
                 }
                 
                 
                 else{
-                GUI gui = new GUI();
-                gui.Level=rs.getString("id");
-                Properties prop = new Properties();
-                OutputStream output = null;
-
                 if (CheckBoxRememberMe.isSelected() == true) {
                     try {
 
@@ -173,10 +171,12 @@ public class Login extends javax.swing.JFrame {
                     }
 
                 }
-                GUI menu = new GUI();
-                menu.setLocationRelativeTo(null);
-                menu.setVisible(true);
-                menu.Level=rs.getString("level");
+                GUI.setLevel(rs.getString("level"));
+                GUI gui = new GUI();
+                gui.setLocationRelativeTo(null); 
+                System.out.println("pas abis login Level status :"+rs.getString("level"));
+                gui.setVisible(true);
+                  
                 this.dispose();
                 }
 

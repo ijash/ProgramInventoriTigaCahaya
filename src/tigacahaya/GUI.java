@@ -30,12 +30,21 @@ public class GUI extends javax.swing.JFrame {
     /**
      * Creates new form GUI & GUI execution
      */
+    public static String Level;
+    
+    public static void setLevel(String level){
+        Level = level;
+    }
+    public static String getLevel()
+    {
+        return Level;
+    }
     public GUI() {
         
         initComponents();
-//        setLevelAdmin();
-//               labelLevel.setVisible(false);
-//        labelLevel.setText(Level);
+//      setLevelAdmin();
+//      labelLevel.setVisible(false);
+//      labelLevel.setText(Level);
         displayTable();
         displaySupplierComboBox();
         displayJenisComboBox();
@@ -48,11 +57,7 @@ public class GUI extends javax.swing.JFrame {
         sortTableRetur();
     }
     
-    public String Level;
-    public String getLevel()
-    {
-        return Level;
-    }
+    
 
     // back-end methods......................................
     public void setLevelAdmin(){
@@ -61,7 +66,8 @@ public class GUI extends javax.swing.JFrame {
     
     public void displayTable() {
 //        labelTest.setText(Level);
-//        if(labelTest.getText().equals("1")){
+System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(this.Level.equals("1")));
+        if(this.Level.equals("1")){
         ArrayList<TableRowContent> list = tableContent();
         DefaultTableModel model = (DefaultTableModel) tabel.getModel();
         Object[] row = new Object[10];
@@ -78,27 +84,27 @@ public class GUI extends javax.swing.JFrame {
             row[9] = list.get(i).getGaransi();
             model.addRow(row);
 
-//        }
         }
-//        else if(labelLevel.getText().equals("biasa")){
-//            ArrayList<TableRowContent> list = tableContent();
-//        DefaultTableModel model = (DefaultTableModel) tabel.getModel();
-//        Object[] row = new Object[10];
-//        for (int i = 0; i < list.size(); i++) {
-//            row[0] = list.get(i).getIdBarang();
-//            row[1] = list.get(i).getJenis();
-//            row[2] = list.get(i).getMerk();
-//            row[3] = list.get(i).getRagam();
-//            row[4] = list.get(i).getSeri();
-//            row[5] = list.get(i).getQty();
-//            row[6] = "Private";
-//            row[7] = list.get(i).getSupplier();
-//            row[8] = list.get(i).getTgl_masuk();
-//            row[9] = list.get(i).getGaransi();
-//            model.addRow(row);
-//
-//        }
-//        }
+        }
+        else {
+            ArrayList<TableRowContent> list = tableContent();
+        DefaultTableModel model = (DefaultTableModel) tabel.getModel();
+        Object[] row = new Object[10];
+        for (int i = 0; i < list.size(); i++) {
+            row[0] = list.get(i).getIdBarang();
+            row[1] = list.get(i).getJenis();
+            row[2] = list.get(i).getMerk();
+            row[3] = list.get(i).getRagam();
+            row[4] = list.get(i).getSeri();
+            row[5] = list.get(i).getQty();
+            row[6] = "Private";
+            row[7] = list.get(i).getSupplier();
+            row[8] = list.get(i).getTgl_masuk();
+            row[9] = list.get(i).getGaransi();
+            model.addRow(row);
+
+        }
+        }
         
     }
 
@@ -2609,7 +2615,10 @@ public class GUI extends javax.swing.JFrame {
 //        if(labelTest.getText().equals("1")){
 //          System.out.println("bisa");  
 //        }
-        
+//if (this.Level.equals("1")){
+//    displayTable();
+//}
+        System.out.println(this.Level);
     }//GEN-LAST:event_formWindowActivated
 // </editor-fold>
 

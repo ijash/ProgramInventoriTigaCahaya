@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import org.omg.CORBA.TIMEOUT;
+import java.awt.event.*;
 import static tigacahaya.TableRowContent.tableContent;
 import static tigacahaya.TableRowContentRetur.tableContentRetur;
 import static tigacahaya.TableRowContentSupplier.tableContentSupplier;
@@ -45,6 +45,7 @@ public class GUI extends javax.swing.JFrame {
 //      setLevelAdmin();
 //      labelLevel.setVisible(false);
 //      labelLevel.setText(Level);
+        admin();
         displayTable();
         displaySupplierComboBox();
         displayJenisComboBox();
@@ -66,7 +67,7 @@ public class GUI extends javax.swing.JFrame {
     
     public void displayTable() {
 //        labelTest.setText(Level);
-System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(this.Level.equals("1")));
+        System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(this.Level.equals("1")));
         if(this.Level.equals("1")){
         ArrayList<TableRowContent> list = tableContent();
         DefaultTableModel model = (DefaultTableModel) tabel.getModel();
@@ -261,6 +262,74 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
         for (String i : list) {
             comboBoxJenis.addItem(i);
         }
+    }
+    
+    public void enable(){
+            fieldInputQty.setEditable(true);
+            fieldInputHarga_beli.setEditable(true);
+            fieldInputMerk.setEditable(true);
+            fieldInputRagam.setEditable(true);
+            fieldInputSeri.setEditable(true);
+    }
+    
+    public void enableSupplier(){
+            fieldInputNamaSupplier.setEditable(true);
+            fieldInputEmailSupplier.setEditable(true);
+            fieldInputAlamatSupplier.setEditable(true);
+            fieldInputTelponSupplier.setEditable(true);
+            textAreaCatatan.setEditable(true);
+    }
+    
+    public void disable(){
+            fieldInputQty.setEditable(false);
+            fieldInputHarga_beli.setEditable(false);
+            fieldInputMerk.setEditable(false);
+            fieldInputRagam.setEditable(false);
+            fieldInputSeri.setEditable(false);
+    }
+    
+    public void disableSupplier(){
+            fieldInputNamaSupplier.setEditable(false);
+            fieldInputEmailSupplier.setEditable(false);
+            fieldInputAlamatSupplier.setEditable(false);
+            fieldInputTelponSupplier.setEditable(false);
+            textAreaCatatan.setEditable(false);
+    }
+    
+    public void admin(){
+           if(this.Level.equals("2")){
+               tombolHapus.setEnabled(false);
+               tombolUbah.setEnabled(false);
+               tombolTambah.setEnabled(false);
+               tombolUbahSupplier.setEnabled(false);
+               tombolTambahSupplier.setEnabled(false);
+               tombolHapusSupplier.setEnabled(false);
+           }
+    }
+    
+    public void clearField(){
+        fieldInputId_barang.setText("ID");
+        fieldInputQty.setText("");
+        fieldInputHarga_beli.setText("Hrg Beli");
+        comboBoxSupplier.setSelectedIndex(0);
+        comboBoxJenis.setSelectedIndex(0);
+        fieldInputTanggal_masuk.setText("Hari Ini");
+        fieldInputMerk.setText("Merk");
+        fieldInputRagam.setText("Ragam");
+        fieldInputSeri.setText("Seri");
+
+        fieldInputQty.requestFocus();
+    }
+    
+    public void clearSupplier(){
+        fieldInputIDSupplier.setText("ID");
+        fieldInputEmailSupplier.setText("Email");
+        fieldInputNamaSupplier.setText("Nama");
+        textAreaCatatan.setText("");
+        fieldInputAlamatSupplier.setText("Alamat");
+        fieldInputTelponSupplier.setText("Telpon");
+
+        fieldInputNamaSupplier.requestFocus();
     }
 
     // execute SQL query
@@ -498,15 +567,16 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
             }
         });
 
+        fieldInputMerk.setEditable(false);
         fieldInputMerk.setForeground(new java.awt.Color(12, 30, 42));
         fieldInputMerk.setText("Merk");
         fieldInputMerk.setToolTipText("Merk barang");
         fieldInputMerk.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldInputMerkFocusLost(evt);
-            }
             public void focusGained(java.awt.event.FocusEvent evt) {
                 fieldInputMerkFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputMerkFocusLost(evt);
             }
         });
         fieldInputMerk.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -515,6 +585,7 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
             }
         });
 
+        fieldInputRagam.setEditable(false);
         fieldInputRagam.setForeground(new java.awt.Color(12, 30, 42));
         fieldInputRagam.setText("Ragam");
         fieldInputRagam.setToolTipText("Ragam atau sub-kategori barang");
@@ -532,6 +603,7 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
             }
         });
 
+        fieldInputSeri.setEditable(false);
         fieldInputSeri.setForeground(new java.awt.Color(12, 30, 42));
         fieldInputSeri.setText("Seri");
         fieldInputSeri.setToolTipText("Keterangan lengkap dari ragam yang ada");
@@ -549,6 +621,7 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
             }
         });
 
+        fieldInputQty.setEditable(false);
         fieldInputQty.setForeground(new java.awt.Color(12, 30, 42));
         fieldInputQty.setText("Qty");
         fieldInputQty.setToolTipText("Banyaknya barang");
@@ -566,15 +639,16 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
             }
         });
 
+        fieldInputHarga_beli.setEditable(false);
         fieldInputHarga_beli.setForeground(new java.awt.Color(12, 30, 42));
         fieldInputHarga_beli.setText("Hrg Beli");
         fieldInputHarga_beli.setToolTipText("Harga modal awal");
         fieldInputHarga_beli.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldInputHarga_beliFocusLost(evt);
-            }
             public void focusGained(java.awt.event.FocusEvent evt) {
                 fieldInputHarga_beliFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputHarga_beliFocusLost(evt);
             }
         });
         fieldInputHarga_beli.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -670,7 +744,7 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
 
         tombolClearField.setForeground(new java.awt.Color(12, 30, 42));
         tombolClearField.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tigacahaya/res/delete_x_big.png"))); // NOI18N
-        tombolClearField.setText("Clear");
+        tombolClearField.setText("Cancel");
         tombolClearField.setToolTipText("Hapus text dari field pengisian");
         tombolClearField.setIconTextGap(8);
         tombolClearField.addActionListener(new java.awt.event.ActionListener() {
@@ -1292,6 +1366,7 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
                     }
                 });
 
+                textAreaCatatan.setEditable(false);
                 textAreaCatatan.setColumns(20);
                 textAreaCatatan.setForeground(new java.awt.Color(12, 30, 42));
                 textAreaCatatan.setLineWrap(true);
@@ -1300,6 +1375,7 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
                 textAreaCatatan.setWrapStyleWord(true);
                 jScrollPaneSupplier.setViewportView(textAreaCatatan);
 
+                fieldInputEmailSupplier.setEditable(false);
                 fieldInputEmailSupplier.setForeground(new java.awt.Color(12, 30, 42));
                 fieldInputEmailSupplier.setText("Email");
                 fieldInputEmailSupplier.setToolTipText("E-mail supplier. Harus diisi sesuai dengan format email");
@@ -1317,6 +1393,7 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
                     }
                 });
 
+                fieldInputTelponSupplier.setEditable(false);
                 fieldInputTelponSupplier.setForeground(new java.awt.Color(12, 30, 42));
                 fieldInputTelponSupplier.setText("Telpon");
                 fieldInputTelponSupplier.setToolTipText("Telpon/hp supplier. hanya bisa di isi dengan angka");
@@ -1334,6 +1411,7 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
                     }
                 });
 
+                fieldInputAlamatSupplier.setEditable(false);
                 fieldInputAlamatSupplier.setForeground(new java.awt.Color(12, 30, 42));
                 fieldInputAlamatSupplier.setText("Alamat");
                 fieldInputAlamatSupplier.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -1379,6 +1457,7 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
                 jLabel9.setForeground(new java.awt.Color(255, 255, 255));
                 jLabel9.setText("Catatan");
 
+                fieldInputNamaSupplier.setEditable(false);
                 fieldInputNamaSupplier.setForeground(new java.awt.Color(12, 30, 42));
                 fieldInputNamaSupplier.setText("Nama");
                 fieldInputNamaSupplier.setToolTipText("Nama supplier");
@@ -2031,19 +2110,52 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
         textAreaKiri.setText(model.getValueAt(i, 1).toString() + "\n" + model.getValueAt(i, 2).toString() + "\n" + model.getValueAt(i, 3).toString() + " " + model.getValueAt(i, 4).toString());
     }//GEN-LAST:event_tabelMouseClicked
     private void tombolUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahActionPerformed
-        if (regexIdBarang(fieldInputId_barang.getText())) {
+
+        if(tombolUbah.getText().equals("Ubah")){ 
+        if(fieldInputId_barang.getText().equals("ID")){
+            JOptionPane.showMessageDialog(rootPane, "Pilih barang yang ingin diubah", "Ada Yang Salah",WIDTH);
+            clearField();
+        }
+        else{
+            tombolUbah.setText("Simpan");
+            tombolClearField.setVisible(true);
+            enable();
+            
+        }
+        }
+        
+        else if(tombolUbah.getText().equals("Simpan")){
+            if (regexIdBarang(fieldInputId_barang.getText())) {
             if (regexBilangan(fieldInputQty.getText(), "Qty") || regexBilangan(fieldInputHarga_beli.getText(), "Harga")) {
 
                 int supplierIndex = Integer.parseInt(MySQLconn.executeSingleQueryResult("SELECT `id_supplier` FROM `supplier` WHERE nama = '" + comboBoxSupplier.getSelectedItem() + "'", "id_supplier"));
 
                 String query = "UPDATE `barang` SET `jenis`= '" + comboBoxJenis.getSelectedItem() + "',`merk`='" + fieldInputMerk.getText() + "',`ragam`='" + fieldInputRagam.getText() + "',`seri`='" + fieldInputSeri.getText() + "',`qty`='" + fieldInputQty.getText() + "',`harga_beli`='" + fieldInputHarga_beli.getText() + "',`supplier`='" + supplierIndex + "',`garansi`='" + (String) comboBoxGaransi.getSelectedItem() + "' WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
-
-                execSQLQuery(query, "diubah");
+                
+                Object[] pilihan = {"Ubah","Batal"};
+       int n = JOptionPane.showOptionDialog(rootPane, "Yakin ingin mengubah?","Ubah barang" , JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, pilihan, pilihan[0]);
+        if(n==JOptionPane.YES_OPTION)
+        {
+            execSQLQuery(query, "diubah");
                 MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\") );");
 
                 System.out.println(query);
                 refreshTable();
+        }
+        else if(n==JOptionPane.NO_OPTION)
+        {
+            clearField();
+        }
+        else{
+            JOptionPane.getRootFrame().dispose();
+        }
+                
+           
             }
+        }
+            tombolUbah.setText("Ubah");
+            disable();
+            clearField();
         }
     }//GEN-LAST:event_tombolUbahActionPerformed
     private void tombolHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusActionPerformed
@@ -2129,24 +2241,64 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
         filterTableSupplier(query, comboBoxKolomSupplier.getSelectedIndex());
     }//GEN-LAST:event_searchFieldSupplierKeyReleased
     private void tombolUbahSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahSupplierActionPerformed
-        if (fieldInputIDSupplier.getText().matches("\\d+")) {
+        if(tombolUbahSupplier.getText().equals("Ubah")){ 
+        if(fieldInputIDSupplier.getText().equals("ID")){
+            JOptionPane.showMessageDialog(rootPane, "Pilih barang yang ingin diubah", "Ada Yang Salah",WIDTH);
+            clearSupplier();
+        }
+        else{
+            tombolUbahSupplier.setText("Simpan");
+            tombolClearSupplier.setVisible(true);
+            enableSupplier();
+            
+        }
+        }
+        
+        else if(tombolUbahSupplier.getText().equals("Simpan")){
+           
+                Object[] pilihan = {"Ubah","Batal"};
+       int n = JOptionPane.showOptionDialog(rootPane, "Yakin ingin mengubah?","Ubah barang" , JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, pilihan, pilihan[0]);
+        if(n==JOptionPane.YES_OPTION)
+        {
+                 if (fieldInputIDSupplier.getText().matches("\\d+")) {
             if (fieldInputEmailSupplier.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$") || fieldInputEmailSupplier.getText().equals("")) {
                 if (fieldInputTelponSupplier.getText().matches("\\d+") || fieldInputTelponSupplier.getText().equals("")) {
                     String query = "UPDATE `supplier` SET `nama`= '" + fieldInputNamaSupplier.getText() + "',`alamat`='" + fieldInputAlamatSupplier.getText() + "',`telp`='" + fieldInputTelponSupplier.getText() + "',`email`='" + fieldInputEmailSupplier.getText() + "',`catatan`='" + textAreaCatatan.getText() + "' WHERE `id_supplier`='" + fieldInputIDSupplier.getText() + "';";
-
                     execSQLQuery(query, "diubah");
                     System.out.println(query);
                     refreshTableSupplier();
+                    
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Telpon tidak valid");
+                    disableSupplier();
+                    clearSupplier();
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Email tidak valid");
+                disableSupplier();
+                clearSupplier();
             }
         } else {
             JOptionPane.showMessageDialog(rootPane, "Supplier ID salah");
+            disableSupplier();
+            clearSupplier();
         }
+                 
+        }
+        else if(n==JOptionPane.NO_OPTION)
+        {
+            clearField();
+        }
+        else{
+            JOptionPane.getRootFrame().dispose();
+        }
+
+            tombolUbahSupplier.setText("Ubah");
+            disableSupplier();
+            clearSupplier();      
+        
         displaySupplierComboBox();
+        }
     }//GEN-LAST:event_tombolUbahSupplierActionPerformed
     private void fieldInputId_barangFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputId_barangFocusGained
         if (fieldInputId_barang.getText().equals("ID")) {
@@ -2465,26 +2617,16 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
         textAreaKiriSupplier.setText(model.getValueAt(i, 1).toString() + "\nAlamat:\n" + model.getValueAt(i, 2).toString() + "\nCatatan:\n" + model.getValueAt(i, 5).toString());
     }//GEN-LAST:event_tabelSupplierMouseClicked
     private void tombolClearFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolClearFieldActionPerformed
-        fieldInputId_barang.setText("ID");
-        fieldInputQty.setText("");
-        fieldInputHarga_beli.setText("Hrg Beli");
-        comboBoxSupplier.setSelectedIndex(0 + 1);
-        fieldInputTanggal_masuk.setText("Hari Ini");
-        fieldInputMerk.setText("Merk");
-        fieldInputRagam.setText("Ragam");
-        fieldInputSeri.setText("Seri");
-
-        fieldInputQty.requestFocus();
+        disable();
+        clearField();
+        tombolTambah.setText("Tambah");
+        tombolUbah.setText("Ubah");
     }//GEN-LAST:event_tombolClearFieldActionPerformed
     private void tombolClearSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolClearSupplierActionPerformed
-        fieldInputIDSupplier.setText("ID");
-        fieldInputEmailSupplier.setText("Email");
-        fieldInputNamaSupplier.setText("Nama");
-        textAreaCatatan.setText("");
-        fieldInputAlamatSupplier.setText("Alamat");
-        fieldInputTelponSupplier.setText("Telpon");
-
-        fieldInputNamaSupplier.requestFocus();
+        disableSupplier();
+        clearSupplier();
+        tombolTambahSupplier.setText("Tambah");
+        tombolUbahSupplier.setText("Ubah");
     }//GEN-LAST:event_tombolClearSupplierActionPerformed
     private void tombolClearReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolClearReturActionPerformed
         fieldInputIdRetur.setText("ID Retur");
@@ -2517,12 +2659,26 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
         }
     }//GEN-LAST:event_fieldInputEmailSupplierKeyTyped
     private void tombolTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolTambahActionPerformed
-        if(fieldInputMerk.getText().equals("Merk")||fieldInputRagam.getText().equals("Ragam")||fieldInputSeri.getText().equals("Seri"))
+            if(tombolTambah.getText().equals("Tambah")){ 
+            tombolTambah.setText("Simpan");
+            tombolClearField.setVisible(true);
+            enable();
+            clearField();
+        }
+        
+        else if(tombolTambah.getText().equals("Simpan")){
+            
+             if(fieldInputMerk.getText().equals("Merk")||fieldInputRagam.getText().equals("Ragam")||fieldInputSeri.getText().equals("Seri"))
         {
             JOptionPane.showMessageDialog(rootPane, "Cek Kembali Data Yang Baru Diisi", "Ada Yang Salah",WIDTH);
+            clearField();
         }
-        else{
-        if ((regexBilangan(fieldInputQty.getText(), "Qty")) && (regexBilangan(fieldInputHarga_beli.getText(), "Harga"))) {
+            else{
+                Object[] pilihan = {"Tambah","Batal"};
+       int n = JOptionPane.showOptionDialog(rootPane, "Yakin ingin Tambah?","Tambah barang" , JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, pilihan, pilihan[0]);
+        if(n==JOptionPane.YES_OPTION)
+        {
+            if ((regexBilangan(fieldInputQty.getText(), "Qty")) && (regexBilangan(fieldInputHarga_beli.getText(), "Harga"))) {
             int supplierIndex = Integer.parseInt(MySQLconn.executeSingleQueryResult("SELECT `id_supplier` FROM `supplier` WHERE nama = '" + comboBoxSupplier.getSelectedItem() + "'", "id_supplier"));
             String query = "INSERT INTO `barang`(`code`, `no`, `id_barang`, `jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `tgl_masuk`, `garansi`) VALUES('P',NULL,NULL,'" + comboBoxJenis.getSelectedItem() + "','" + fieldInputMerk.getText() + "','" + fieldInputRagam.getText() + "','" + fieldInputSeri.getText() + "','" + fieldInputQty.getText() + "','" + fieldInputHarga_beli.getText() + "','" + supplierIndex + "',CURRENT_TIMESTAMP,'" + comboBoxGaransi.getSelectedItem() + "')";
             execSQLQuery(query, "ditambahkan");
@@ -2530,6 +2686,20 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
             System.out.println(query);
             refreshTable();
         }
+        }
+        else if(n==JOptionPane.NO_OPTION)
+        {
+            clearField();
+        }
+        else{
+            JOptionPane.getRootFrame().dispose();
+        }
+                          
+            }
+        
+            tombolTambah.setText("Tambah");
+            disable();
+            clearField();
         }
 
     }//GEN-LAST:event_tombolTambahActionPerformed
@@ -2557,12 +2727,26 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
     }//GEN-LAST:event_comboBoxKolomReturActionPerformed
 
     private void tombolTambahSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolTambahSupplierActionPerformed
-         if(fieldInputNamaSupplier.getText().equals("Nama")||fieldInputEmailSupplier.getText().equals("Email")||fieldInputAlamatSupplier.getText().equals("Alamat")||fieldInputTelponSupplier.getText().equals("Telpon")||textAreaCatatan.getText().equals("Catatan..."))
+        if(tombolTambahSupplier.getText().equals("Tambah")){ 
+            tombolTambahSupplier.setText("Simpan");
+            tombolClearSupplier.setVisible(true);
+            enableSupplier();
+            clearSupplier();
+        }
+        
+        else if(tombolTambahSupplier.getText().equals("Simpan")){
+            
+             if(fieldInputNamaSupplier.getText().equals("Nama")||fieldInputEmailSupplier.getText().equals("Email")||fieldInputAlamatSupplier.getText().equals("Alamat")||fieldInputTelponSupplier.getText().equals("Telpon")||textAreaCatatan.getText().equals("Catatan..."))
         {
             JOptionPane.showMessageDialog(rootPane, "Cek Kembali Data Yang Baru Diisi", "Ada Yang Salah",WIDTH);
+            clearField();
         }
-         else{
-        if (fieldInputEmailSupplier.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$") || fieldInputEmailSupplier.getText().equals("")) {
+            else{
+                Object[] pilihan = {"Tambah","Batal"};
+       int n = JOptionPane.showOptionDialog(rootPane, "Yakin ingin Tambah?","Tambah barang" , JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, pilihan, pilihan[0]);
+        if(n==JOptionPane.YES_OPTION)
+        {
+          if (fieldInputEmailSupplier.getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$") || fieldInputEmailSupplier.getText().equals("")) {
             if (fieldInputTelponSupplier.getText().matches("\\d+") || fieldInputTelponSupplier.getText().equals("")) {
 
                 String query = "INSERT INTO `supplier`(`nama`, `alamat`, `telp`, `email`, `catatan`) VALUES ('" + fieldInputNamaSupplier.getText() + "','" + fieldInputAlamatSupplier.getText() + "','" + fieldInputTelponSupplier.getText() + "','" + fieldInputEmailSupplier.getText() + "','" + textAreaCatatan.getText() + "')";
@@ -2571,11 +2755,28 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
                 refreshTableSupplier();
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Telpon tidak valid");
+                clearSupplier();
             }
         } else {
             JOptionPane.showMessageDialog(rootPane, "Email tidak valid");
+            clearSupplier();
         }
-         }
+        }
+        else if(n==JOptionPane.NO_OPTION)
+        {
+            clearSupplier();
+        }
+        else{
+            JOptionPane.getRootFrame().dispose();
+        }
+                          
+            }
+        
+            tombolTambahSupplier.setText("Tambah");
+            disableSupplier();
+            clearSupplier();
+        }
+              
         displaySupplierComboBox();
     }//GEN-LAST:event_tombolTambahSupplierActionPerformed
 
@@ -2611,14 +2812,9 @@ System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(th
     }//GEN-LAST:event_searchFieldFocusGained
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-//        labelTest.setText(Level);
-//        if(labelTest.getText().equals("1")){
-//          System.out.println("bisa");  
-//        }
-//if (this.Level.equals("1")){
-//    displayTable();
-//}
-        System.out.println(this.Level);
+        tombolClearField.setVisible(false);
+        tombolClearRetur.setVisible(false);
+        tombolClearSupplier.setVisible(false);
     }//GEN-LAST:event_formWindowActivated
 // </editor-fold>
 

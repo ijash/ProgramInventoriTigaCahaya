@@ -13,11 +13,13 @@ import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import org.omg.CORBA.TIMEOUT;
 import static tigacahaya.TableRowContent.tableContent;
 import static tigacahaya.TableRowContentRetur.tableContentRetur;
 import static tigacahaya.TableRowContentSupplier.tableContentSupplier;
 import static tigacahaya.TableRowContentTransaksi.statusInvoiceAkhir;
 import static tigacahaya.TableRowContentTransaksi.tableContentTransaksi;
+import static tigacahaya.TableRowContentJenis.comboBoxJenisData;
 
 /**
  *
@@ -29,9 +31,14 @@ public class GUI extends javax.swing.JFrame {
      * Creates new form GUI & GUI execution
      */
     public GUI() {
+        
         initComponents();
+//        setLevelAdmin();
+//               labelLevel.setVisible(false);
+//        labelLevel.setText(Level);
         displayTable();
         displaySupplierComboBox();
+        displayJenisComboBox();
         sortTable();
         displayTableTransaksi();
         sortTableTransaksi();
@@ -39,11 +46,22 @@ public class GUI extends javax.swing.JFrame {
         sortTableSupplier();
         displayTableRetur();
         sortTableRetur();
-
+    }
+    
+    public String Level;
+    public String getLevel()
+    {
+        return Level;
     }
 
     // back-end methods......................................
+    public void setLevelAdmin(){
+        labelTest.setText(Level);
+    }
+    
     public void displayTable() {
+//        labelTest.setText(Level);
+//        if(labelTest.getText().equals("1")){
         ArrayList<TableRowContent> list = tableContent();
         DefaultTableModel model = (DefaultTableModel) tabel.getModel();
         Object[] row = new Object[10];
@@ -60,7 +78,28 @@ public class GUI extends javax.swing.JFrame {
             row[9] = list.get(i).getGaransi();
             model.addRow(row);
 
+//        }
         }
+//        else if(labelLevel.getText().equals("biasa")){
+//            ArrayList<TableRowContent> list = tableContent();
+//        DefaultTableModel model = (DefaultTableModel) tabel.getModel();
+//        Object[] row = new Object[10];
+//        for (int i = 0; i < list.size(); i++) {
+//            row[0] = list.get(i).getIdBarang();
+//            row[1] = list.get(i).getJenis();
+//            row[2] = list.get(i).getMerk();
+//            row[3] = list.get(i).getRagam();
+//            row[4] = list.get(i).getSeri();
+//            row[5] = list.get(i).getQty();
+//            row[6] = "Private";
+//            row[7] = list.get(i).getSupplier();
+//            row[8] = list.get(i).getTgl_masuk();
+//            row[9] = list.get(i).getGaransi();
+//            model.addRow(row);
+//
+//        }
+//        }
+        
     }
 
     public void sortTable() {
@@ -134,6 +173,7 @@ public class GUI extends javax.swing.JFrame {
         }
         displayTable();
         displaySupplierComboBox();
+        displayJenisComboBox();
 
     }
 
@@ -207,6 +247,15 @@ public class GUI extends javax.swing.JFrame {
             comboBoxSupplier.addItem(i);
         }
     }
+    
+    public void displayJenisComboBox() {
+        comboBoxJenis.removeAllItems();
+        ArrayList<String> list;
+        list = TableRowContentJenis.comboBoxJenisData();
+        for (String i : list) {
+            comboBoxJenis.addItem(i);
+        }
+    }
 
     // execute SQL query
     public void execSQLQuery(String query, String message) {
@@ -262,7 +311,6 @@ public class GUI extends javax.swing.JFrame {
         textAreaKiri = new javax.swing.JTextArea();
         panelBawah = new javax.swing.JPanel();
         fieldInputId_barang = new javax.swing.JTextField();
-        fieldInputJenis = new javax.swing.JTextField();
         fieldInputMerk = new javax.swing.JTextField();
         fieldInputRagam = new javax.swing.JTextField();
         fieldInputSeri = new javax.swing.JTextField();
@@ -286,12 +334,14 @@ public class GUI extends javax.swing.JFrame {
         tombolClearField = new javax.swing.JButton();
         tombolHapus = new javax.swing.JButton();
         comboBoxSupplier = new javax.swing.JComboBox<>();
+        comboBoxJenis = new javax.swing.JComboBox<>();
         panelAtas = new javax.swing.JPanel();
         searchField = new javax.swing.JTextField();
         comboBoxKolom = new javax.swing.JComboBox<>();
         labelFilter = new javax.swing.JLabel();
         labelKolom = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        labelTest = new javax.swing.JLabel();
         panelTengah = new javax.swing.JPanel();
         panelScrollTabel = new javax.swing.JScrollPane();
         tabel = new javax.swing.JTable();
@@ -371,6 +421,11 @@ public class GUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Stock Opaname [Toko Listrik Tiga Cahaya]");
         setLocationByPlatform(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         panelUtama.setForeground(new java.awt.Color(12, 30, 42));
         panelUtama.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -437,23 +492,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        fieldInputJenis.setForeground(new java.awt.Color(12, 30, 42));
-        fieldInputJenis.setText("Jenis");
-        fieldInputJenis.setToolTipText("Jenis atau tipe barang");
-        fieldInputJenis.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldInputJenisFocusLost(evt);
-            }
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldInputJenisFocusGained(evt);
-            }
-        });
-        fieldInputJenis.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldInputJenisKeyTyped(evt);
-            }
-        });
-
         fieldInputMerk.setForeground(new java.awt.Color(12, 30, 42));
         fieldInputMerk.setText("Merk");
         fieldInputMerk.setToolTipText("Merk barang");
@@ -509,11 +547,11 @@ public class GUI extends javax.swing.JFrame {
         fieldInputQty.setText("Qty");
         fieldInputQty.setToolTipText("Banyaknya barang");
         fieldInputQty.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldInputQtyFocusLost(evt);
-            }
             public void focusGained(java.awt.event.FocusEvent evt) {
                 fieldInputQtyFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fieldInputQtyFocusLost(evt);
             }
         });
         fieldInputQty.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -650,6 +688,8 @@ public class GUI extends javax.swing.JFrame {
 
         comboBoxSupplier.setToolTipText("Supllier atau pemasok  barang");
 
+        comboBoxJenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout panelBawahLayout = new javax.swing.GroupLayout(panelBawah);
         panelBawah.setLayout(panelBawahLayout);
         panelBawahLayout.setHorizontalGroup(
@@ -657,10 +697,10 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahLayout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(fieldInputJenis)
                     .addComponent(jLabelBarangJenis)
                     .addComponent(jLabelBarangIdBarang)
-                    .addComponent(fieldInputId_barang, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldInputId_barang, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                    .addComponent(comboBoxJenis, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(21, 21, 21)
                 .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelBawahLayout.createSequentialGroup()
@@ -739,7 +779,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(fieldInputMerk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fieldInputRagam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fieldInputSeri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fieldInputJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(comboBoxJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelBawahLayout.createSequentialGroup()
                         .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(panelBawahLayout.createSequentialGroup()
@@ -751,7 +791,7 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tombolClearField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         panelAtas.setBackground(new java.awt.Color(25, 104, 178));
@@ -799,6 +839,8 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel10)
+                .addGap(65, 65, 65)
+                .addComponent(labelTest, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -812,17 +854,22 @@ public class GUI extends javax.swing.JFrame {
         panelAtasLayout.setVerticalGroup(
             panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAtasLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelAtasLayout.createSequentialGroup()
-                        .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelFilter)
-                            .addComponent(labelKolom))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboBoxKolom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel10))
+                        .addContainerGap()
+                        .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelAtasLayout.createSequentialGroup()
+                                .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(labelFilter)
+                                    .addComponent(labelKolom))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboBoxKolom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel10)))
+                    .addGroup(panelAtasLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(labelTest, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -834,7 +881,7 @@ public class GUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID Barang", "Jenis", "Merk", "Ragam", "Seri", "Qty", "Harga Beli", "Supplier", "Tanggal Masuk", "Garansi"
+                "ID Barang", "comboBoxJenis", "Merk", "Ragam", "Seri", "Qty", "Harga Beli", "Supplier", "Tanggal Masuk", "Garansi"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -1498,17 +1545,15 @@ public class GUI extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelAtasSupplierLayout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(panelAtasSupplierLayout.createSequentialGroup()
                                 .addGroup(panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(labelFilterSupplier)
                                     .addComponent(labelKolomSupplier))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(panelAtasSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(searchFieldSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(comboBoxKolomSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap())
+                                    .addComponent(comboBoxKolomSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel12))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
 
                 panelTengahSupplier.setBackground(new java.awt.Color(73, 138, 192));
@@ -1691,11 +1736,11 @@ public class GUI extends javax.swing.JFrame {
                     fieldInputIdBarangRetur.setText("ID");
                     fieldInputIdBarangRetur.setToolTipText("ID Barang, Masukan dari tabel barang yang tersedia");
                     fieldInputIdBarangRetur.addFocusListener(new java.awt.event.FocusAdapter() {
-                        public void focusLost(java.awt.event.FocusEvent evt) {
-                            fieldInputIdBarangReturFocusLost(evt);
-                        }
                         public void focusGained(java.awt.event.FocusEvent evt) {
                             fieldInputIdBarangReturFocusGained(evt);
+                        }
+                        public void focusLost(java.awt.event.FocusEvent evt) {
+                            fieldInputIdBarangReturFocusLost(evt);
                         }
                     });
 
@@ -1953,8 +1998,7 @@ public class GUI extends javax.swing.JFrame {
         i = tabel.convertRowIndexToModel(i);
         //get values of the cells
         fieldInputId_barang.setText(model.getValueAt(i, 0).toString());
-        fieldInputJenis.setText(model.getValueAt(i, 1).toString());
-        fieldInputJenis.setCaretPosition(0);
+        comboBoxJenis.setSelectedItem(model.getValueAt(i, 1).toString());
         fieldInputMerk.setText(model.getValueAt(i, 2).toString());
         fieldInputMerk.setCaretPosition(0);
         fieldInputRagam.setText(model.getValueAt(i, 3).toString());
@@ -1986,7 +2030,7 @@ public class GUI extends javax.swing.JFrame {
 
                 int supplierIndex = Integer.parseInt(MySQLconn.executeSingleQueryResult("SELECT `id_supplier` FROM `supplier` WHERE nama = '" + comboBoxSupplier.getSelectedItem() + "'", "id_supplier"));
 
-                String query = "UPDATE `barang` SET `jenis`= '" + fieldInputJenis.getText() + "',`merk`='" + fieldInputMerk.getText() + "',`ragam`='" + fieldInputRagam.getText() + "',`seri`='" + fieldInputSeri.getText() + "',`qty`='" + fieldInputQty.getText() + "',`harga_beli`='" + fieldInputHarga_beli.getText() + "',`supplier`='" + supplierIndex + "',`garansi`='" + (String) comboBoxGaransi.getSelectedItem() + "' WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
+                String query = "UPDATE `barang` SET `jenis`= '" + comboBoxJenis.getSelectedItem() + "',`merk`='" + fieldInputMerk.getText() + "',`ragam`='" + fieldInputRagam.getText() + "',`seri`='" + fieldInputSeri.getText() + "',`qty`='" + fieldInputQty.getText() + "',`harga_beli`='" + fieldInputHarga_beli.getText() + "',`supplier`='" + supplierIndex + "',`garansi`='" + (String) comboBoxGaransi.getSelectedItem() + "' WHERE `id_barang`='" + fieldInputId_barang.getText() + "';";
 
                 execSQLQuery(query, "diubah");
                 MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\") );");
@@ -2019,11 +2063,6 @@ public class GUI extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_fieldInputId_barangKeyTyped
-    private void fieldInputJenisKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputJenisKeyTyped
-        if (fieldInputJenis.getText().length() > 16) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_fieldInputJenisKeyTyped
     private void fieldInputMerkKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldInputMerkKeyTyped
         if (fieldInputMerk.getText().length() > 20) {
             evt.consume();
@@ -2116,18 +2155,6 @@ public class GUI extends javax.swing.JFrame {
             fieldInputId_barang.setText("ID");
         }
     }//GEN-LAST:event_fieldInputId_barangFocusLost
-    private void fieldInputJenisFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputJenisFocusGained
-
-        if (fieldInputJenis.getText().equals("Jenis")) {
-            fieldInputJenis.setText("");
-        }
-    }//GEN-LAST:event_fieldInputJenisFocusGained
-    private void fieldInputJenisFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputJenisFocusLost
-
-        if (fieldInputJenis.getText().equals("")) {
-            fieldInputJenis.setText("Jenis");
-        }
-    }//GEN-LAST:event_fieldInputJenisFocusLost
     private void fieldInputMerkFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldInputMerkFocusGained
 
         if (fieldInputMerk.getText().equals("Merk")) {
@@ -2437,7 +2464,6 @@ public class GUI extends javax.swing.JFrame {
         fieldInputHarga_beli.setText("Hrg Beli");
         comboBoxSupplier.setSelectedIndex(0 + 1);
         fieldInputTanggal_masuk.setText("Hari Ini");
-        fieldInputJenis.setText("Jenis");
         fieldInputMerk.setText("Merk");
         fieldInputRagam.setText("Ragam");
         fieldInputSeri.setText("Seri");
@@ -2485,14 +2511,14 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_fieldInputEmailSupplierKeyTyped
     private void tombolTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolTambahActionPerformed
-        if(fieldInputJenis.getText().equals("Jenis")||fieldInputMerk.getText().equals("Merk")||fieldInputRagam.getText().equals("Ragam")||fieldInputSeri.getText().equals("Seri"))
+        if(fieldInputMerk.getText().equals("Merk")||fieldInputRagam.getText().equals("Ragam")||fieldInputSeri.getText().equals("Seri"))
         {
             JOptionPane.showMessageDialog(rootPane, "Cek Kembali Data Yang Baru Diisi", "Ada Yang Salah",WIDTH);
         }
         else{
         if ((regexBilangan(fieldInputQty.getText(), "Qty")) && (regexBilangan(fieldInputHarga_beli.getText(), "Harga"))) {
             int supplierIndex = Integer.parseInt(MySQLconn.executeSingleQueryResult("SELECT `id_supplier` FROM `supplier` WHERE nama = '" + comboBoxSupplier.getSelectedItem() + "'", "id_supplier"));
-            String query = "INSERT INTO `barang`(`code`, `no`, `id_barang`, `jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `tgl_masuk`, `garansi`) VALUES('P',NULL,NULL,'" + fieldInputJenis.getText() + "','" + fieldInputMerk.getText() + "','" + fieldInputRagam.getText() + "','" + fieldInputSeri.getText() + "','" + fieldInputQty.getText() + "','" + fieldInputHarga_beli.getText() + "','" + supplierIndex + "',CURRENT_TIMESTAMP,'" + comboBoxGaransi.getSelectedItem() + "')";
+            String query = "INSERT INTO `barang`(`code`, `no`, `id_barang`, `jenis`, `merk`, `ragam`, `seri`, `qty`, `harga_beli`, `supplier`, `tgl_masuk`, `garansi`) VALUES('P',NULL,NULL,'" + comboBoxJenis.getSelectedItem() + "','" + fieldInputMerk.getText() + "','" + fieldInputRagam.getText() + "','" + fieldInputSeri.getText() + "','" + fieldInputQty.getText() + "','" + fieldInputHarga_beli.getText() + "','" + supplierIndex + "',CURRENT_TIMESTAMP,'" + comboBoxGaransi.getSelectedItem() + "')";
             execSQLQuery(query, "ditambahkan");
             MySQLconn.executeVoidQuery("UPDATE barang SET id_barang = concat( code,LPAD(barang.`no`, 7,\"000\") );");
             System.out.println(query);
@@ -2577,6 +2603,14 @@ public class GUI extends javax.swing.JFrame {
             searchField.setText("");
         }
     }//GEN-LAST:event_searchFieldFocusGained
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+//        labelTest.setText(Level);
+//        if(labelTest.getText().equals("1")){
+//          System.out.println("bisa");  
+//        }
+        
+    }//GEN-LAST:event_formWindowActivated
 // </editor-fold>
 
     public static void guiStart() {
@@ -2605,6 +2639,7 @@ public class GUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -2621,6 +2656,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton buttonTransaksiHapus;
     private javax.swing.JButton buttonUbahQtyTransaksi;
     private javax.swing.JComboBox<String> comboBoxGaransi;
+    private javax.swing.JComboBox<String> comboBoxJenis;
     private javax.swing.JComboBox<String> comboBoxKolom;
     private javax.swing.JComboBox<String> comboBoxKolomRetur;
     private javax.swing.JComboBox<String> comboBoxKolomSupplier;
@@ -2633,7 +2669,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField fieldInputIdBarangRetur;
     private javax.swing.JTextField fieldInputIdRetur;
     private javax.swing.JTextField fieldInputId_barang;
-    private javax.swing.JTextField fieldInputJenis;
     private javax.swing.JTextField fieldInputJumlahBarangRetur;
     private javax.swing.JTextField fieldInputMerk;
     private javax.swing.JTextField fieldInputNamaSupplier;
@@ -2679,6 +2714,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelKolom;
     private javax.swing.JLabel labelKolomRetur;
     private javax.swing.JLabel labelKolomSupplier;
+    private javax.swing.JLabel labelTest;
     private javax.swing.JLabel labelTransaksiAtas;
     private javax.swing.JPanel panelAtas;
     private javax.swing.JPanel panelAtasRetur;

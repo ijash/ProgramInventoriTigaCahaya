@@ -15,11 +15,12 @@ import java.io.OutputStream;
 import java.util.Properties;
 import java.io.InputStream;
 import java.sql.*;
-import javax.swing.JOptionPane;
 import static tigacahaya.ChangeServer.db;
 import static tigacahaya.ChangeServer.password;
 import static tigacahaya.ChangeServer.server;
 import static tigacahaya.ChangeServer.userName;
+import javax.swing.JOptionPane;
+import java.util.concurrent.TimeUnit;
 
 public class Login extends javax.swing.JFrame {
 
@@ -47,7 +48,9 @@ public class Login extends javax.swing.JFrame {
     }
 
     public void loginAction() {
-        try {
+        
+        try {  
+           
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             Connection conn = DriverManager.getConnection("jdbc:mysql://" + server + ":3306/" + db + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", userName, password);
             String Sql = "Select * from karyawan where id =? and password =?";
@@ -57,7 +60,7 @@ public class Login extends javax.swing.JFrame {
             pst.setString(2, Field_password.getText());
             rs = pst.executeQuery();
             if (rs.next()) {
-
+                if(Field_name.getText().equals("admin") && Field_password.getText().equals("admin")){
                 Properties prop = new Properties();
                 OutputStream output = null;
 
@@ -108,9 +111,75 @@ public class Login extends javax.swing.JFrame {
                     }
 
                 }
-
+                GUI gui = new GUI();
+                gui.setLocationRelativeTo(null);
+                gui.Level=rs.getString("level");
+                gui.setVisible(true);
+                
                 this.dispose();
-                GUI.guiStart();
+                }
+                
+                
+                else{
+                GUI gui = new GUI();
+                gui.Level=rs.getString("id");
+                Properties prop = new Properties();
+                OutputStream output = null;
+
+                if (CheckBoxRememberMe.isSelected() == true) {
+                    try {
+
+                        output = new FileOutputStream("configUser.properties");
+                        // set the properties value
+                        prop.setProperty("name", Field_name.getText());
+                        prop.setProperty("password", Field_password.getText());
+
+                        // save properties to project root folder
+                        prop.store(output, null);
+
+                    } catch (IOException io) {
+                        io.printStackTrace();
+                    } finally {
+                        if (output != null) {
+                            try {
+                                output.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                } else {
+
+                    try {
+
+                        output = new FileOutputStream("configUser.properties");
+                        // set the properties value
+                        prop.setProperty("name", Field_name.getText());
+                        prop.setProperty("password", "");
+
+                        // save properties to project root folder
+                        prop.store(output, null);
+
+                    } catch (IOException io) {
+                        io.printStackTrace();
+                    } finally {
+                        if (output != null) {
+                            try {
+                                output.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+                }
+                GUI menu = new GUI();
+                menu.setLocationRelativeTo(null);
+                menu.setVisible(true);
+                menu.Level=rs.getString("level");
+                this.dispose();
+                }
+
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Username Atau Password Salah");
             }
@@ -182,7 +251,7 @@ public class Login extends javax.swing.JFrame {
 
         buttonLogin.setBackground(new java.awt.Color(117, 179, 226));
         buttonLogin.setForeground(new java.awt.Color(12, 30, 42));
-        buttonLogin.setText("Log in");
+        buttonLogin.setText("Login");
         buttonLogin.setBorder(null);
         buttonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -253,8 +322,7 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jSeparatorName, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelPW)
                             .addComponent(Field_password, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparatorPW, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jSeparatorPW, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelUtamaLayout.setVerticalGroup(
@@ -303,7 +371,7 @@ public class Login extends javax.swing.JFrame {
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
         loginAction();
-
+        
     }//GEN-LAST:event_buttonLoginActionPerformed
 
     private void labelAboutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelAboutMouseEntered

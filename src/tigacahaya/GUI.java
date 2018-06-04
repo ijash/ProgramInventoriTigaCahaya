@@ -2630,12 +2630,14 @@ public class GUI extends javax.swing.JFrame {
         clearField();
         tombolTambah.setText("Tambah");
         tombolUbah.setText("Ubah");
+        tombolClearField.setVisible(false);
     }//GEN-LAST:event_tombolClearFieldActionPerformed
     private void tombolClearSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolClearSupplierActionPerformed
         disableSupplier();
         clearSupplier();
         tombolTambahSupplier.setText("Tambah");
         tombolUbahSupplier.setText("Ubah");
+        tombolClearSupplier.setVisible(false);
     }//GEN-LAST:event_tombolClearSupplierActionPerformed
     private void tombolClearReturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolClearReturActionPerformed
         fieldInputIdRetur.setText("ID Retur");

@@ -2443,8 +2443,10 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_fieldInputEmailSupplierFocusLost
     private void tombolAtcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolAtcActionPerformed
-        int jumlah = Integer.parseInt( JOptionPane.showInputDialog(rootPane, "Input jumlah yang ingin dibeli", "Masukan jumlah", JOptionPane.QUESTION_MESSAGE));
+        try{
+        int jumlah = Integer.parseInt(JOptionPane.showInputDialog(rootPane, "Input jumlah yang ingin dibeli", "Masukan jumlah", JOptionPane.QUESTION_MESSAGE));
         
+
         if(jumlah<=0){
          JOptionPane.showMessageDialog(rootPane, "Input salah");
         }
@@ -2474,7 +2476,10 @@ public class GUI extends javax.swing.JFrame {
 
         refreshTableTransaksi();
         }
-
+        }
+        catch (NumberFormatException e){
+        JOptionPane.showMessageDialog(rootPane, "Input salah");
+        }
     }//GEN-LAST:event_tombolAtcActionPerformed
     private void tabelTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelTransaksiMouseClicked
         int i = tabelTransaksi.getSelectedRow();

@@ -2145,6 +2145,7 @@ public class GUI extends javax.swing.JFrame {
         else if(n==JOptionPane.NO_OPTION)
         {
             clearField();
+            tombolClearField.setVisible(false);
         }
         else{
             JOptionPane.getRootFrame().dispose();
@@ -2156,6 +2157,7 @@ public class GUI extends javax.swing.JFrame {
             tombolUbah.setText("Ubah");
             disable();
             clearField();
+            tombolClearField.setVisible(false);
         }
     }//GEN-LAST:event_tombolUbahActionPerformed
     private void tombolHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusActionPerformed
@@ -2245,6 +2247,7 @@ public class GUI extends javax.swing.JFrame {
         if(fieldInputIDSupplier.getText().equals("ID")){
             JOptionPane.showMessageDialog(rootPane, "Pilih barang yang ingin diubah", "Ada Yang Salah",WIDTH);
             clearSupplier();
+            
         }
         else{
             tombolUbahSupplier.setText("Simpan");
@@ -2272,30 +2275,36 @@ public class GUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(rootPane, "Telpon tidak valid");
                     disableSupplier();
                     clearSupplier();
+                    tombolClearSupplier.setVisible(false);
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Email tidak valid");
                 disableSupplier();
                 clearSupplier();
+                tombolClearSupplier.setVisible(false);
             }
         } else {
             JOptionPane.showMessageDialog(rootPane, "Supplier ID salah");
             disableSupplier();
             clearSupplier();
+            tombolClearSupplier.setVisible(false);
         }
                  
         }
         else if(n==JOptionPane.NO_OPTION)
         {
             clearField();
+            tombolClearSupplier.setVisible(false);
         }
         else{
             JOptionPane.getRootFrame().dispose();
+            tombolClearSupplier.setVisible(false);
         }
 
             tombolUbahSupplier.setText("Ubah");
             disableSupplier();
-            clearSupplier();      
+            clearSupplier();     
+            tombolClearSupplier.setVisible(false);
         
         displaySupplierComboBox();
         }
@@ -2672,6 +2681,7 @@ public class GUI extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(rootPane, "Cek Kembali Data Yang Baru Diisi", "Ada Yang Salah",WIDTH);
             clearField();
+            tombolClearField.setVisible(false);
         }
             else{
                 Object[] pilihan = {"Tambah","Batal"};
@@ -2690,6 +2700,7 @@ public class GUI extends javax.swing.JFrame {
         else if(n==JOptionPane.NO_OPTION)
         {
             clearField();
+            tombolClearField.setVisible(false);
         }
         else{
             JOptionPane.getRootFrame().dispose();
@@ -2700,6 +2711,7 @@ public class GUI extends javax.swing.JFrame {
             tombolTambah.setText("Tambah");
             disable();
             clearField();
+            tombolClearField.setVisible(false);
         }
 
     }//GEN-LAST:event_tombolTambahActionPerformed
@@ -2740,6 +2752,7 @@ public class GUI extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(rootPane, "Cek Kembali Data Yang Baru Diisi", "Ada Yang Salah",WIDTH);
             clearField();
+            tombolClearSupplier.setVisible(false);
         }
             else{
                 Object[] pilihan = {"Tambah","Batal"};
@@ -2756,18 +2769,22 @@ public class GUI extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Telpon tidak valid");
                 clearSupplier();
+                tombolClearSupplier.setVisible(false);
             }
         } else {
             JOptionPane.showMessageDialog(rootPane, "Email tidak valid");
             clearSupplier();
+            tombolClearSupplier.setVisible(false);
         }
         }
         else if(n==JOptionPane.NO_OPTION)
         {
             clearSupplier();
+            tombolClearSupplier.setVisible(false);
         }
         else{
             JOptionPane.getRootFrame().dispose();
+            tombolClearSupplier.setVisible(false);
         }
                           
             }
@@ -2775,6 +2792,7 @@ public class GUI extends javax.swing.JFrame {
             tombolTambahSupplier.setText("Tambah");
             disableSupplier();
             clearSupplier();
+            tombolClearSupplier.setVisible(false);
         }
               
         displaySupplierComboBox();

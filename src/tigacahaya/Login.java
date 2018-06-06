@@ -114,6 +114,7 @@ public class Login extends javax.swing.JFrame {
                 // kirim variable Level ke class GUI
                 GUI.setLevelOperator(rs.getString("level"));
                 GUI.setNamaOperator(rs.getString("nama"));
+                GUI.setIdOperator(rs.getString("id"));
                 GUI gui = new GUI();
                 gui.setLocationRelativeTo(null); 
                 System.out.println("pas abis login Level status :"+rs.getString("level"));
@@ -173,6 +174,7 @@ public class Login extends javax.swing.JFrame {
                 }
                 GUI.setLevelOperator(rs.getString("level"));
                 GUI.setNamaOperator(rs.getString("nama"));
+                GUI.setIdOperator(rs.getString("id"));
                 GUI gui = new GUI();
                 gui.setLocationRelativeTo(null); 
                 System.out.println("pas abis login Level status :"+rs.getString("level"));
@@ -235,6 +237,11 @@ public class Login extends javax.swing.JFrame {
         Field_name.setBorder(null);
         Field_name.setCaretColor(new java.awt.Color(255, 255, 255));
         Field_name.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        Field_name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Field_nameKeyPressed(evt);
+            }
+        });
 
         Field_password.setBackground(new java.awt.Color(18, 104, 178));
         Field_password.setForeground(new java.awt.Color(255, 255, 255));
@@ -491,6 +498,12 @@ public class Login extends javax.swing.JFrame {
             loginAction();
         }
     }//GEN-LAST:event_Field_passwordKeyPressed
+
+    private void Field_nameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Field_nameKeyPressed
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Field_password.requestFocus();
+        }
+    }//GEN-LAST:event_Field_nameKeyPressed
 
     /**
      * @param args the command line arguments

@@ -30,6 +30,15 @@ public class GUI extends javax.swing.JFrame {
      */
     public static String levelOperator;
     public static String namaOperator;
+    public static String idOperator;
+
+    public static String getIdOperator() {
+        return idOperator;
+    }
+
+    public static void setIdOperator(String idOperator) {
+        GUI.idOperator = idOperator;
+    }
 
     public static String getNamaOperator() {
         return namaOperator;
@@ -2538,7 +2547,8 @@ public class GUI extends javax.swing.JFrame {
                     MySQLconn.executeVoidQuery("UPDATE `barang` SET `barang`.`qty` = `barang`.`qty`-'" + qtyCol + "' WHERE  `barang`.`id_barang`= '" + idBarangCol + "'");
                 }
 
-                String query = "UPDATE `transaksi_invoice` SET `lunas` = b'1' WHERE `transaksi_invoice`.`id_inv` = '" + statusInvoiceAkhir() + "';";
+                String query = "UPDATE `transaksi_invoice` SET `lunas` = b'1', id_karyawan = '"+idOperator+"'  WHERE `transaksi_invoice`.`id_inv` = '" + statusInvoiceAkhir() + "';";
+                System.out.println(query);
                 MySQLconn.executeVoidQuery(query);
                 TableRowContentTransaksi.tambahInvoice();
 

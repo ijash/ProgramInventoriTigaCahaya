@@ -2491,28 +2491,46 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tabelTransaksiMouseClicked
     private void tombolCheckoutTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCheckoutTransaksiActionPerformed
         //disini nantinya dikasih failsafe if, untuk cek barang supaya ga ngurangin sampe minus.
-
         TableModel model = tabelTransaksi.getModel();
         if (model.getRowCount() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Cart tidak boleh kosong");
         } else {
+            boolean isMinus = false;
             String qtyCol;
             String idBarangCol;
             model = (DefaultTableModel) tabelTransaksi.getModel();
             Object[] row = new Object[3];
+            // failsafe check
 
             for (int i = 0; i < model.getRowCount(); i++) {
-                qtyCol = model.getValueAt(i, 2).toString();
-                idBarangCol = model.getValueAt(i, 0).toString();
-                MySQLconn.executeVoidQuery("UPDATE `barang` SET `barang`.`qty` = `barang`.`qty`-'" + qtyCol + "' WHERE  `barang`.`id_barang`= '" + idBarangCol + "'");
-            }
-            String query = "UPDATE `transaksi_invoice` SET `lunas` = b'1' WHERE `transaksi_invoice`.`id_inv` = '" + statusInvoiceAkhir() + "';";
-            MySQLconn.executeVoidQuery(query);
-            TableRowContentTransaksi.tambahInvoice();
+                String queryCek = "SELECT `qty` FROM `barang` WHERE `id_barang` = '" + model.getValueAt(i, 0).toString() + "';";
+                int hasil = Integer.parseInt(MySQLconn.executeSingleQueryResult(queryCek, "qty"));
+                hasil = hasil - Integer.parseInt(model.getValueAt(i, 2).toString());
 
-            refreshTableTransaksi();
-            refreshTable();
-            labelTransaksiAtas.setText("Invoice :" + TableRowContentTransaksi.statusInvoiceAkhir());
+                if (hasil < 0) {
+                    JOptionPane.showMessageDialog(rootPane, "Barang " + model.getValueAt(i, 1) + "Habis!");
+                    isMinus = true;
+                }
+            }
+
+            if (isMinus) {
+                JOptionPane.showMessageDialog(rootPane, "Pastikan semua barang tersedia");
+            } else {
+                // execute checkout function
+                for (int i = 0; i < model.getRowCount(); i++) {
+                    qtyCol = model.getValueAt(i, 2).toString();
+                    idBarangCol = model.getValueAt(i, 0).toString();
+                    MySQLconn.executeVoidQuery("UPDATE `barang` SET `barang`.`qty` = `barang`.`qty`-'" + qtyCol + "' WHERE  `barang`.`id_barang`= '" + idBarangCol + "'");
+                }
+
+                String query = "UPDATE `transaksi_invoice` SET `lunas` = b'1' WHERE `transaksi_invoice`.`id_inv` = '" + statusInvoiceAkhir() + "';";
+                MySQLconn.executeVoidQuery(query);
+                TableRowContentTransaksi.tambahInvoice();
+
+                refreshTableTransaksi();
+                refreshTable();
+                labelTransaksiAtas.setText("Invoice :" + TableRowContentTransaksi.statusInvoiceAkhir());
+            }
         }
     }//GEN-LAST:event_tombolCheckoutTransaksiActionPerformed
     private void tabelReturMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelReturMouseClicked

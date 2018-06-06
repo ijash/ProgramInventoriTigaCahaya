@@ -23,7 +23,6 @@ import javax.swing.JOptionPane;
 import java.util.concurrent.TimeUnit;
 
 public class Login extends javax.swing.JFrame {
-
     Properties prop = new Properties();
     OutputStream output = null;
     InputStream input = null;
@@ -113,7 +112,8 @@ public class Login extends javax.swing.JFrame {
                 }
                 
                 // kirim variable Level ke class GUI
-                GUI.setLevel(rs.getString("level"));
+                GUI.setLevelOperator(rs.getString("level"));
+                GUI.setNamaOperator(rs.getString("nama"));
                 GUI gui = new GUI();
                 gui.setLocationRelativeTo(null); 
                 System.out.println("pas abis login Level status :"+rs.getString("level"));
@@ -171,12 +171,13 @@ public class Login extends javax.swing.JFrame {
                     }
 
                 }
-                GUI.setLevel(rs.getString("level"));
+                GUI.setLevelOperator(rs.getString("level"));
+                GUI.setNamaOperator(rs.getString("nama"));
                 GUI gui = new GUI();
                 gui.setLocationRelativeTo(null); 
                 System.out.println("pas abis login Level status :"+rs.getString("level"));
                 gui.setVisible(true);
-                  
+                
                 this.dispose();
                 }
 
@@ -213,6 +214,7 @@ public class Login extends javax.swing.JFrame {
         splashLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login - Tiga Cahaya");
         setBackground(new java.awt.Color(18, 104, 178));
         setLocationByPlatform(true);
         setResizable(false);

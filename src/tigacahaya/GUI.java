@@ -28,14 +28,24 @@ public class GUI extends javax.swing.JFrame {
     /**
      * Creates new form GUI & GUI execution
      */
-    public static String Level;
-    
-    public static void setLevel(String level){
-        Level = level;
+    public static String levelOperator;
+    public static String namaOperator;
+
+    public static String getNamaOperator() {
+        return namaOperator;
     }
-    public static String getLevel()
+
+    public static void setNamaOperator(String namaOperator) {
+        GUI.namaOperator = namaOperator;
+    }
+    
+    
+    public static void setLevelOperator(String level){
+        levelOperator = level;
+    }
+    public static String getLevelOperator()
     {
-        return Level;
+        return levelOperator;
     }
     public GUI() {
         
@@ -60,13 +70,14 @@ public class GUI extends javax.swing.JFrame {
 
     // back-end methods......................................
     public void setLevelAdmin(){
-        labelTest.setText(Level);
+        labelTest.setText(levelOperator);
     }
     
     public void displayTable() {
+       
 //        labelTest.setText(Level);
-        System.out.println("admin status adalah: "+ this.Level + " berarti admin = "+(this.Level.equals("1")));
-        if(this.Level.equals("1")){
+        System.out.println("admin status adalah: "+ this.levelOperator + " berarti admin = "+(this.levelOperator.equals("1")));
+        if(this.levelOperator.equals("1")){
         ArrayList<TableRowContent> list = tableContent();
         DefaultTableModel model = (DefaultTableModel) tabel.getModel();
         Object[] row = new Object[10];
@@ -295,7 +306,7 @@ public class GUI extends javax.swing.JFrame {
     }
     
     public void admin(){
-           if(this.Level.equals("2")){
+           if(this.levelOperator.equals("2")){
                tombolHapus.setEnabled(false);
                tombolUbah.setEnabled(false);
                tombolTambah.setEnabled(false);
@@ -492,7 +503,7 @@ public class GUI extends javax.swing.JFrame {
         tabelRetur = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Stock Opaname [Toko Listrik Tiga Cahaya]");
+        setTitle("Inventori Tiga Cahaya ["+GUI.namaOperator+"]");
         setLocationByPlatform(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -988,7 +999,6 @@ public class GUI extends javax.swing.JFrame {
 
             });
             tabel.setSelectionBackground(new java.awt.Color(25, 104, 178));
-            tabel.setSelectionForeground(new java.awt.Color(255, 255, 255));
             tabel.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
             tabel.setShowHorizontalLines(false);
             tabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1026,7 +1036,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(panelAtas, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(tabStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(panelKiri, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                        .addComponent(panelKiri, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
                         .addComponent(panelTengah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(panelBawah, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1199,7 +1209,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(panelAtasTransaksiLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jLabel11)
-                    .addContainerGap(9, Short.MAX_VALUE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
 
             panelTengahTransaksi.setBackground(new java.awt.Color(73, 138, 192));
@@ -1238,7 +1248,6 @@ public class GUI extends javax.swing.JFrame {
                     };
                 });
                 tabelTransaksi.setSelectionBackground(new java.awt.Color(25, 104, 178));
-                tabelTransaksi.setSelectionForeground(new java.awt.Color(255, 255, 255));
                 tabelTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
                         tabelTransaksiMouseClicked(evt);
@@ -1274,7 +1283,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(panelAtasTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(tabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelKiriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                            .addComponent(panelKiriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                             .addComponent(panelTengahTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelBawahTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1676,7 +1685,6 @@ public class GUI extends javax.swing.JFrame {
                         };
                     });
                     tabelSupplier.setSelectionBackground(new java.awt.Color(25, 104, 178));
-                    tabelSupplier.setSelectionForeground(new java.awt.Color(255, 255, 255));
                     tabelSupplier.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                             tabelSupplierMouseClicked(evt);
@@ -1712,7 +1720,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(panelAtasSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(panelKiriSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                                .addComponent(panelKiriSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
                                 .addComponent(panelTengahSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(panelBawahSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2006,7 +2014,6 @@ public class GUI extends javax.swing.JFrame {
                             };
                         });
                         tabelRetur.setSelectionBackground(new java.awt.Color(25, 104, 178));
-                        tabelRetur.setSelectionForeground(new java.awt.Color(255, 255, 255));
                         tabelRetur.addMouseListener(new java.awt.event.MouseAdapter() {
                             public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 tabelReturMouseClicked(evt);
@@ -2048,7 +2055,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(panelAtasRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(tabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(panelKiriRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                                    .addComponent(panelKiriRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
                                     .addComponent(panelTengahRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(panelBawahRetur, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2516,7 +2523,7 @@ public class GUI extends javax.swing.JFrame {
                 hasil = hasil - Integer.parseInt(model.getValueAt(i, 2).toString());
 
                 if (hasil < 0) {
-                    JOptionPane.showMessageDialog(rootPane, "Barang " + model.getValueAt(i, 1) + "Habis!");
+                    JOptionPane.showMessageDialog(rootPane, "Barang " + model.getValueAt(i, 1) + " Habis!");
                     isMinus = true;
                 }
             }
@@ -2540,6 +2547,8 @@ public class GUI extends javax.swing.JFrame {
                 labelTransaksiAtas.setText("Invoice :" + TableRowContentTransaksi.statusInvoiceAkhir());
             }
         }
+        fieldIdBarangTransaksi.setText("ID Barang");
+        fieldInputQtyTransaksi.setText("Qty");
     }//GEN-LAST:event_tombolCheckoutTransaksiActionPerformed
     private void tabelReturMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelReturMouseClicked
 

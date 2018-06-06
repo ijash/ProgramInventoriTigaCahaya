@@ -13,13 +13,11 @@ import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import java.awt.event.*;
 import static tigacahaya.TableRowContent.tableContent;
 import static tigacahaya.TableRowContentRetur.tableContentRetur;
 import static tigacahaya.TableRowContentSupplier.tableContentSupplier;
 import static tigacahaya.TableRowContentTransaksi.statusInvoiceAkhir;
 import static tigacahaya.TableRowContentTransaksi.tableContentTransaksi;
-import static tigacahaya.TableRowContentJenis.comboBoxJenisData;
 
 /**
  *
@@ -103,7 +101,7 @@ public class GUI extends javax.swing.JFrame {
             row[8] = list.get(i).getTgl_masuk();
             row[9] = list.get(i).getGaransi();
             model.addRow(row);
-
+             
         }
         }
         
@@ -2455,7 +2453,7 @@ public class GUI extends javax.swing.JFrame {
         String query = "null";
         if (("empty".equals(statusInvoiceAkhir())) || ("paid".equals(statusInvoiceAkhir()))) {
             TableRowContentTransaksi.tambahInvoice();
-            query = "INSERT INTO `transaksi_cart` (`id_inv`, `id_barang`, `qty`, `harga`, `keterangan`) VALUES ('" + statusInvoiceAkhir() + "', '" + fieldInputId_barang.getText() + "', '"+jumlah+"', '" + fieldInputHarga_beli.getText() + "', '');";
+            query = "INSERT INTO `transaksi_cart` (`id_inv`, `id_barang`, `qty`, `harga`, `keterangan`) VALUES ('" + statusInvoiceAkhir() + "', '" + fieldInputId_barang.getText() + "', '"+jumlah+"',(SELECT `harga_beli` FROM `barang` WHERE `id_barang` = '"+fieldInputId_barang.getText()+"'), '');";
         } else {
             boolean Duplicate = false;
             for (int i = 0; i < list.size(); i++) {
@@ -2465,7 +2463,7 @@ public class GUI extends javax.swing.JFrame {
                 }
             }
             if (!Duplicate) {
-                query = "INSERT INTO `transaksi_cart` (`id_inv`, `id_barang`, `qty`, `harga`, `keterangan`) VALUES ('" + statusInvoiceAkhir() + "', '" + fieldInputId_barang.getText() + "', '"+jumlah+"', '" + fieldInputHarga_beli.getText() + "', '');";
+                query = "INSERT INTO `transaksi_cart` (`id_inv`, `id_barang`, `qty`, `harga`, `keterangan`) VALUES ('" + statusInvoiceAkhir() + "', '" + fieldInputId_barang.getText() + "', '"+jumlah+"',(SELECT `harga_beli` FROM `barang` WHERE `id_barang` = '"+fieldInputId_barang.getText()+"'), '');";
                 Duplicate = false;
             }
 
@@ -2480,6 +2478,7 @@ public class GUI extends javax.swing.JFrame {
         catch (NumberFormatException e){
         JOptionPane.showMessageDialog(rootPane, "Input salah");
         }
+
     }//GEN-LAST:event_tombolAtcActionPerformed
     private void tabelTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelTransaksiMouseClicked
         int i = tabelTransaksi.getSelectedRow();

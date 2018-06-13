@@ -979,7 +979,7 @@ public class GUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID Barang", "comboBoxJenis", "Merk", "Ragam", "Seri", "Qty", "Harga Beli", "Supplier", "Tanggal Masuk", "Garansi"
+                "ID Barang", "Jenis", "Merk", "Ragam", "Seri", "Qty", "Harga Beli", "Supplier", "Tanggal Masuk", "Garansi"
             }
         ) {
             boolean[] canEdit = new boolean [] {

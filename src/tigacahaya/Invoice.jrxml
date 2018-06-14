@@ -17,7 +17,8 @@ ON transaksi_invoice.id_karyawan = karyawan.id
 INNER JOIN  transaksi_cart
 ON transaksi_cart.id_inv = transaksi_invoice.id_inv
 INNER JOIN barang
-ON barang.id_barang = transaksi_cart.id_barang]]>
+ON barang.id_barang = transaksi_cart.id_barang
+order by transaksi_cart.id_inv]]>
 	</queryString>
 	<field name="id_inv" class="java.lang.String"/>
 	<field name="nama" class="java.lang.String"/>

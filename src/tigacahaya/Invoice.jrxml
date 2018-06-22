@@ -3,13 +3,20 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="tanggalAwal" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tanggalAkhir" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
 transaksi_cart.id_inv,
 karyawan.nama,
 transaksi_cart.id_barang,
 CONCAT(barang.jenis,' ', barang.merk,' ', barang.ragam,' ', barang.seri)  AS nama_barang,
-transaksi_cart.qty
+transaksi_cart.qty,
+transaksi_invoice.tanggal
 FROM
 transaksi_invoice 
 INNER JOIN karyawan
@@ -18,6 +25,8 @@ INNER JOIN  transaksi_cart
 ON transaksi_cart.id_inv = transaksi_invoice.id_inv
 INNER JOIN barang
 ON barang.id_barang = transaksi_cart.id_barang
+where
+transaksi_invoice.tanggal between $P{tanggalAwal} and $P{tanggalAkhir}
 order by transaksi_cart.id_inv]]>
 	</queryString>
 	<field name="id_inv" class="java.lang.String"/>
@@ -25,6 +34,7 @@ order by transaksi_cart.id_inv]]>
 	<field name="id_barang" class="java.lang.String"/>
 	<field name="nama_barang" class="java.lang.String"/>
 	<field name="qty" class="java.lang.Integer"/>
+	<field name="tanggal" class="java.sql.Timestamp"/>
 	<group name="Invoice">
 		<groupExpression><![CDATA[$F{id_inv}]]></groupExpression>
 		<groupFooter>
@@ -50,6 +60,30 @@ order by transaksi_cart.id_inv]]>
 				<reportElement x="331" y="14" width="332" height="21"/>
 				<imageExpression><![CDATA["/home/jose/Documents/Materi Belajar/3Cahaya/ProgramInventoriTigaCahaya/src/tigacahaya/res/tiga_cahaya_logo.png"]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement x="70" y="57" width="64" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{tanggalAwal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="145" y="57" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{tanggalAkhir}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="11" y="57" width="59" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Periode :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="134" y="57" width="11" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
@@ -58,68 +92,80 @@ order by transaksi_cart.id_inv]]>
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<staticText>
-				<reportElement x="31" y="41" width="100" height="20"/>
+				<reportElement x="10" y="41" width="100" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Invoice]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="131" y="41" width="100" height="20"/>
+				<reportElement x="110" y="41" width="88" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Penanggung Jawab]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="231" y="41" width="100" height="20"/>
+				<reportElement x="294" y="41" width="100" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[ID Barang]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="443" y="41" width="42" height="20"/>
+				<reportElement x="506" y="41" width="42" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Jumlah]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="331" y="41" width="100" height="20"/>
+				<reportElement x="394" y="41" width="100" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nama Barang]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="198" y="41" width="96" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="26" splitType="Stretch">
+		<band height="33" splitType="Stretch">
 			<textField>
-				<reportElement isPrintRepeatedValues="false" x="31" y="-2" width="100" height="20"/>
+				<reportElement isPrintRepeatedValues="false" x="10" y="0" width="100" height="20"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{id_inv}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement isPrintRepeatedValues="false" x="131" y="-2" width="100" height="20" printWhenGroupChanges="Invoice"/>
+				<reportElement isPrintRepeatedValues="false" x="110" y="0" width="88" height="20" printWhenGroupChanges="Invoice"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="231" y="-2" width="100" height="20"/>
+				<reportElement x="294" y="0" width="100" height="20"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{id_barang}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="443" y="-2" width="42" height="20"/>
+				<reportElement x="394" y="2" width="100" height="25"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nama_barang}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="506" y="2" width="42" height="20"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="331" y="-2" width="100" height="25"/>
+				<reportElement x="198" y="0" width="96" height="20"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{nama_barang}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

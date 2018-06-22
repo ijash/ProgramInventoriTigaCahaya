@@ -541,7 +541,9 @@ public class GUI extends javax.swing.JFrame {
         buttonCetakBawah = new javax.swing.JButton();
         yearChooser = new com.toedter.calendar.JYearChooser();
         comboBoxBulan = new javax.swing.JComboBox<>();
-        buttonKeluar = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inventori Tiga Cahaya ["+GUI.namaOperator+"]");
@@ -825,7 +827,7 @@ public class GUI extends javax.swing.JFrame {
         panelBawahLayout.setHorizontalGroup(
             panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahLayout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addGroup(panelBawahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelBarangJenis)
                     .addComponent(jLabelBarangIdBarang)
@@ -1069,7 +1071,7 @@ public class GUI extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(panelTengah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addComponent(panelAtas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelBawah, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+                .addComponent(panelBawah, javax.swing.GroupLayout.DEFAULT_SIZE, 981, Short.MAX_VALUE)
             );
             tabStokLayout.setVerticalGroup(
                 tabStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1300,7 +1302,7 @@ public class GUI extends javax.swing.JFrame {
                 panelTengahTransaksi.setLayout(panelTengahTransaksiLayout);
                 panelTengahTransaksiLayout.setHorizontalGroup(
                     panelTengahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPaneTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
+                    .addComponent(scrollPaneTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 821, Short.MAX_VALUE)
                 );
                 panelTengahTransaksiLayout.setVerticalGroup(
                     panelTengahTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1316,7 +1318,7 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelTengahTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(panelAtasTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelBawahTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+                    .addComponent(panelBawahTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 981, Short.MAX_VALUE)
                 );
                 tabTransLayout.setVerticalGroup(
                     tabTransLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1544,7 +1546,7 @@ public class GUI extends javax.swing.JFrame {
                 panelBawahSupplierLayout.setHorizontalGroup(
                     panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelBawahSupplierLayout.createSequentialGroup()
-                        .addContainerGap(34, Short.MAX_VALUE)
+                        .addContainerGap(51, Short.MAX_VALUE)
                         .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBawahSupplierLayout.createSequentialGroup()
                                 .addGroup(panelBawahSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1753,7 +1755,7 @@ public class GUI extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(panelTengahSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addComponent(panelAtasSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panelBawahSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+                        .addComponent(panelBawahSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, 981, Short.MAX_VALUE)
                     );
                     tabSupplierLayout.setVerticalGroup(
                         tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2072,7 +2074,7 @@ public class GUI extends javax.swing.JFrame {
                         panelTengahRetur.setLayout(panelTengahReturLayout);
                         panelTengahReturLayout.setHorizontalGroup(
                             panelTengahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(scrollPaneRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
+                            .addComponent(scrollPaneRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 821, Short.MAX_VALUE)
                         );
                         panelTengahReturLayout.setVerticalGroup(
                             panelTengahReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2088,7 +2090,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(panelTengahRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(panelAtasRetur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelBawahRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+                            .addComponent(panelBawahRetur, javax.swing.GroupLayout.DEFAULT_SIZE, 981, Short.MAX_VALUE)
                         );
                         tabReturLayout.setVerticalGroup(
                             tabReturLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2188,52 +2190,78 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(comboBoxBulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel18)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(12, 12, 12)
                                 .addComponent(yearChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(buttonCetakBawah)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         );
 
-                        buttonKeluar.setText("Keluar");
-                        buttonKeluar.addActionListener(new java.awt.event.ActionListener() {
+                        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Laporan Barang"));
+
+                        jLabel19.setText("Stok saat ini");
+
+                        jButton1.setText("jButton1");
+                        jButton1.addActionListener(new java.awt.event.ActionListener() {
                             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                buttonKeluarActionPerformed(evt);
+                                jButton1ActionPerformed(evt);
                             }
                         });
+
+                        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+                        jPanel3.setLayout(jPanel3Layout);
+                        jPanel3Layout.setHorizontalGroup(
+                            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel19)
+                                .addContainerGap(64, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                        );
+                        jPanel3Layout.setVerticalGroup(
+                            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)
+                                .addContainerGap(130, Short.MAX_VALUE))
+                        );
 
                         javax.swing.GroupLayout tabReportLayout = new javax.swing.GroupLayout(tabReport);
                         tabReport.setLayout(tabReportLayout);
                         tabReportLayout.setHorizontalGroup(
                             tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(tabReportLayout.createSequentialGroup()
-                                .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(tabReportLayout.createSequentialGroup()
-                                        .addGap(379, 379, 379)
-                                        .addComponent(jLabel14))
-                                    .addGroup(tabReportLayout.createSequentialGroup()
-                                        .addGap(23, 23, 23)
-                                        .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(buttonKeluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(tabReportLayout.createSequentialGroup()
-                                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(122, 122, 122)))
-                                .addContainerGap(423, Short.MAX_VALUE))
+                                .addGap(379, 379, 379)
+                                .addComponent(jLabel14)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(tabReportLayout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(404, 404, 404))
                         );
                         tabReportLayout.setVerticalGroup(
                             tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(tabReportLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel14)
-                                .addGap(18, 18, 18)
-                                .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonKeluar)
-                                .addContainerGap(182, Short.MAX_VALUE))
+                                .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(tabReportLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabReportLayout.createSequentialGroup()
+                                        .addGap(26, 26, 26)
+                                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(219, Short.MAX_VALUE))
                         );
 
                         panelUtama.addTab("Report", tabReport);
@@ -3018,7 +3046,8 @@ public class GUI extends javax.swing.JFrame {
         String tanggalAwal = new SimpleDateFormat("yyyy-MM-dd").format(dateDariTanggal.getDate());
         String tanggalAkhir = new SimpleDateFormat("yyyy-MM-dd").format(dateSampaiTanggal.getDate());
         try{
-            File file = new File("/home/jose/Documents/Materi Belajar/3Cahaya/ProgramInventoriTigaCahaya/src/tigacahaya/Invoice.jrxml");
+            
+            File file = new File(System.getProperty("user.dir") + "/src/tigacahaya/Invoice.jrxml");
             jasperDesign = JRXmlLoader.load(file);
             HashMap param = new HashMap();
             param.put("tanggalAwal",tanggalAwal);
@@ -3028,13 +3057,15 @@ public class GUI extends javax.swing.JFrame {
             JasperViewer.viewReport(jasperPrint,false);
         }
         catch(Exception e){
+
             JOptionPane.showMessageDialog(this, e);
+            
         }
     }//GEN-LAST:event_buttonCetakAtasActionPerformed
 
     private void buttonCetakBawahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCetakBawahActionPerformed
         try{
-            String Namafile = "/home/jose/Documents/Materi Belajar/3Cahaya/ProgramInventoriTigaCahaya/src/tigacahaya/invoiceBulanan.jasper";
+            String Namafile = (System.getProperty("user.dir") + "/src/tigacahaya/invoiceBulanan.jasper");
             HashMap parameter = new HashMap();
             parameter.put("Bulan", comboBoxBulan.getSelectedItem());
             parameter.put("Tahun", yearChooser.getYear());
@@ -3046,9 +3077,9 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonCetakBawahActionPerformed
 
-    private void buttonKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKeluarActionPerformed
-        dispose();
-    }//GEN-LAST:event_buttonKeluarActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 // </editor-fold>
 
     public static void guiStart() {
@@ -3093,7 +3124,6 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCetakAtas;
     private javax.swing.JButton buttonCetakBawah;
-    private javax.swing.JButton buttonKeluar;
     private javax.swing.JButton buttonTransaksiHapus;
     private javax.swing.JButton buttonUbahQtyTransaksi;
     private javax.swing.JComboBox<String> comboBoxBulan;
@@ -3122,6 +3152,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField fieldInputSeri;
     private javax.swing.JTextField fieldInputTanggal_masuk;
     private javax.swing.JTextField fieldInputTelponSupplier;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3132,6 +3163,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -3154,6 +3186,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTransaksiQty;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPaneSupplier;
     private javax.swing.JLabel labelFilter;
     private javax.swing.JLabel labelFilterRetur;

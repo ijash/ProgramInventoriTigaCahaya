@@ -52,7 +52,7 @@ order by transaksi_cart.id_inv]]>
 			</frame>
 			<image>
 				<reportElement x="331" y="14" width="332" height="21"/>
-				<imageExpression><![CDATA["/home/jose/Documents/Materi Belajar/3Cahaya/ProgramInventoriTigaCahaya/src/tigacahaya/res/tiga_cahaya_logo.png"]]></imageExpression>
+				<imageExpression><![CDATA[System.getProperty("user.dir") + "/src/tigacahaya/res/tiga_cahaya_logo.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="11" y="56" width="45" height="20"/>

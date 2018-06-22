@@ -3033,17 +3033,17 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCetakAtasActionPerformed
 
     private void buttonCetakBawahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCetakBawahActionPerformed
-//        try{
-//            String Namafile = "/home/jose/NetBeansProjects/Aplikasi_toko/src/Aplikasi_toko/laporanPerbulan.jasper";
-//            HashMap parameter = new HashMap();
-//            parameter.put("bulan1", comboBoxBulan.getSelectedItem());
-//            parameter.put("bulan2", yearChooser.getYear());
-//            JasperPrint print = JasperFillManager.fillReport(Namafile, parameter, conn.connect());
-//            JasperViewer.viewReport(print,false);
-//        }
-//        catch(Exception e){
-//            JOptionPane.showMessageDialog(null, e);
-//        }
+        try{
+            String Namafile = "/home/jose/Documents/Materi Belajar/3Cahaya/ProgramInventoriTigaCahaya/src/tigacahaya/invoiceBulanan.jasper";
+            HashMap parameter = new HashMap();
+            parameter.put("Bulan", comboBoxBulan.getSelectedItem());
+            parameter.put("Tahun", yearChooser.getYear());
+            JasperPrint print = JasperFillManager.fillReport(Namafile, parameter, conn.connect());
+            JasperViewer.viewReport(print,false);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_buttonCetakBawahActionPerformed
 
     private void buttonKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKeluarActionPerformed

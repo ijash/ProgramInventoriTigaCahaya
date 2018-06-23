@@ -534,16 +534,16 @@ public class GUI extends javax.swing.JFrame {
         dateSampaiTanggal = new com.toedter.calendar.JDateChooser();
         jLabel16 = new javax.swing.JLabel();
         dateDariTanggal = new com.toedter.calendar.JDateChooser();
-        buttonCetakAtas = new javax.swing.JButton();
+        buttonCetakPeriode = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        buttonCetakBawah = new javax.swing.JButton();
+        buttonCetakBulan = new javax.swing.JButton();
         yearChooser = new com.toedter.calendar.JYearChooser();
         comboBoxBulan = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        buttonCetakBarang = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inventori Tiga Cahaya ["+GUI.namaOperator+"]");
@@ -2116,10 +2116,10 @@ public class GUI extends javax.swing.JFrame {
 
                         jLabel16.setText("Sampai Tanggal");
 
-                        buttonCetakAtas.setText("Cetak");
-                        buttonCetakAtas.addActionListener(new java.awt.event.ActionListener() {
+                        buttonCetakPeriode.setText("Cetak");
+                        buttonCetakPeriode.addActionListener(new java.awt.event.ActionListener() {
                             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                buttonCetakAtasActionPerformed(evt);
+                                buttonCetakPeriodeActionPerformed(evt);
                             }
                         });
 
@@ -2134,7 +2134,7 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(dateDariTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel16)
                                     .addComponent(dateSampaiTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(buttonCetakAtas))
+                                    .addComponent(buttonCetakPeriode))
                                 .addContainerGap(23, Short.MAX_VALUE))
                         );
                         jPanel1Layout.setVerticalGroup(
@@ -2149,7 +2149,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(dateSampaiTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonCetakAtas)
+                                .addComponent(buttonCetakPeriode)
                                 .addContainerGap(47, Short.MAX_VALUE))
                         );
 
@@ -2159,10 +2159,10 @@ public class GUI extends javax.swing.JFrame {
 
                         jLabel18.setText("Tahun");
 
-                        buttonCetakBawah.setText("Cetak");
-                        buttonCetakBawah.addActionListener(new java.awt.event.ActionListener() {
+                        buttonCetakBulan.setText("Cetak");
+                        buttonCetakBulan.addActionListener(new java.awt.event.ActionListener() {
                             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                buttonCetakBawahActionPerformed(evt);
+                                buttonCetakBulanActionPerformed(evt);
                             }
                         });
 
@@ -2179,7 +2179,7 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(comboBoxBulan, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel18)
                                     .addComponent(yearChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(buttonCetakBawah)))
+                                    .addComponent(buttonCetakBulan)))
                         );
                         jPanel2Layout.setVerticalGroup(
                             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2193,7 +2193,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addGap(12, 12, 12)
                                 .addComponent(yearChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(buttonCetakBawah)
+                                .addComponent(buttonCetakBulan)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         );
 
@@ -2201,10 +2201,10 @@ public class GUI extends javax.swing.JFrame {
 
                         jLabel19.setText("Stok saat ini");
 
-                        jButton1.setText("jButton1");
-                        jButton1.addActionListener(new java.awt.event.ActionListener() {
+                        buttonCetakBarang.setText("Cetak");
+                        buttonCetakBarang.addActionListener(new java.awt.event.ActionListener() {
                             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                jButton1ActionPerformed(evt);
+                                buttonCetakBarangActionPerformed(evt);
                             }
                         });
 
@@ -2214,11 +2214,10 @@ public class GUI extends javax.swing.JFrame {
                             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel19)
-                                .addContainerGap(64, Short.MAX_VALUE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel19)
+                                    .addComponent(buttonCetakBarang))
+                                .addContainerGap(63, Short.MAX_VALUE))
                         );
                         jPanel3Layout.setVerticalGroup(
                             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2226,8 +2225,8 @@ public class GUI extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jLabel19)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)
-                                .addContainerGap(130, Short.MAX_VALUE))
+                                .addComponent(buttonCetakBarang)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         );
 
                         javax.swing.GroupLayout tabReportLayout = new javax.swing.GroupLayout(tabReport);
@@ -2252,15 +2251,11 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(tabReportLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel14)
-                                .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(tabReportLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabReportLayout.createSequentialGroup()
-                                        .addGap(26, 26, 26)
-                                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap(219, Short.MAX_VALUE))
                         );
 
@@ -3042,7 +3037,7 @@ public class GUI extends javax.swing.JFrame {
         comboBoxSupplier.setEnabled(false);
     }//GEN-LAST:event_formWindowActivated
 
-    private void buttonCetakAtasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCetakAtasActionPerformed
+    private void buttonCetakPeriodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCetakPeriodeActionPerformed
         String tanggalAwal = new SimpleDateFormat("yyyy-MM-dd").format(dateDariTanggal.getDate());
         String tanggalAkhir = new SimpleDateFormat("yyyy-MM-dd").format(dateSampaiTanggal.getDate());
         try{
@@ -3061,9 +3056,9 @@ public class GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e);
             
         }
-    }//GEN-LAST:event_buttonCetakAtasActionPerformed
+    }//GEN-LAST:event_buttonCetakPeriodeActionPerformed
 
-    private void buttonCetakBawahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCetakBawahActionPerformed
+    private void buttonCetakBulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCetakBulanActionPerformed
         try{
             String Namafile = (System.getProperty("user.dir") + "/src/tigacahaya/invoiceBulanan.jasper");
             HashMap parameter = new HashMap();
@@ -3075,11 +3070,19 @@ public class GUI extends javax.swing.JFrame {
         catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
-    }//GEN-LAST:event_buttonCetakBawahActionPerformed
+    }//GEN-LAST:event_buttonCetakBulanActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void buttonCetakBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCetakBarangActionPerformed
+        try{
+           String path= (System.getProperty("user.dir") + "/src/tigacahaya/stokBarang.jasper");
+           HashMap parameter = new HashMap();
+           JasperPrint print = JasperFillManager.fillReport(path, parameter,conn.connect());
+           JasperViewer.viewReport(print,false);
+       }
+       catch(Exception e){
+           JOptionPane.showMessageDialog(null, e);
+       }
+    }//GEN-LAST:event_buttonCetakBarangActionPerformed
 // </editor-fold>
 
     public static void guiStart() {
@@ -3122,8 +3125,9 @@ public class GUI extends javax.swing.JFrame {
     }
 // <editor-fold defaultstate="collapsed" desc=" Variable Declaration ">
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonCetakAtas;
-    private javax.swing.JButton buttonCetakBawah;
+    private javax.swing.JButton buttonCetakBarang;
+    private javax.swing.JButton buttonCetakBulan;
+    private javax.swing.JButton buttonCetakPeriode;
     private javax.swing.JButton buttonTransaksiHapus;
     private javax.swing.JButton buttonUbahQtyTransaksi;
     private javax.swing.JComboBox<String> comboBoxBulan;
@@ -3152,7 +3156,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField fieldInputSeri;
     private javax.swing.JTextField fieldInputTanggal_masuk;
     private javax.swing.JTextField fieldInputTelponSupplier;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

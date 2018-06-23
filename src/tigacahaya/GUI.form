@@ -2426,18 +2426,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jPanel1" pref="218" max="32767" attributes="0"/>
-                                  <Component id="jPanel2" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jPanel1" pref="218" max="32767" attributes="0"/>
+                          <Component id="jPanel2" max="32767" attributes="0"/>
+                          <Component id="jPanel3" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="219" max="32767" attributes="0"/>
                   </Group>
@@ -2475,7 +2468,7 @@
                               <Component id="dateDariTanggal" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
                               <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="dateSampaiTanggal" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
-                              <Component id="buttonCetakAtas" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="buttonCetakPeriode" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="23" max="32767" attributes="0"/>
                       </Group>
@@ -2493,7 +2486,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="dateSampaiTanggal" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="buttonCetakAtas" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonCetakPeriode" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="47" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -2514,12 +2507,12 @@
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="dateDariTanggal">
                 </Component>
-                <Component class="javax.swing.JButton" name="buttonCetakAtas">
+                <Component class="javax.swing.JButton" name="buttonCetakPeriode">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cetak"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCetakAtasActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCetakPeriodeActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -2543,7 +2536,7 @@
                               <Component id="comboBoxBulan" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
                               <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="yearChooser" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
-                              <Component id="buttonCetakBawah" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="buttonCetakBulan" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -2560,7 +2553,7 @@
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Component id="yearChooser" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="buttonCetakBawah" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonCetakBulan" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -2577,12 +2570,12 @@
                     <Property name="text" type="java.lang.String" value="Tahun"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="buttonCetakBawah">
+                <Component class="javax.swing.JButton" name="buttonCetakBulan">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cetak"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCetakBawahActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCetakBulanActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="com.toedter.calendar.JYearChooser" name="yearChooser">
@@ -2624,14 +2617,13 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="64" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                              <Component id="buttonCetakBarang" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="63" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2641,8 +2633,8 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="130" max="32767" attributes="0"/>
+                          <Component id="buttonCetakBarang" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2653,12 +2645,12 @@
                     <Property name="text" type="java.lang.String" value="Stok saat ini"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton1">
+                <Component class="javax.swing.JButton" name="buttonCetakBarang">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jButton1"/>
+                    <Property name="text" type="java.lang.String" value="Cetak"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCetakBarangActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

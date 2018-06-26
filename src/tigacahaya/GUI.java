@@ -544,6 +544,7 @@ public class GUI extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         buttonCetakBarang = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inventori Tiga Cahaya ["+GUI.namaOperator+"]");
@@ -2106,15 +2107,26 @@ public class GUI extends javax.swing.JFrame {
 
                         panelUtama.addTab("Retur", tabRetur);
 
-                        jLabel14.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+                        tabReport.setBackground(new java.awt.Color(25, 104, 178));
+
+                        jLabel14.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+                        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
                         jLabel14.setText("Laporan Transaksi");
 
-                        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Per Periode"));
+                        jPanel1.setBackground(new java.awt.Color(25, 104, 178));
+                        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Per Periode", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+                        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
                         jPanel1.setPreferredSize(new java.awt.Dimension(405, 142));
 
+                        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
                         jLabel15.setText("Dari Tanggal");
 
+                        dateSampaiTanggal.setBackground(new java.awt.Color(25, 104, 178));
+
+                        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
                         jLabel16.setText("Sampai Tanggal");
+
+                        dateDariTanggal.setBackground(new java.awt.Color(25, 104, 178));
 
                         buttonCetakPeriode.setText("Cetak");
                         buttonCetakPeriode.addActionListener(new java.awt.event.ActionListener() {
@@ -2128,14 +2140,17 @@ public class GUI extends javax.swing.JFrame {
                         jPanel1Layout.setHorizontalGroup(
                             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel15)
                                     .addComponent(dateDariTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel16)
                                     .addComponent(dateSampaiTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(buttonCetakPeriode))
-                                .addContainerGap(23, Short.MAX_VALUE))
+                                .addGap(188, 188, 188))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel16)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         );
                         jPanel1Layout.setVerticalGroup(
                             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2150,13 +2165,17 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(dateSampaiTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(buttonCetakPeriode)
-                                .addContainerGap(47, Short.MAX_VALUE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         );
 
-                        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Per Bulan"));
+                        jPanel2.setBackground(new java.awt.Color(25, 104, 178));
+                        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Per Bulan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+                        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
+                        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
                         jLabel17.setText("Bulan");
 
+                        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
                         jLabel18.setText("Tahun");
 
                         buttonCetakBulan.setText("Cetak");
@@ -2165,6 +2184,8 @@ public class GUI extends javax.swing.JFrame {
                                 buttonCetakBulanActionPerformed(evt);
                             }
                         });
+
+                        yearChooser.setBackground(new java.awt.Color(25, 104, 178));
 
                         comboBoxBulan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
@@ -2188,17 +2209,20 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(jLabel17)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(comboBoxBulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel18)
                                 .addGap(12, 12, 12)
+                                .addComponent(jLabel18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(yearChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(buttonCetakBulan)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap())
                         );
 
-                        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Laporan Barang"));
+                        jPanel3.setBackground(new java.awt.Color(25, 104, 178));
+                        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Laporan Barang", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+                        jPanel3.setForeground(new java.awt.Color(255, 255, 255));
 
+                        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
                         jLabel19.setText("Stok saat ini");
 
                         buttonCetakBarang.setText("Cetak");
@@ -2217,34 +2241,40 @@ public class GUI extends javax.swing.JFrame {
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel19)
                                     .addComponent(buttonCetakBarang))
-                                .addContainerGap(63, Short.MAX_VALUE))
+                                .addContainerGap(33, Short.MAX_VALUE))
                         );
                         jPanel3Layout.setVerticalGroup(
                             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel19)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(buttonCetakBarang)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap())
                         );
+
+                        jLabel20.setBackground(new java.awt.Color(255, 255, 255));
+                        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+                        jLabel20.setText("Halo "+ GUI.namaOperator+" , Pastikan tanggal sudah dipilih sebelum mencetak.");
 
                         javax.swing.GroupLayout tabReportLayout = new javax.swing.GroupLayout(tabReport);
                         tabReport.setLayout(tabReportLayout);
                         tabReportLayout.setHorizontalGroup(
                             tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(tabReportLayout.createSequentialGroup()
-                                .addGap(379, 379, 379)
-                                .addComponent(jLabel14)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(tabReportLayout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(404, 404, 404))
+                                .addContainerGap()
+                                .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14)
+                                    .addGroup(tabReportLayout.createSequentialGroup()
+                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(tabReportLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jLabel20)))
+                                .addContainerGap(453, Short.MAX_VALUE))
                         );
                         tabReportLayout.setVerticalGroup(
                             tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2252,14 +2282,18 @@ public class GUI extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jLabel14)
                                 .addGap(18, 18, 18)
-                                .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap(219, Short.MAX_VALUE))
+                                .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel20)
+                                .addContainerGap(236, Short.MAX_VALUE))
                         );
 
-                        panelUtama.addTab("Report", tabReport);
+                        jPanel3.getAccessibleContext().setAccessibleDescription("");
+
+                        panelUtama.addTab("Laporan", tabReport);
 
                         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                         getContentPane().setLayout(layout);
@@ -3038,10 +3072,10 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void buttonCetakPeriodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCetakPeriodeActionPerformed
-        String tanggalAwal = new SimpleDateFormat("yyyy-MM-dd").format(dateDariTanggal.getDate());
-        String tanggalAkhir = new SimpleDateFormat("yyyy-MM-dd").format(dateSampaiTanggal.getDate());
+
         try{
-            
+        String tanggalAwal = new SimpleDateFormat("yyyy-MM-dd").format(dateDariTanggal.getDate());
+        String tanggalAkhir = new SimpleDateFormat("yyyy-MM-dd").format(dateSampaiTanggal.getDate());            
             File file = new File(System.getProperty("user.dir") + "/src/tigacahaya/Invoice.jrxml");
             jasperDesign = JRXmlLoader.load(file);
             HashMap param = new HashMap();
@@ -3052,9 +3086,8 @@ public class GUI extends javax.swing.JFrame {
             JasperViewer.viewReport(jasperPrint,false);
         }
         catch(Exception e){
-
-            JOptionPane.showMessageDialog(this, e);
-            
+            JOptionPane.showMessageDialog(rootPane, "Cek kembali tanggal yang diinput","Error",HEIGHT);
+            System.out.println(System.getProperty("user.dir"));
         }
     }//GEN-LAST:event_buttonCetakPeriodeActionPerformed
 
@@ -3168,6 +3201,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

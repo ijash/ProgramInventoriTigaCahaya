@@ -24,6 +24,10 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import java.text.SimpleDateFormat;
 import java.io.File;
+import java.lang.invoke.MethodHandles;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -50,7 +54,19 @@ public class GUI extends javax.swing.JFrame {
     public static String getIdOperator() {
         return idOperator;
     }
-
+    public void setCurrDateComboBox(){
+        Date date = new Date();
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int month = localDate.getMonthValue();
+        int year = localDate.getYear();
+        dateDariTanggal.setDate(date);
+        dateSampaiTanggal.setDate(date);
+        comboBoxBulan.setSelectedIndex(month - 1);
+        yearChooser.setValue(year);
+        
+    
+ 
+    } 
     public static void setIdOperator(String idOperator) {
         GUI.idOperator = idOperator;
     }
@@ -72,13 +88,14 @@ public class GUI extends javax.swing.JFrame {
     }
 
     public GUI() {
-
+        
         initComponents();
 //      setLevelAdmin();
 //      labelLevel.setVisible(false);
 //      labelLevel.setText(Level);
         admin();
         displayTable();
+        setCurrDateComboBox();
         displaySupplierComboBox();
         displayJenisComboBox();
         sortTable();
@@ -2186,6 +2203,8 @@ public class GUI extends javax.swing.JFrame {
                         });
 
                         yearChooser.setBackground(new java.awt.Color(25, 104, 178));
+                        yearChooser.setMaximum(2999);
+                        yearChooser.setStartYear(1998);
 
                         comboBoxBulan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
@@ -3084,9 +3103,11 @@ public class GUI extends javax.swing.JFrame {
             jasperReport = JasperCompileManager.compileReport(jasperDesign);
             jasperPrint = JasperFillManager.fillReport(jasperReport, param, conn.connect());
             JasperViewer.viewReport(jasperPrint,false);
+
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, "Cek kembali tanggal yang diinput","Error",HEIGHT);
+            System.out.println();
             System.out.println(System.getProperty("user.dir"));
         }
     }//GEN-LAST:event_buttonCetakPeriodeActionPerformed

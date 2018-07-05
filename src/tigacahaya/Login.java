@@ -479,16 +479,12 @@ public class Login extends javax.swing.JFrame {
                 + "<html><b><center>Team:</center></b></html>\n"
                 + "Founder: Ijash\n"
                 + "Co-Founder:Jose\n"
-                + "Data & Beta test: Kevin\n"
-                + "Data & Beta test: Simon\n"                
-                + "Research Paper: Adel\n"
-                + "Financial Consultant : Yuni\n"
+                + "Data & Beta test: Kevin\n"             
+                + "Research Paper: Theodora\n"
                 + "Investor: Fahmi\n"
                 + "<html><b>Links:</b></html>\n"
                 + "https://github.com/ijash/ProgramInventoriTigaCahaya\n"
-                + "ijash1000@gmail.com\n"
-                + "Donate here:\n"
-                + "bitcoin: 1AV6DtBUYnNhrRoJsW3PzJkaMbkdVgnRfCubl","About Us", WIDTH);
+                + "ijash1000@gmail.com\n","Aout Us", WIDTH);
     }//GEN-LAST:event_labelAboutMouseClicked
 
     private void Field_passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Field_passwordKeyPressed
